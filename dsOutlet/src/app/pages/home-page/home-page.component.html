@@ -6,28 +6,7 @@
   <!-- Cabeçalho -->
   <header>
     <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa-->
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper light-blue z-depth-4">
-          <a href="#!" materialize="sideNav" class="brand-logo">Imagem com LOGO</a>
-          <!-- Imagem da lOGO deve ser inserida aqui-->
-          <a href="#" materialize="sideNav" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <!-- Buttons para exibição -->
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a>Home</a></li>
-            <li><a>Fale Conosco</a></li>
-            <li>
-              <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Apenas para funcionários">Login</a></li>
-          </ul>
-          <!-- Menu lateral para exibição mobile -->
-          <ul class="side-nav" id="mobile-demo">
-            <li><a>Home</a></li>
-            <li><a>Fale Conosco</a></li>
-            <li><a class="waves-effect waves-light btn">Login</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+    <app-navbar></app-navbar>
   </header>
 
   <!-- Corpo da pagina -->
@@ -105,41 +84,7 @@
   </main>
 
   <!-- Rodapé -->
-  <footer class="page-footer light-blue">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">DS Outlet</h5>
-          <p class="grey-text text-lighten-4">
-            A melhor loja de <em>Surf Wear</em> da cidade <br> Rua 3ª Travessa Eduardo Froes da mota <br> Número 435 <br> CEP: 99999-000 <br> Telefone: (99) 3355-5533
-          </p>
-        </div>
-        <!--
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Como chegar</h5>
-                <!-- Google Maps API
-                <div class="google-maps" id="map"></div>
-                <script>
-                  function myMap() {
-                    var mapCanvas = document.getElementById("map");
-                    var mapOptions = {
-                      center: new google.maps.LatLng(51.5, -0.2),
-                      zoom: 10
-                    }
-                    var map = new google.maps.Map(mapCanvas, mapOptions);
-                  }
-                </script>
-                <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
-              </div>
-              -->
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-        Made By BroCode
-      </div>
-    </div>
-  </footer>
+  <app-footer></app-footer>
 </body>
 
 </html>
