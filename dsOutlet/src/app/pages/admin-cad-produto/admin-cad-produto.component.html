@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <!-- Cabeçalho -->
+    <header>
+      <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
+      <navbar-admin></navbar-admin>
+    </header>
+
+    <!-- Corpo da pagina -->
+    <main>
+      <div class="row">
+        <div class="col s0 m4 l3 menu_lateral"> <!-- Note that "m4 l3" was added -->
+          <!-- small container -->
+          <div class="collection">
+            <a href="#!" class="collection-item">Estoque</a>
+            <a href="#!" class="collection-item">Cadastrar Produto</a>
+            <a href="#!" class="collection-item">Editar Produto</a>
+            <a href="#!" class="collection-item">Adicionar Produto</a>
+            <a href="#!" class="collection-item">Relatórios</a>
+            <a href="#!" class="collection-item">Gerenciar Usuários</a>
+          </div>
+        </div>
+
+        <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
+          <!-- Large container -->
+          <div class="collection backgroud z-depth-4">
+            <!-- Formulário -->
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12 m6 l6">
+                    <input placeholder="marca" id="marca" type="text" class="validate white-text">
+                    <label class="white-text" for="marca">Marca</label>
+                  </div>
+                  <div class="input-field col s12 m6 l6 white-text">
+                    <input id="modelo" type="text" class="validate  white-text">
+                    <label class="white-text" for="modelo">Modelo</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12 m6 l6">
+                    <input id="max" type="number" class="validate">
+                    <label class="white-text" for="max">Máximo</label>
+                  </div>
+                  <div class="input-field col s12 m6 l6">
+                    <input id="min" type="number" class="validate">
+                    <label class="white-text" for="min">Mínimo</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <input id="quantidade" type="number" class="validate">
+                    <label class="white-text" for="quantidade">Quantidade</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
+                    <a onclick="Materialize.toast('Produto foi cadastrado!', 4000, 'rouded')" class="btn waves-effect waves-light blue darken-4">Cadastrar
+                      <i class="material-icons right">send</i>
+                    </a>
+                  </div>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Rodapé -->
+    <app-footer></app-footer>
+
+  </body>
+</html>

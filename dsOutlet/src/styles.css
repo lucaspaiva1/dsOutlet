@@ -40,6 +40,13 @@ div.formulario{
   margin-bottom: 30px;
   padding: 30px;
 }
+div.backgroud{
+  background-color: #64b5f6;
+  width: 95%;
+  height: auto;
+  margin: 20px;
+  padding: 20px;
+}
 /* label color */
 .input-field label {
   color: white;

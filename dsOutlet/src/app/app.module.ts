@@ -16,6 +16,8 @@ import { NavbarAdmComponent } from './components/navbar-adm/navbar-adm.component
 
 import { AppRoutingModule } from './app-routing.module';
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
+import { AdminEstoqueComponent } from './pages/admin-estoque/admin-estoque.component';
+import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-produto.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
     NavbarComponent,
     FooterComponent,
     NavbarAdmComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    AdminEstoqueComponent,
+    AdminCadProdutoComponent
   ],
   imports: [
     BrowserModule,
