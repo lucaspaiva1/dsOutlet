@@ -26,37 +26,23 @@
               <tr>
                 <th data-field="marca">Marca</th>
                 <th data-field="modelo">Modelo</th>
+                <th data-field="tamanho">Tamanho</th>
                 <th data-field="quantidade">Quantidade</th>
                 <th data-field="max">Max</th>
                 <th data-field="min">Min</th>
-                <th data-field="situacao">Situação</th>
+                <th data-field="estado">Estado</th>
               </tr>
             </thead>
 
             <tbody>
-              <tr>
-                <td>Mahalo</td>
-                <td>Bermundar</td>
-                <td>50</td>
-                <td>80</td>
-                <td>40</td>
-                <td>OK</td>
-              </tr>
-              <tr>
-                <td>Mahalo</td>
-                <td>Camisa</td>
-                <td>30</td>
-                <td>80</td>
-                <td>40</td>
-                <td>ERR</td>
-              </tr>
-              <tr>
-                <td>Adidas</td>
-                <td>Camisa</td>
-                <td>60</td>
-                <td>50</td>
-                <td>20</td>
-                <td>ERR</td>
+              <tr *ngfor="let item of produtos">
+                <td>{{item.marca}}</td>
+                <td>{{item.modelo}}</td>
+                <td>{{item.tamanho}}</td>
+                <td>{{item.quantidade}}</td>
+                <td>{{item.max}}</td>
+                <td>{{item.min}}</td>
+                <td>{{item.estado}}</td>
               </tr>
             </tbody>
           </table>

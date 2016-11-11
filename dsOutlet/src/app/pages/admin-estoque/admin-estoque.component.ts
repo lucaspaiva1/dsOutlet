@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-estoque.component.css']
 })
 export class AdminEstoqueComponent implements OnInit {
-
+  
+  private produtos = produtos[];
   constructor() { }
 
   ngOnInit() {
