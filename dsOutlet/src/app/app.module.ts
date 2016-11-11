@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { AdminEstoqueComponent } from './pages/admin-estoque/admin-estoque.component';
 import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-produto.component';
+import { OptionsAdmComponent } from './components/options-adm/options-adm.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-pr
     NavbarAdmComponent,
     AdminHomeComponent,
     AdminEstoqueComponent,
-    AdminCadProdutoComponent
+    AdminCadProdutoComponent,
+    OptionsAdmComponent
   ],
   imports: [
     BrowserModule,
