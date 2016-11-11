@@ -7,11 +7,13 @@ import { MaterializeModule } from 'angular2-materialize';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { FaleConoscoComponent } from './pages/fale-conosco/fale-conosco.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent
+    HomePageComponent,
+    FaleConoscoComponent
   ],
   imports: [
     BrowserModule,

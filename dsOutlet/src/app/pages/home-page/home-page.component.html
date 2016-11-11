@@ -1,130 +1,125 @@
 <!DOCTYPE html>
 <html>
-  <title>DS Outlet</title>
-  <body>
-    <!-- Cabeçalho -->
-    <header>
-      <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
-      <div class="navbar-fixed">
-        <nav>
-          <div class="nav-wrapper light-blue z-depth-4">
-            <a href="" class="brand-logo">Imagem com LOGO</a> <!-- Imagem da lOGO deve ser inserida aqui-->
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <!-- Buttons para exibição -->
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><a href="">Home</a></li>
-              <li><a href="">Fale Conosco</a></li>
-              <li>
-                <a class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Apenas para funcionários">Login</a></li>
-            </ul>
+<title>DS Outlet</title>
 
-            <!-- Menu lateral para exibição mobile -->
-            <ul class="side-nav" id="mobile-demo">
-              <li><a href="">Home</a></li>
-              <li><a href="">Fale Conosco</a></li>
-              <li><a class="waves-effect waves-light btn">Login</a></li>
-            </ul>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa-->
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper light-blue z-depth-4">
+          <a href="#!" materialize="sideNav" class="brand-logo">Imagem com LOGO</a>
+          <!-- Imagem da lOGO deve ser inserida aqui-->
+          <a href="#" materialize="sideNav" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <!-- Buttons para exibição -->
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a>Home</a></li>
+            <li><a>Fale Conosco</a></li>
+            <li>
+              <a class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Apenas para funcionários">Login</a></li>
+          </ul>
+          <!-- Menu lateral para exibição mobile -->
+          <ul class="side-nav" id="mobile-demo">
+            <li><a>Home</a></li>
+            <li><a>Fale Conosco</a></li>
+            <li><a class="waves-effect waves-light btn">Login</a></li>
+          </ul>
 
+        </div>
+      </nav>
+    </div>
+
+  </header>
+
+  <!-- Corpo da pagina -->
+  <main>
+    <!-- Slogan de entrada -->
+    <div class="slogan">
+      <h1>DS OUTLET</h1>
+      <h3>Trazendo o melhor da moda <em>Surf Wear</em> para você</h3>
+    </div>
+    <!-- Carousel Propaganda -->
+    <div materialize="carousel" class="carousel">
+      <a class="carousel-item" href="#one!"><img src="imagens/marcas/bugalu.jpg"></a>
+      <a class="carousel-item" href="#two!"><img src="imagens/marcas/cobra.jpg"></a>
+      <a class="carousel-item" href="#three!"><img src="imagens/marcas/impacto.jpg"></a>
+      <a class="carousel-item" href="#four!"><img src="imagens/marcas/teahupoo.jpg"></a>
+    </div>
+
+    <!-- Propaganda auxiliar (cards) -->
+    <div class="row center">
+
+      <div class="col s10 m4 l4 center">
+        <!-- Promo 1 -->
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="imagens/prop-masc-gd.jpg">
           </div>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Corpo da pagina -->
-    <main>
-      <!-- Slogan de entrada -->
-      <div class="slogan">
-        <h1>DS OUTLET</h1>
-        <h3>Trazendo o melhor da moda <em>Surf Wear</em> para você</h3>
-      </div>
-      <!-- Carousel Propaganda -->
-      <div materialize="carousel" class="carousel">
-        <a class="carousel-item" href="#one!"><img src="imagens/marcas/bugalu.jpg"></a>
-        <a class="carousel-item" href="#two!"><img src="imagens/marcas/cobra.jpg"></a>
-        <a class="carousel-item" href="#three!"><img src="imagens/marcas/impacto.jpg"></a>
-        <a class="carousel-item" href="#four!"><img src="imagens/marcas/teahupoo.jpg"></a>
-      </div>
-
-      <!-- Propaganda auxiliar (cards) -->
-      <div class="row center">
-
-            <div class="col s10 m4 l4 center">
-              <!-- Promo 1 -->
-              <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src="imagens/prop-masc-gd.jpg">
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4">Moda Masculina<i class="material-icons right">more_vert</i></span>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4">Moda Masculina<i class="material-icons right">close</i></span>
-                  <p>
-                    Diversas marcas, estilos e estampas! <br>
-                    Tudo esperando por <em>voçe</em>!
-                  </p>
-                </div>
-              </div>
-
-            </div>
-            <div class="col s10 m4 l4 center">
-              <!-- Promo 2 -->
-              <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src="imagens/prop-fem-gd.jpg">
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4">Moda Feminina<i class="material-icons right">more_vert</i></span>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4">Moda Feminina<i class="material-icons right">close</i></span>
-                  <p>
-                    Nada mais atraente do que uma mulher surfando <br>
-                    Venha garantir o melhor estilo para pegar a melhor onda! <br>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col s10 m4 l4 center">
-              <!-- Promo 3 -->
-              <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src="imagens/promo-gd.jpg">
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4">Promoção SKOL<i class="material-icons right">more_vert</i></span>
-                </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4">Promoção SKOL<i class="material-icons right">close</i></span>
-                  <p>
-                    Em compras acima de R$ 100,00 <br>
-                    Voçe concorre a 1 cooler da SKOOOOOL por mês <br>
-                    <br>
-                    Imperdível, corra e garanta já o seu!
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Moda Masculina<i class="material-icons right">more_vert</i></span>
           </div>
-    </main>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Moda Masculina<i class="material-icons right">close</i></span>
+            <p>
+              Diversas marcas, estilos e estampas! <br> Tudo esperando por <em>voçe</em>!
+            </p>
+          </div>
+        </div>
 
-    <!-- Rodapé -->
-    <footer class="page-footer light-blue">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">DS Outlet</h5>
-                <p class="grey-text text-lighten-4">
-                  A melhor loja de <em>Surf Wear</em> da cidade <br>
-                  Rua 3ª Travessa Eduardo Froes da mota <br>
-                  Número 435 <br>
-                  CEP: 99999-000 <br>
-                  Telefone: (99) 3355-5533
-                </p>
-              </div>
+      </div>
+      <div class="col s10 m4 l4 center">
+        <!-- Promo 2 -->
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="imagens/prop-fem-gd.jpg">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Moda Feminina<i class="material-icons right">more_vert</i></span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Moda Feminina<i class="material-icons right">close</i></span>
+            <p>
+              Nada mais atraente do que uma mulher surfando <br> Venha garantir o melhor estilo para pegar a melhor onda! <br>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col s10 m4 l4 center">
+        <!-- Promo 3 -->
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="imagens/promo-gd.jpg">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Promoção SKOL<i class="material-icons right">more_vert</i></span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Promoção SKOL<i class="material-icons right">close</i></span>
+            <p>
+              Em compras acima de R$ 100,00 <br> Voçe concorre a 1 cooler da SKOOOOOL por mês <br>
+              <br> Imperdível, corra e garanta já o seu!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="page-footer light-blue">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">DS Outlet</h5>
+          <p class="grey-text text-lighten-4">
+            A melhor loja de <em>Surf Wear</em> da cidade <br> Rua 3ª Travessa Eduardo Froes da mota <br> Número 435 <br> CEP: 99999-000 <br> Telefone: (99) 3355-5533
+          </p>
+        </div>
+        <!--
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Como chegar</h5>
-                <!-- Google Maps API -->
+                <!-- Google Maps API
                 <div class="google-maps" id="map"></div>
                 <script>
                   function myMap() {
@@ -138,16 +133,15 @@
                 </script>
                 <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
               </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            Made By BroCode
-            </div>
-          </div>
-        </footer>
+              -->
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        Made By BroCode
+      </div>
+    </div>
+  </footer>
+</body>
 
-    <!-- Scripts -->
-
-  </body>
 </html>
