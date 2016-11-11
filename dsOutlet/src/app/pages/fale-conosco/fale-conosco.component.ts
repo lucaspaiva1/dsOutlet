@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-fale-conosco',
+  selector: 'fale-conosco',
   templateUrl: './fale-conosco.component.html',
   styleUrls: ['./fale-conosco.component.css']
 })
