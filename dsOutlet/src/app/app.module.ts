@@ -19,6 +19,7 @@ import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { AdminEstoqueComponent } from './pages/admin-estoque/admin-estoque.component';
 import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-produto.component';
 import { OptionsAdmComponent } from './components/options-adm/options-adm.component';
+import { AdminEditProdutoComponent } from './pages/admin-edit-produto/admin-edit-produto.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { OptionsAdmComponent } from './components/options-adm/options-adm.compon
     AdminHomeComponent,
     AdminEstoqueComponent,
     AdminCadProdutoComponent,
-    OptionsAdmComponent
+    OptionsAdmComponent,
+    AdminEditProdutoComponent
   ],
   imports: [
     BrowserModule,

@@ -20,13 +20,21 @@
           <div class="row">
             <form class="col s12">
               <div class="row">
-                <div class="input-field col s12 m6 l6">
-                  <input placeholder="marca" id="marca" type="text" class="validate white-text">
-                  <label class="white-text" for="marca">Marca</label>
+                <div class="input-field col s12 m6 l6 white-text">
+                  <select id="marca">
+                    <!--Organiza a seleçao criando uma opção para cada marca reistrada no banco de dados, sendop que esta marca é retornada como uma string-->
+                    <option value="" disabled selected>Escolha uma marca</option>
+                    <option ngFor="let marca of marcas" value="{{marca}}">{{marca}}</option>
+                  </select>
+                  <label class="white-text">Marca</label>
                 </div>
                 <div class="input-field col s12 m6 l6 white-text">
-                  <input id="modelo" type="text" class="validate  white-text">
-                  <label class="white-text" for="modelo">Modelo</label>
+                  <select id="modelo">
+                    <!--Organiza a seleçao criando uma opção para cada modelo reistrada no banco de dados, sendop que este modelo é retornado como uma string-->
+                    <option value="" disabled selected>Escolha um modelo</option>
+                    <option ngFor="let modelo of modelos" value="{{modelo}}">{{modelo}}</option>
+                  </select>
+                  <label class="white-text">Marca</label>
                 </div>
               </div>
               <div class="row">
@@ -51,7 +59,7 @@
               </div>
               <div class="row">
                 <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
-                  <a onclick="Materialize.toast('Produto foi cadastrado!', 4000, 'rouded')" class="btn waves-effect waves-light blue darken-4">Cadastrar
+                  <a onclick="Materialize.toast('Produto foi modificado!', 4000, 'rouded')" class="btn waves-effect waves-light blue darken-4">Salvar
                       <i class="material-icons right">send</i>
                     </a>
                 </div>
