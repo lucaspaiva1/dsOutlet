@@ -1,18 +1,13 @@
-export class Produto{
-  private marca:string;
-  private modelo:string;
-  private tamanho:number;
-  private quantidade:number;
-  private max:number;
-  private min:number;
-  private estado:string;
+export class Produto {
+  public marca: string;
+  public modelo: string;
+  public tamanho: number;
+  public quantidade: number;
+  public max: number;
+  public min: number;
+  public estado: string;
 
-  constructor(){
-
-  }
-
-  public getmarca(){
-    return this.marca;
+  constructor() {
   }
 
 }

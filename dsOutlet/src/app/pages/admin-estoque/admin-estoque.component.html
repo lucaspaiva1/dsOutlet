@@ -2,11 +2,6 @@
 <html>
 
 <body>
-  <!-- Cabeçalho -->
-  <header>
-    <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
-    <navbar-admin></navbar-admin>
-  </header>
 
   <!-- Corpo da pagina -->
   <main>
@@ -35,14 +30,14 @@
             </thead>
 
             <tbody>
-              <tr *ngfor="let item of produtos">
-                <td>{{item.marca}}</td>
-                <td>{{item.modelo}}</td>
-                <td>{{item.tamanho}}</td>
-                <td>{{item.quantidade}}</td>
-                <td>{{item.max}}</td>
-                <td>{{item.min}}</td>
-                <td>{{item.estado}}</td>
+              <tr *ngFor="let produto of produtos">
+                <td>{{produto.marca}}</td>
+                <td>{{produto.modelo}}</td>
+                <td>{{produto.tamanho}}</td>
+                <td>{{produto.quantidade}}</td>
+                <td>{{produto.max}}</td>
+                <td>{{produto.min}}</td>
+                <td>{{produto.estado}}</td>
               </tr>
             </tbody>
           </table>

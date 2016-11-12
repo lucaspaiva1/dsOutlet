@@ -12,7 +12,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FaleConoscoComponent } from './pages/fale-conosco/fale-conosco.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { NavbarAdmComponent } from './components/navbar-adm/navbar-adm.component';
+//import { NavbarAdmComponent } from './components/navbar-adm/navbar-adm.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
@@ -27,7 +27,7 @@ import { OptionsAdmComponent } from './components/options-adm/options-adm.compon
     FaleConoscoComponent,
     NavbarComponent,
     FooterComponent,
-    NavbarAdmComponent,
+  //  NavbarAdmComponent,
     AdminHomeComponent,
     AdminEstoqueComponent,
     AdminCadProdutoComponent,
