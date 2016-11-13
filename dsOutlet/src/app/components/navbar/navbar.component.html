@@ -9,18 +9,18 @@
         <li>
           <a routerLink="/home">Home</a>
         </li>
-        <li [hidden]="!isLogin">
+        <li *ngIf="isLogin">
           <a routerLink="/controle-estoque">Gerenciador</a>
         </li>
-        <li [hidden]="!(isLogin && isAdmin)">
+        <li *ngIf="(isLogin && isAdmin)">
           <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
         </li>
-        <li [hidden]="isLogin">
+        <li *ngIf="!isLogin">
           <a routerLink="/fale-conosco">Fale Conosco</a>
         </li>
-        <li [hidden]="isLogin">
+        <li *ngIf="!isLogin">
           <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Apenas para funcionários" (click)="fazerLogin()">Login</a></li>
-        <li [hidden]="!isLogin">
+        <li *ngIf="isLogin">
           <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Deseja sair?" (click)="deslogar()">Deslogar</a>
         </li>
       </ul>
@@ -29,19 +29,19 @@
         <li>
           <a routerLink="/home">Home</a>
         </li>
-        <li [hidden]="!isLogin">
+        <li *ngIf="isLogin">
           <a routerLink="/controle-estoque">Gerenciador</a>
         </li>
-        <li [hidden]="isLogin">
+        <li *ngIf="!isLogin">
           <a routerLink="/fale-conosco">Fale Conosco</a>
         </li>
-        <li [hidden]="!(isLogin && isAdmin)">
+        <li *ngIf="(isLogin && isAdmin)">
           <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
         </li>
-        <li [hidden]="!isLogin">
+        <li *ngIf="isLogin">
           <a class="waves-effect waves-light btn" (click)="deslogar()">Deslogar</a>
         </li>
-        <li [hidden]="isLogin">
+        <li *ngIf="!isLogin">
           <a class="waves-effect waves-light btn">Login</a>
         </li>
       </ul>
