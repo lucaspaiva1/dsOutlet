@@ -9,18 +9,18 @@
         <li>
           <a routerLink="/home">Home</a>
         </li>
-        <li [style.display]="isLogin == true ? 'block' : 'none'">
+        <li [hidden]="!isLogin">
           <a routerLink="/controle-estoque">Gerenciador</a>
         </li>
-        <li [style.display]="(isLogin && isAdmin) == true ? 'block' : 'none'">
+        <li [hidden]="!(isLogin && isAdmin)">
           <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
         </li>
-        <li [style.display]="isLogin == true ? 'none' : 'block'">
+        <li [hidden]="isLogin">
           <a routerLink="/fale-conosco">Fale Conosco</a>
         </li>
-        <li [style.display]="isLogin == true ? 'none' : 'block'">
+        <li [hidden]="isLogin">
           <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Apenas para funcionários" (click)="fazerLogin()">Login</a></li>
-        <li [style.display]="isLogin == true ? 'block' : 'none'">
+        <li [hidden]="!isLogin">
           <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Deseja sair?" (click)="deslogar()">Deslogar</a>
         </li>
       </ul>
@@ -29,19 +29,19 @@
         <li>
           <a routerLink="/home">Home</a>
         </li>
-        <li [style.display]="isLogin == true ? 'block' : 'none'">
+        <li [hidden]="!isLogin">
           <a routerLink="/controle-estoque">Gerenciador</a>
         </li>
-        <li [style.display]="isLogin == true ? 'none' : 'block'">
+        <li [hidden]="isLogin">
           <a routerLink="/fale-conosco">Fale Conosco</a>
         </li>
-        <li [style.display]="(isLogin && isAdmin) == true ? 'block' : 'none'">
+        <li [hidden]="!(isLogin && isAdmin)">
           <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
         </li>
-        <li [style.display]="isLogin == true ? 'block' : 'none'">
+        <li [hidden]="!isLogin">
           <a class="waves-effect waves-light btn" (click)="deslogar()">Deslogar</a>
         </li>
-        <li [style.display]="isLogin == true ? 'none' : 'block'">
+        <li [hidden]="isLogin">
           <a class="waves-effect waves-light btn">Login</a>
         </li>
       </ul>
