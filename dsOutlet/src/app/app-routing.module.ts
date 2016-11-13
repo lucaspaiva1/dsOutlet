@@ -6,6 +6,9 @@ import { NavbarAdmComponent } from './components/navbar-adm/navbar-adm.component
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { AdminEstoqueComponent } from './pages/admin-estoque/admin-estoque.component';
 import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-produto.component';
+import { AdminEditProdutoComponent } from './pages/admin-edit-produto/admin-edit-produto.component';
+import { AdminAddProdutoComponent } from './pages/admin-add-produto/admin-add-produto.component';
+import { AdminCadFuncionarioComponent } from './pages/admin-cad-funcionario/admin-cad-funcionario.component';
 
 const routes: Routes = [
   {
@@ -27,8 +30,20 @@ const routes: Routes = [
     component: AdminEstoqueComponent
   },
   {
-    path: 'cadastro-produto',
+    path: 'cadastrar-produto',
     component: AdminCadProdutoComponent
+  },
+  {
+    path: 'editar-produto',
+    component: AdminEditProdutoComponent
+  },
+  {
+    path: 'adicionar-produto',
+    component: AdminAddProdutoComponent
+  },
+  {
+    path: 'cadastrar-funcionario',
+    component: AdminCadFuncionarioComponent
   }
 ];
 @NgModule({

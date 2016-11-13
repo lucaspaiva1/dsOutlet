@@ -13,7 +13,7 @@
           <a routerLink="/controle-estoque">Gerenciador</a>
         </li>
         <li [style.display]="(isLogin && isAdmin) == true ? 'block' : 'none'">
-          <a>Cadastrar Funcionário</a>
+          <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
         </li>
         <li [style.display]="isLogin == true ? 'none' : 'block'">
           <a routerLink="/fale-conosco">Fale Conosco</a>
@@ -36,7 +36,7 @@
           <a routerLink="/fale-conosco">Fale Conosco</a>
         </li>
         <li [style.display]="(isLogin && isAdmin) == true ? 'block' : 'none'">
-          <a>Cadastrar Funcionário</a>
+          <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
         </li>
         <li [style.display]="isLogin == true ? 'block' : 'none'">
           <a class="waves-effect waves-light btn" (click)="deslogar()">Deslogar</a>
