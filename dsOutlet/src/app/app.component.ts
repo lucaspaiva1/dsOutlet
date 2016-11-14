@@ -7,15 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  isAdmin: boolean = true;
-  isLogin: boolean = false;
-
-  constructor(){
-
-  }
-
-  evento(event){
-    console.log(event);
-  }
+  constructor(){}
 
 }

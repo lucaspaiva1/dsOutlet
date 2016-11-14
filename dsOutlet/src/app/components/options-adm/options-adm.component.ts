@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-options-adm',
   templateUrl: './options-adm.component.html',
   styleUrls: ['./options-adm.component.css']
 })
-export class OptionsAdmComponent implements OnInit {
+export class OptionsAdmComponent  {
 
-  constructor() { }
+    private url: string;
 
-  ngOnInit() {
+
+  constructor(private router: Router) {
+    this.url = this.router.url;
   }
 
 }

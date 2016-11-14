@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'fale-conosco',
   templateUrl: './fale-conosco.component.html',
   styleUrls: ['./fale-conosco.component.css']
 })
-export class FaleConoscoComponent implements OnInit {
+export class FaleConoscoComponent {
 
-  constructor() { }
+  private islogado: boolean = false;
+  private isAdmin: boolean = false;
 
-  ngOnInit() {
+  constructor(private userService: UserService) {
+    let stats = this.userService.userStats();
+    this.islogado = stats[0];
+    this.isAdmin = stats[1];
   }
 
 }

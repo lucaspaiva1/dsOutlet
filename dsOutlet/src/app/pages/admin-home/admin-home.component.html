@@ -1,28 +1,29 @@
-<!DOCTYPE html>
-<html>
-  <body>
-    <!-- Corpo da pagina -->
-    <main>
-      <div class="row">
-        <div class="col s0 m4 l3 menu_lateral"> <!-- Note that "m4 l3" was added -->
-          <!-- small container -->
-          <app-options-adm></app-options-adm>
-        </div>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
+    <app-navbar [isAdmin]="isAdmin" [isLogin]="islogado"></app-navbar>
+  </header>
 
-        <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
-          <!-- Large container -->
-          <div class="collection backgroud">
-            <h2 class="center"> Bem vindo ao gerenciador </h2>
-            <h5 class="center">
+  <!-- Corpo da pagina -->
+  <main>
+    <div class="row">
+      <div class="col s0 m4 l3 menu_lateral">
+        <!-- Note that "m4 l3" was added -->
+        <!-- small container -->
+        <app-options-adm></app-options-adm>
+      </div>
+
+      <div class="col s12 m8 l9">
+        <!-- Note that "m8 l9" was added -->
+        <!-- Large container -->
+        <div class="collection backgroud">
+          <h2 class="center"> Bem vindo ao gerenciador </h2>
+          <h5 class="center">
               <br> Utilize o menu lateral para escolher a opção desejada
             </h5>
-          </div>
         </div>
       </div>
-    </main>
-
-    <!-- Rodapé -->
-    <app-footer></app-footer>
-
-  </body>
-</html>
+    </div>
+  </main>
+</body>

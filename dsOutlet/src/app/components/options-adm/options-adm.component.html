@@ -1,11 +1,11 @@
 <div class="collection">
   <a class="collection-item">Minha Conta</a>
-  <a routerLink="/estoque" class="collection-item">Estoque</a>
-  <a routerLink="/cadastrar-produto" class="collection-item">Cadastrar Produto</a>
-  <a routerLink="/editar-produto" class="collection-item">Editar Produto</a>
-  <a routerLink="/adicionar-produto" class="collection-item">Adicionar Produto</a>
-  <a class="collection-item">Relatórios</a>
-  <a class="collection-item">Gerenciar Funcionários</a>
-  <a class="collection-item">Gerenciar Clientes</a>
-  <a class="collection-item">Iniciar Venda</a>
+  <a routerLink="/estoque" class="collection-item" [class.active]="url == '/estoque'">Estoque</a>
+  <a routerLink="/cadastrar-produto" class="collection-item" [class.active]="url == '/cadastrar-produto'">Cadastrar Produto</a>
+  <a routerLink="/editar-produto" class="collection-item" [class.active]="url == '/editar-produto'">Editar Produto</a>
+  <a routerLink="/adicionar-produto" class="collection-item" [class.active]="url == '/adicionar-produto'">Adicionar Produto</a>
+  <a routerLink="/relatorios" class="collection-item" [class.active]="url == '/relatorios'">Relatórios</a>
+  <a routerLink="/funcionarios" class="collection-item" [class.active]="url == '/funcionarios'">Gerenciar Funcionários</a>
+  <a routerLink="/clientes" class="collection-item" [class.active]="url == '/clientes'">Gerenciar Clientes</a>
+  <a routerLink="/venda" class="collection-item" [class.active]="url == '/venda'">Iniciar Venda</a>
 </div>

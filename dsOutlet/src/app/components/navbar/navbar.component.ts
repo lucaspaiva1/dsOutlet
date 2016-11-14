@@ -1,29 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-  @Input() isAdmin: boolean = true;
+  @Input() isAdmin: boolean = false;
   @Input() isLogin: boolean = false;
 
-  constructor(private router: Router) { }
-
-  ngOnInit() {
-  }
+  constructor(private router: Router, private userService: UserService) { }
 
   private fazerLogin(): void {
-    this.isLogin = true;
-    console.log(this.isLogin);
+    this.userService.login();
     this.router.navigate(['/controle-estoque']);
   }
+
   private deslogar(): void {
-    this.isLogin = false;
-    console.log(this.isLogin);
+    this.userService.logout();
     this.router.navigate(['/home']);
   }
 

@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<html>
-
 <body>
+  <!-- Cabeçalho -->
+  <header>
+    <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
+    <app-navbar [isAdmin]="isAdmin" [isLogin]="islogado"></app-navbar>
+  </header>
 
   <!-- Corpo da pagina -->
   <main>
@@ -44,8 +46,7 @@
                 </div>
                 <div class="input-field col s12 m4 l4">
                   <input id="min" type="number" class="validate">
-                  <label class="white-text" for="min">Mínimo</label>
-                </div>
+                  <label class="white-text" for="min">Mínimo</label> </div>
                 <div class="input-field col s12 m4 l4">
                   <input id="tam" type="text" class="validate">
                   <label class="white-text" for="tam">Tamanho</label>
@@ -70,10 +71,4 @@
       </div>
     </div>
   </main>
-
-  <!-- Rodapé -->
-  <app-footer></app-footer>
-
 </body>
-
-</html>

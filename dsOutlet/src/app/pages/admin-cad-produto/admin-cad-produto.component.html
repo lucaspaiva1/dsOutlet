@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<html>
-
 <body>
+  <!-- Cabeçalho -->
+  <header>
+    <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
+    <app-navbar [isAdmin]="isAdmin" [isLogin]="islogado"></app-navbar>
+  </header>
 
   <!-- Corpo da pagina -->
   <main>
@@ -62,10 +64,4 @@
       </div>
     </div>
   </main>
-
-  <!-- Rodapé -->
-  <app-footer></app-footer>
-
 </body>
-
-</html>
