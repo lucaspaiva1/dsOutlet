@@ -23,6 +23,8 @@ import { AdminEditProdutoComponent } from './pages/admin-edit-produto/admin-edit
 import { AdminAddProdutoComponent } from './pages/admin-add-produto/admin-add-produto.component';
 import { AdminCadFuncionarioComponent } from './pages/admin-cad-funcionario/admin-cad-funcionario.component';
 import { UserService } from './services/user.service';
+import { AdminGerenFuncionariosComponent } from './pages/admin-geren-funcionarios/admin-geren-funcionarios.component';
+import { AdminEditFuncionariosComponent } from './pages/admin-edit-funcionarios/admin-edit-funcionarios.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { UserService } from './services/user.service';
     OptionsAdmComponent,
     AdminEditProdutoComponent,
     AdminAddProdutoComponent,
-    AdminCadFuncionarioComponent
+    AdminCadFuncionarioComponent,
+    AdminGerenFuncionariosComponent,
+    AdminEditFuncionariosComponent
   ],
   imports: [
     BrowserModule,

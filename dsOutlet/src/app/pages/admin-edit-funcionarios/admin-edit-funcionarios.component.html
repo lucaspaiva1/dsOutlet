@@ -24,30 +24,30 @@
               <div class="row">
                 <div class="input-field col s12 m6 l6 white-text">
                   <i class="material-icons prefix">perm_identity</i>
-                  <input placeholder="Primeiro nome" id="first_name" type="text" class="validate white-text">
+                  <input placeholder="Primeiro nome" id="first_name" type="text" class="validate white-text" value="{{getPrimeiroNome()}}">
                   <label class="white-text" for="first_name">Primeiro nome</label>
                 </div>
                 <div class="input-field col s12 m6 l6 white-text">
-                  <input id="last_name" type="text" class="validate  white-text">
+                  <input id="last_name" type="text" class="validate  white-text" value="{{getUltimoNome()}}">
                   <label class="white-text" for="last_name">Ultimo nome</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m4 l4">
-                  <input id="max" type="text" class="validate">
+                  <input id="max" type="text" class="validate" value="{{getomeUsuario()}}">
                   <label class="white-text" for="max">Nome de usuário</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="senha" type="password" class="validate">
+                  <input id="senha" type="password" class="validate" value="{{getSenha()}}">
                   <label class="white-text" for="senha">Senha</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="rep-senha" type="password" class="validate">
+                  <input id="rep-senha" type="password" class="validate" value="{{getSenha()}}">
                   <label class="white-text" for="rep-senha">Repetir senha</label>
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s4 m4 l4 white-text" >
+                <div class="input-field col s4 m4 l4 white-text">
                   <select materialize="material_select">
                     <option  value="" disabled selected>Choose your option</option>
                     <option  value="administrador">Administrador</option>
@@ -55,10 +55,13 @@
                   </select>
                   <label class="white-text">Privilégio</label>
                 </div>
-                <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
-                  <a onclick="Materialize.toast('Produto foi cadastrado!', 4000, 'rouded')" class="btn waves-effect waves-light blue darken-4">Cadastrar
+                <div class="col s6 offset-s4 m6 offset-m4 l6 offset-l6">
+                  <a onclick="Materialize.toast('Salvo!', 4000, 'rouded')" class="btn waves-effect waves-light blue darken-4">Salvar
                       <i class="material-icons right">send</i>
                     </a>
+                    <a onclick="Materialize.toast('Excluido!', 4000, 'rouded')" class="btn waves-effect waves-light red darken-4">Excluir
+                        <i class="material-icons right">send</i>
+                      </a>
                 </div>
               </div>
             </form>

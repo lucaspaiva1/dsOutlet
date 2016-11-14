@@ -1,0 +1,43 @@
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
+    <app-navbar [isAdmin]="isAdmin" [isLogin]="islogado"></app-navbar>
+  </header>
+
+  <!-- Corpo da pagina -->
+  <main>
+    <div class="row">
+      <div class="col s0 m4 l3 menu_lateral">
+        <!-- Note that "m4 l3" was added -->
+        <!-- small container -->
+        <app-options-adm></app-options-adm>
+      </div>
+
+      <div class="col s12 m8 l9">
+        <!-- Note that "m8 l9" was added -->
+        <!-- Large container -->
+        <div class="collection backgroud z-depth-4">
+          <!--Tabela de funcionarios, quando clicar em um itel vai abrir uma nova tela para editar as informaç~eos do mesmo e ao salvar retorna para esta tela-->
+          <table class="bordered striped responsive-table">
+            <thead>
+              <tr>
+                <th data-field="nome">Nome</th>
+                <th data-field="privilegio">Privilégio</th>
+                <th data-field="status">Status</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let funcionario of funcionarios">
+                <td>{{funcionario.nome}}</td>
+                <td>{{funcionario.privilegio}}</td>
+                <td>{{funcionario.status}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
