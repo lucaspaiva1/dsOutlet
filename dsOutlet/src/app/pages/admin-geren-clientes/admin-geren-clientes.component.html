@@ -1,0 +1,49 @@
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
+    <app-navbar [isAdmin]="isAdmin" [isLogin]="islogado"></app-navbar>
+  </header>
+
+  <!-- Corpo da pagina -->
+  <main>
+    <div class="row">
+      <div class="col s0 m4 l3 menu_lateral">
+        <!-- Note that "m4 l3" was added -->
+        <!-- small container -->
+        <app-options-adm></app-options-adm>
+      </div>
+
+      <div class="col s12 m8 l9">
+        <!-- Note that "m8 l9" was added -->
+        <!-- Large container -->
+        <div class="collection backgroud z-depth-4">
+          <!--Tabela de funcionarios, quando clicar em um itel vai abrir uma nova tela para editar as informaç~eos do mesmo e ao salvar retorna para esta tela-->
+          <table class="bordered striped responsive-table">
+            <thead>
+              <tr>
+                <th data-field="nome">Nome</th>
+                <th data-field="divida">Dívida</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let cliente of clientes" (click)="editar(cliente)">
+                <td>{{cliente.nome}}</td>
+                <td>{{cliente.divida}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--Botão para adicionar cliente-->
+        <div class="row">
+          <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
+            <a class="btn waves-effect waves-light blue darken-4">Adicionar Cliente
+                <i class="material-icons right">send</i>
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>

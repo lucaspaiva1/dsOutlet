@@ -1,0 +1,38 @@
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
+    <app-navbar [isAdmin]="isAdmin" [isLogin]="islogado"></app-navbar>
+  </header>
+
+  <!-- Corpo da pagina -->
+  <main>
+    <div class="row">
+      <div class="col s0 m4 l3 menu_lateral">
+        <!-- Menu lateral -->
+        <app-options-adm></app-options-adm>
+      </div>
+      <div class="col s12 m8 l9">
+        <!--Nova divisão lateral para registro de itens e dados da venda-->
+        <div class="row">
+          <div class="col s12 m4 l3">
+            <!--text area para listagens dos items comprados-->
+            <i class="material-icons prefix">shopping_cart</i>
+            <textarea rows="10" id="itens" class="materialize-textarea" readonly="true"></textarea>
+            <label for="itens">Itens</label>
+          </div>
+
+          <div class="col s12 m8 l9">
+            <div class="input-field col s12 m12 l12">
+              <input id="none" type="none" class="validate">
+              <label class="white-text" for="none">Nome do Cliente</label>
+            </div>
+            
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</body>

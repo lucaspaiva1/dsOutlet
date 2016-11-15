@@ -26,6 +26,10 @@ import { UserService } from './services/user.service';
 import { FuncionariosService } from './services/funcionarios.service';
 import { AdminGerenFuncionariosComponent } from './pages/admin-geren-funcionarios/admin-geren-funcionarios.component';
 import { AdminEditFuncionariosComponent } from './pages/admin-edit-funcionarios/admin-edit-funcionarios.component';
+import { AdminGerenClientesComponent } from './pages/admin-geren-clientes/admin-geren-clientes.component';
+import { AdminEditClientesComponent } from './pages/admin-edit-clientes/admin-edit-clientes.component';
+import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-clientes.component';
+import { TelaVendasComponent } from './pages/tela-vendas/tela-vendas.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,11 @@ import { AdminEditFuncionariosComponent } from './pages/admin-edit-funcionarios/
     AdminAddProdutoComponent,
     AdminCadFuncionarioComponent,
     AdminGerenFuncionariosComponent,
-    AdminEditFuncionariosComponent
+    AdminEditFuncionariosComponent,
+    AdminGerenClientesComponent,
+    AdminEditClientesComponent,
+    AdminAddClientesComponent,
+    TelaVendasComponent
   ],
   imports: [
     BrowserModule,
