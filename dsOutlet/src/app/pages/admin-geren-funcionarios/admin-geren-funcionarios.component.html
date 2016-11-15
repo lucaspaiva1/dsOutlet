@@ -29,10 +29,11 @@
             </thead>
 
             <tbody>
-              <tr *ngFor="let funcionario of funcionarios">
+              <tr *ngFor="let funcionario of funcionarios" (click)="editar(funcionario)">
                 <td>{{funcionario.nome}}</td>
-                <td>{{funcionario.privilegio}}</td>
-                <td>{{funcionario.status}}</td>
+                <td *ngIf="funcionario.admin">Administrador</td>
+                <td *ngIf="!funcionario.admin">Comum</td>
+                <td>{{funcionario.login}}</td>
               </tr>
             </tbody>
           </table>

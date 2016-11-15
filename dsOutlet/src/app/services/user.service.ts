@@ -9,7 +9,8 @@ export class UserService {
 
   login(): boolean {
     /*verifica se pode logar pelo banco de dados e preenche os dados de user*/
-    let user = new User('Lucas', 'lvpaiva', true, 'lukspaiva@hotmail.com', true);
+    let user = new User('Lucas', 'lvpaiva', true, 'lukspaiva@hotmail.com');
+    user.logado = true;
     let logado = this.storage.set('user', user);
     if (logado == null) {
       logado = false;

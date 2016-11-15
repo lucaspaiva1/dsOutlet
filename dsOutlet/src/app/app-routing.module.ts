@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FaleConoscoComponent } from './pages/fale-conosco/fale-conosco.component';
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
+import { AdminGerenFuncionariosComponent } from './pages/admin-geren-funcionarios/admin-geren-funcionarios.component';
 import { AdminEstoqueComponent } from './pages/admin-estoque/admin-estoque.component';
-import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-produto.component';
 import { AdminEditProdutoComponent } from './pages/admin-edit-produto/admin-edit-produto.component';
+import { AdminEditFuncionariosComponent } from './pages/admin-edit-funcionarios/admin-edit-funcionarios.component';
+import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-produto.component';
 import { AdminAddProdutoComponent } from './pages/admin-add-produto/admin-add-produto.component';
 import { AdminCadFuncionarioComponent } from './pages/admin-cad-funcionario/admin-cad-funcionario.component';
 
@@ -43,6 +46,14 @@ const routes: Routes = [
   {
     path: 'cadastrar-funcionario',
     component: AdminCadFuncionarioComponent
+  },
+  {
+    path: 'funcionarios',
+    component: AdminGerenFuncionariosComponent
+  },
+  {
+    path: 'edit-funcionario/:username',
+    component: AdminEditFuncionariosComponent
   }
 ];
 @NgModule({
