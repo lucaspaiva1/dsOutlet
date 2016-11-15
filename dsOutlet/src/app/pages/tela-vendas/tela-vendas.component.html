@@ -18,17 +18,94 @@
           <div class="col s12 m4 l3">
             <!--text area para listagens dos items comprados-->
             <i class="material-icons prefix">shopping_cart</i>
-            <textarea rows="10" id="itens" class="materialize-textarea" readonly="true"></textarea>
+            <textarea rows="10" id="itens" class="materialize-textarea" readonly></textarea>
             <label for="itens">Itens</label>
           </div>
-
-          <div class="col s12 m8 l9">
+          <!--exibido apenas antes de finalizar a venda-->
+          <div class="col s12 m8 l9" *ngIf="{{vendaFinalizada}} == false">
             <div class="input-field col s12 m12 l12">
               <input id="none" type="none" class="validate">
               <label class="white-text" for="none">Nome do Cliente</label>
             </div>
-            
-
+            <div class="row">
+              <div class="input-field col s12 m6 l6 white-text">
+                <select id="marca" materialize="material_select">
+                  <!--Organiza a seleçao criando uma opção para cada marca reistrada no banco de dados, sendop que esta marca é retornada como uma string-->
+                  <option value="" disabled selected>Escolha uma marca</option>
+                  <option ngFor="let marca of marcas" value="{{marca}}">{{marca}}</option>
+                </select>
+                <label class="white-text">Marca</label>
+              </div>
+              <div class="input-field col s12 m6 l6 white-text">
+                <select id="modelo" materialize="material_select">
+                  <!--Organiza a seleçao criando uma opção para cada modelo reistrada no banco de dados, sendop que este modelo é retornado como uma string-->
+                  <option value="" disabled selected>Escolha um modelo</option>
+                  <option ngFor="let modelo of modelos" value="{{modelo}}">{{modelo}}</option>
+                </select>
+                <label class="white-text">Marca</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 m12 l12">
+                <input id="tamanho" type="text" class="validate">
+                <label class="white-text" for="tamanho">Tamanho</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 m4 l4">
+                <input id="tam" type="text" class="validate">
+                <label class="white-text" for="tam">Tamanho</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 m12 l12">
+                <input id="quantidade" type="number" class="validate">
+                <label class="white-text" for="quantidade">Quantidade</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 m12 l12">
+                <input id="valor" type="text" class="validate" readonly>
+                <label class="white-text" for="valor">Valor</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
+                <a class="btn waves-effect waves-light blue darken-4">Adicionar item
+                  </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
+                <a class="btn waves-effect waves-light blue darken-4">Finalizar Venda
+                    <i class="material-icons right">send</i>
+                  </a>
+              </div>
+            </div>
+          </div>
+          <!--exibido apenas antes de finalizar a venda-->
+          <div class="col s12 m8 l9" *ngIf="{{vendaFinalizada}} == true">
+            <div class="row">
+              <div class="input-field col s12 m12 l12">
+                <input id="valor" type="text" class="validate" readonly>
+                <label class="white-text" for="valor">Valor</label>
+              </div>
+              <div class="input-field col s12 m12 l12 white-text">
+                <select id="pagamento" materialize="material_select">
+                  <!--Organiza a seleçao criando uma opção para o pagamento-->
+                  <option value="" disabled selected>Escolha um modelo</option>
+                  <option value="1">Dinheiro</option>
+                  <option value="2">Cartão</option>
+                  <option value="3">Pendência</option>
+                </select>
+                <label class="white-text">Método de pagamento</label>
+              </div>
+              <div class="row">
+                <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l7">
+                  <a class="btn waves-effect waves-light blue darken-4">Pagar
+                    </a>
+              </div>
+            </div>
           </div>
         </div>
 

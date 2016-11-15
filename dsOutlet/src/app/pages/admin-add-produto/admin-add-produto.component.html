@@ -22,7 +22,22 @@
           <div class="row">
             <form class="col s12">
               <div class="row">
-              
+                <div class="input-field col s12 m6 l6 white-text">
+                  <select id="marca" materialize="material_select">
+                    <!--Organiza a seleçao criando uma opção para cada marca reistrada no banco de dados, sendop que esta marca é retornada como uma string-->
+                    <option value="" disabled selected>Escolha uma marca</option>
+                    <option ngFor="let marca of marcas" value="{{marca}}">{{marca}}</option>
+                  </select>
+                  <label class="white-text">Marca</label>
+                </div>
+                <div class="input-field col s12 m6 l6 white-text">
+                  <select id="modelo" materialize="material_select">
+                    <!--Organiza a seleçao criando uma opção para cada modelo reistrada no banco de dados, sendop que este modelo é retornado como uma string-->
+                    <option value="" disabled selected>Escolha um modelo</option>
+                    <option ngFor="let modelo of modelos" value="{{modelo}}">{{modelo}}</option>
+                  </select>
+                  <label class="white-text">Marca</label>
+                </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m12 l12">
