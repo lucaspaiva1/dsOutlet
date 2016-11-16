@@ -22,11 +22,13 @@
             <label for="itens">Itens</label>
           </div>
           <!--exibido apenas antes de finalizar a venda-->
-          <div class="col s12 m8 l9" *ngIf="{{vendaFinalizada}} == false">
+          <div class="col s12 m8 l9">
             <div class="input-field col s12 m12 l12">
               <input id="none" type="none" class="validate">
               <label class="white-text" for="none">Nome do Cliente</label>
             </div>
+          </div>
+        </div>
             <div class="row">
               <div class="input-field col s12 m6 l6 white-text">
                 <select id="marca" materialize="material_select">
@@ -84,7 +86,7 @@
             </div>
           </div>
           <!--exibido apenas antes de finalizar a venda-->
-          <div class="col s12 m8 l9" *ngIf="{{vendaFinalizada}} == true">
+          <div class="col s12 m8 l9" >
             <div class="row">
               <div class="input-field col s12 m12 l12">
                 <input id="valor" type="text" class="validate" readonly>
@@ -100,6 +102,7 @@
                 </select>
                 <label class="white-text">Método de pagamento</label>
               </div>
+            </div>
               <div class="row">
                 <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l7">
                   <a class="btn waves-effect waves-light blue darken-4">Pagar
@@ -107,9 +110,8 @@
               </div>
             </div>
           </div>
+
         </div>
 
-      </div>
-    </div>
   </main>
 </body>

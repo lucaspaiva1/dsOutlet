@@ -19,11 +19,13 @@
           <a routerLink="/fale-conosco">Fale Conosco</a>
         </li>
         <li *ngIf="!isLogin">
-          <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Apenas para funcionários" (click)="fazerLogin()">Login</a></li>
+          <a class=" waves-effect waves-light btn blue darken-4">Login</a></li>
         <li *ngIf="isLogin">
-          <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Deseja sair?" (click)="deslogar()">Deslogar</a>
+          <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Deseja sair?" (click)="deslogar()"> Deslogar</a>
         </li>
       </ul>
+
+
       <!-- Menu lateral para exibição mobile -->
       <ul class="side-nav" id="mobile-demo">
         <li>
@@ -42,7 +44,7 @@
           <a class="waves-effect waves-light btn" (click)="deslogar()">Deslogar</a>
         </li>
         <li *ngIf="!isLogin">
-          <a class="waves-effect waves-light btn">Login</a>
+          <a class=" waves-effect waves-light btn">Login</a>
         </li>
       </ul>
     </div>
