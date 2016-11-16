@@ -29,7 +29,7 @@ import { AdminEditFuncionariosComponent } from './pages/admin-edit-funcionarios/
 import { AdminGerenClientesComponent } from './pages/admin-geren-clientes/admin-geren-clientes.component';
 import { AdminEditClientesComponent } from './pages/admin-edit-clientes/admin-edit-clientes.component';
 import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-clientes.component';
-import { TelaVendasComponent } from './pages/tela-vendas/tela-vendas.component';
+import { VendasComponent } from './pages/vendas/vendas.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,7 @@ import { TelaVendasComponent } from './pages/tela-vendas/tela-vendas.component';
     AdminGerenClientesComponent,
     AdminEditClientesComponent,
     AdminAddClientesComponent,
-    TelaVendasComponent
+    VendasComponent
   ],
   imports: [
     BrowserModule,

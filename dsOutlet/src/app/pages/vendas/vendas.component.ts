@@ -6,11 +6,11 @@ import { FuncionariosService } from '../../services/funcionarios.service';
 import { Funcionario } from '../../model/funcionario';
 
 @Component({
-  selector: 'app-tela-vendas',
-  templateUrl: './tela-vendas.component.html',
-  styleUrls: ['./tela-vendas.component.css']
+  selector: 'app-vendas',
+  templateUrl: './vendas.component.html',
+  styleUrls: ['./vendas.component.css']
 })
-export class TelaVendasComponent implements OnInit {
+export class VendasComponent implements OnInit {
 
       private islogado: boolean = false;
       private isAdmin: boolean = false;
