@@ -9,6 +9,10 @@ import { MaterializeModule } from 'angular2-materialize';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { LocalStorageService, LOCAL_STORAGE_SERVICE_CONFIG } from 'angular-2-local-storage';
 /*importacoes do projeto*/
+/*servicos*/
+import { UserService } from './services/user.service';
+import { FuncionariosService } from './services/funcionarios.service';
+/*Components*/
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FaleConoscoComponent } from './pages/fale-conosco/fale-conosco.component';
@@ -22,8 +26,6 @@ import { OptionsAdmComponent } from './components/options-adm/options-adm.compon
 import { AdminEditProdutoComponent } from './pages/admin-edit-produto/admin-edit-produto.component';
 import { AdminAddProdutoComponent } from './pages/admin-add-produto/admin-add-produto.component';
 import { AdminCadFuncionarioComponent } from './pages/admin-cad-funcionario/admin-cad-funcionario.component';
-import { UserService } from './services/user.service';
-import { FuncionariosService } from './services/funcionarios.service';
 import { AdminGerenFuncionariosComponent } from './pages/admin-geren-funcionarios/admin-geren-funcionarios.component';
 import { AdminEditFuncionariosComponent } from './pages/admin-edit-funcionarios/admin-edit-funcionarios.component';
 import { AdminGerenClientesComponent } from './pages/admin-geren-clientes/admin-geren-clientes.component';
