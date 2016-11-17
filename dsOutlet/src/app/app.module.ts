@@ -9,6 +9,10 @@ import { MaterializeModule } from 'angular2-materialize';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { LocalStorageService, LOCAL_STORAGE_SERVICE_CONFIG } from 'angular-2-local-storage';
 /*importacoes do projeto*/
+/*servicos*/
+import { UserService } from './services/user.service';
+import { FuncionariosService } from './services/funcionarios.service';
+/*Components*/
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FaleConoscoComponent } from './pages/fale-conosco/fale-conosco.component';
@@ -22,14 +26,13 @@ import { OptionsAdmComponent } from './components/options-adm/options-adm.compon
 import { AdminEditProdutoComponent } from './pages/admin-edit-produto/admin-edit-produto.component';
 import { AdminAddProdutoComponent } from './pages/admin-add-produto/admin-add-produto.component';
 import { AdminCadFuncionarioComponent } from './pages/admin-cad-funcionario/admin-cad-funcionario.component';
-import { UserService } from './services/user.service';
-import { FuncionariosService } from './services/funcionarios.service';
 import { AdminGerenFuncionariosComponent } from './pages/admin-geren-funcionarios/admin-geren-funcionarios.component';
 import { AdminEditFuncionariosComponent } from './pages/admin-edit-funcionarios/admin-edit-funcionarios.component';
 import { AdminGerenClientesComponent } from './pages/admin-geren-clientes/admin-geren-clientes.component';
 import { AdminEditClientesComponent } from './pages/admin-edit-clientes/admin-edit-clientes.component';
 import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-clientes.component';
 import { VendasComponent } from './pages/vendas/vendas.component';
+import { ProdutosService } from './services/produtos.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,7 @@ import { VendasComponent } from './pages/vendas/vendas.component';
       apiKey: 'AIzaSyB64Q-NvEJqxFf9PmJZHevjQdxzL9a3jZw' //chave do google para usar googlemaps
     })
   ],
-  providers: [UserService, FuncionariosService, LocalStorageService,
+  providers: [UserService, FuncionariosService, ProdutosService, LocalStorageService,
     {
       provide: LOCAL_STORAGE_SERVICE_CONFIG, useValue: {
         prefix: 'my-app',

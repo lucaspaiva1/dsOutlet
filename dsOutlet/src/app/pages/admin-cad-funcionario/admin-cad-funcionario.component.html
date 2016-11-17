@@ -2,7 +2,7 @@
   <!-- Cabeçalho -->
   <header>
     <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
-    <app-navbar [isAdmin]="isAdmin" [isLogin]="islogado"></app-navbar>
+    <app-navbar [isAdmin]="isAdmin" [isLogado]="isLogado"></app-navbar>
   </header>
 
   <!-- Corpo da pagina -->
@@ -24,39 +24,39 @@
               <div class="row">
                 <div class="input-field col s12 m6 l6 white-text">
                   <i class="material-icons prefix">perm_identity</i>
-                  <input placeholder="Primeiro nome" id="first_name" type="text" class="validate white-text">
+                  <input id="first_name" type="text" class="validate white-text" [(ngModel)]="funcionario.nome" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="first_name">Primeiro nome</label>
                 </div>
                 <div class="input-field col s12 m6 l6 white-text">
-                  <input id="last_name" type="text" class="validate  white-text">
+                  <input id="last_name" type="text" class="validate  white-text"  [(ngModel)]="sobrenome" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="last_name">Ultimo nome</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m4 l4">
-                  <input id="max" type="text" class="validate">
+                  <input id="max" type="text" class="validate" [(ngModel)]="funcionario.login" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="max">Nome de usuário</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="senha" type="password" class="validate">
+                  <input id="senha" type="password" class="validate" [(ngModel)]="funcionario.senha" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="senha">Senha</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="rep-senha" type="password" class="validate">
+                  <input id="rep-senha" type="password" class="validate" [(ngModel)]="confirmacaoSenha" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="rep-senha">Repetir senha</label>
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s4 m4 l4 white-text" >
-                  <select materialize="material_select">
-                    <option  value="" disabled selected>Choose your option</option>
-                    <option  value="administrador">Administrador</option>
-                    <option  value="vendedor">Vendedor</option>
+                <div class="input-field col s4 m4 l4 white-text">
+                  <select materialize="material_select" [(ngModel)]="privilegio" [ngModelOptions]="{standalone: true}">
+                    <option value="false" disabled selected>Privilégio</option>
+                    <option value="true">Administrador</option>
+                    <option value="false">Vendedor</option>
                   </select>
                   <label class="white-text">Privilégio</label>
                 </div>
                 <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
-                  <a (click)="salvar()" class="btn waves-effect waves-light blue darken-4">Cadastrar
+                  <a (click)="cadastrarFuncionario()" class="btn waves-effect waves-light blue darken-4">Cadastrar
                       <i class="material-icons right">send</i>
                     </a>
                 </div>

@@ -9,19 +9,26 @@
         <li>
           <a routerLink="/home">Home</a>
         </li>
-        <li *ngIf="isLogin">
+        <li *ngIf="isLogado">
           <a routerLink="/controle-estoque">Gerenciador</a>
         </li>
-        <li *ngIf="(isLogin && isAdmin)">
+        <li *ngIf="(isLogado && isAdmin)">
           <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
         </li>
-        <li *ngIf="!isLogin">
+        <li *ngIf="!isLogado">
           <a routerLink="/fale-conosco">Fale Conosco</a>
         </li>
+<<<<<<< HEAD
         <li *ngIf="!isLogin">
           <a class=" waves-effect waves-light btn blue darken-4">Login</a></li>
         <li *ngIf="isLogin">
           <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Deseja sair?" (click)="deslogar()"> Deslogar</a>
+=======
+        <li *ngIf="!isLogado">
+          <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Apenas para funcionários" (click)="fazerLogin()">Login</a></li>
+        <li *ngIf="isLogado">
+          <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Deseja sair?" (click)="deslogar()">Deslogar</a>
+>>>>>>> 83ce18797ddc9ff54c3fea33f17ac72878745bf7
         </li>
       </ul>
 
@@ -31,20 +38,25 @@
         <li>
           <a routerLink="/home">Home</a>
         </li>
-        <li *ngIf="isLogin">
+        <li *ngIf="isLogado">
           <a routerLink="/controle-estoque">Gerenciador</a>
         </li>
-        <li *ngIf="!isLogin">
+        <li *ngIf="!isLogado">
           <a routerLink="/fale-conosco">Fale Conosco</a>
         </li>
-        <li *ngIf="(isLogin && isAdmin)">
+        <li *ngIf="(isLogado && isAdmin)">
           <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
         </li>
-        <li *ngIf="isLogin">
+        <li *ngIf="isLogado">
           <a class="waves-effect waves-light btn" (click)="deslogar()">Deslogar</a>
         </li>
+<<<<<<< HEAD
         <li *ngIf="!isLogin">
           <a class=" waves-effect waves-light btn">Login</a>
+=======
+        <li *ngIf="!isLogado">
+          <a class="waves-effect waves-light btn">Login</a>
+>>>>>>> 83ce18797ddc9ff54c3fea33f17ac72878745bf7
         </li>
       </ul>
     </div>
