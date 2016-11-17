@@ -13,19 +13,19 @@ import { Funcionario } from '../../model/funcionario';
 })
 export class AdminGerenFuncionariosComponent implements OnInit {
 
-  private islogado: boolean = false;
+  private isLogado: boolean = false;
   private isAdmin: boolean = false;
   funcionarios: Funcionario[];
 
   constructor(private router: Router, private userService: UserService, private funcionarioService: FuncionariosService) {
     let stats = this.userService.userStats();
-    this.islogado = stats[0];
+    this.isLogado = stats[0];
     this.isAdmin = stats[1];
     this.funcionarios = this.funcionarioService.getFuncionarios();
   }
 
   ngOnInit() {
-    if (!this.islogado) {
+    if (!this.isLogado) {
       this.router.navigate(['/home']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
     }
   }

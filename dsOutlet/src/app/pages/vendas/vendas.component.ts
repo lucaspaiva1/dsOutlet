@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Produto } from '../../model/produto';
 import { UserService } from '../../services/user.service';
-import { FuncionariosService } from '../../services/funcionarios.service';
-import { Funcionario } from '../../model/funcionario';
 
 @Component({
   selector: 'app-vendas',
@@ -12,28 +10,24 @@ import { Funcionario } from '../../model/funcionario';
 })
 export class VendasComponent implements OnInit {
 
-      private islogado: boolean = false;
+      private isLogado: boolean = false;
       private isAdmin: boolean = false;
-      funcionario: Funcionario;
 
-      constructor(private router: Router,
-        private route: ActivatedRoute,
-        private userService: UserService,
-        private funcionariosService: FuncionariosService) {
+      vendaFinalizada: boolean = true;
+      marcas: string[] = ['marca1', 'marca2', 'marca3'];
+      modelos: string[] = ['modelo1', 'modelo2', 'modelo3'];
+
+      constructor(private router: Router, private userService: UserService) {
         let stats = this.userService.userStats();
-        this.islogado = stats[0];
+        this.isLogado = stats[0];
         this.isAdmin = stats[1];
       }
 
       ngOnInit() {
-        if (!this.islogado) {
-          this.router.navigate(['/home']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
+        /*se os dados indicarem que usuario não está logado, ele será redirecionado para a pagina principal*/
+        if (!this.isLogado) {
+          this.router.navigate(['/home']);
         } else {
-          this.route.params.forEach((params: Params) => {
-            let username = ""+params['username'];
-            this.funcionario = this.funcionariosService.getFuncionario(username);
-            console.log(this.funcionario);
-            })
         }
       }
 

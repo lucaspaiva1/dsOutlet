@@ -2,7 +2,7 @@
   <!-- Cabeçalho -->
   <header>
     <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
-    <app-navbar [isAdmin]="isAdmin" [isLogin]="islogado"></app-navbar>
+    <app-navbar [isAdmin]="isAdmin" [isLogado]="isLogado"></app-navbar>
   </header>
 
   <!-- Corpo da pagina -->
@@ -14,43 +14,43 @@
           <div class="row">
             <div class="input-field col s12 m6 l6">
               <i class="material-icons prefix">perm_identity</i>
-              <input placeholder="Primeiro nome" id="first_name" type="text" class="validate white-text">
+              <input id="first_name" type="text" class="validate white-text" [(ngModel)]="mensagem.nome" [ngModelOptions]="{standalone: true}">
               <label class="white-text" for="first_name">Primeiro nome</label>
             </div>
             <div class="input-field col s12 m6 l6 white-text">
-              <input id="last_name" type="text" class="validate  white-text">
+              <input id="last_name" type="text" class="validate  white-text" [(ngModel)]="mensagem.sobrenome" [ngModelOptions]="{standalone: true}">
               <label class="white-text" for="last_name">Ultimo nome</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12 m6 l6">
               <i class="material-icons prefix">phone</i>
-              <input id="tel" type="tel" class="validate">
+              <input id="tel" type="tel" class="validate" [(ngModel)]="mensagem.telefone" [ngModelOptions]="{standalone: true}">
               <label class="white-text" for="tel">Telefone</label>
             </div>
             <div class="input-field col s12 m6 l6">
               <i class="material-icons prefix">email</i>
-              <input id="email" type="email" class="validate">
+              <input id="email" type="email" class="validate" [(ngModel)]="mensagem.email" [ngModelOptions]="{standalone: true}">
               <label class="white-text" for="email" data-error="wrong" data-success="right">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">label</i>
-              <input id="subject" type="text" class="validate">
+              <input id="subject" type="text" class="validate" [(ngModel)]="mensagem.assunto" [ngModelOptions]="{standalone: true}">
               <label class="white-text" for="subject">Assunto</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">mode_edit</i>
-              <textarea materialize="characterCounter" id="mensage" class="materialize-textarea validate" length="500"></textarea>
-              <label class="white-text" for="mensage" >Mensagem</label>
+              <textarea materialize="characterCounter" id="mensage" class="materialize-textarea validate" length="500" [(ngModel)]="mensagem.texto" [ngModelOptions]="{standalone: true}"></textarea>
+              <label class="white-text" for="mensage">Mensagem</label>
             </div>
           </div>
           <div class="row">
             <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
-              <a onclick="Materialize.toast('Sua mensagem foi enviada!', 4000, 'rouded')" class="btn waves-effect waves-light blue darken-4">Enviar
+              <a (click)="enviarMensagem()" class="btn waves-effect waves-light blue darken-4">Enviar
                 <i class="material-icons right">send</i>
               </a>
             </div>
