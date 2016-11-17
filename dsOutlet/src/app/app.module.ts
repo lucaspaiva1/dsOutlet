@@ -30,6 +30,7 @@ import { AdminGerenClientesComponent } from './pages/admin-geren-clientes/admin-
 import { AdminEditClientesComponent } from './pages/admin-edit-clientes/admin-edit-clientes.component';
 import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-clientes.component';
 import { VendasComponent } from './pages/vendas/vendas.component';
+import { ProdutosService } from './services/produtos.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { VendasComponent } from './pages/vendas/vendas.component';
       apiKey: 'AIzaSyB64Q-NvEJqxFf9PmJZHevjQdxzL9a3jZw' //chave do google para usar googlemaps
     })
   ],
-  providers: [UserService, FuncionariosService, LocalStorageService,
+  providers: [UserService, FuncionariosService, ProdutosService, LocalStorageService,
     {
       provide: LOCAL_STORAGE_SERVICE_CONFIG, useValue: {
         prefix: 'my-app',

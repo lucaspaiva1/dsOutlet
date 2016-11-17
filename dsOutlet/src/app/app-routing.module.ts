@@ -11,6 +11,7 @@ import { AdminEditFuncionariosComponent } from './pages/admin-edit-funcionarios/
 import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-produto.component';
 import { AdminAddProdutoComponent } from './pages/admin-add-produto/admin-add-produto.component';
 import { AdminCadFuncionarioComponent } from './pages/admin-cad-funcionario/admin-cad-funcionario.component';
+import { VendasComponent } from './pages/vendas/vendas.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,10 @@ const routes: Routes = [
   {
     path: 'edit-funcionario/:username',
     component: AdminEditFuncionariosComponent
+  },
+  {
+    path: 'venda',
+    component: VendasComponent
   }
 ];
 @NgModule({

@@ -11,17 +11,17 @@ import { toast } from 'angular2-materialize';
 })
 export class AdminCadFuncionarioComponent implements OnInit {
 
-  private islogado: boolean = false;
+  private isLogado: boolean = false;
   private isAdmin: boolean = false;
 
   constructor(private router: Router, private userService: UserService, private funcionariosService: FuncionariosService) {
     let stats = this.userService.userStats();
-    this.islogado = stats[0];
+    this.isLogado = stats[0];
     this.isAdmin = stats[1];
   }
 
   ngOnInit() {
-    if (!this.islogado) {
+    if (!this.isLogado) {
       this.router.navigate(['/home']);//se os dados indicarem que usuario nao está logado, ele será redirecionado
     }
   }

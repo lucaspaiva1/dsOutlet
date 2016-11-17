@@ -2,7 +2,7 @@
   <!-- Cabeçalho -->
   <header>
     <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
-    <app-navbar [isAdmin]="isAdmin" [isLogin]="islogado"></app-navbar>
+    <app-navbar [isAdmin]="isAdmin" [isLogado]="isLogado"></app-navbar>
   </header>
 
   <!-- Corpo da pagina -->
@@ -23,43 +23,37 @@
             <form class="col s12">
               <div class="row">
                 <div class="input-field col s12 m6 l6">
-                  <input placeholder="marca" id="marca" type="text" class="validate white-text">
+                  <input id="marca" type="text" class="validate white-text" [(ngModel)]="produto.marca" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="marca">Marca</label>
                 </div>
                 <div class="input-field col s12 m6 l6 white-text">
-                  <input id="modelo" type="text" class="validate  white-text">
+                  <input id="modelo" type="text" class="validate  white-text" [(ngModel)]="produto.modelo" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="modelo">Modelo</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m12 l12">
-                  <input id="tamanho" type="text" class="validate">
+                  <input id="tamanho" type="text" class="validate" [(ngModel)]="produto.tamanho" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="tamanho">Tamanho</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m4 l4">
-                  <input id="max" type="number" class="validate">
+                  <input id="max" type="number" class="validate" [(ngModel)]="produto.max" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="max">Máximo</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="min" type="number" class="validate">
+                  <input id="min" type="number" class="validate" [(ngModel)]="produto.min" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="min">Mínimo</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="tam" type="text" class="validate">
-                  <label class="white-text" for="tam">Tamanho</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12 m12 l12">
-                  <input id="quantidade" type="number" class="validate">
+                  <input id="quantidade" type="number" class="validate" [(ngModel)]="produto.quantidade" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="quantidade">Quantidade</label>
                 </div>
               </div>
               <div class="row">
                 <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
-                  <a onclick="Materialize.toast('Produto foi cadastrado!', 4000, 'rouded')" class="btn waves-effect waves-light blue darken-4">Cadastrar
+                  <a (click)="cadastrarProduto()" class="btn waves-effect waves-light blue darken-4">Cadastrar
                       <i class="material-icons right">send</i>
                     </a>
                 </div>

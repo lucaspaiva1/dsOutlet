@@ -19,7 +19,7 @@ export class UserService {
   }
 
   logout(): void {
-    this.storage.remove('user', null);
+    this.storage.remove('user');
   }
 
   /*Retorna um array de boolean ->primeiro index é logado, segundo é admin*/

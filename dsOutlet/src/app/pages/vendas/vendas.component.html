@@ -2,7 +2,7 @@
   <!-- Cabeçalho -->
   <header>
     <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
-    <app-navbar [isAdmin]="isAdmin" [isLogin]="islogado"></app-navbar>
+    <app-navbar [isAdmin]="isAdmin" [isLogado]="isLogado"></app-navbar>
   </header>
 
   <!-- Corpo da pagina -->
@@ -22,7 +22,7 @@
             <label for="itens">Itens</label>
           </div>
           <!--exibido apenas antes de finalizar a venda-->
-          <div class="col s12 m8 l9" *ngIf="{{vendaFinalizada}} == false">
+          <div class="col s12 m8 l9" *ngIf="vendaFinalizada == false">
             <div class="input-field col s12 m12 l12">
               <input id="none" type="none" class="validate">
               <label class="white-text" for="none">Nome do Cliente</label>
@@ -32,7 +32,7 @@
                 <select id="marca" materialize="material_select">
                   <!--Organiza a seleçao criando uma opção para cada marca reistrada no banco de dados, sendop que esta marca é retornada como uma string-->
                   <option value="" disabled selected>Escolha uma marca</option>
-                  <option ngFor="let marca of marcas" value="{{marca}}">{{marca}}</option>
+                  <option ngFor="let marca of marcas" value=marca>{{marca}}</option>
                 </select>
                 <label class="white-text">Marca</label>
               </div>
@@ -40,7 +40,7 @@
                 <select id="modelo" materialize="material_select">
                   <!--Organiza a seleçao criando uma opção para cada modelo reistrada no banco de dados, sendop que este modelo é retornado como uma string-->
                   <option value="" disabled selected>Escolha um modelo</option>
-                  <option ngFor="let modelo of modelos" value="{{modelo}}">{{modelo}}</option>
+                  <option ngFor="let modelo of modelos" value=modelo>{{modelo}}</option>
                 </select>
                 <label class="white-text">Marca</label>
               </div>
@@ -84,7 +84,7 @@
             </div>
           </div>
           <!--exibido apenas antes de finalizar a venda-->
-          <div class="col s12 m8 l9" *ngIf="{{vendaFinalizada}} == true">
+          <div class="col s12 m8 l9" *ngIf="vendaFinalizada == true">
             <div class="row">
               <div class="input-field col s12 m12 l12">
                 <input id="valor" type="text" class="validate" readonly>
@@ -104,11 +104,11 @@
                 <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l7">
                   <a class="btn waves-effect waves-light blue darken-4">Pagar
                     </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </main>
