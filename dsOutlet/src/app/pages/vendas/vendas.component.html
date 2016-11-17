@@ -8,124 +8,118 @@
   <!-- Corpo da pagina -->
   <main>
     <div class="row">
-      <div class="col s0 m4 l3 menu_lateral">
+
+      <div class="col s12 m4 l3 menu_lateral">
         <!-- Menu lateral -->
         <app-options-adm></app-options-adm>
       </div>
+
       <div class="col s12 m8 l9">
-        <!--Nova divisão lateral para registro de itens e dados da venda-->
-        <div class="row">
-          <div class="col s12 m4 l3">
-            <!--text area para listagens dos items comprados-->
-            <i class="material-icons prefix">shopping_cart</i>
-            <textarea rows="10" id="itens" class="materialize-textarea" readonly></textarea>
-            <label for="itens">Itens</label>
-          </div>
-          <!--exibido apenas antes de finalizar a venda-->
-<<<<<<< HEAD
-          <div class="col s12 m8 l9">
-=======
-          <div class="col s12 m8 l9" *ngIf="vendaFinalizada == false">
->>>>>>> 83ce18797ddc9ff54c3fea33f17ac72878745bf7
-            <div class="input-field col s12 m12 l12">
-              <input id="none" type="none" class="validate">
-              <label class="white-text" for="none">Nome do Cliente</label>
-            </div>
-          </div>
-        </div>
-            <div class="row">
-              <div class="input-field col s12 m6 l6 white-text">
-                <select id="marca" materialize="material_select">
-                  <!--Organiza a seleçao criando uma opção para cada marca reistrada no banco de dados, sendop que esta marca é retornada como uma string-->
-                  <option value="" disabled selected>Escolha uma marca</option>
-                  <option ngFor="let marca of marcas" value="marca">{{marca}}</option>
-                </select>
-                <label class="white-text">Marca</label>
+        <!--Container para plano de fundo azul-->
+        <div class="backgroud z-depth-4">
+          <!--divisão da página em duas colunas-->
+          <div class="row">
+            <!--primeira coluna-->
+            <div class="col s12 m12 l4">
+              <!--Espaço para a listagem dos itens e informação do valor total-->
+              <div>
+                <div class="row">
+                  <div class="col s3 m2 l2">
+                    <i class="material-icons prefix white-text">shopping_cart</i>
+                  </div>
+                  <div class="col s9 m10 l10">
+                    <h6 class="white-text center">Lista de Compra</h6>
+                  </div>
+                </div>
+                <textarea class="materialize-textarea white-text " id="itens" name="itens" rows="10" readonly autofocus></textarea>
               </div>
-              <div class="input-field col s12 m6 l6 white-text">
-                <select id="modelo" materialize="material_select">
-                  <!--Organiza a seleçao criando uma opção para cada modelo reistrada no banco de dados, sendop que este modelo é retornado como uma string-->
-                  <option value="" disabled selected>Escolha um modelo</option>
-                  <option ngFor="let modelo of modelos" value="modelo">{{modelo}}</option>
-                </select>
-                <label class="white-text">Marca</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12 m12 l12">
-                <input id="tamanho" type="text" class="validate">
-                <label class="white-text" for="tamanho">Tamanho</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12 m4 l4">
-                <input id="tam" type="text" class="validate">
-                <label class="white-text" for="tam">Tamanho</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12 m12 l12">
-                <input id="quantidade" type="number" class="validate">
-                <label class="white-text" for="quantidade">Quantidade</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12 m12 l12">
-                <input id="valor" type="text" class="validate" readonly>
-                <label class="white-text" for="valor">Valor</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
-                <a class="btn waves-effect waves-light blue darken-4">Adicionar item
-                  </a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
-                <a class="btn waves-effect waves-light blue darken-4">Finalizar Venda
-                    <i class="material-icons right">send</i>
-                  </a>
-              </div>
-            </div>
-          </div>
-          <!--exibido apenas antes de finalizar a venda-->
-<<<<<<< HEAD
-          <div class="col s12 m8 l9" >
-=======
-          <div class="col s12 m8 l9" *ngIf="vendaFinalizada == true">
->>>>>>> 83ce18797ddc9ff54c3fea33f17ac72878745bf7
-            <div class="row">
-              <div class="input-field col s12 m12 l12">
-                <input id="valor" type="text" class="validate" readonly>
-                <label class="white-text" for="valor">Valor</label>
-              </div>
-              <div class="input-field col s12 m12 l12 white-text">
-                <select id="pagamento" materialize="material_select">
-                  <!--Organiza a seleçao criando uma opção para o pagamento-->
-                  <option value="" disabled selected>Escolha um modelo</option>
-                  <option value="1">Dinheiro</option>
-                  <option value="2">Cartão</option>
-                  <option value="3">Pendência</option>
-                </select>
-                <label class="white-text">Método de pagamento</label>
-              </div>
-            </div>
               <div class="row">
-                <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l7">
-                  <a class="btn waves-effect waves-light blue darken-4">Pagar
-                    </a>
+                <div class="col s12 m6 l6">
+                  <h6 class="white-text center">Valor:</h6>
+                </div>
+                <div class="col s12 m6 l6">
+                  <input class="white-text" id="valor" type="text" name="valor" readonly>
                 </div>
               </div>
             </div>
+
+            <!--segunda coluna-->
+            <div class="col s12 m12 l8">
+              <div class="input-field">
+                <i class="material-icons prefix white-text">perm_identity</i>
+                <input id="nome" type="text" class="white-text">
+                <label class="white-text" for="nome">Nome do Cliente</label>
+              </div>
+              <!--linha para seleção de marca e modelo-->
+              <div class="row">
+                <div class="input-field col s12 m6 l6 white-text">
+                  <select id="marca" materialize="material_select">
+                    <!--Organiza a seleçao criando uma opção para cada marca reistrada no banco de dados, sendop que esta marca é retornada como uma string-->
+                    <option value="" disabled selected>Escolha uma marca</option>
+                    <option ngFor="let marca of marcas" value="{{marca}}">{{marca}}</option>
+                  </select>
+                  <label class="white-text">Marca</label>
+                </div>
+                <div class="input-field col s12 m6 l6 white-text">
+                  <select id="modelo" materialize="material_select">
+                    <!--Organiza a seleçao criando uma opção para cada modelo reistrada no banco de dados, sendop que este modelo é retornado como uma string-->
+                    <option value="" disabled selected>Escolha um modelo</option>
+                    <option ngFor="let modelo of modelos" value="{{modelo}}">{{modelo}}</option>
+                  </select>
+                  <label class="white-text">Marca</label>
+                </div>
+              </div>
+              <!--linha para seleção de tamanho e quantidade-->
+              <div class="row">
+                <div class="input-field col s12 m6 l6 white-text">
+                  <input id="tamanho" type="text" class="white-text">
+                  <label class="white-text" for="tamanho">Tamanho</label>
+                </div>
+                <div class="input-field col s12 m6 l6 white-text">
+                  <input id="quantidade" type="number" class="white-text">
+                  <label class="white-text" for="quantidade">Quantidade</label>
+                </div>
+              </div>
+              <!--Botão para adicionar item-->
+              <div class="row">
+                <div class="col s4 offset-s6 m4 offset-m6 l4 offset-l8">
+                  <a onclick="Materialize.toast('Produto adicionado!', 2000, 'rouded')" class="btn waves-effect waves-light blue darken-4">Adicionar
+                      <i class="material-icons right">send</i>
+                    </a>
+                </div>
+              </div>
+              <!--Botão para finalizar venda-->
+              <div class="center">
+                <a class="btn waves-effect waves-light blue darken-4">Finalizar compra</a>
+              </div>
+              <!--elementos para finalizar venda -->
+              <div *ngIf="isfinalizarCompra" class="row">
+                <div class="input-field col s12 m6 l6 white-text">
+                  <select id="pagamento" materialize="material_select">
+                    <!--Organiza a seleçao do modo de pagamento-->
+                    <option value="" disabled selected>Escolha um modelo</option>
+                    <option value="1">Dinheiro</option>
+                    <option value="2">Cartão/Débito</option>
+                    <option value="3">Cartão/Crédito</option>
+                    <option value="4">Pendência</option>
+                  </select>
+                  <label class="white-text">Forma de Pagamento</label>
+                </div>
+                <div *ngIf="isfinalizarCompra" class="input-field col s12 m6 l6 white-text">
+                  <input id="valorPago" type="number" class="white-text">
+                  <label class="white-text" for="quantidade">Valor</label>
+                </div>
+              </div>
+              <div *ngIf="isfinalizarCompra" class="center input-field">
+                <a class="btn waves-effect waves-light blue darken-4">Pagar</a>
+              </div>
+
+            </div>
           </div>
-
         </div>
-<<<<<<< HEAD
 
-=======
       </div>
+
     </div>
->>>>>>> 83ce18797ddc9ff54c3fea33f17ac72878745bf7
   </main>
 </body>
