@@ -12,6 +12,9 @@ import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-pr
 import { AdminAddProdutoComponent } from './pages/admin-add-produto/admin-add-produto.component';
 import { AdminCadFuncionarioComponent } from './pages/admin-cad-funcionario/admin-cad-funcionario.component';
 import { VendasComponent } from './pages/vendas/vendas.component';
+import { AdminGerenClientesComponent } from './pages/admin-geren-clientes/admin-geren-clientes.component';
+import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-clientes.component';
+import { AdminEditClientesComponent } from './pages/admin-edit-clientes/admin-edit-clientes.component';
 
 const routes: Routes = [
   {
@@ -59,6 +62,15 @@ const routes: Routes = [
   {
     path: 'venda',
     component: VendasComponent
+  }, {
+    path: 'clientes',
+    component: AdminGerenClientesComponent
+  }, {
+    path: 'clientes/cadastro',
+    component: AdminAddClientesComponent
+  }, {
+    path: 'clientes/editar/:name',
+    component: AdminEditClientesComponent
   }
 ];
 @NgModule({

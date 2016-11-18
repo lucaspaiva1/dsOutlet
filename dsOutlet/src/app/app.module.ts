@@ -12,6 +12,8 @@ import { LocalStorageService, LOCAL_STORAGE_SERVICE_CONFIG } from 'angular-2-loc
 /*servicos*/
 import { UserService } from './services/user.service';
 import { FuncionariosService } from './services/funcionarios.service';
+import { ClientesService } from './services/clientes.service';
+import { ProdutosService } from './services/produtos.service';
 /*Components*/
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -32,7 +34,6 @@ import { AdminGerenClientesComponent } from './pages/admin-geren-clientes/admin-
 import { AdminEditClientesComponent } from './pages/admin-edit-clientes/admin-edit-clientes.component';
 import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-clientes.component';
 import { VendasComponent } from './pages/vendas/vendas.component';
-import { ProdutosService } from './services/produtos.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,7 @@ import { ProdutosService } from './services/produtos.service';
       apiKey: 'AIzaSyB64Q-NvEJqxFf9PmJZHevjQdxzL9a3jZw' //chave do google para usar googlemaps
     })
   ],
-  providers: [UserService, FuncionariosService, ProdutosService, LocalStorageService,
+  providers: [UserService, FuncionariosService, ProdutosService, ClientesService, LocalStorageService,
     {
       provide: LOCAL_STORAGE_SERVICE_CONFIG, useValue: {
         prefix: 'my-app',

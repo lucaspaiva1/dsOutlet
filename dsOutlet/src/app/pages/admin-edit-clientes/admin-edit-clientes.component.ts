@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Produto } from '../../model/produto';
 import { UserService } from '../../services/user.service';
-import { FuncionariosService } from '../../services/funcionarios.service';
-import { Funcionario } from '../../model/funcionario';
+import { ClientesService } from '../../services/clientes.service';
+import { Cliente } from '../../model/cliente';
 
 @Component({
   selector: 'app-admin-edit-clientes',
@@ -12,14 +12,14 @@ import { Funcionario } from '../../model/funcionario';
 })
 export class AdminEditClientesComponent implements OnInit {
 
-    private isLogado: boolean = false;
-    private isAdmin: boolean = false;
-    funcionario: Funcionario;
+    private isLogado: boolean;
+    private isAdmin: boolean;
+    cliente: Cliente;
 
     constructor(private router: Router,
       private route: ActivatedRoute,
       private userService: UserService,
-      private funcionariosService: FuncionariosService) {
+      private clientesService: ClientesService) {
       let stats = this.userService.userStats();
       this.isLogado = stats[0];
       this.isAdmin = stats[1];
@@ -30,9 +30,9 @@ export class AdminEditClientesComponent implements OnInit {
         this.router.navigate(['/home']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
       } else {
         this.route.params.forEach((params: Params) => {
-          let username = ""+params['username'];
-          this.funcionario = this.funcionariosService.getFuncionario(username);
-          console.log(this.funcionario);
+          let name = ""+params['name'];
+          this.cliente = this.clientesService.getFuncionarioByName(name);
+          console.log(this.cliente);
           })
       }
     }
