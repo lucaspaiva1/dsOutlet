@@ -22,10 +22,27 @@
           <div class="row">
             <form class="col s12">
               <div class="row">
-                <div class="input-field col s12 m12 l12 white-text">
+                <div class="input-field col s12 m6 l6 white-text">
                   <i class="material-icons prefix">perm_identity</i>
                   <input placeholder="nome" id="name" type="text" class="validate white-text" value="{{cliente.nome}}">
                   <label class="white-text" for="first_name">Nome Completo</label>
+                </div>
+                <div class="input-field col s12 m6 l6 white-text">
+                  <i class="material-icons prefix">perm_identity</i>
+                  <input id="cpf" type="text" class="validate white-text" value="{{cliente.cpf}}">
+                  <label class="white-text" for="cpf">CPF</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m6 l6 white-text">
+                  <i class="material-icons prefix">perm_identity</i>
+                  <input id="telefone" type="text" class="validate white-text"  value="{{cliente.telefone}}">
+                  <label class="white-text" for="telefone">Telefone</label>
+                </div>
+                <div class="input-field col s12 m6 l6 white-text">
+                  <i class="material-icons prefix">perm_identity</i>
+                  <input id="endereco" type="text" class="validate white-text" value="{{cliente.endereco}}">
+                  <label class="white-text" for="endereco">Endereço</label>
                 </div>
               </div>
               <div class="row">

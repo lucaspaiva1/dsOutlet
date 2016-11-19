@@ -22,10 +22,27 @@
           <div class="row">
             <form class="col s12">
               <div class="row">
-                <div class="input-field col s12 m12 l12 white-text">
+                <div class="input-field col s12 m6 l6 white-text">
                   <i class="material-icons prefix">perm_identity</i>
                   <input id="name" type="text" class="validate white-text"  [(ngModel)]="cliente.nome" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="first_name">Nome Completo</label>
+                </div>
+                <div class="input-field col s12 m6 l6 white-text">
+                  <i class="material-icons prefix">perm_identity</i>
+                  <input id="cpf" type="number" class="validate white-text"  [(ngModel)]="cliente.cpf" [ngModelOptions]="{standalone: true}">
+                  <label class="white-text" for="cpf">CPF</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m6 l6 white-text">
+                  <i class="material-icons prefix">perm_identity</i>
+                  <input id="telefone" type="number" class="validate white-text"  [(ngModel)]="cliente.telefone" [ngModelOptions]="{standalone: true}">
+                  <label class="white-text" for="telefone">Telefone</label>
+                </div>
+                <div class="input-field col s12 m6 l6 white-text">
+                  <i class="material-icons prefix">perm_identity</i>
+                  <input id="endereco" type="text" class="validate white-text"  [(ngModel)]="cliente.endereco" [ngModelOptions]="{standalone: true}">
+                  <label class="white-text" for="endereco">Endereço</label>
                 </div>
               </div>
               <div class="row">

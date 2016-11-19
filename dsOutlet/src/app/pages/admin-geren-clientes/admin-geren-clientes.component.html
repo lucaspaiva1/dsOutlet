@@ -23,6 +23,9 @@
             <thead>
               <tr>
                 <th data-field="nome">Nome</th>
+                <th data-field="cpf">CPF</th>
+                <th data-field="telefone">Telefone</th>
+                <th data-field="endereco">Endereço</th>
                 <th data-field="divida">Dívida</th>
               </tr>
             </thead>
@@ -30,17 +33,20 @@
             <tbody>
               <tr *ngFor="let cliente of clientes" (click)="editar(cliente)">
                 <td>{{cliente.nome}}</td>
+                <td>{{cliente.cpf}}</td>
+                <td>{{cliente.telefone}}</td>
+                <td>{{cliente.endereco}}</td>
                 <td>{{cliente.valor}}</td>
               </tr>
             </tbody>
           </table>
-        </div>
-        <!--Botão para adicionar cliente-->
-        <div class="row">
-          <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
-            <a class="btn waves-effect waves-light blue darken-4" (click)="cadastrar()">Adicionar Cliente
-                <i class="material-icons right">send</i>
-              </a>
+          <!--Botão para adicionar cliente-->
+          <div class="row">
+            <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
+              <a class="btn waves-effect waves-light blue darken-4" (click)="cadastrar()">Adicionar Cliente
+                  <i class="material-icons right">send</i>
+                </a>
+            </div>
           </div>
         </div>
       </div>

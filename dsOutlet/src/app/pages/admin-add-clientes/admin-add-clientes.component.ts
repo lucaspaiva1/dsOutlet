@@ -36,7 +36,7 @@ export class AdminAddClientesComponent implements OnInit {
   }
 
   adicionar() {
-    if (this.cliente.nome != null && this.cliente.valor != null) {
+    if (this.cliente.nome != null && this.cliente.valor != null && this.cliente.telefone != null && this.cliente.endereco != null && this.cliente.cpf != null) {
       this.clientesService.addCliente(this.cliente);
       console.log(this.cliente);
       this.cliente = new Cliente();

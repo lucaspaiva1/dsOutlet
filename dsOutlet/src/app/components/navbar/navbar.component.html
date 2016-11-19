@@ -1,9 +1,9 @@
-<div class="navbar-fixed">
+<div materialize="sideNav" class="navbar-fixed">
   <nav>
     <div class="nav-wrapper light-blue z-depth-4">
       <a class="brand-logo">Imagem com LOGO</a>
       <!-- Imagem da lOGO deve ser inserida aqui-->
-      <a materialize="sideNav" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a materialize="sideNav" [materializeParams]="[{draggable: true}]" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <!-- Buttons para exibição -->
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li>
@@ -19,15 +19,14 @@
           <a routerLink="/fale-conosco">Fale Conosco</a>
         </li>
         <li *ngIf="!isLogado">
-          <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Apenas para funcionários" (click)="fazerLogin()">Login</a></li>
+          <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 tooltipped"data-position="left" data-delay="50" data-tooltip="Apenas para funcionários" (click)="fazerLogin()" >Login</a></li>
         <li *ngIf="isLogado">
           <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Deseja sair?" (click)="deslogar()">Deslogar</a>
         </li>
       </ul>
 
-
       <!-- Menu lateral para exibição mobile -->
-      <ul class="side-nav" id="mobile-demo">
+      <ul materialize="sideNav" class="side-nav active" id="mobile-demo">
         <li>
           <a routerLink="/home">Home</a>
         </li>
