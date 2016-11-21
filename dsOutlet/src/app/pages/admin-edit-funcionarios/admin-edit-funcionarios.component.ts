@@ -26,7 +26,7 @@ export class AdminEditFuncionariosComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.isLogado) {
+    if (!this.isLogado || !this.isAdmin) {
       this.router.navigate(['/home']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
     } else {
       this.route.params.forEach((params: Params) => {

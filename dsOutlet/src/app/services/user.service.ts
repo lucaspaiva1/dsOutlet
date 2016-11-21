@@ -5,17 +5,44 @@ import { User } from '../model/user';
 @Injectable()
 export class UserService {
 
+  users: User[] = [new User('Administrador', 'admin', true, 'admin@admin.com', false, 'admin'), new User('Ususario', 'user', false, 'user@user.com', false, 'user')]
+
   constructor(private storage: LocalStorageService) { }
 
-  login(): boolean {
+  login(username: string, pass: string): boolean {
+    console.log("dados recebidos:");
+    console.log(username);
+    console.log(pass);
+    if(username != null){
+    let usuario = this.users.find(user => user.login === username);
+
+
+    if(usuario != null){
+      if(usuario.senha === pass){
+        console.log("usuario retorno:");
+        console.log(usuario);
+        usuario.logado = true;
+        let logado = this.storage.set('user', usuario);
+        if (logado == null) {
+          logado = false;
+        }
+        return true;
+      }else{
+        return false;
+      }
+    }else{
+      return false;
+    }}
+    else return false;
     /*verifica se pode logar pelo banco de dados e preenche os dados de user*/
+    /*
     let user = new User('Lucas', 'lvpaiva', true, 'lukspaiva@hotmail.com');
     user.logado = true;
     let logado = this.storage.set('user', user);
     if (logado == null) {
       logado = false;
     }
-    return logado;
+    return logado;*/
   }
 
   logout(): void {

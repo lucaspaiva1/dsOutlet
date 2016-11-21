@@ -53,11 +53,11 @@
     <form class="">
       <div class="input-field white-text campo">
         <i class="material-icons prefix">perm_identity</i>
-        <input id="usuario" type="text" class="validate white-text">
+        <input id="usuario" type="text" class="validate white-text" [(ngModel)]="login" [ngModelOptions]="{standalone: true}">
         <label class="white-text" for="usuario">Nome de Usuário</label>
       </div>
       <div class="input-field  campo">
-        <input id="senha" type="password" class="validate white-text">
+        <input id="senha" type="password" class="validate white-text" [(ngModel)]="senha" [ngModelOptions]="{standalone: true}">
         <label class="white-text" for="senha">Senha</label>
       </div>
       <p class="white-text">

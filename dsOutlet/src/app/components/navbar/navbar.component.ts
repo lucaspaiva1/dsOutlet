@@ -1,5 +1,6 @@
 import { Component, Input, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
+import { toast } from 'angular2-materialize';
 import { UserService } from '../../services/user.service';
 import {MaterializeAction} from 'angular2-materialize';
 
@@ -13,13 +14,18 @@ export class NavbarComponent {
   @Input() isAdmin: boolean = false;
   @Input() isLogado: boolean = false;
   modalActions = new EventEmitter<string|MaterializeAction>();
+  login: string;
+  senha: string;
 
   constructor(private router: Router, private userService: UserService) { }
 
   private fazerLogin(): void {
-    this.modalActions.emit({action:"modal",params:['close']});
-    this.userService.login();
-    this.router.navigate(['/controle-estoque']);
+    if(this.userService.login(this.login, this.senha)){
+      this.modalActions.emit({action:"modal",params:['close']});
+      this.router.navigate(['/controle-estoque']);
+    }else{
+      toast('Login ou senha incorretos', 4000, 'rounded');
+    }
   }
 
   private deslogar(): void {

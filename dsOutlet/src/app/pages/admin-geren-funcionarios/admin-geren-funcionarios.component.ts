@@ -21,11 +21,12 @@ export class AdminGerenFuncionariosComponent implements OnInit {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
+    console.log(this.isAdmin);
     this.funcionarios = this.funcionarioService.getFuncionarios();
   }
 
   ngOnInit() {
-    if (!this.isLogado) {
+    if (!this.isLogado || !this.isAdmin) {
       this.router.navigate(['/home']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
     }
   }
