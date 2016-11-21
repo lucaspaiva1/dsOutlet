@@ -1,0 +1,15 @@
+.loginPane{
+  width: 400px;
+  height: 50%;
+  padding: 20px;
+  padding-bottom: 0px;
+  overflow-x: hidden;
+}
+.loginPaneFooter{
+  width: 90%;
+}
+.campo{
+  padding-right: 30px;
+  width: 100%;
+  height: 100%;
+}

@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import {MaterializeAction} from 'angular2-materialize';
 
 @Component({
   selector: 'app-navbar',
@@ -11,10 +12,12 @@ export class NavbarComponent {
 
   @Input() isAdmin: boolean = false;
   @Input() isLogado: boolean = false;
+  modalActions = new EventEmitter<string|MaterializeAction>();
 
   constructor(private router: Router, private userService: UserService) { }
 
   private fazerLogin(): void {
+    this.modalActions.emit({action:"modal",params:['close']});
     this.userService.login();
     this.router.navigate(['/controle-estoque']);
   }
@@ -26,5 +29,4 @@ export class NavbarComponent {
     this.isAdmin = stats[1];
     this.router.navigate(['/home']);
   }
-
 }

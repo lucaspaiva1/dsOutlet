@@ -17,7 +17,8 @@
       <a routerLink="/fale-conosco">Fale Conosco</a>
     </li>
     <li *ngIf="!isLogado">
-      <a id="login" class="waves-effect waves-light btn blue darken-4" materialize="dropdown" data-activates='dropdown1'>Login</a></li>
+      <a materialize="modal" class="waves-effect waves-light btn blue darken-4" href="#loginModal">Login</a>
+    </li>
     <li *ngIf="isLogado">
       <a materialize="tooltip" class="waves-effect waves-light btn blue darken-4 btn tooltipped" data-position="left" data-delay="50" data-tooltip="Deseja sair?" (click)="deslogar()">Deslogar</a>
     </li>
@@ -37,24 +38,31 @@
       <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
     </li>
     <li *ngIf="isLogado">
-      <a class="waves-effect waves-light btn" (click)="deslogar()">Deslogar</a>
+      <a class="waves-effect waves-light btn blue darken-4" (click)="deslogar()">Deslogar</a>
     </li>
     <li *ngIf="!isLogado">
-      <a class="waves-effect waves-light btn">Login</a>
+      <a materialize="modal" class="waves-effect waves-light btn blue darken-4" href="#loginModal">Login</a>
     </li>
   </ul>
 </nav>
-<!--login dropdown-->
-<div id='dropdown1' class='dropdown-content'>
-  <form>
-    <div class="input-field">
-      <input type="text" placeholder="username">
-    </div>
-    <div class="input-field">
-      <input type="password" placeholder="password">
-    </div>
-    <button class="btn waves-effect waves-light" type="submit" name="action">Login
-      <i class="material-icons right">send</i>
-    </button>
-  </form>
+
+<!--Login Modal-->
+<div  materialize="modal" id="loginModal" class="modal modal-fixed-footer loginPane light-blue" [materializeActions]="modalActions">
+  <div class="modal-content">
+    <h4 class="center white-text">LogIn</h4>
+    <form class="">
+      <div class="input-field white-text campo">
+        <i class="material-icons prefix">perm_identity</i>
+        <input id="usuario" type="text" class="validate white-text">
+        <label class="white-text" for="usuario">Nome de Usuário</label>
+      </div>
+      <div class="input-field white-text campo">
+        <input id="senha" type="password" class="validate white-text">
+        <label class="white-text" for="senha">Senha</label>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer light-blue loginPaneFooter">
+    <a class="waves-effect waves-light btn blue darken-4" (click)="fazerLogin()">Login</a>
+  </div>
 </div>
