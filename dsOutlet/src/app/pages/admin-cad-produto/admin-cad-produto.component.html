@@ -32,9 +32,13 @@
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s12 m12 l12">
+                <div class="input-field col s12 m6 l6">
                   <input id="tamanho" type="text" class="validate" [(ngModel)]="produto.tamanho" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="tamanho">Tamanho</label>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                  <input id="venda" type="number" class="validate" [(ngModel)]="produto.precoVenda" [ngModelOptions]="{standalone: true}">
+                  <label class="white-text" for="venda">Preço de Venda</label>
                 </div>
               </div>
               <div class="row">
