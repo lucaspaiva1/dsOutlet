@@ -11,7 +11,6 @@ import { LocalStorageService, LOCAL_STORAGE_SERVICE_CONFIG } from 'angular-2-loc
 /*importacoes do projeto*/
 /*servicos*/
 import { UserService } from './services/user.service';
-import { FuncionariosService } from './services/funcionarios.service';
 import { ClientesService } from './services/clientes.service';
 import { ProdutosService } from './services/produtos.service';
 /*Components*/
@@ -21,10 +20,10 @@ import { FaleConoscoComponent } from './pages/fale-conosco/fale-conosco.componen
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
+import { GerenciadorComponent } from './pages/gerenciador/gerenciador.component';
 import { AdminEstoqueComponent } from './pages/admin-estoque/admin-estoque.component';
 import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-produto.component';
-import { OptionsAdmComponent } from './components/options-adm/options-adm.component';
+import { OptionsComponent } from './components/options/options.component';
 import { AdminEditProdutoComponent } from './pages/admin-edit-produto/admin-edit-produto.component';
 import { AdminAddProdutoComponent } from './pages/admin-add-produto/admin-add-produto.component';
 import { AdminCadFuncionarioComponent } from './pages/admin-cad-funcionario/admin-cad-funcionario.component';
@@ -42,10 +41,10 @@ import { VendasComponent } from './pages/vendas/vendas.component';
     FaleConoscoComponent,
     NavbarComponent,
     FooterComponent,
-    AdminHomeComponent,
+    GerenciadorComponent,
     AdminEstoqueComponent,
     AdminCadProdutoComponent,
-    OptionsAdmComponent,
+    OptionsComponent,
     AdminEditProdutoComponent,
     AdminAddProdutoComponent,
     AdminCadFuncionarioComponent,
@@ -66,7 +65,7 @@ import { VendasComponent } from './pages/vendas/vendas.component';
       apiKey: 'AIzaSyB64Q-NvEJqxFf9PmJZHevjQdxzL9a3jZw' //chave do google para usar googlemaps
     })
   ],
-  providers: [UserService, FuncionariosService, ProdutosService, ClientesService, LocalStorageService,
+  providers: [UserService, ProdutosService, ClientesService, LocalStorageService,
     {
       provide: LOCAL_STORAGE_SERVICE_CONFIG, useValue: {
         prefix: 'my-app',

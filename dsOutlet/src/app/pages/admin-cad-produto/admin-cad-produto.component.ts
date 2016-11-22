@@ -35,8 +35,9 @@ export class AdminCadProdutoComponent implements OnInit {
       toast('Produto foi cadastrado!', 4000, 'rounded');
       this.produtosService.addProduto(this.produto);
       this.produto = new Produto();
+    }else{
+      toast('Favor Preencher Campos Obrigatórios!', 4000, 'rounded');
     }
-    toast('Favor Preencher Campos Obrigatórios!', 4000, 'rounded');
   }
 
 }

@@ -2,8 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Produto } from '../../model/produto';
 import { UserService } from '../../services/user.service';
-import { FuncionariosService } from '../../services/funcionarios.service';
-import { Funcionario } from '../../model/funcionario';
+import { User } from '../../model/user';
 
 
 @Component({
@@ -15,14 +14,14 @@ export class AdminGerenFuncionariosComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
-  funcionarios: Funcionario[];
+  usuarios: User[];
 
-  constructor(private router: Router, private userService: UserService, private funcionarioService: FuncionariosService) {
+  constructor(private router: Router, private userService: UserService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
     console.log(this.isAdmin);
-    this.funcionarios = this.funcionarioService.getFuncionarios();
+    this.usuarios = this.userService.getUsers();
   }
 
   ngOnInit() {
@@ -31,8 +30,8 @@ export class AdminGerenFuncionariosComponent implements OnInit {
     }
   }
 
-  editar(funcionario: Funcionario){
-    this.router.navigate(['edit-funcionario/', funcionario.login]);
+  editar(usuario: User){
+    this.router.navigate(['edit-funcionario/', usuario.login]);
   }
 
 }

@@ -11,7 +11,7 @@
       <div class="col s0 m4 l3 menu_lateral">
         <!-- Note that "m4 l3" was added -->
         <!-- small container -->
-        <app-options-adm></app-options-adm>
+        <options [isAdmin]="isAdmin"></options>
       </div>
 
       <div class="col s12 m8 l9">
@@ -24,16 +24,18 @@
               <tr>
                 <th data-field="nome">Nome</th>
                 <th data-field="privilegio">Privilégio</th>
-                <th data-field="status">Status</th>
+                <th data-field="status">Login</th>
+                <th data-field="status">Senha</th>
               </tr>
             </thead>
 
             <tbody>
-              <tr *ngFor="let funcionario of funcionarios" (click)="editar(funcionario)">
-                <td>{{funcionario.nome}}</td>
-                <td *ngIf="funcionario.admin">Administrador</td>
-                <td *ngIf="!funcionario.admin">Comum</td>
-                <td>{{funcionario.login}}</td>
+              <tr *ngFor="let usuario of usuarios" (click)="editar(usuario)">
+                <td>{{usuario.nome}}</td>
+                <td *ngIf="usuario.admin">Administrador</td>
+                <td *ngIf="!usuario.admin">Comum</td>
+                <td>{{usuario.login}}</td>
+                <td>{{usuario.senha}}</td>
               </tr>
             </tbody>
           </table>

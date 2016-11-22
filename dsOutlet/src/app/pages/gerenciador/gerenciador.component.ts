@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-admin-home',
-  templateUrl: './admin-home.component.html',
-  styleUrls: ['./admin-home.component.css']
+  selector: 'gerenciador',
+  templateUrl: './gerenciador.component.html',
+  styleUrls: ['./gerenciador.component.css']
 })
-export class AdminHomeComponent implements OnInit {
+export class GerenciadorComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;

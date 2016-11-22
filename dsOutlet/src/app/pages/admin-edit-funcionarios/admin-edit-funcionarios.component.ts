@@ -2,8 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Produto } from '../../model/produto';
 import { UserService } from '../../services/user.service';
-import { FuncionariosService } from '../../services/funcionarios.service';
-import { Funcionario } from '../../model/funcionario';
+import { User } from '../../model/user';
 
 @Component({
   selector: 'app-admin-edit-funcionarios',
@@ -14,12 +13,9 @@ export class AdminEditFuncionariosComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
-  funcionario: Funcionario;
+  usuario: User;
 
-  constructor(private router: Router,
-    private route: ActivatedRoute,
-    private userService: UserService,
-    private funcionariosService: FuncionariosService) {
+  constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
@@ -31,8 +27,8 @@ export class AdminEditFuncionariosComponent implements OnInit {
     } else {
       this.route.params.forEach((params: Params) => {
         let username = ""+params['username'];
-        this.funcionario = this.funcionariosService.getFuncionario(username);
-        console.log(this.funcionario);
+        this.usuario = this.userService.getUserByName(username);
+        console.log(this.usuario);
         })
     }
   }

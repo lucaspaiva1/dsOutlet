@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FaleConoscoComponent } from './pages/fale-conosco/fale-conosco.component';
-import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
+import { GerenciadorComponent } from './pages/gerenciador/gerenciador.component';
 import { AdminGerenFuncionariosComponent } from './pages/admin-geren-funcionarios/admin-geren-funcionarios.component';
 import { AdminEstoqueComponent } from './pages/admin-estoque/admin-estoque.component';
 import { AdminEditProdutoComponent } from './pages/admin-edit-produto/admin-edit-produto.component';
@@ -29,7 +29,7 @@ const routes: Routes = [
     pathMatch: 'full'
   }, {
     path: 'controle-estoque',
-    component: AdminHomeComponent
+    component: GerenciadorComponent
   },
   {
     path: 'estoque',

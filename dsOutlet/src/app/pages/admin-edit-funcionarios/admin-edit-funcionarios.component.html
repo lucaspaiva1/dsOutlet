@@ -11,7 +11,7 @@
       <div class="col s0 m4 l3 menu_lateral">
         <!-- Note that "m4 l3" was added -->
         <!-- small container -->
-        <app-options-adm></app-options-adm>
+        <options [isAdmin]="isAdmin"></options>
       </div>
 
       <div class="col s12 m8 l9">
@@ -24,25 +24,25 @@
               <div class="row">
                 <div class="input-field col s12 m6 l6 white-text">
                   <i class="material-icons prefix">perm_identity</i>
-                  <input placeholder="Primeiro nome" id="first_name" type="text" class="validate white-text" value="{{funcionario.nome}}">
+                  <input placeholder="Primeiro nome" id="first_name" type="text" class="validate white-text" value="{{usuario.nome}}">
                   <label class="white-text" for="first_name">Primeiro nome</label>
                 </div>
                 <div class="input-field col s12 m6 l6 white-text">
-                  <input id="last_name" type="text" class="validate  white-text" value="{{funcionario.nome}}">
+                  <input id="last_name" type="text" class="validate  white-text" value="{{usuario.nome}}">
                   <label class="white-text" for="last_name">Ultimo nome</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m4 l4">
-                  <input id="max" type="text" class="validate" value="{{funcionario.login}}">
+                  <input id="max" type="text" class="validate" value="{{usuario.login}}">
                   <label class="white-text" for="max">Nome de usuário</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="senha" type="password" class="validate" value="{{funcionario.senha}}">
+                  <input id="senha" type="password" class="validate" value="{{usuario.senha}}">
                   <label class="white-text" for="senha">Senha</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="rep-senha" type="password" class="validate" value="{{funcionario.senha}}">
+                  <input id="rep-senha" type="password" class="validate" value="{{usuario.senha}}">
                   <label class="white-text" for="rep-senha">Repetir senha</label>
                 </div>
               </div>

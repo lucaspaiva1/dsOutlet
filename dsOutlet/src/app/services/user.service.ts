@@ -5,9 +5,31 @@ import { User } from '../model/user';
 @Injectable()
 export class UserService {
 
-  users: User[] = [new User('Administrador', 'admin', true, 'admin@admin.com', false, 'admin'), new User('Ususario', 'user', false, 'user@user.com', false, 'user')]
+  users: User[] = [];
 
-  constructor(private storage: LocalStorageService) { }
+  constructor(private storage: LocalStorageService) {
+    let user1 = new User();
+    user1.nome = 'administrador';
+    user1.login = 'admin';
+    user1.admin = true;
+    user1.email = 'admin@admin.com';
+    user1.senha = 'admin';
+    let user2 = new User();
+    user2.nome = 'Usuario';
+    user2.login = 'user';
+    user2.admin = false;
+    user2.email = 'user@user.com';
+    user2.senha = 'user';
+    let user3 = new User();
+    user3.nome = 'Vendedor';
+    user3.login = 'vendor';
+    user3.admin = false;
+    user3.email = 'vendor@vendor.com';
+    user3.senha = 'vendor';
+    this.users.push(user1);
+    this.users.push(user2);
+    this.users.push(user3);
+  }
 
   login(username: string, pass: string): boolean {
     console.log("dados recebidos:");
@@ -15,7 +37,6 @@ export class UserService {
     console.log(pass);
     if(username != null){
     let usuario = this.users.find(user => user.login === username);
-
 
     if(usuario != null){
       if(usuario.senha === pass){
@@ -34,15 +55,6 @@ export class UserService {
       return false;
     }}
     else return false;
-    /*verifica se pode logar pelo banco de dados e preenche os dados de user*/
-    /*
-    let user = new User('Lucas', 'lvpaiva', true, 'lukspaiva@hotmail.com');
-    user.logado = true;
-    let logado = this.storage.set('user', user);
-    if (logado == null) {
-      logado = false;
-    }
-    return logado;*/
   }
 
   logout(): void {
@@ -56,5 +68,17 @@ export class UserService {
       return [false, false];
     }
     return [user.logado, user.admin];
+  }
+
+  addUser(user: User): void{
+    this.users.push(user);
+  }
+
+  getUsers(): User[]{
+    return this.users;
+  }
+
+  getUserByName(login: string): User{
+      return this.users.find(user => user.login === login);
   }
 }
