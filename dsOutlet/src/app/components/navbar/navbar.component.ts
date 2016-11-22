@@ -16,8 +16,11 @@ export class NavbarComponent {
   modalActions = new EventEmitter<string|MaterializeAction>();
   login: string;
   senha: string;
+  private url: string;
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService) {
+    this.url = this.router.url;
+  }
 
   private fazerLogin(): void {
     if(this.userService.login(this.login, this.senha)){

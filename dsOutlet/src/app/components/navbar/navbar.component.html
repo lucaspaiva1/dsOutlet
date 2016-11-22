@@ -43,6 +43,17 @@
     <li *ngIf="!isLogado">
       <a materialize="modal" class="waves-effect waves-light btn blue darken-4" href="#loginModal">Login</a>
     </li>
+    <li class="divider"></li>
+    <li class="divider"></li>
+    <li *ngIf="isLogado"><a class="collection-item">Minha Conta</a></li>
+    <li *ngIf="isLogado"><a routerLink="/estoque" class="collection-item" [class.active]="url == '/estoque'">Estoque</a></li>
+    <li *ngIf="isLogado"><a routerLink="/cadastrar-produto" class="collection-item" [class.active]="url == '/cadastrar-produto'">Cadastrar Produto</a></li>
+    <li *ngIf="isLogado"><a routerLink="/editar-produto" class="collection-item" [class.active]="url == '/editar-produto'">Editar Produto</a></li>
+    <li *ngIf="isLogado"><a routerLink="/adicionar-produto" class="collection-item" [class.active]="url == '/adicionar-produto'">Adicionar Produto</a></li>
+    <li *ngIf="(isLogado && isAdmin)"><a routerLink="/relatorios" class="collection-item" [class.active]="url == '/relatorios'">Relatórios</a></li>
+    <li *ngIf="(isLogado && isAdmin)"><a routerLink="/funcionarios" class="collection-item" [class.active]="url == '/funcionarios'">Gerenciar Funcionários</a></li>
+    <li *ngIf="isLogado"><a routerLink="/clientes" class="collection-item" [class.active]="url == '/clientes'">Gerenciar Clientes</a></li>
+    <li *ngIf="isLogado"><a routerLink="/venda" class="collection-item" [class.active]="url == '/venda'">Iniciar Venda</a></li>
   </ul>
 </nav>
 
