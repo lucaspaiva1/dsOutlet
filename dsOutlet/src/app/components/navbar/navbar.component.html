@@ -4,16 +4,16 @@
   <a materialize="sideNav" [materializeParams]="[{draggable: true}]" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
   <!-- Buttons para exibição -->
   <ul id="nav-wrapper" class="right hide-on-med-and-down">
-    <li>
+    <li [class.active]="url == '/home'">
       <a routerLink="/home">Home</a>
     </li>
-    <li *ngIf="isLogado">
+    <li *ngIf="isLogado" [class.active]="url == '/controle-estoque'">
       <a routerLink="/controle-estoque">Gerenciador</a>
     </li>
-    <li *ngIf="(isLogado && isAdmin)">
+    <li *ngIf="(isLogado && isAdmin)" [class.active]="url == '/cadastrar-funcionario'">
       <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
     </li>
-    <li *ngIf="!isLogado">
+    <li *ngIf="!isLogado" [class.active]="url == '/fale-conosco'">
       <a routerLink="/fale-conosco">Fale Conosco</a>
     </li>
     <li *ngIf="!isLogado">
@@ -25,16 +25,16 @@
   </ul>
   <!-- Menu lateral para exibição mobile -->
   <ul class="side-nav active" id="mobile-demo">
-    <li>
+    <li [class.active]="url == '/home'" >
       <a routerLink="/home">Home</a>
     </li>
-    <li *ngIf="isLogado">
+    <li *ngIf="isLogado" [class.active]="url == '/controle-estoque'">
       <a routerLink="/controle-estoque">Gerenciador</a>
     </li>
-    <li *ngIf="!isLogado">
+    <li *ngIf="!isLogado" [class.active]="url == '/fale-conosco'">
       <a routerLink="/fale-conosco">Fale Conosco</a>
     </li>
-    <li *ngIf="(isLogado && isAdmin)">
+    <li *ngIf="(isLogado && isAdmin)" [class.active]="url == '/cadastrar-funcionario'">
       <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
     </li>
     <li *ngIf="isLogado">
@@ -46,14 +46,14 @@
     <li class="divider"></li>
     <li class="divider"></li>
     <li *ngIf="isLogado"><a class="collection-item">Minha Conta</a></li>
-    <li *ngIf="isLogado"><a routerLink="/estoque" class="collection-item" [class.active]="url == '/estoque'">Estoque</a></li>
-    <li *ngIf="isLogado"><a routerLink="/cadastrar-produto" class="collection-item" [class.active]="url == '/cadastrar-produto'">Cadastrar Produto</a></li>
-    <li *ngIf="isLogado"><a routerLink="/editar-produto" class="collection-item" [class.active]="url == '/editar-produto'">Editar Produto</a></li>
-    <li *ngIf="isLogado"><a routerLink="/adicionar-produto" class="collection-item" [class.active]="url == '/adicionar-produto'">Adicionar Produto</a></li>
-    <li *ngIf="(isLogado && isAdmin)"><a routerLink="/relatorios" class="collection-item" [class.active]="url == '/relatorios'">Relatórios</a></li>
-    <li *ngIf="(isLogado && isAdmin)"><a routerLink="/funcionarios" class="collection-item" [class.active]="url == '/funcionarios'">Gerenciar Funcionários</a></li>
-    <li *ngIf="isLogado"><a routerLink="/clientes" class="collection-item" [class.active]="url == '/clientes'">Gerenciar Clientes</a></li>
-    <li *ngIf="isLogado"><a routerLink="/venda" class="collection-item" [class.active]="url == '/venda'">Iniciar Venda</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/estoque'"><a routerLink="/estoque" class="collection-item">Estoque</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/cadastrar-produto'"><a routerLink="/cadastrar-produto" class="collection-item" >Cadastrar Produto</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/editar-produto'"><a routerLink="/editar-produto" class="collection-item" >Editar Produto</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/adicionar-produto'"><a routerLink="/adicionar-produto" class="collection-item" >Adicionar Produto</a></li>
+    <li *ngIf="(isLogado && isAdmin)" [class.active]="url == '/relatorios'"><a routerLink="/relatorios" class="collection-item" >Relatórios</a></li>
+    <li *ngIf="(isLogado && isAdmin)" [class.active]="url == '/funcionarios'"><a routerLink="/funcionarios" class="collection-item" >Gerenciar Funcionários</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/clientes'"><a routerLink="/clientes" class="collection-item" >Gerenciar Clientes</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/venda'"><a routerLink="/venda" class="collection-item" >Iniciar Venda</a></li>
   </ul>
 </nav>
 
