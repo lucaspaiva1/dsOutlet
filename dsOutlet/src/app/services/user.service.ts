@@ -1,60 +1,47 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http, Response } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { User } from '../model/user';
 
 @Injectable()
 export class UserService {
 
-  users: User[] = [];
+  private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private storage: LocalStorageService) {
-    let user1 = new User();
-    user1.nome = 'administrador';
-    user1.login = 'admin';
-    user1.admin = true;
-    user1.email = 'admin@admin.com';
-    user1.senha = 'admin';
-    let user2 = new User();
-    user2.nome = 'Usuario';
-    user2.login = 'user';
-    user2.admin = false;
-    user2.email = 'user@user.com';
-    user2.senha = 'user';
-    let user3 = new User();
-    user3.nome = 'Vendedor';
-    user3.login = 'vendor';
-    user3.admin = false;
-    user3.email = 'vendor@vendor.com';
-    user3.senha = 'vendor';
-    this.users.push(user1);
-    this.users.push(user2);
-    this.users.push(user3);
+  constructor(private storage: LocalStorageService, private http: Http) {
+
   }
 
-  login(username: string, pass: string): boolean {
-    console.log("dados recebidos:");
-    console.log(username);
-    console.log(pass);
-    if(username != null){
-    let usuario = this.users.find(user => user.login === username);
+  /*Usuario envia dados para solicitar login*/
+  login(username: string, pass: string): Promise<boolean> {
+      /*usuario e senha inseridos em um objeto*/
+      let user = new User();
+      user.login = 'teste';
+      user.senha = 'teste';
+      /*dados sao enviados para api*/
+      return this.http
+        .post('http://localhost/teste.php', JSON.stringify(user), {headers: this.headers})
+        .toPromise()
+        .then(res => this.extractLoginData(res))
+        .catch(this.handleError);
+  }
 
-    if(usuario != null){
-      if(usuario.senha === pass){
-        console.log("usuario retorno:");
-        console.log(usuario);
-        usuario.logado = true;
-        let logado = this.storage.set('user', usuario);
-        if (logado == null) {
-          logado = false;
-        }
-        return true;
-      }else{
-        return false;
-      }
+  private extractLoginData(res: Response){
+    let usuario = res.json();
+    if(usuario!="false"){
+      console.log(usuario);
+      usuario.logado = true;
+      let logado = this.storage.set('user', usuario);
+      return true
     }else{
       return false;
-    }}
-    else return false;
+    }
+  }
+
+  private handleError(error: any): Promise < any > {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
   }
 
   logout(): void {
@@ -71,14 +58,14 @@ export class UserService {
   }
 
   addUser(user: User): void{
-    this.users.push(user);
+    //this.users.push(user);
   }
 
   getUsers(): User[]{
-    return this.users;
+    return [];
   }
 
   getUserByName(login: string): User{
-      return this.users.find(user => user.login === login);
+    return new User();
   }
 }

@@ -23,9 +23,16 @@ export class NavbarComponent {
   }
 
   private fazerLogin(): void {
-    if(this.userService.login(this.login, this.senha)){
-      this.modalActions.emit({action:"modal",params:['close']});
-      this.router.navigate(['/controle-estoque']);
+    if(!(this.login == null || this.senha == null)){
+      this.userService.login(this.login, this.senha)
+      .then(sucess => {
+        if(sucess == true){
+            this.modalActions.emit({action:"modal",params:['close']});
+            this.router.navigate(['/controle-estoque']);
+        }else{
+          toast('Login ou senha incorretos', 4000, 'rounded');
+        }
+      });
     }else{
       toast('Login ou senha incorretos', 4000, 'rounded');
     }
