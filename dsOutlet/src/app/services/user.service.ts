@@ -7,43 +7,47 @@ import { User } from '../model/user';
 @Injectable()
 export class UserService {
 
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private storage: LocalStorageService, private http: Http) {
 
   }
 
-  /*Usuario envia dados para solicitar login*/
+  /*Usuario envia dados para solicitar login atraves de um POST*/
   login(username: string, pass: string): Promise<boolean> {
-      /*usuario e senha inseridos em um objeto*/
-      let user = new User();
-      user.login = 'teste';
-      user.senha = 'teste';
-      /*dados sao enviados para api*/
-      return this.http
-        .post('http://localhost/teste.php', JSON.stringify(user), {headers: this.headers})
-        .toPromise()
-        .then(res => this.extractLoginData(res))
-        .catch(this.handleError);
+    /*usuario e senha inseridos em um objeto*/
+    let user = {type:'login', login: username, senha: pass};
+
+    /*dados sao enviados para api*/
+    return this.http
+      .post('http://localhost/teste.php', JSON.stringify(user), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractLoginData(res))
+      .catch(this.handleError);
   }
 
-  private extractLoginData(res: Response){
+  /*Método que converte o arquivo json recebido da api php*/
+  private extractLoginData(res: Response) {
     let usuario = res.json();
-    if(usuario!="false"){
-      console.log(usuario);
+    /*se voltar false é pq nao foi possivel efetuar login*/
+    if (usuario != "false") {
+      usuario.admin = usuario.admin == '0' ? false : true; //os valores booleanos do banco sao 0 (false) ou 1 (true)
       usuario.logado = true;
+      console.log(usuario);
       let logado = this.storage.set('user', usuario);
       return true
-    }else{
+    } else {
       return false;
     }
   }
 
-  private handleError(error: any): Promise < any > {
-    console.error('An error occurred', error); // for demo purposes only
+  /*método chamado quando ocorre um erro no acesso a api php*/
+  private handleError(error: any): Promise<any> {
+    console.error('Ocorreu um erro!', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 
+  /*método que remove do cache os dados do usuario depois do logout*/
   logout(): void {
     this.storage.remove('user');
   }
@@ -57,15 +61,34 @@ export class UserService {
     return [user.logado, user.admin];
   }
 
-  addUser(user: User): void{
-    //this.users.push(user);
+  addUser(user: User):  Promise<any> {
+    let usuario = user as any;
+    usuario.type = 'add';
+    return this.http
+        .post('http://localhost/teste.php', JSON.stringify(usuario), {headers: this.headers})
+        .toPromise()
+        .then(res => res.json())
+        .catch(this.handleError);
   }
 
-  getUsers(): User[]{
-    return [];
+  /*Método que retorna todos usuarios do banco de dados para o admin gerenciar*/
+  getUsers(): Promise<User[]> {
+    return this.http.get('http://localhost/teste.php?id')
+      .toPromise()
+      .then(response => this.extractGetData(response))
+      .catch(this.handleError);
   }
 
-  getUserByName(login: string): User{
+  private extractGetData(res: Response) {
+    let data = res.json();
+    if (data == null) {
+      return [];
+    } else {
+      return data;
+    }
+  }
+
+  getUserByName(login: string): User {
     return new User();
   }
 }

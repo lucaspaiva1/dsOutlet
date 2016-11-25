@@ -11,11 +11,11 @@ import {MaterializeAction} from 'angular2-materialize';
 })
 export class NavbarComponent {
 
-  @Input() isAdmin: boolean = false;
-  @Input() isLogado: boolean = false;
+  @Input() isAdmin: boolean;
+  @Input() isLogado: boolean;
   modalActions = new EventEmitter<string|MaterializeAction>();
-  login: string;
-  senha: string;
+  private login: string;
+  private senha: string;
   private url: string;
 
   constructor(private router: Router, private userService: UserService) {

@@ -9,8 +9,8 @@ import { UserService } from '../../services/user.service';
 })
 export class GerenciadorComponent implements OnInit {
 
-  private isLogado: boolean = false;
-  private isAdmin: boolean = false;
+  private isLogado: boolean;
+  private isAdmin: boolean;
 
   constructor(private router: Router, private userService: UserService) {
     let stats = this.userService.userStats();

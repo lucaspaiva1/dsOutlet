@@ -18,8 +18,24 @@
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
         <div class="collection backgroud z-depth-4">
+
+          <!--Loading - aparece enquanto carrega a tabela-->
+          <div *ngIf="loading" class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+
           <!--Tabela de funcionarios, quando clicar em um itel vai abrir uma nova tela para editar as informaç~eos do mesmo e ao salvar retorna para esta tela-->
-          <table class="bordered striped responsive-table">
+          <table *ngIf="!loading" class="bordered striped responsive-table">
             <thead>
               <tr>
                 <th data-field="nome">Nome</th>
@@ -32,8 +48,8 @@
             <tbody>
               <tr *ngFor="let usuario of usuarios" (click)="editar(usuario)">
                 <td>{{usuario.nome}}</td>
-                <td *ngIf="usuario.admin">Administrador</td>
-                <td *ngIf="!usuario.admin">Comum</td>
+                <td *ngIf="usuario.admin=='1'">Administrador</td>
+                <td *ngIf="usuario.admin=='0'">Vendedor</td>
                 <td>{{usuario.login}}</td>
                 <td>{{usuario.senha}}</td>
               </tr>

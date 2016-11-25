@@ -12,16 +12,25 @@ import { User } from '../../model/user';
 })
 export class AdminGerenFuncionariosComponent implements OnInit {
 
-  private isLogado: boolean = false;
-  private isAdmin: boolean = false;
-  usuarios: User[];
+  private isLogado: boolean;
+  private isAdmin: boolean;
+  private loading: boolean;
+  private usuarios: User[];
 
   constructor(private router: Router, private userService: UserService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
-    console.log(this.isAdmin);
-    this.usuarios = this.userService.getUsers();
+    this.getUsers();
+  }
+
+  getUsers(): void {
+    this.loading = true;
+    this.userService.getUsers()
+      .then(users => {
+        this.usuarios = users;
+        this.loading = false;
+      });
   }
 
   ngOnInit() {
@@ -30,7 +39,7 @@ export class AdminGerenFuncionariosComponent implements OnInit {
     }
   }
 
-  editar(usuario: User){
+  editar(usuario: User) {
     this.router.navigate(['edit-funcionario/', usuario.login]);
   }
 
