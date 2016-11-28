@@ -14,9 +14,9 @@ export class AdminCadFuncionarioComponent implements OnInit {
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
 
-  usuario: User = new User();
+  private usuario: User = new User();
+  private confirmacaoSenha: string;
   sobrenome: string;
-  confirmacaoSenha: string;
   privilegio: string;
 
 
@@ -37,7 +37,7 @@ export class AdminCadFuncionarioComponent implements OnInit {
       toast('Estão faltando dados!', 4000, 'rounded');
     } else {
       if (this.usuario.senha != this.confirmacaoSenha) {
-        toast('Senha não Correspondentes!', 4000, 'rounded');
+        toast('Senha não correspondem!', 4000, 'rounded');
       } else {
         if (this.sobrenome != null) {
           this.usuario.nome = this.usuario.nome + " " + this.sobrenome;
@@ -47,7 +47,7 @@ export class AdminCadFuncionarioComponent implements OnInit {
         this.usuario = new User();
         this.sobrenome = '';
         this.confirmacaoSenha = '';
-        toast('Cadastro efetuado  !', 4000, 'rounded');
+        toast('Cadastro efetuado!', 4000, 'rounded');
       }
     }
   }

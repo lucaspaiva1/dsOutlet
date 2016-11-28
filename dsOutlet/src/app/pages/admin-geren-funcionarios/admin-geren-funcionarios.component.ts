@@ -40,7 +40,7 @@ export class AdminGerenFuncionariosComponent implements OnInit {
   }
 
   editar(usuario: User) {
-    this.router.navigate(['edit-funcionario/', usuario.login]);
+    this.router.navigate(['edit-funcionario/', usuario.id]);
   }
 
 }

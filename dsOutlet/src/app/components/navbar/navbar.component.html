@@ -7,11 +7,11 @@
     <li [class.active]="url == '/home'">
       <a routerLink="/home">Home</a>
     </li>
-    <li *ngIf="isLogado" [class.active]="url == '/controle-estoque'">
-      <a routerLink="/controle-estoque">Gerenciador</a>
+    <li *ngIf="isLogado" [class.active]="url == '/gerenciador'">
+      <a routerLink="/gerenciador">Gerenciador</a>
     </li>
-    <li *ngIf="(isLogado && isAdmin)" [class.active]="url == '/cadastrar-funcionario'">
-      <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
+    <li *ngIf="(isLogado && isAdmin)" [class.active]="url == '/gerenciador/cadastrar-funcionario'">
+      <a routerLink="/gerenciador/cadastrar-funcionario">Cadastrar Funcionário</a>
     </li>
     <li *ngIf="!isLogado" [class.active]="url == '/fale-conosco'">
       <a routerLink="/fale-conosco">Fale Conosco</a>
@@ -25,17 +25,17 @@
   </ul>
   <!-- Menu lateral para exibição mobile -->
   <ul class="side-nav active" id="mobile-demo">
-    <li [class.active]="url == '/home'" >
+    <li [class.active]="url == '/home'">
       <a routerLink="/home">Home</a>
     </li>
-    <li *ngIf="isLogado" [class.active]="url == '/controle-estoque'">
-      <a routerLink="/controle-estoque">Gerenciador</a>
+    <li *ngIf="isLogado" [class.active]="url == '/gerenciador'">
+      <a routerLink="/gerenciador">Gerenciador</a>
     </li>
     <li *ngIf="!isLogado" [class.active]="url == '/fale-conosco'">
       <a routerLink="/fale-conosco">Fale Conosco</a>
     </li>
-    <li *ngIf="(isLogado && isAdmin)" [class.active]="url == '/cadastrar-funcionario'">
-      <a routerLink="/cadastrar-funcionario">Cadastrar Funcionário</a>
+    <li *ngIf="(isLogado && isAdmin)" [class.active]="url == '/gerenciador/cadastrar-funcionario'">
+      <a routerLink="/gerenciador/cadastrar-funcionario">Cadastrar Funcionário</a>
     </li>
     <li *ngIf="isLogado">
       <a class="waves-effect waves-light btn blue darken-4" (click)="deslogar()">Deslogar</a>
@@ -46,19 +46,19 @@
     <li class="divider"></li>
     <li class="divider"></li>
     <li *ngIf="isLogado"><a class="collection-item">Minha Conta</a></li>
-    <li *ngIf="isLogado" [class.active]="url == '/estoque'"><a routerLink="/estoque" class="collection-item">Estoque</a></li>
-    <li *ngIf="isLogado" [class.active]="url == '/cadastrar-produto'"><a routerLink="/cadastrar-produto" class="collection-item" >Cadastrar Produto</a></li>
-    <li *ngIf="isLogado" [class.active]="url == '/editar-produto'"><a routerLink="/editar-produto" class="collection-item" >Editar Produto</a></li>
-    <li *ngIf="isLogado" [class.active]="url == '/adicionar-produto'"><a routerLink="/adicionar-produto" class="collection-item" >Adicionar Produto</a></li>
-    <li *ngIf="(isLogado && isAdmin)" [class.active]="url == '/relatorios'"><a routerLink="/relatorios" class="collection-item" >Relatórios</a></li>
-    <li *ngIf="(isLogado && isAdmin)" [class.active]="url == '/funcionarios'"><a routerLink="/funcionarios" class="collection-item" >Gerenciar Funcionários</a></li>
-    <li *ngIf="isLogado" [class.active]="url == '/clientes'"><a routerLink="/clientes" class="collection-item" >Gerenciar Clientes</a></li>
-    <li *ngIf="isLogado" [class.active]="url == '/venda'"><a routerLink="/venda" class="collection-item" >Iniciar Venda</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/gerenciador/estoque'"><a routerLink="/estoque" class="collection-item">Estoque</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/gerenciador/cadastrar-produto'"><a routerLink="/gerenciador/cadastrar-produto" class="collection-item">Cadastrar Produto</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/gerenciador/editar-produto'"><a routerLink="/gerenciador/editar-produto" class="collection-item">Editar Produto</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/gerenciador/adicionar-produto'"><a routerLink="/gerenciador/adicionar-produto" class="collection-item">Adicionar Produto</a></li>
+    <li *ngIf="(isLogado && isAdmin)" [class.active]="url == 'gerenciador/relatorios'"><a routerLink="/gerenciador/relatorios" class="collection-item">Relatórios</a></li>
+    <li *ngIf="(isLogado && isAdmin)" [class.active]="url == 'gerenciador/funcionarios'"><a routerLink="/gerenciador/funcionarios" class="collection-item">Gerenciar Funcionários</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/gerenciador/clientes'"><a routerLink="/gerenciador/clientes" class="collection-item">Gerenciar Clientes</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/gerenciador/venda'"><a routerLink="/gerenciador/venda" class="collection-item">Iniciar Venda</a></li>
   </ul>
 </nav>
 
 <!--Login Modal-->
-<div  materialize="modal" id="loginModal" class="modal modal-fixed-footer loginPane light-blue" [materializeActions]="modalActions">
+<div materialize="modal" id="loginModal" class="modal modal-fixed-footer loginPane light-blue" [materializeActions]="modalActions">
   <div class="modal-content">
     <h4 class="center white-text">LogIn</h4>
     <form class="">
@@ -72,9 +72,9 @@
         <label class="white-text" for="senha">Senha</label>
       </div>
       <p class="white-text">
-      <input type="checkbox" class="white-text" id="remenber" />
-      <label class="white-text" for="remenber">Lembrar de mim</label>
-    </p>
+        <input type="checkbox" class="white-text" id="remenber" />
+        <label class="white-text" for="remenber">Lembrar de mim</label>
+      </p>
     </form>
   </div>
   <div class="modal-footer light-blue loginPaneFooter">

@@ -28,7 +28,7 @@ export class NavbarComponent {
       .then(sucess => {
         if(sucess == true){
             this.modalActions.emit({action:"modal",params:['close']});
-            this.router.navigate(['/controle-estoque']);
+            this.router.navigate(['/gerenciador']);
         }else{
           toast('Login ou senha incorretos', 4000, 'rounded');
         }

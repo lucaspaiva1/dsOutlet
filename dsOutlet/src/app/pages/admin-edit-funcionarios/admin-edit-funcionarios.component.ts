@@ -13,7 +13,7 @@ export class AdminEditFuncionariosComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
-  usuario: User;
+  private usuario: User;
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) {
     let stats = this.userService.userStats();
@@ -26,10 +26,10 @@ export class AdminEditFuncionariosComponent implements OnInit {
       this.router.navigate(['/home']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
     } else {
       this.route.params.forEach((params: Params) => {
-        let username = ""+params['username'];
-        this.usuario = this.userService.getUserByName(username);
+        let id = params['id'];
+        this.usuario = this.userService.getUser(id);
         console.log(this.usuario);
-        })
+      })
     }
   }
 

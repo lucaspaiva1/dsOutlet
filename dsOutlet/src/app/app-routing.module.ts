@@ -28,48 +28,48 @@ const routes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full'
   }, {
-    path: 'controle-estoque',
+    path: 'gerenciador',
     component: GerenciadorComponent
   },
   {
-    path: 'estoque',
+    path: 'gerenciador/estoque',
     component: AdminEstoqueComponent
   },
   {
-    path: 'cadastrar-produto',
+    path: 'gerenciador/cadastrar-produto',
     component: AdminCadProdutoComponent
   },
   {
-    path: 'editar-produto',
+    path: 'gerenciador/editar-produto',
     component: AdminEditProdutoComponent
   },
   {
-    path: 'adicionar-produto',
+    path: 'gerenciador/adicionar-produto',
     component: AdminAddProdutoComponent
   },
   {
-    path: 'cadastrar-funcionario',
+    path: 'gerenciador/cadastrar-funcionario',
     component: AdminCadFuncionarioComponent
   },
   {
-    path: 'funcionarios',
+    path: 'gerenciador/funcionarios',
     component: AdminGerenFuncionariosComponent
   },
   {
-    path: 'edit-funcionario/:username',
+    path: 'gerenciador/edit-funcionario/:id',
     component: AdminEditFuncionariosComponent
   },
   {
-    path: 'venda',
+    path: 'gerenciador/venda',
     component: VendasComponent
   }, {
-    path: 'clientes',
+    path: 'gerenciador/clientes',
     component: AdminGerenClientesComponent
   }, {
-    path: 'clientes/cadastro',
+    path: 'gerenciador/clientes/cadastro',
     component: AdminAddClientesComponent
   }, {
-    path: 'clientes/editar/:name',
+    path: 'gerenciador/clientes/editar/:name',
     component: AdminEditClientesComponent
   }
 ];

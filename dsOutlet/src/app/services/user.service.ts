@@ -8,6 +8,7 @@ import { User } from '../model/user';
 export class UserService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
+  private users: User[];
 
   constructor(private storage: LocalStorageService, private http: Http) {
 
@@ -20,7 +21,7 @@ export class UserService {
 
     /*dados sao enviados para api*/
     return this.http
-      .post('http://localhost/teste.php', JSON.stringify(user), { headers: this.headers })
+      .post('http://192.168.25.2/teste.php', JSON.stringify(user), { headers: this.headers })
       .toPromise()
       .then(res => this.extractLoginData(res))
       .catch(this.handleError);
@@ -61,11 +62,12 @@ export class UserService {
     return [user.logado, user.admin];
   }
 
+  /*metodo que adiciona no banco um usuario*/
   addUser(user: User):  Promise<any> {
     let usuario = user as any;
     usuario.type = 'add';
     return this.http
-        .post('http://localhost/teste.php', JSON.stringify(usuario), {headers: this.headers})
+        .post('http://192.168.25.2/teste.php', JSON.stringify(usuario), {headers: this.headers})
         .toPromise()
         .then(res => res.json())
         .catch(this.handleError);
@@ -73,22 +75,30 @@ export class UserService {
 
   /*Método que retorna todos usuarios do banco de dados para o admin gerenciar*/
   getUsers(): Promise<User[]> {
-    return this.http.get('http://localhost/teste.php?id')
+    return this.http.get('http://192.168.25.2/teste.php?id')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleError);
   }
 
+  /*método que extrai os dados do json recebido do backend*/
   private extractGetData(res: Response) {
     let data = res.json();
     if (data == null) {
-      return [];
+      this.users = [];
     } else {
-      return data;
+      this.users = data;
     }
+    return this.users;
   }
 
   getUserByName(login: string): User {
+    console.log("userbyname");
     return new User();
   }
+
+  getUser(id: number): User{
+    return this.users.find(user => user.id === id);
+  }
+
 }
