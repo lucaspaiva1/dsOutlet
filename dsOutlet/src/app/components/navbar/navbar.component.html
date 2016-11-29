@@ -60,7 +60,7 @@
 <!--Login Modal-->
 <div materialize="modal" id="loginModal" class="modal modal-fixed-footer loginPane light-blue" [materializeActions]="modalActions">
   <div class="modal-content">
-    <h4 class="center white-text">LogIn</h4>
+    <h4 class="center white-text" style="padding-right: 10px">LogIn</h4>
     <form class="">
       <div class="input-field white-text campo">
         <i class="material-icons prefix">perm_identity</i>
@@ -78,7 +78,27 @@
     </form>
   </div>
   <div class="modal-footer light-blue loginPaneFooter">
-    <a class="left white-text">Esqueci minha senha</a>
+    <a materialize="modal"  href="#esqueciModal" class="left white-text">Esqueci minha senha</a>
     <a class="waves-effect waves-light btn blue darken-4" (click)="fazerLogin()">Login</a>
+  </div>
+</div>
+
+<!--Esqueci a senha Modal-->
+<div materialize="modal" id="esqueciModal" class="modal modal-fixed-footer loginPane light-blue" [materializeActions]="modalActions">
+  <div class="modal-content">
+    <h4 class="center white-text" style="padding-right: 10px">Esqueci minha senha</h4>
+    <form class="">
+      <div class="input-field white-text campo">
+        <i class="material-icons prefix">perm_identity</i>
+        <input id="usuario" type="text" class="validate white-text" [(ngModel)]="login" [ngModelOptions]="{standalone: true}">
+        <label class="white-text" for="usuario">Email</label>
+      </div>
+      <div class="">
+        <p class="white-text justity" style="padding-right: 10px">Sera enviado um email para a conta associada com o email acima com as instruções para redefinição da senha</p>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer light-blue loginPaneFooter">
+    <a class="waves-effect waves-light btn blue darken-4" (click)="fazerLogin()">Enviar</a>
   </div>
 </div>
