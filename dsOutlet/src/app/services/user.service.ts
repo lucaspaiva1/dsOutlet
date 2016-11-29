@@ -63,14 +63,27 @@ export class UserService {
   }
 
   /*metodo que adiciona no banco um usuario*/
-  addUser(user: User):  Promise<any> {
-    let usuario = user as any;
-    usuario.type = 'add';
+  addUser(user: User):  Promise<string> {
+
     return this.http
-        .post('http://localhost/teste.php', JSON.stringify(usuario), {headers: this.headers})
+        .post('http://localhost/cadastro.php', JSON.stringify(user), {headers: this.headers})
         .toPromise()
-        .then(res => res.json())
+        .then(res => this.extractAddData(res))
         .catch(this.handleError);
+  }
+
+  /*método que extrai os dados do json recebido do backend*/
+  private extractAddData(res: Response) {
+    let data = res.json();
+    if(data == 'login'){
+      return "Login já está em uso";
+    }else if(data == 'email'){
+      return "Email já está em uso";
+    }else if(data == true){
+      return "Cadastro Efetuado!";
+    }else{
+      return "ops";
+    }
   }
 
   /*Método que retorna todos usuarios do banco de dados para o admin gerenciar*/

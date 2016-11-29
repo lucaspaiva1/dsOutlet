@@ -25,17 +25,17 @@
                 <div class="input-field col s12 m6 l6 white-text">
                   <i class="material-icons prefix">perm_identity</i>
                   <input id="first_name" type="text" class="validate white-text" [(ngModel)]="usuario.nome" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="first_name">Primeiro nome</label>
+                  <label class="white-text" for="first_name">Nome</label>
                 </div>
                 <div class="input-field col s12 m6 l6 white-text">
-                  <input id="last_name" type="text" class="validate  white-text"  [(ngModel)]="sobrenome" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="last_name">Ultimo nome</label>
+                  <input id="email" type="text" class="validate  white-text"  [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}">
+                  <label class="white-text" for="email">Email</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m4 l4">
                   <input id="max" type="text" class="validate" [(ngModel)]="usuario.login" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="max">Nome de usuário</label>
+                  <label class="white-text" for="max">Login</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
                   <input id="senha" type="password" class="validate" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
