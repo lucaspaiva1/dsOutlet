@@ -7,6 +7,7 @@ export class User {
   senha: string;
   admin: boolean;
   logado: boolean;
+  acesso: string;
 
   constructor() {
   }

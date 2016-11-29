@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Produto } from '../../model/produto';
 import { UserService } from '../../services/user.service';
 import { User } from '../../model/user';
+import { toast } from 'angular2-materialize';
 
 @Component({
   selector: 'app-admin-edit-funcionarios',
@@ -31,6 +32,17 @@ export class AdminEditFuncionariosComponent implements OnInit {
         console.log(this.usuario);
       })
     }
+  }
+
+  excluir(){
+
+    this.userService.deleteUser(this.usuario.id).then(res=>{
+      if(res){
+        toast('Excluído!', 4000, 'rouded');
+      }else{
+        toast('Não foi possível excluir', 4000, 'rouded');
+      }
+    });
   }
 
 }
