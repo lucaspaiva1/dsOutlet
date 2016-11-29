@@ -26,7 +26,7 @@
 		$result = $con->query($sql);
 		
 		$numrow = $result->num_rows;
-			if($numrow !== 1){
+			if($numrow !== 1 && $nome != ""){
 				$sql = "SELECT * FROM usuario WHERE email = '$email'";
 				$result = $con->query($sql);
 				$numrow = $result->num_rows;
