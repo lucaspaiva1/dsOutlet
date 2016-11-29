@@ -15,13 +15,11 @@ export class UserService {
   }
 
   /*Usuario envia dados para solicitar login atraves de um POST*/
-  login(username: string, pass: string): Promise<boolean> {
-    /*usuario e senha inseridos em um objeto*/
-    let user = {type:'login', login: username, senha: pass};
+  login(login: string, senha: string): Promise<boolean> {
 
     /*dados sao enviados para api*/
     return this.http
-      .post('http://192.168.25.2/teste.php', JSON.stringify(user), { headers: this.headers })
+      .post('http://192.168.25.2/teste.php', JSON.stringify({login: login, senha: senha}), { headers: this.headers })
       .toPromise()
       .then(res => this.extractLoginData(res))
       .catch(this.handleError);
@@ -32,7 +30,7 @@ export class UserService {
     let usuario = res.json();
     /*se voltar false é pq nao foi possivel efetuar login*/
     if (usuario != "false") {
-      usuario.admin = usuario.admin == '0' ? false : true; //os valores booleanos do banco sao 0 (false) ou 1 (true)
+      usuario.admin = usuario.admin == 'A' ? true : false; //os valores booleanos do banco sao 0 (false) ou 1 (true)
       usuario.logado = true;
       console.log(usuario);
       let logado = this.storage.set('user', usuario);
@@ -59,7 +57,7 @@ export class UserService {
     if (user == null) {
       return [false, false];
     }
-    return [user.logado, user.admin];
+    return [user.logado, user.acesso];
   }
 
   /*metodo que adiciona no banco um usuario*/
