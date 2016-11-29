@@ -15,12 +15,12 @@
 		$email  = $request->email;
 		$login  = $request->login;
 		$senha  = $request->senha;
-		$acesso = $request->acesso;
+		$acesso = $request->admin;
 		
 		if ($acesso)
 			$acesso = 'A';
 		else
-			$acesso = 'B';
+			$acesso = 'C';
 		
 		$sql = "SELECT * FROM usuario WHERE login = '$login'";
 		$result = $con->query($sql);
@@ -32,7 +32,7 @@
 				$numrow = $result->num_rows;
 				if ($numrow !== 1){
 					$sql = "INSERT INTO usuario (nome, email, login, senha, acesso) VALUES ('$nome', '$email', '$login', '$senha', '$acesso')";
-					$con ->query($sql);
+					$con->query($sql);
 					echo json_encode(true);
 				} else {
 					echo json_encode("email");
