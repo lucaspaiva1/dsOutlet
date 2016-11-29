@@ -12,7 +12,7 @@
 	if (isset($postdata)){
 		$request = json_decode($postdata);
 		
-		$login = $request->id;
+		$id = $request->id;
 		
 		$sql = "SELECT * FROM usuario WHERE id = '$id'";
 		$result = $con->query($sql);
