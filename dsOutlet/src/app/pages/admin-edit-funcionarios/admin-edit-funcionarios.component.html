@@ -24,34 +24,37 @@
               <div class="row">
                 <div class="input-field col s12 m6 l6 white-text">
                   <i class="material-icons prefix">perm_identity</i>
-                  <input placeholder="Primeiro nome" id="first_name" type="text" class="validate white-text" value="{{usuario.nome}}">
+                  <input placeholder="" id="first_name" type="text" class="validate white-text" [(ngModel)]="usuario.nome" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="first_name">Primeiro nome</label>
                 </div>
                 <div class="input-field col s12 m6 l6 white-text">
-                  <input id="email" type="text" class="validate  white-text" value="{{usuario.email}}">
+                  <input placeholder="" id="email" type="text" class="validate  white-text" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="email">Email</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m4 l4">
-                  <input id="max" type="text" class="validate" value="{{usuario.login}}">
+                  <input placeholder="" id="max" type="text" class="validate" [(ngModel)]="usuario.login" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="max">Nome de usuário</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="senha" type="password" class="validate" value="{{usuario.senha}}">
+                  <input placeholder="" id="senha" type="password" class="validate" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="senha">Senha</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="rep-senha" type="password" class="validate" value="{{usuario.senha}}">
+                  <input placeholder="" id="rep-senha" type="password" class="validate" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="rep-senha">Repetir senha</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s4 m4 l4 white-text">
-                  <select materialize="material_select" [(ngModel)]="privilegio" [ngModelOptions]="{standalone: true}">
-                    <option value="false" disabled selected>Privilégio</option>
-                    <option value="true">Administrador</option>
-                    <option value="false">Vendedor</option>
+                  <select *ngIf="usuario.acesso=='A'" materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
+                    <option value="A">Administrador</option>
+                    <option value="C">Vendedor</option>
+                  </select>
+                  <select *ngIf="usuario.acesso=='C'" materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
+                    <option value="C">Vendedor</option>
+                    <option value="A">Administrador</option>
                   </select>
                   <label class="white-text">Privilégio</label>
                 </div>
@@ -59,7 +62,7 @@
                   <a (click)="editar()" class="btn waves-effect waves-light blue darken-4">Salvar
                       <i class="material-icons right">send</i>
                     </a>
-                    <a (click)="excluir()" class="btn waves-effect waves-light red darken-4">Excluir
+                  <a (click)="excluir()" class="btn waves-effect waves-light red darken-4">Excluir
                         <i class="material-icons right">send</i>
                       </a>
                 </div>

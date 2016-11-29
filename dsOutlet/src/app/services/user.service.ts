@@ -8,7 +8,7 @@ import { User } from '../model/user';
 export class UserService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  private users: User[];
+  private users: User[] = [];
 
   constructor(private storage: LocalStorageService, private http: Http) {
 
@@ -122,7 +122,7 @@ export class UserService {
 
   editUser(user: User){
     return this.http
-    .put('http://localhost/delete.php', JSON.stringify(user), {headers: this.headers})
+    .post('http://localhost/edit.php', JSON.stringify(user), {headers: this.headers})
     .toPromise()
     .then(res => this.extractEditData(res))
     .catch(this.handleError);

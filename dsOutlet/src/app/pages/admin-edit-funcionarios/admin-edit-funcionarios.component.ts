@@ -30,33 +30,31 @@ export class AdminEditFuncionariosComponent implements OnInit {
       this.route.params.forEach((params: Params) => {
         let id = params['id'];
         this.usuario = this.userService.getUser(id);
-        console.log(this.usuario);
       })
     }
   }
 
-  editar(){
+  editar() {
     this.usuario.acesso = this.privilegio == 'true' ? 'A' : 'C';
     console.log(this.usuario);
-    this.userService.editUser(this.usuario).then(res=>{
-      if(res){
+    this.userService.editUser(this.usuario).then(res => {
+      if (res) {
         toast('Salvo!', 4000, 'rouded');
         this.router.navigate(['/gerenciador/funcionarios']);
-      }else{
-        toast('Não foi possível salvar!', 4000, 'rouded');
+      } else {
+        toast('Não foi possível salvar!', 4000, 'rounded');
       }
 
     });
   }
 
-  excluir(){
-    console.log(this.usuario.id);
-    this.userService.deleteUser(this.usuario.id).then(res=>{
-      if(res){
+  excluir() {
+    this.userService.deleteUser(this.usuario.id).then(res => {
+      if (res) {
         toast('Excluído!', 4000, 'rouded');
         this.router.navigate(['/gerenciador/funcionarios']);
-      }else{
-        toast('Não foi possível excluir', 4000, 'rouded');
+      } else {
+        toast('Não foi possível excluir', 4000, 'rounded');
       }
     });
   }
