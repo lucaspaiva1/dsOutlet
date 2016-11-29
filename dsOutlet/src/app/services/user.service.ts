@@ -19,7 +19,7 @@ export class UserService {
 
     /*dados sao enviados para api*/
     return this.http
-      .post('http://192.168.25.2/teste.php', JSON.stringify({login: login, senha: senha}), { headers: this.headers })
+      .post('http://localhost/logar.php', JSON.stringify({login: login, senha: senha}), { headers: this.headers })
       .toPromise()
       .then(res => this.extractLoginData(res))
       .catch(this.handleError);
@@ -27,10 +27,12 @@ export class UserService {
 
   /*Método que converte o arquivo json recebido da api php*/
   private extractLoginData(res: Response) {
+    console.log(res);
     let usuario = res.json();
+    console.log(usuario);
     /*se voltar false é pq nao foi possivel efetuar login*/
-    if (usuario != "false") {
-      usuario.admin = usuario.admin == 'A' ? true : false; //os valores booleanos do banco sao 0 (false) ou 1 (true)
+    if (usuario != false) {
+      usuario.admin = usuario.acesso == 'A' ? true : false; //os valores booleanos do banco sao 0 (false) ou 1 (true)
       usuario.logado = true;
       console.log(usuario);
       let logado = this.storage.set('user', usuario);
@@ -57,7 +59,7 @@ export class UserService {
     if (user == null) {
       return [false, false];
     }
-    return [user.logado, user.acesso];
+    return [user.logado, user.admin];
   }
 
   /*metodo que adiciona no banco um usuario*/
@@ -65,7 +67,7 @@ export class UserService {
     let usuario = user as any;
     usuario.type = 'add';
     return this.http
-        .post('http://192.168.25.2/teste.php', JSON.stringify(usuario), {headers: this.headers})
+        .post('http://localhost/teste.php', JSON.stringify(usuario), {headers: this.headers})
         .toPromise()
         .then(res => res.json())
         .catch(this.handleError);
@@ -73,7 +75,7 @@ export class UserService {
 
   /*Método que retorna todos usuarios do banco de dados para o admin gerenciar*/
   getUsers(): Promise<User[]> {
-    return this.http.get('http://192.168.25.2/teste.php?id')
+    return this.http.get('http://localhost/teste.php?id')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleError);

@@ -5,7 +5,7 @@ export class User {
   email: string;
   login: string;
   senha: string;
-  acesso: boolean;
+  admin: boolean;
   logado: boolean;
 
   constructor() {
