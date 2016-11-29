@@ -27,14 +27,11 @@ export class UserService {
 
   /*Método que converte o arquivo json recebido da api php*/
   private extractLoginData(res: Response) {
-    console.log(res);
     let usuario = res.json();
-    console.log(usuario);
     /*se voltar false é pq nao foi possivel efetuar login*/
     if (usuario != false) {
       usuario.admin = usuario.acesso == 'A' ? true : false; //os valores booleanos do banco sao 0 (false) ou 1 (true)
       usuario.logado = true;
-      console.log(usuario);
       let logado = this.storage.set('user', usuario);
       return true
     } else {
@@ -64,13 +61,31 @@ export class UserService {
 
   /*metodo que adiciona no banco um usuario*/
   addUser(user: User):  Promise<any> {
-    let usuario = user as any;
-    usuario.type = 'add';
+
     return this.http
-        .post('http://localhost/teste.php', JSON.stringify(usuario), {headers: this.headers})
+        .post('http://localhost/cadastro.php', JSON.stringify(user), {headers: this.headers})
         .toPromise()
-        .then(res => res.json())
+        .then(res => this.extractAddData(res))
         .catch(this.handleError);
+  }
+
+  /*método que extrai os dados do json recebido do backend*/
+  private extractAddData(res: Response) {
+    let data = res.json();
+    let retorno = {type:0, message:''};
+    if(data == "login"){
+      retorno.type = 1;
+      retorno.message ="Login já está em uso";
+      return retorno;
+    }else if(data == 'email'){
+      retorno.type = 2;
+      retorno.message ="Email já está em uso";
+      return retorno;
+    }else if(data == true){
+      retorno.type = 3;
+      retorno.message ="Cadastro Efetuado!";
+      return retorno;
+    }
   }
 
   /*Método que retorna todos usuarios do banco de dados para o admin gerenciar*/
@@ -93,7 +108,6 @@ export class UserService {
   }
 
   getUserByName(login: string): User {
-    console.log("userbyname");
     return new User();
   }
 

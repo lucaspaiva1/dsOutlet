@@ -16,7 +16,6 @@ export class AdminCadFuncionarioComponent implements OnInit {
 
   private usuario: User = new User();
   private confirmacaoSenha: string;
-  sobrenome: string;
   privilegio: string;
 
 
@@ -33,21 +32,25 @@ export class AdminCadFuncionarioComponent implements OnInit {
   }
 
   cadastrarUsuario() {
-    if (this.usuario.nome == null || this.usuario.login == null || this.usuario.senha == null || this.privilegio == null) {
+    console.log("cliquei!!!!!!!!!");
+    console.log(this.usuario);
+    if (this.usuario.nome == null || this.usuario.login == null || this.usuario.senha == null || this.privilegio == null || this.usuario.email== null) {
       toast('Estão faltando dados!', 4000, 'rounded');
     } else {
       if (this.usuario.senha != this.confirmacaoSenha) {
         toast('Senha não correspondem!', 4000, 'rounded');
       } else {
-        if (this.sobrenome != null) {
-          this.usuario.nome = this.usuario.nome + " " + this.sobrenome;
-          this.usuario.admin = this.privilegio == 'true' ? true : false;
-        }
-        this.userService.addUser(this.usuario);
-        this.usuario = new User();
-        this.sobrenome = '';
-        this.confirmacaoSenha = '';
-        toast('Cadastro efetuado!', 4000, 'rounded');
+
+        this.usuario.admin = this.privilegio == 'true' ? true : false;
+
+        this.userService.addUser(this.usuario)
+        .then(retorno=>{
+          if(retorno.type == 3){
+            this.usuario = new User();
+            this.confirmacaoSenha = '';
+          }
+          toast(retorno.message, 4000, 'rounded');
+        });
       }
     }
   }
