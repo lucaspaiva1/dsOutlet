@@ -28,8 +28,8 @@
                   <label class="white-text" for="first_name">Primeiro nome</label>
                 </div>
                 <div class="input-field col s12 m6 l6 white-text">
-                  <input id="last_name" type="text" class="validate  white-text" value="{{usuario.nome}}">
-                  <label class="white-text" for="last_name">Ultimo nome</label>
+                  <input id="email" type="text" class="validate  white-text" value="{{usuario.email}}">
+                  <label class="white-text" for="email">Email</label>
                 </div>
               </div>
               <div class="row">
@@ -48,15 +48,15 @@
               </div>
               <div class="row">
                 <div class="input-field col s4 m4 l4 white-text">
-                  <select materialize="material_select">
-                    <option  value="" disabled selected>Choose your option</option>
-                    <option  value="administrador">Administrador</option>
-                    <option  value="vendedor">Vendedor</option>
+                  <select materialize="material_select" [(ngModel)]="privilegio" [ngModelOptions]="{standalone: true}">
+                    <option value="false" disabled selected>Privilégio</option>
+                    <option value="true">Administrador</option>
+                    <option value="false">Vendedor</option>
                   </select>
                   <label class="white-text">Privilégio</label>
                 </div>
                 <div class="col s6 offset-s4 m6 offset-m4 l6 offset-l6">
-                  <a onclick="Materialize.toast('Salvo!', 4000, 'rouded')" class="btn waves-effect waves-light blue darken-4">Salvar
+                  <a (click)="editar()" class="btn waves-effect waves-light blue darken-4">Salvar
                       <i class="material-icons right">send</i>
                     </a>
                     <a (click)="excluir()" class="btn waves-effect waves-light red darken-4">Excluir

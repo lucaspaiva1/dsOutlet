@@ -15,6 +15,7 @@ export class AdminEditFuncionariosComponent implements OnInit {
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
   private usuario: User;
+  privilegio: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) {
     let stats = this.userService.userStats();
@@ -34,11 +35,26 @@ export class AdminEditFuncionariosComponent implements OnInit {
     }
   }
 
-  excluir(){
+  editar(){
+    this.usuario.acesso = this.privilegio == 'true' ? 'A' : 'C';
+    console.log(this.usuario);
+    this.userService.editUser(this.usuario).then(res=>{
+      if(res){
+        toast('Salvo!', 4000, 'rouded');
+        this.router.navigate(['/gerenciador/funcionarios']);
+      }else{
+        toast('Não foi possível salvar!', 4000, 'rouded');
+      }
 
+    });
+  }
+
+  excluir(){
+    console.log(this.usuario.id);
     this.userService.deleteUser(this.usuario.id).then(res=>{
       if(res){
         toast('Excluído!', 4000, 'rouded');
+        this.router.navigate(['/gerenciador/funcionarios']);
       }else{
         toast('Não foi possível excluir', 4000, 'rouded');
       }

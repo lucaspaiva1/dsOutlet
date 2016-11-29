@@ -99,7 +99,6 @@ export class UserService {
   /*método que extrai os dados do json recebido do backend*/
   private extractGetData(res: Response) {
     let data = res.json();
-    console.log(data);
     if (data == null) {
       this.users = [];
     } else {
@@ -110,13 +109,26 @@ export class UserService {
 
   deleteUser(id: number): Promise<boolean>{
     return this.http
-        .post('http://localhost/delete.php', JSON.stringify(id), {headers: this.headers})
+        .post('http://localhost/delete.php', JSON.stringify({id:id}), {headers: this.headers})
         .toPromise()
         .then(res => this.extractDelData(res))
         .catch(this.handleError);
   }
 
   private extractDelData(res: Response){
+    let data = res.json();
+    return data;
+  }
+
+  editUser(user: User){
+    return this.http
+    .put('http://localhost/delete.php', JSON.stringify(user), {headers: this.headers})
+    .toPromise()
+    .then(res => this.extractEditData(res))
+    .catch(this.handleError);
+  }
+
+  private extractEditData(res: Response){
     let data = res.json();
     console.log(data);
     return data;
