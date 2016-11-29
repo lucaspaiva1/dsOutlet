@@ -32,6 +32,7 @@ export class AdminCadFuncionarioComponent implements OnInit {
   }
 
   cadastrarUsuario() {
+    console.log("cliquei!!!!!!!!!");
     console.log(this.usuario);
     if (this.usuario.nome == null || this.usuario.login == null || this.usuario.senha == null || this.privilegio == null || this.usuario.email== null) {
       toast('Estão faltando dados!', 4000, 'rounded');
@@ -43,10 +44,12 @@ export class AdminCadFuncionarioComponent implements OnInit {
         this.usuario.admin = this.privilegio == 'true' ? true : false;
 
         this.userService.addUser(this.usuario)
-        .then(mensagem=>{
-          this.usuario = new User();
-          this.confirmacaoSenha = '';
-          toast(mensagem, 4000, 'rounded');
+        .then(retorno=>{
+          if(retorno.type == 3){
+            this.usuario = new User();
+            this.confirmacaoSenha = '';
+          }
+          toast(retorno.message, 4000, 'rounded');
         });
       }
     }

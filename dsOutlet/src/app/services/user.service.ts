@@ -27,14 +27,11 @@ export class UserService {
 
   /*Método que converte o arquivo json recebido da api php*/
   private extractLoginData(res: Response) {
-    console.log(res);
     let usuario = res.json();
-    console.log(usuario);
     /*se voltar false é pq nao foi possivel efetuar login*/
     if (usuario != false) {
       usuario.admin = usuario.acesso == 'A' ? true : false; //os valores booleanos do banco sao 0 (false) ou 1 (true)
       usuario.logado = true;
-      console.log(usuario);
       let logado = this.storage.set('user', usuario);
       return true
     } else {
@@ -63,7 +60,7 @@ export class UserService {
   }
 
   /*metodo que adiciona no banco um usuario*/
-  addUser(user: User):  Promise<string> {
+  addUser(user: User):  Promise<any> {
 
     return this.http
         .post('http://localhost/cadastro.php', JSON.stringify(user), {headers: this.headers})
@@ -75,14 +72,19 @@ export class UserService {
   /*método que extrai os dados do json recebido do backend*/
   private extractAddData(res: Response) {
     let data = res.json();
-    if(data == 'login'){
-      return "Login já está em uso";
+    let retorno = {type:0, message:''};
+    if(data == "login"){
+      retorno.type = 1;
+      retorno.message ="Login já está em uso";
+      return retorno;
     }else if(data == 'email'){
-      return "Email já está em uso";
+      retorno.type = 2;
+      retorno.message ="Email já está em uso";
+      return retorno;
     }else if(data == true){
-      return "Cadastro Efetuado!";
-    }else{
-      return "ops";
+      retorno.type = 3;
+      retorno.message ="Cadastro Efetuado!";
+      return retorno;
     }
   }
 
@@ -106,7 +108,6 @@ export class UserService {
   }
 
   getUserByName(login: string): User {
-    console.log("userbyname");
     return new User();
   }
 
