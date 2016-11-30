@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { toast } from 'angular2-materialize';
 import { UserService } from '../../services/user.service';
 import {MaterializeAction} from 'angular2-materialize';
+import { EsqueciSenhaService } from '../../services/esqueci-senha.service';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +20,7 @@ export class NavbarComponent {
   private url: string;
   private email: string;
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService, private esqueciSenha: EsqueciSenhaService) {
     this.url = this.router.url;
   }
 
@@ -48,6 +49,13 @@ export class NavbarComponent {
   }
 
   private enviar(): void {
-    console.log("enviou");
+    this.esqueciSenha.enviaEmail(this.email).then(res=>{
+      if(res){
+        toast('Email Enviado', 4000, 'rounded');
+      }else{
+        toast('Email não Cadastrado', 4000, 'rounded');
+      }
+    });
+
   }
 }
