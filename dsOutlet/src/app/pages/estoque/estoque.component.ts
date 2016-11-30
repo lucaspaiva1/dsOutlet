@@ -5,11 +5,11 @@ import { UserService } from '../../services/user.service';
 import { ProdutosService } from '../../services/produtos.service';
 
 @Component({
-  selector: 'admin-estoque',
-  templateUrl: './admin-estoque.component.html',
-  styleUrls: ['./admin-estoque.component.css']
+  selector: 'estoque',
+  templateUrl: './estoque.component.html',
+  styleUrls: ['./estoque.component.css']
 })
-export class AdminEstoqueComponent implements OnInit {
+export class EstoqueComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;

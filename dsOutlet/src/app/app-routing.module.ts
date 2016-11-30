@@ -5,7 +5,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FaleConoscoComponent } from './pages/fale-conosco/fale-conosco.component';
 import { GerenciadorComponent } from './pages/gerenciador/gerenciador.component';
 import { AdminGerenFuncionariosComponent } from './pages/admin-geren-funcionarios/admin-geren-funcionarios.component';
-import { AdminEstoqueComponent } from './pages/admin-estoque/admin-estoque.component';
+import { EstoqueComponent } from './pages/estoque/estoque.component';
 import { AdminEditProdutoComponent } from './pages/admin-edit-produto/admin-edit-produto.component';
 import { AdminEditFuncionariosComponent } from './pages/admin-edit-funcionarios/admin-edit-funcionarios.component';
 import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-produto.component';
@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'gerenciador/estoque',
-    component: AdminEstoqueComponent
+    component: EstoqueComponent
   },
   {
     path: 'gerenciador/cadastrar-produto',
