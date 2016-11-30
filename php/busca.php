@@ -25,6 +25,15 @@
 				}
 				echo json_encode($vetor);
 			}
+		} else if (isset($_GET["cli"])){
+			if ($_GET["cli"] == ""){
+				$sql = "SELECT * FROM cliente";
+				$result = $con->query($sql);
+				while($row=$result->fetch_assoc()){
+					$vetor[] = $row;
+				}
+				echo json_encode($vetor);
+			}
 		}
 	
 ?>
