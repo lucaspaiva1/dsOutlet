@@ -57,8 +57,21 @@ export class ProdutosService {
     return data;
   }
 
-  getProdutos() {
+  getProdutos(): Promise<Produto[]>{
+    return this.http.get('http://localhost/busca.php?prod')
+      .toPromise()
+      .then(response => this.extractGetData(response))
+      .catch(this.handleError);
+  }
 
+  private extractGetData(res: Response) {
+    let data = res.json();
+    if (data == null) {
+      this.produtos = [];
+    } else {
+      this.produtos = data;
+    }
+    return this.produtos;
   }
 
   /*método chamado quando ocorre um erro no acesso a api php*/

@@ -34,11 +34,11 @@ export class AdminGerenClientesComponent implements OnInit {
   }
 
   cadastrar() {
-    this.router.navigate(['/clientes/cadastro']);
+    this.router.navigate(['gerenciador/clientes/cadastro']);
   }
 
   editar(cliente: Cliente){
-      this.router.navigate(['clientes/editar/', cliente.nome]);
+      this.router.navigate(['gerenciador/clientes/editar/', cliente.nome]);
   }
 
 }

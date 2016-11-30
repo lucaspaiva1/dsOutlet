@@ -2,7 +2,8 @@ export class Produto {
   public marca: string;
   public modelo: string;
   public tamanho: string;
-  public precoVenda: number;
+  public precosaida: number;
+  public precoentrada: number;
   public precoMedio: number;
   public precoUltimaCompra: number;
   public quantidade: number;
