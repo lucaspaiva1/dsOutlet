@@ -34,7 +34,7 @@ export class AdminCadFuncionarioComponent implements OnInit {
   cadastrarUsuario() {
     console.log("cliquei!!!!!!!!!");
     console.log(this.usuario);
-    if (this.usuario.nome == null || this.usuario.login == null || this.usuario.senha == null || this.privilegio == null || this.usuario.email== null) {
+    if (this.usuario.nome == null || this.usuario.nome == "" || this.usuario.login == null || this.usuario.senha == null || this.usuario.senha == "" || this.privilegio == null || this.usuario.email== null) {
       toast('Estão faltando dados!', 4000, 'rounded');
     } else {
       if (this.usuario.senha != this.confirmacaoSenha) {

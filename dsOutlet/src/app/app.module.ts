@@ -22,7 +22,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { GerenciadorComponent } from './pages/gerenciador/gerenciador.component';
-import { AdminEstoqueComponent } from './pages/admin-estoque/admin-estoque.component';
+import { EstoqueComponent } from './pages/estoque/estoque.component';
 import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-produto.component';
 import { OptionsComponent } from './components/options/options.component';
 import { AdminEditProdutoComponent } from './pages/admin-edit-produto/admin-edit-produto.component';
@@ -43,7 +43,7 @@ import { VendasComponent } from './pages/vendas/vendas.component';
     NavbarComponent,
     FooterComponent,
     GerenciadorComponent,
-    AdminEstoqueComponent,
+    EstoqueComponent,
     AdminCadProdutoComponent,
     OptionsComponent,
     AdminEditProdutoComponent,
