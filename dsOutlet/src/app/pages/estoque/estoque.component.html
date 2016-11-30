@@ -18,7 +18,24 @@
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
         <div class="collection backgroud z-depth-4">
-          <table class="bordered striped responsive-table centered">
+
+          <!--Loading - aparece enquanto carrega a tabela-->
+          <div *ngIf="loading" class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+
+          <!--Tabela de estoque-->
+          <table *ngIf="!loading" class="bordered striped responsive-table centered">
             <thead>
               <tr >
                 <th data-field="marca">Marca</th>

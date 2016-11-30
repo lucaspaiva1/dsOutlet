@@ -13,6 +13,8 @@ export class EstoqueComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
+  private loading: boolean;
+
 
   produtos: Produto[];
 
@@ -26,10 +28,16 @@ export class EstoqueComponent implements OnInit {
     if (!this.isLogado) {
       this.router.navigate(['/home']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
     }else{
-      this.produtosService.getProdutos().then(res=>{
-        this.produtos = res;
-      });
+      this.getEstoque();
     }
+  }
+
+  getEstoque(){
+    this.loading = true;
+    this.produtosService.getProdutos().then(res=>{
+      this.produtos = res;
+      this.loading = false;
+    });
   }
 
 }
