@@ -16,6 +16,15 @@
 				}
 				echo json_encode($vetor);
 			}
+		} else if (isset($_GET["prod"])){
+			if ($_GET["prod"] == ""){
+				$sql = "SELECT * FROM produto";
+				$result = $con->query($sql);
+				while($row=$result->fetch_assoc()){
+					$vetor[] = $row;
+				}
+				echo json_encode($vetor);
+			}
 		}
 	
 ?>
