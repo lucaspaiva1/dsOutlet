@@ -26,7 +26,7 @@ export class AdminEstoqueComponent implements OnInit {
     if (!this.isLogado) {
       this.router.navigate(['/home']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
     }else{
-      this.produtos = this.produtosService.getProdutos();
+      //this.produtos = this.produtosService.getProdutos();
     }
   }
 

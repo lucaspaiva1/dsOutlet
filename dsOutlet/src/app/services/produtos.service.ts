@@ -6,54 +6,66 @@ import { Produto } from '../model/produto';
 @Injectable()
 export class ProdutosService {
 
-  produtos: Produto[] = [];
+  private headers = new Headers({ 'Content-Type': 'application/json' });
+  private produtos: Produto[] = [];
 
-  constructor() {
-    let produto1 = new Produto();
-    produto1.marca = 'mahalo';
-    produto1.modelo = 'seila';
-    produto1.tamanho = '38';
-    produto1.quantidade = 200;
-    produto1.precoVenda = 40;
-    produto1.precoMedio = 30;
-    produto1.precoUltimaCompra = 25;
-    produto1.max = 800;
-    produto1.min = 50;
-    produto1.estado = "OK";
-    let produto2 = new Produto();
-    produto2.marca = 'polo';
-    produto2.modelo = 'seilaoq';
-    produto2.tamanho = '42';
-    produto2.quantidade = 400;
-    produto2.precoVenda = 80;
-    produto2.precoMedio = 50;
-    produto2.precoUltimaCompra = 25;
-    produto2.max = 550;
-    produto2.min = 100;
-    produto2.estado = "OK";
-    let produto3 = new Produto();
-    produto3.marca = 'lacoste';
-    produto3.modelo = 'sein';
-    produto3.tamanho = '40';
-    produto3.quantidade = 600;
-    produto3.precoVenda = 20;
-    produto3.precoMedio = 10;
-    produto3.precoUltimaCompra = 15;
-    produto3.max = 800;
-    produto3.min = 20;
-    produto3.estado = "OK";
+  constructor(private http: Http) {
 
-    this.produtos.push(produto1);
-    this.produtos.push(produto2);
-    this.produtos.push(produto3);
   }
 
-  getProdutos(): Produto[]{
-    return this.produtos;
+  /*Usuario envia dados para cadastrar produto atraves de um POST*/
+  newProduto(produto: Produto): Promise<boolean> {
+    console.log(produto);
+    return this.http
+      .post('http://localhost/cadProd.php', JSON.stringify(produto), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractNewData(res))
+      .catch(this.handleError);
   }
 
-  addProduto(produto: Produto){
-    this.produtos.push(produto);
+  /*Método que converte o arquivo json recebido da api php*/
+  private extractNewData(res: Response) {
+    console.log(res);
+    let data = res.json();
+    return data;
+  }
+
+  addProduto(produto: Produto): Promise<boolean> {
+    return this.http
+      .post('http://localhost/logar.php', JSON.stringify(produto), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractAddData(res))
+      .catch(this.handleError);
+  }
+
+  /*Método que converte o arquivo json recebido da api php*/
+  private extractAddData(res: Response) {
+    let data = res.json();
+    return data;
+  }
+
+  sellProduto(produto: Produto): Promise<boolean>{
+    return this.http
+      .post('http://localhost/logar.php', JSON.stringify(produto), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractSellData(res))
+      .catch(this.handleError);
+  }
+
+  /*Método que converte o arquivo json recebido da api php*/
+  private extractSellData(res: Response) {
+    let data = res.json();
+    return data;
+  }
+
+  getProdutos() {
+
+  }
+
+  /*método chamado quando ocorre um erro no acesso a api php*/
+  private handleError(error: any): Promise<any> {
+    console.error('Ocorreu um erro!', error); // for demo purposes only
+    return Promise.reject(error.message || error);
   }
 
 }

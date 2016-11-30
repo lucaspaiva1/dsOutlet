@@ -31,12 +31,22 @@ export class AdminCadProdutoComponent implements OnInit {
   }
 
   cadastrarProduto() {
-    if (this.produto.marca != null) {
-      toast('Produto foi cadastrado!', 4000, 'rounded');
-      this.produtosService.addProduto(this.produto);
-      this.produto = new Produto();
-    }else{
+    if (this.produto.marca == null || this.produto.modelo == null || this.produto.tamanho == null) {
       toast('Favor Preencher Campos Obrigatórios!', 4000, 'rounded');
+    } else {
+      if (this.produto.quantidade >= 0) {
+        this.produtosService.newProduto(this.produto).then(res => {
+          if (res) {
+            toast('Produto foi cadastrado!', 4000, 'rounded');
+            this.produtosService.addProduto(this.produto);
+            this.produto = new Produto();
+          } else {
+            toast('Produto já existe no estoque', 4000, 'rounded');
+          }
+        });
+      }else{
+        toast('Quantidade Inválida', 4000, 'rounded');
+      }
     }
   }
 
