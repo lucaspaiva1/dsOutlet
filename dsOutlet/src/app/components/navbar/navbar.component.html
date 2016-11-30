@@ -78,7 +78,7 @@
     </form>
   </div>
   <div class="modal-footer light-blue loginPaneFooter">
-    <a materialize="modal"  href="#esqueciModal" class="left white-text">Esqueci minha senha</a>
+    <a materialize="modal" href="#esqueciModal" class="left white-text">Esqueci minha senha</a>
     <a class="waves-effect waves-light btn blue darken-4" (click)="fazerLogin()">Login</a>
   </div>
 </div>
@@ -90,7 +90,7 @@
     <form class="">
       <div class="input-field white-text campo">
         <i class="material-icons prefix">perm_identity</i>
-        <input id="usuario" type="text" class="validate white-text" [(ngModel)]="login" [ngModelOptions]="{standalone: true}">
+        <input id="usuario" type="text" class="validate white-text" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
         <label class="white-text" for="usuario">Email</label>
       </div>
       <div class="">
@@ -99,6 +99,6 @@
     </form>
   </div>
   <div class="modal-footer light-blue loginPaneFooter">
-    <a class="waves-effect waves-light btn blue darken-4" (click)="fazerLogin()">Enviar</a>
+    <a class="waves-effect waves-light btn blue darken-4" (click)="enviar()">Enviar</a>
   </div>
 </div>

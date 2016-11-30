@@ -17,6 +17,7 @@ export class NavbarComponent {
   private login: string;
   private senha: string;
   private url: string;
+  private email: string;
 
   constructor(private router: Router, private userService: UserService) {
     this.url = this.router.url;
@@ -44,5 +45,9 @@ export class NavbarComponent {
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
     this.router.navigate(['/home']);
+  }
+
+  private enviar(): void {
+    console.log("enviou");
   }
 }

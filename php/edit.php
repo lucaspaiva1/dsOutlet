@@ -16,7 +16,7 @@
 		$email  = $request->email;
 		$login  = $request->login;
 		$senha  = $request->senha;
-		$acesso = $request->admin;
+		$acesso = $request->acesso;
 		
 		if ($acesso)
 			$acesso = 'A';

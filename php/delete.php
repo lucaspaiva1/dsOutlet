@@ -5,7 +5,7 @@
 
 <?php
 	
-	$the_request = &$_POST;
+	$the_request = &$_PUT;
 
 	$postdata = file_get_contents("php://input");
 	
