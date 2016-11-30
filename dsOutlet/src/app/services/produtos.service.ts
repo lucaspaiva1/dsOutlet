@@ -17,15 +17,14 @@ export class ProdutosService {
   newProduto(produto: Produto): Promise<boolean> {
     console.log(produto);
     return this.http
-      .post('http://localhost/cadProd.php', JSON.stringify(produto), { headers: this.headers })
-      .toPromise()
-      .then(res => this.extractNewData(res))
-      .catch(this.handleError);
+        .post('http://localhost/cadProd.php', JSON.stringify(produto), {headers: this.headers})
+        .toPromise()
+        .then(res => this.extractNewData(res))
+        .catch(this.handleError);
   }
 
   /*Método que converte o arquivo json recebido da api php*/
   private extractNewData(res: Response) {
-    console.log(res);
     let data = res.json();
     return data;
   }

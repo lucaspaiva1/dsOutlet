@@ -37,8 +37,8 @@ export class AdminCadProdutoComponent implements OnInit {
       if (this.produto.quantidade >= 0) {
         this.produtosService.newProduto(this.produto).then(res => {
           if (res) {
+            console.log(res);
             toast('Produto foi cadastrado!', 4000, 'rounded');
-            this.produtosService.addProduto(this.produto);
             this.produto = new Produto();
           } else {
             toast('Produto já existe no estoque', 4000, 'rounded');
