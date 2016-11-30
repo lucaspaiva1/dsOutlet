@@ -15,6 +15,7 @@ export class AdminGerenClientesComponent implements OnInit {
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
   clientes: Cliente[];
+  mydate: Date = new Date();
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -34,7 +35,12 @@ export class AdminGerenClientesComponent implements OnInit {
   }
 
   cadastrar() {
-    this.router.navigate(['gerenciador/clientes/cadastro']);
+    //this.router.navigate(['gerenciador/clientes/cadastro']);
+    console.log(this.mydate);
+    //console.log(this.mydate.getDate());
+    //console.log(this.mydate.getMonth());
+    //console.log(this.mydate.getFullYear());
+
   }
 
   editar(cliente: Cliente){

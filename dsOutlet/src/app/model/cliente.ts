@@ -5,7 +5,7 @@ export class Cliente {
   endereco: string;
   telefone: string;
   valor: number;
-
+  
   constructor() {
   }
 }
