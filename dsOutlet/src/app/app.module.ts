@@ -13,6 +13,7 @@ import { LocalStorageService, LOCAL_STORAGE_SERVICE_CONFIG } from 'angular-2-loc
 import { UserService } from './services/user.service';
 import { ClientesService } from './services/clientes.service';
 import { ProdutosService } from './services/produtos.service';
+import { EsqueciSenhaService } from './services/esqueci-senha.service';
 /*Components*/
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -65,7 +66,7 @@ import { VendasComponent } from './pages/vendas/vendas.component';
       apiKey: 'AIzaSyB64Q-NvEJqxFf9PmJZHevjQdxzL9a3jZw' //chave do google para usar googlemaps
     })
   ],
-  providers: [UserService, ProdutosService, ClientesService, LocalStorageService,
+  providers: [UserService, EsqueciSenhaService, ProdutosService, ClientesService, LocalStorageService,
     {
       provide: LOCAL_STORAGE_SERVICE_CONFIG, useValue: {
         prefix: 'my-app',
