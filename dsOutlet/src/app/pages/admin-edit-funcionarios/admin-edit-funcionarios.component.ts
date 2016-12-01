@@ -14,8 +14,9 @@ export class AdminEditFuncionariosComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
-  private usuario: User;
-  privilegio: string;
+  private usuario: User = new User();
+  private privilegio: string;
+  private loading: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) {
     let stats = this.userService.userStats();
@@ -29,9 +30,22 @@ export class AdminEditFuncionariosComponent implements OnInit {
     } else {
       this.route.params.forEach((params: Params) => {
         let id = params['id'];
-        this.usuario = this.userService.getUser(id);
+        this.getUser(id);
       })
     }
+  }
+
+  private getUser(id: number): void{
+    this.loading = true;
+    this.userService.getUser(id).then(res=>{
+      console.log(res);
+      if(res == null){
+        this.router.navigate(['/gerenciador']);
+      }else{
+        this.usuario = res;
+        this.loading = false;
+      }
+    });
   }
 
   editar() {

@@ -31,7 +31,7 @@ export class AdminEditClientesComponent implements OnInit {
       } else {
         this.route.params.forEach((params: Params) => {
           let name = ""+params['name'];
-          this.cliente = this.clientesService.getFuncionarioByName(name);
+          //this.cliente = this.clientesService.getFuncionarioByName(name);
           console.log(this.cliente);
           })
       }

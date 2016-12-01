@@ -18,8 +18,24 @@
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
         <div class="collection backgroud z-depth-4">
+
+          <!--Loading - aparece enquanto carrega a tabela-->
+          <div *ngIf="loading" class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+
           <!-- Formulário -->
-          <div class="row">
+          <div *ngIf="!loading" class="row">
             <form class="col s12">
               <div class="row">
                 <div class="input-field col s12 m6 l6 white-text">
@@ -46,18 +62,24 @@
                   <label class="white-text" for="rep-senha">Repetir senha</label>
                 </div>
               </div>
+
               <div class="row">
-                <div class="input-field col s4 m4 l4 white-text">
-                  <select *ngIf="usuario.acesso=='A'" materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
+
+                <div *ngIf="usuario.acesso=='A'" class="input-field col s4 m4 l4 white-text">
+                  <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="A">Administrador</option>
                     <option value="C">Vendedor</option>
                   </select>
-                  <select *ngIf="usuario.acesso=='C'" materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
+                </div>
+                
+                <div *ngIf="usuario.acesso=='C'" class="input-field col s4 m4 l4 white-text">
+                  <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="C">Vendedor</option>
                     <option value="A">Administrador</option>
                   </select>
                   <label class="white-text">Privilégio</label>
                 </div>
+
                 <div class="col s6 offset-s4 m6 offset-m4 l6 offset-l6">
                   <a (click)="editar()" class="btn waves-effect waves-light blue darken-4">Salvar
                       <i class="material-icons right">send</i>

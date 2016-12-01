@@ -17,12 +17,7 @@
 		$login  = $request->login;
 		$senha  = $request->senha;
 		$acesso = $request->acesso;
-		
-		if ($acesso)
-			$acesso = 'A';
-		else
-			$acesso = 'C';
-		
+				
 		$sql = "SELECT * FROM usuario WHERE id = '$id'";
 		$result = $con->query($sql);
 		

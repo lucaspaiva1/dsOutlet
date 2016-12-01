@@ -12,7 +12,21 @@ export class ClientesService {
   constructor(private http: Http) {
   }
 
-  getClientes(): Cliente[] {
+  getClientes(): Promise<Cliente[]> {
+    return this.http.get('http://localhost/busca.php?cli')
+      .toPromise()
+      .then(response => this.extractGetData(response))
+      .catch(this.handleError);
+  }
+
+  /*Método que converte o arquivo json recebido da api php*/
+  private extractGetData(res: Response) {
+    let data = res.json();
+    if (data == null) {
+      this.clientes = [];
+    } else {
+      this.clientes = data;
+    }
     return this.clientes;
   }
 
@@ -30,13 +44,13 @@ export class ClientesService {
     return data;
   }
 
-  getFuncionarioByName(nome: string): Cliente{
-    return this.clientes.find(cliente => cliente.nome === nome);
+  getUser(id: number): Cliente {
+    return this.clientes.find(cliente => cliente.id === id);
   }
 
   /*método chamado quando ocorre um erro no acesso a api php*/
   private handleError(error: any): Promise<any> {
-    console.error('Ocorreu um erro!', error); // for demo purposes only
+    console.error('Ocorreu um erro!', error);
     return Promise.reject(error.message || error);
   }
 

@@ -14,7 +14,8 @@ export class AdminGerenClientesComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
-  clientes: Cliente[];
+  private clientes: Cliente[];
+  private loading: boolean;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -29,16 +30,25 @@ export class AdminGerenClientesComponent implements OnInit {
     if (!this.isLogado) {
       this.router.navigate(['/home']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
     } else {
-      this.clientes = this.clientesService.getClientes();
+      this.getClientes();
     }
+  }
+
+  private getClientes() {
+    this.loading = true;
+    this.clientesService.getClientes().then(res => {
+      this.clientes = res;
+      this.loading = false;
+    });
+
   }
 
   cadastrar() {
     this.router.navigate(['gerenciador/clientes/cadastro']);
   }
 
-  editar(cliente: Cliente){
-      this.router.navigate(['gerenciador/clientes/editar/', cliente.nome]);
+  editar(cliente: Cliente) {
+    this.router.navigate(['gerenciador/clientes/editar/', cliente.nome]);
   }
 
 }

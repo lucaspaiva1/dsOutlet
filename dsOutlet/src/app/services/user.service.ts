@@ -19,7 +19,7 @@ export class UserService {
 
     /*dados sao enviados para api*/
     return this.http
-      .post('http://localhost/logar.php', JSON.stringify({login: login, senha: senha}), { headers: this.headers })
+      .post('http://localhost/logar.php', JSON.stringify({ login: login, senha: senha }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractLoginData(res))
       .catch(this.handleError);
@@ -39,51 +39,31 @@ export class UserService {
     }
   }
 
-  /*método chamado quando ocorre um erro no acesso a api php*/
-  private handleError(error: any): Promise<any> {
-    console.error('Ocorreu um erro!', error); // for demo purposes only
-    return Promise.reject(error.message || error);
-  }
-
-  /*método que remove do cache os dados do usuario depois do logout*/
-  logout(): void {
-    this.storage.remove('user');
-  }
-
-  /*Retorna um array de boolean ->primeiro index é logado, segundo é admin*/
-  userStats(): boolean[] {
-    let user = <User>this.storage.get('user');
-    if (user == null) {
-      return [false, false];
-    }
-    return [user.logado, user.admin];
-  }
-
   /*metodo que adiciona no banco um usuario*/
-  addUser(user: User):  Promise<any> {
+  addUser(user: User): Promise<any> {
 
     return this.http
-        .post('http://localhost/cadastro.php', JSON.stringify(user), {headers: this.headers})
-        .toPromise()
-        .then(res => this.extractAddData(res))
-        .catch(this.handleError);
+      .post('http://localhost/cadastro.php', JSON.stringify(user), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractAddData(res))
+      .catch(this.handleError);
   }
 
   /*método que extrai os dados do json recebido do backend*/
   private extractAddData(res: Response) {
     let data = res.json();
-    let retorno = {type:0, message:''};
-    if(data == "login"){
+    let retorno = { type: 0, message: '' };
+    if (data == "login") {
       retorno.type = 1;
-      retorno.message ="Login já está em uso";
+      retorno.message = "Login já está em uso";
       return retorno;
-    }else if(data == 'email'){
+    } else if (data == 'email') {
       retorno.type = 2;
-      retorno.message ="Email já está em uso";
+      retorno.message = "Email já está em uso";
       return retorno;
-    }else if(data == true){
+    } else if (data == true) {
       retorno.type = 3;
-      retorno.message ="Cadastro Efetuado!";
+      retorno.message = "Cadastro Efetuado!";
       return retorno;
     }
   }
@@ -107,39 +87,55 @@ export class UserService {
     return this.users;
   }
 
-  deleteUser(id: number): Promise<boolean>{
+  deleteUser(id: number): Promise<boolean> {
     return this.http
-        .post('http://localhost/delete.php', JSON.stringify({id:id}), {headers: this.headers})
-        .toPromise()
-        .then(res => this.extractDelData(res))
-        .catch(this.handleError);
+      .post('http://localhost/delete.php', JSON.stringify({ id: id }), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractDelData(res))
+      .catch(this.handleError);
   }
 
-  private extractDelData(res: Response){
+  private extractDelData(res: Response) {
     let data = res.json();
     return data;
   }
 
-  editUser(user: User){
+  editUser(user: User) {
     return this.http
-    .post('http://localhost/edit.php', JSON.stringify(user), {headers: this.headers})
-    .toPromise()
-    .then(res => this.extractEditData(res))
-    .catch(this.handleError);
+      .post('http://localhost/edit.php', JSON.stringify(user), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractEditData(res))
+      .catch(this.handleError);
   }
 
-  private extractEditData(res: Response){
+  private extractEditData(res: Response) {
     let data = res.json();
-    console.log(data);
     return data;
   }
 
-  getUserByName(login: string): User {
-    return new User();
+  getUser(id: number): Promise<User> {
+    return this.getUsers()
+               .then(users => users.find(hero => hero.id === id));
   }
 
-  getUser(id: number): User{
-    return this.users.find(user => user.id === id);
+  /*método chamado quando ocorre um erro no acesso a api php*/
+  private handleError(error: any): Promise<any> {
+    console.error('Ocorreu um erro!', error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
+
+  /*método que remove do cache os dados do usuario depois do logout*/
+  logout(): void {
+    this.storage.remove('user');
+  }
+
+  /*Retorna um array de boolean ->primeiro index é logado, segundo é admin*/
+  userStats(): boolean[] {
+    let user = <User>this.storage.get('user');
+    if (user == null) {
+      return [false, false];
+    }
+    return [user.logado, user.admin];
   }
 
 }
