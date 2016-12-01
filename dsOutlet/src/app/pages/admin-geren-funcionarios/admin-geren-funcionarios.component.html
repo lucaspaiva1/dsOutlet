@@ -42,6 +42,8 @@
                 <th data-field="privilegio">Privilégio</th>
                 <th data-field="status">Login</th>
                 <th data-field="status">Senha</th>
+                <th data-field="status">Data de Admissão</th>
+                <th data-field="status">Telefone</th>
               </tr>
             </thead>
 
@@ -52,6 +54,8 @@
                 <td *ngIf="usuario.acesso=='C'">Vendedor</td>
                 <td>{{usuario.login}}</td>
                 <td>{{usuario.senha}}</td>
+                <td>{{usuario.dataAdmissao}}</td>
+                <td>{{usuario.telefone}}</td>
               </tr>
             </tbody>
           </table>

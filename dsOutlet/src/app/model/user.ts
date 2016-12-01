@@ -8,6 +8,8 @@ export class User {
   admin: boolean;
   logado: boolean;
   acesso: string;
+  dataAdmissao: string;
+  telefone: number;
 
   constructor() {
   }
