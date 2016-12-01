@@ -94,7 +94,7 @@
               </div>
               <!--elementos para finalizar venda -->
               <div *ngIf="isfinalizarCompra" class="row">
-                <div class="input-field col s12 m6 l6 white-text">
+                <div class="input-field col s12 m12 l12 white-text">
                   <select id="pagamento" materialize="material_select">
                     <!--Organiza a seleçao do modo de pagamento-->
                     <option value="" disabled selected>Escolha um modelo</option>
@@ -106,8 +106,25 @@
                   <label class="white-text">Forma de Pagamento</label>
                 </div>
                 <div *ngIf="isfinalizarCompra" class="input-field col s12 m6 l6 white-text">
+                  <input id="desconto" type="number" class="white-text">
+                  <label class="white-text" for="desconto">Desconto</label>
+                </div>
+                <div *ngIf="isfinalizarCompra" class="input-field col s12 m6 l6 white-text">
+                  <select id="tipodesconto" materialize="material_select">
+                    <!--Organiza a seleçao do modo de pagamento-->
+                    <option value="" disabled selected>Escolha um modelo</option>
+                    <option value="1">Porcentagem</option>
+                    <option value="2">Abatimento de valor</option>
+                  </select>
+                  <label class="white-text">Forma de Desconto</label>
+                </div>
+                <div *ngIf="isfinalizarCompra" class="input-field col s12 m6 l6 white-text">
+                  <input id="valorTotal" type="number" class="white-text">
+                  <label class="white-text" for="valorTotal">Valor Total</label>
+                </div>
+                <div *ngIf="isfinalizarCompra" class="input-field col s12 m6 l6 white-text">
                   <input id="valorPago" type="number" class="white-text">
-                  <label class="white-text" for="quantidade">Valor</label>
+                  <label class="white-text" for="quantidade">Valor Pago</label>
                 </div>
               </div>
               <div *ngIf="isfinalizarCompra" class="center input-field">
