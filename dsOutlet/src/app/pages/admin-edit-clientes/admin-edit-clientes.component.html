@@ -47,6 +47,12 @@
               </div>
               <div class="row">
                 <div class="input-field col s12 m12 l12">
+                  <input id="vencimento" type="date" class="validate"  [(ngModel)]="cliente.vencimento" [ngModelOptions]="{standalone: true}">
+                  <label class="white-text" for="vencimento">Vencimento</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m12 l12">
                   <input id="valor_pago" type="number" class="validate">
                   <label class="white-text" for="valor_pago">Valor Pago</label>
                 </div>
