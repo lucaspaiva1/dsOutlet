@@ -30,7 +30,7 @@
 				$header = "MIME-Version: 1.0\n";
 				$header .= "Content-type: text/html; charset=iso-8859-1\n";
 				$header .= "FROM: no-reply@dsoutlet.com\n";
-				mail($email, $assunto, $mensagem, $header);
+				//mail($email, $assunto, $mensagem, $header);
 				echo json_encode(true);
 			}
 	} else{
