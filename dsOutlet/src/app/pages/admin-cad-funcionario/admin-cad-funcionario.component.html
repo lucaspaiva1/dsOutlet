@@ -28,7 +28,7 @@
                   <label class="white-text" for="first_name">Nome</label>
                 </div>
                 <div class="input-field col s12 m6 l6 white-text">
-                  <input id="email" type="text" class="validate  white-text"  [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}">
+                  <input id="email" type="text" class="validate  white-text" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="email">Email</label>
                 </div>
               </div>
@@ -47,24 +47,24 @@
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s12 m6 l4">
+                <div class="input-field col s12 m6 l4 white-text">
+                  <label class="white-text" for="dataAdmissao">Data de Admissão</label><br>
                   <input id="dataAdmissao" type="date" class="validate" [(ngModel)]="usuario.dataAdmissao" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="dataAdmissao">Data de Admissão</label>
                 </div>
-                <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12 m6 l4 white-text"><br>
                   <input id="tel" type="number" class="validate" [(ngModel)]="usuario.telefone" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="tel">Telefone</label>
+                  <label class="white-text">Telefone</label>
                 </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s4 m4 l4 white-text">
+                <div class="input-field col s4 m4 l4 white-text"><br>
+                  <label class="white-text">Privilégio</label>
                   <select materialize="material_select" [(ngModel)]="privilegio" [ngModelOptions]="{standalone: true}">
-                    <option value="false" disabled selected>Privilégio</option>
+                    <option value="none" disabled selected>Privilégio</option>
                     <option value="true">Administrador</option>
                     <option value="false">Vendedor</option>
                   </select>
-                  <label class="white-text">Privilégio</label>
                 </div>
+              </div>
+              <div class="row">
                 <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
                   <a (click)="cadastrarUsuario()" class="btn waves-effect waves-light blue darken-4">Cadastrar
                       <i class="material-icons right">send</i>

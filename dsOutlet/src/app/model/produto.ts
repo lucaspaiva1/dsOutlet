@@ -1,14 +1,15 @@
 export class Produto {
+
+  public id: number;
   public marca: string;
   public modelo: string;
   public tamanho: string;
-  public precosaida: number;
-  public precoentrada: number;
-  public precoMedio: number;
-  public precoUltimaCompra: number;
   public quantidade: number;
-  public max: number;
-  public min: number;
+  public precoEntrada: number;
+  public precoSaidaPadrao: number;
+  public precoUltimaCompra: number;
+  public maximo: number;
+  public minimo: number;
   public estado: string;
 
   constructor() {

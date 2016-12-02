@@ -48,17 +48,17 @@
                   <label class="white-text">Tamanho</label>
                 </div>
                 <div class="input-field col s12 m6 l6">
-                  <input id="venda" type="number" class="validate" [(ngModel)]="produto.precoVenda" [ngModelOptions]="{standalone: true}">
+                  <input id="venda" type="number" class="validate" [(ngModel)]="produto.precoSaidaPadrao" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="venda">Preço de Venda</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m4 l4">
-                  <input id="max" type="number" class="validate" [(ngModel)]="produto.max" [ngModelOptions]="{standalone: true}">
+                  <input id="max" type="number" class="validate" [(ngModel)]="produto.maximo" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="max">Máximo</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="min" type="number" class="validate" [(ngModel)]="produto.min" [ngModelOptions]="{standalone: true}">
+                  <input id="min" type="number" class="validate" [(ngModel)]="produto.minimo" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="min">Mínimo</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
