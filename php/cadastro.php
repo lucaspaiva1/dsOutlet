@@ -15,15 +15,10 @@
 		$email	  = $request->email;
 		$login 	  = $request->login;
 		$senha 	  = $request->senha;
-		$acesso	  = $request->admin;
+		$acesso	  = $request->acesso;
 		$admissao = $request->dataAdmissao;
 		$telefone = $request->telefone;
-		
-		if ($acesso)
-			$acesso = 'A';
-		else
-			$acesso = 'C';
-		
+
 		$sql = "SELECT * FROM usuario WHERE login = '$login'";
 		$result = $con->query($sql);
 		

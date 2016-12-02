@@ -36,7 +36,7 @@
 
           <!-- Formulário -->
           <div *ngIf="!loading" class="row">
-            <form class="col s12">
+            <form class="col s12 white-text">
               <div class="row">
                 <div class="input-field col s12 m6 l6 white-text">
                   <i class="material-icons prefix">perm_identity</i>
@@ -58,25 +58,26 @@
                   <label class="white-text" for="senha">Senha</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input placeholder="" id="rep-senha" type="password" class="validate" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="rep-senha" type="password" class="validate" [(ngModel)]="confirmacaoSenha" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="rep-senha">Repetir senha</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m6 l4">
+                  <label class="white-text" for="dataAdmissao">Data de Admissão</label><br>
                   <input id="dataAdmissao" type="date" class="validate" [(ngModel)]="usuario.dataAdmissao" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="dataAdmissao">Data de Admissão</label>
                 </div>
-                <div class="input-field col s12 m6 l6">
-                  <input id="tel" type="number" class="validate" [(ngModel)]="usuario.telefone" [ngModelOptions]="{standalone: true}">
+                <br>
+                <div class="input-field col s12 m6 l4">
+                  <input placeholder="" id="tel" type="text" [(ngModel)]="usuario.telefone" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="tel">Telefone</label>
                 </div>
-              </div>
-              <div class="row">
                 <div *ngIf="usuario.acesso=='A'" class="input-field col s4 m4 l4 white-text">
+
                   <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="A">Administrador</option>
                     <option value="C">Vendedor</option>
+                    <option value="" disabled selected>Privilégio</option>
                   </select>
                 </div>
 
@@ -84,17 +85,19 @@
                   <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="C">Vendedor</option>
                     <option value="A">Administrador</option>
+                    <option value="" disabled selected>Privilégio</option>
                   </select>
-                  <label class="white-text">Privilégio</label>
                 </div>
 
-                <div class="col s6 offset-s4 m6 offset-m4 l6 offset-l6">
+              </div>
+                <div class="row">
+                <div class="right">
+                  <a (click)="excluir()" class="btn waves-effect waves-light red darken-4">Excluir
+                    <i class="material-icons right">delete</i>
+                  </a>
                   <a (click)="editar()" class="btn waves-effect waves-light blue darken-4">Salvar
                       <i class="material-icons right">send</i>
                     </a>
-                  <a (click)="excluir()" class="btn waves-effect waves-light red darken-4">Excluir
-                        <i class="material-icons right">send</i>
-                      </a>
                 </div>
               </div>
             </form>

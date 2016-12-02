@@ -16,8 +16,6 @@ export class AdminCadFuncionarioComponent implements OnInit {
 
   private usuario: User = new User();
   private confirmacaoSenha: string;
-  privilegio: string;
-
 
   constructor(private router: Router, private userService: UserService) {
     let stats = this.userService.userStats();
@@ -32,16 +30,13 @@ export class AdminCadFuncionarioComponent implements OnInit {
   }
 
   cadastrarUsuario() {
-    console.log("cliquei!!!!!!!!!");
     console.log(this.usuario);
-    if (this.usuario.nome == null || this.usuario.nome == "" || this.usuario.login == null || this.usuario.senha == null || this.usuario.senha == "" || this.privilegio == null || this.usuario.email== null) {
+    if (this.usuario.nome == null || this.usuario.nome == "" || this.usuario.login == null || this.usuario.senha == null || this.usuario.senha == "" || this.usuario.acesso == "" || this.usuario.email== null) {
       toast('Estão faltando dados!', 4000, 'rounded');
     } else {
       if (this.usuario.senha != this.confirmacaoSenha) {
         toast('Senha não correspondem!', 4000, 'rounded');
       } else {
-
-        this.usuario.admin = this.privilegio == 'true' ? true : false;
 
         this.userService.addUser(this.usuario)
         .then(retorno=>{

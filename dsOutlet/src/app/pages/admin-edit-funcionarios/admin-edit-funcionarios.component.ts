@@ -15,8 +15,8 @@ export class AdminEditFuncionariosComponent implements OnInit {
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
   private usuario: User = new User();
-  private privilegio: string;
   private loading: boolean;
+  private confirmacaoSenha;
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) {
     let stats = this.userService.userStats();
@@ -49,7 +49,6 @@ export class AdminEditFuncionariosComponent implements OnInit {
   }
 
   editar() {
-    this.usuario.acesso = this.privilegio == 'true' ? 'A' : 'C';
     console.log(this.usuario);
     this.userService.editUser(this.usuario).then(res => {
       if (res) {

@@ -11,12 +11,15 @@
 	
 	if (isset($postdata)){
 		$request = json_decode($postdata);
-		$id     = $request->id;
-		$nome   = $request->nome;
-		$email  = $request->email;
-		$login  = $request->login;
-		$senha  = $request->senha;
-		$acesso = $request->acesso;
+		
+		$id    	  = $request->id;
+		$nome     = $request->nome;
+		$email 	  = $request->email;
+		$login 	  = $request->login;
+		$senha    = $request->senha;
+		$acesso   = $request->acesso;
+		$admissao = $request->dataAdmissao;
+		$telefone = $request->telefone;
 				
 		$sql = "SELECT * FROM usuario WHERE id = '$id'";
 		$result = $con->query($sql);
@@ -25,7 +28,7 @@
 		if($numrow !== 1){
 			echo json_encode(false);
 		}else{
-			$sql = "UPDATE usuario SET nome = '$nome', email = '$email', login = '$login', senha = '$senha', acesso = '$acesso' WHERE id = '$id'";
+			$sql = "UPDATE usuario SET nome = '$nome', email = '$email', login = '$login', senha = '$senha', acesso = '$acesso', dataAdmissao = '$admissao', telefone = '$telefone' WHERE id = '$id'";
 			$con->query($sql);
 			echo json_encode(true);
 		}

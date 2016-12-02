@@ -65,6 +65,20 @@ div.backgroud{
      color: white;
    }
 
+   table.alter > tbody > tr:nth-child(odd) {
+     background-color: #f2f2f2;
+   }
+
+   table.selectable > tbody > tr {
+     -webkit-transition: background-color 0.25s ease;
+     -moz-transition: background-color 0.25s ease;
+     -o-transition: background-color 0.25s ease;
+     -ms-transition: background-color 0.25s ease;
+     transition: background-color 0.25s ease;
+   }
+   table.selectable > tbody > tr:hover {
+     background-color: #CAE1FF;
+   }
 
 
 /*Configuração do tamanho do google-maps*/
