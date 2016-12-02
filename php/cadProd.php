@@ -11,19 +11,22 @@
 	
 	if (isset($postdata)){
 		$request = json_decode($postdata);
+		
+		$marca 		= $request->marca;
+		$modelo 	= $request->modelo;
+		$tamanho  	= $request->tamanho;
 		$quantidade = $request->quantidade;
-		$marca = $request->marca;
-		$modelo = $request->modelo;
-		$tamanho = $request->tamanho;
-		$precoS = $request->precoVenda;
-		$precoE		= 0;
+		$precoE     = 0;
+		$precoS	    = $request->precoSaidaPadrao;
+		$max	    = $request->maximo;
+		$min	    = $request->minimo;
 		
 		$sql = "SELECT * FROM produto WHERE marca = '$marca' AND modelo = '$modelo' AND tamanho ='$tamanho'";
 		$result = $con->query($sql);
 		
 		$numrow = $result->num_rows;
 			if($numrow !== 1 && $marca != ""){
-				$sql = "INSERT INTO produto (quantidade, marca, modelo, tamanho, precosaida, precoentrada) VALUES ('$quantidade', '$marca', '$modelo', '$tamanho', '$precoS', '$precoE')";
+				$sql = "INSERT INTO produto (marca, modelo, tamanho, quantidade, precoEntrada, precoSaidaPadrao, maximo, minimo) VALUES ('$marca', '$modelo', '$tamanho', '$quantidade','$precoE', '$precoS', '$max', '$min')";
 				$con->query($sql);
 				echo json_encode(true);
 			}else{
