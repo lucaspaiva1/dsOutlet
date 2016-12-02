@@ -19,7 +19,7 @@ export class UserService {
 
     /*dados sao enviados para api*/
     return this.http
-      .post('http://localhost/logar.php', JSON.stringify({ login: login, senha: senha }), { headers: this.headers })
+      .post('http://localhost/dsoutlet/logar.php', JSON.stringify({ login: login, senha: senha }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractLoginData(res))
       .catch(this.handleError);
@@ -43,7 +43,7 @@ export class UserService {
   addUser(user: User): Promise<any> {
 
     return this.http
-      .post('http://localhost/cadastro.php', JSON.stringify(user), { headers: this.headers })
+      .post('http://localhost/dsoutlet/cadastro.php', JSON.stringify(user), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);
@@ -70,7 +70,7 @@ export class UserService {
 
   /*Método que retorna todos usuarios do banco de dados para o admin gerenciar*/
   getUsers(): Promise<User[]> {
-    return this.http.get('http://localhost/busca.php?id')
+    return this.http.get('http://localhost/dsoutlet/busca.php?id')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleError);
@@ -89,7 +89,7 @@ export class UserService {
 
   deleteUser(id: number): Promise<boolean> {
     return this.http
-      .post('http://localhost/delete.php', JSON.stringify({ id: id }), { headers: this.headers })
+      .post('http://localhost/dsoutlet/delete.php', JSON.stringify({ id: id }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractDelData(res))
       .catch(this.handleError);
@@ -102,7 +102,7 @@ export class UserService {
 
   editUser(user: User) {
     return this.http
-      .post('http://localhost/edit.php', JSON.stringify(user), { headers: this.headers })
+      .post('http://localhost/dsoutlet/edit.php', JSON.stringify(user), { headers: this.headers })
       .toPromise()
       .then(res => this.extractEditData(res))
       .catch(this.handleError);

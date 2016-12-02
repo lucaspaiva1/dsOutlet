@@ -17,7 +17,7 @@ export class ProdutosService {
   newProduto(produto: Produto): Promise<boolean> {
     console.log(produto);
     return this.http
-        .post('http://localhost/cadProd.php', JSON.stringify(produto), {headers: this.headers})
+        .post('http://localhost/dsoutlet/cadProd.php', JSON.stringify(produto), {headers: this.headers})
         .toPromise()
         .then(res => this.extractNewData(res))
         .catch(this.handleError);
@@ -32,7 +32,7 @@ export class ProdutosService {
 
   addProduto(produto: Produto): Promise<boolean> {
     return this.http
-      .post('http://localhost/logar.php', JSON.stringify(produto), { headers: this.headers })
+      .post('http://localhost/dsoutlet/logar.php', JSON.stringify(produto), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);
@@ -46,7 +46,7 @@ export class ProdutosService {
 
   sellProduto(produto: Produto): Promise<boolean>{
     return this.http
-      .post('http://localhost/logar.php', JSON.stringify(produto), { headers: this.headers })
+      .post('http://localhost/dsoutlet/logar.php', JSON.stringify(produto), { headers: this.headers })
       .toPromise()
       .then(res => this.extractSellData(res))
       .catch(this.handleError);
@@ -59,7 +59,7 @@ export class ProdutosService {
   }
 
   getProdutos(): Promise<Produto[]>{
-    return this.http.get('http://localhost/busca.php?prod')
+    return this.http.get('http://localhost/dsoutlet/busca.php?prod')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleError);

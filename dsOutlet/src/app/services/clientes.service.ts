@@ -13,7 +13,7 @@ export class ClientesService {
   }
 
   getClientes(): Promise<Cliente[]> {
-    return this.http.get('http://localhost/busca.php?cli')
+    return this.http.get('http://localhost/dsoutlet/busca.php?cli')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleError);
@@ -32,7 +32,7 @@ export class ClientesService {
 
   addCliente(cliente: Cliente): Promise<boolean>{
     return this.http
-        .post('http://localhost/cadProd.php', JSON.stringify(cliente), {headers: this.headers})
+        .post('http://localhost/dsoutlet/cadProd.php', JSON.stringify(cliente), {headers: this.headers})
         .toPromise()
         .then(res => this.extractAddData(res))
         .catch(this.handleError);

@@ -9,7 +9,7 @@ export class EsqueciSenhaService {
 
   enviaEmail(email: string): Promise<boolean> {
     console.log(email);
-    return this.http.get('http://localhost/email.php?email='+email)
+    return this.http.get('http://localhost/dsoutlet/email.php?email='+email)
       .toPromise()
       .then(response => this.extractData(response))
       .catch(this.handleError);
