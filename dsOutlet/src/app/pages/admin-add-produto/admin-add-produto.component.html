@@ -22,43 +22,45 @@
           <div class="row">
             <form class="col s12">
               <div class="row">
-                <div class="input-field col s12 m6 l6 white-text">
-                  <select id="marca" materialize="material_select">
-                    <!--Organiza a seleçao criando uma opção para cada marca reistrada no banco de dados, sendop que esta marca é retornada como uma string-->
-                    <option value="" disabled selected>Escolha uma marca</option>
-                    <option ngFor="let marca of marcas" value="{{marca}}">{{marca}}</option>
-                  </select>
-                  <label class="white-text">Marca</label>
-                </div>
-                <div class="input-field col s12 m6 l6 white-text">
-                  <select id="modelo" materialize="material_select">
-                    <!--Organiza a seleçao criando uma opção para cada modelo reistrada no banco de dados, sendop que este modelo é retornado como uma string-->
-                    <option value="" disabled selected>Escolha um modelo</option>
-                    <option ngFor="let modelo of modelos" value="{{modelo}}">{{modelo}}</option>
-                  </select>
-                  <label class="white-text">Marca</label>
+                <div class="input-field col s12 m12 l12 white-text">
+
+                  <input #searchBox id="search" type="text" class="validate" (focus)="onKeyup(searchBox.value)" (keyup)="onKeyup(searchBox.value)" [(ngModel)]="marca" [ngModelOptions]="{standalone: true}" />
+                  <label class="white-text" for="search">Produto</label>
+
+                  <a *ngFor="let produto of filtrados" (click)="abrir(produto)" (blur)="lostFocus()" class="collection-item">Marca: {{produto.marca}} Modelo: {{produto.modelo}} Tamanho: {{produto.tamanho}} Valor: {{produto.precoSaidaPadrao}}</a>
+
                 </div>
               </div>
+
               <div class="row">
                 <div class="input-field col s12 m6 l6">
-                  <input id="tamanho" type="text" class="validate">
+                  <input placeholder="" id="marca" type="text" class="validate" [(ngModel)]="produto.marca" [ngModelOptions]="{standalone: true}" />
+                  <label class="white-text" for="marca">Marca</label>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                  <input placeholder="" id="modelo" type="text" class="validate" [(ngModel)]="produto.modelo" [ngModelOptions]="{standalone: true}"/>
+                  <label class="white-text" for="modelo">Modelo</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12 m6 l4">
+                  <input placeholder="" id="tamanho" type="text" class="validate" [(ngModel)]="produto.tamanho" [ngModelOptions]="{standalone: true}"/>
                   <label class="white-text" for="tamanho">Tamanho</label>
                 </div>
-                <div class="input-field col s12 m6 l6">
-                  <input id="precoCompra" type="number" class="validate">
-                  <label class="white-text" for="precoCompra">Preço de Compra</label>
+                <div class="input-field col s12 m6 l4">
+                  <input placeholder="" id="precoEntrada" type="number" class="validate" [(ngModel)]="produto.precoEntrada" [ngModelOptions]="{standalone: true}"/>
+                  <label class="white-text" for="precoEntrada">Preço de Compra</label>
                 </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12 m12 l12">
-                  <input id="quantidade" type="number" class="validate">
+                <div class="input-field col s12 m12 l4">
+                  <input id="quantidade" type="number" class="validate" [(ngModel)]="quantidade" [ngModelOptions]="{standalone: true}"/>
                   <label class="white-text" for="quantidade">Quantidade adicionada</label>
                 </div>
               </div>
               <div class="row">
-                <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
-                  <a onclick="Materialize.toast('Produto foi modificado!', 4000, 'rouded')" class="btn waves-effect waves-light blue darken-4">Adicionar
-                      <i class="material-icons right">send</i>
+                <div class="right">
+                  <a (click)="adicionar()" class="btn waves-effect waves-light blue darken-4">Adicionar
+                      <i class="material-icons right">add</i>
                     </a>
                 </div>
               </div>
