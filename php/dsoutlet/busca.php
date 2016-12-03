@@ -34,7 +34,7 @@
 				}
 				echo json_encode($vetor);
 			} else {
-				$id = $_GET['id'];
+				$id = $_GET['cli'];
 				$sql = "SELECT * FROM cliente WHERE id = '$id'";
 				$result = $con->query($sql);
 				
