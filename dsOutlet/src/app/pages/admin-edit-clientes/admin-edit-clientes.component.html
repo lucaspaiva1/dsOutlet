@@ -24,11 +24,11 @@
               <div class="row">
                 <div class="input-field col s12 m6 l8 white-text">
                   <i class="material-icons prefix">perm_identity</i>
-                  <input id="name" type="text" class="validate white-text" [(ngModel)]="cliente.nome" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="name" type="text" class="validate white-text" [(ngModel)]="cliente.nome" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="first_name">Nome Completo</label>
                 </div>
                 <div class="input-field col s12 m6 l4 white-text">
-                  <input id="cpf" type="number" class="validate white-text" [(ngModel)]="cliente.cpf" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="cpf" type="number" class="validate white-text" [(ngModel)]="cliente.cpf" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="cpf">CPF</label>
                 </div>
               </div>
@@ -36,47 +36,50 @@
               <div class="row">
                 <div class="input-field col s12 m6 l4 white-text">
                   <label class="white-text" for="date">Nascimento</label><br>
-                  <input id="date" type="date" class="validate white-text" [(ngModel)]="cliente.nascimento" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="date" type="date" class="validate white-text" [(ngModel)]="cliente.nascimento" [ngModelOptions]="{standalone: true}">
                 </div>
                 <br>
                 <div class="input-field col s12 m6 l8 white-text">
-                  <input id="email" type="text" class="validate white-text" [(ngModel)]="cliente.email" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="email" type="text" class="validate white-text" [(ngModel)]="cliente.email" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="email">Email</label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s12 m6 l4 white-text">
-                  <input id="telefone" type="number" class="validate white-text" [(ngModel)]="cliente.telefone" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="telefone" type="number" class="validate white-text" [(ngModel)]="cliente.telefone" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="telefone">Telefone</label>
                 </div>
                 <div class="input-field col s12 m12 l4">
-                  <input id="cidade" type="text" class="validate" [(ngModel)]="endereco.cidade" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="cidade" type="text" class="validate" [(ngModel)]="cliente.endereco.cidade" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="cidade">Cidade</label>
                 </div>
                 <div class="input-field col s12 m12 l2">
-                  <input id="uf" type="text" class="validate" [(ngModel)]="endereco.uf" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="uf" type="text" class="validate" [(ngModel)]="cliente.endereco.uf" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="uf">UF</label>
                 </div>
                 <div class="input-field col s12 m6 l2 white-text">
-                  <input id="cep" type="text" class="validate white-text" [(ngModel)]="endereco.cep" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="cep" type="text" class="validate white-text" [(ngModel)]="cliente.endereco.cep" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="cep">CEP</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m12 l10">
-                  <input id="logradouro" type="text" class="validate" [(ngModel)]="endereco.logradouro" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="logradouro" type="text" class="validate" [(ngModel)]="cliente.endereco.logradouro" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="logradouro">Endereço</label>
                 </div>
                 <div class="input-field col s12 m12 l2">
-                  <input id="numero" type="text" class="validate" [(ngModel)]="endereco.numero" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="numero" type="text" class="validate" [(ngModel)]="cliente.endereco.numero" [ngModelOptions]="{standalone: true}">
                   <label class="white-text" for="numero">Número</label>
                 </div>
               </div>
               <div class="row">
                 <div class="right">
-                  <a onclick="Materialize.toast('Excluido!', 4000, 'rouded')" class="btn waves-effect waves-light red darken-4">Excluir
+                  <a (click)="delete()" class="btn waves-effect waves-light red darken-4">Excluir
                     <i class="material-icons right">delete</i>
+                  </a>
+                  <a (click)="editar()" class="btn waves-effect waves-light blue darken-4">Editar
+                    <i class="material-icons right">mode_edit</i>
                   </a>
                 </div>
               </div>

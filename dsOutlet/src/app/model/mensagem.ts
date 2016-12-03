@@ -1,9 +1,8 @@
 export class Mensagem{
 
+  nome: string;
   email: string;
   assunto: string;
-  nome: string;
-  sobrenome: string;
   texto: string;
   telefone: string;
 

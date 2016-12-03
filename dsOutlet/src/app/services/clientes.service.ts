@@ -7,7 +7,6 @@ import { Cliente } from '../model/cliente';
 export class ClientesService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  private clientes: Cliente[] = [];
 
   constructor(private http: Http) {
   }
@@ -23,20 +22,18 @@ export class ClientesService {
   private extractGetData(res: Response) {
     let data = res.json();
     if (data == null) {
-      this.clientes = [];
+      return new Cliente();
     } else {
-      this.clientes = data;
+      return data;
     }
-    return this.clientes;
   }
 
-  addCliente(cliente: Cliente): Promise<boolean>{
-    console.log(cliente);
+  addCliente(cliente: Cliente): Promise<boolean> {
     return this.http
-        .post('http://localhost/dsoutlet/cadCli.php', JSON.stringify(cliente), {headers: this.headers})
-        .toPromise()
-        .then(res => this.extractAddData(res))
-        .catch(this.handleError);
+      .post('http://localhost/dsoutlet/cadCli.php', JSON.stringify(cliente), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractAddData(res))
+      .catch(this.handleError);
   }
 
   /*Método que converte o arquivo json recebido da api php*/
@@ -45,8 +42,26 @@ export class ClientesService {
     return data;
   }
 
-  getUser(id: number): Cliente {
-    return this.clientes.find(cliente => cliente.id === id);
+  getCliente(id: number): Promise<Cliente> {
+    return this.http.get('http://localhost/dsoutlet/busca.php?cli=' + id)
+      .toPromise()
+      .then(response => this.extractData(response))
+      .catch(this.handleError);
+  }
+
+  /*Método que converte o arquivo json recebido da api php*/
+  private extractData(res: Response) {
+    console.log(res);
+    let data = res.json();
+    return data;
+  }
+
+  deleteCliente(id: number) {
+    return this.http
+      .post('http://localhost/dsoutlet/deleteCli.php', JSON.stringify({ id: id }), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractData(res))
+      .catch(this.handleError);
   }
 
   /*método chamado quando ocorre um erro no acesso a api php*/

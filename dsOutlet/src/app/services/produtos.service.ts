@@ -32,7 +32,7 @@ export class ProdutosService {
 
   addProduto(produto: Produto): Promise<boolean> {
     return this.http
-      .post('http://localhost/dsoutlet/logar.php', JSON.stringify(produto), { headers: this.headers })
+      .post('http://localhost/dsoutlet/add.php', JSON.stringify(produto), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);
@@ -40,6 +40,7 @@ export class ProdutosService {
 
   /*Método que converte o arquivo json recebido da api php*/
   private extractAddData(res: Response) {
+    console.log(res);
     let data = res.json();
     return data;
   }

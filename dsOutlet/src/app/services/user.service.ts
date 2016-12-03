@@ -8,7 +8,6 @@ import { User } from '../model/user';
 export class UserService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  private users: User[] = [];
 
   constructor(private storage: LocalStorageService, private http: Http) {
 
@@ -80,11 +79,10 @@ export class UserService {
   private extractGetData(res: Response) {
     let data = res.json();
     if (data == null) {
-      this.users = [];
+      return new User;
     } else {
-      this.users = data;
+      return data;
     }
-    return this.users;
   }
 
   deleteUser(id: number): Promise<boolean> {
@@ -115,7 +113,7 @@ export class UserService {
 
   getUser(id: number): Promise<User> {
     return this.getUsers()
-               .then(users => users.find(hero => hero.id === id));
+               .then(users => users.find(user => user.id === id));
   }
 
   /*método chamado quando ocorre um erro no acesso a api php*/

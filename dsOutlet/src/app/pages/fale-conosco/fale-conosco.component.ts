@@ -27,11 +27,18 @@ export class FaleConoscoComponent {
   }
 
   enviarMensagem(){
-    if(this.mensagem.texto && this.mensagem.email){
+    if(this.mensagem.texto == null ||
+      this.mensagem.email == null ||
+      this.mensagem.nome == null ||
+      this.mensagem.assunto == null ||
+      this.mensagem.telefone == null){
+        toast('Preencha os campos!', 4000, 'rounded');
+      
+    }else{
       this.faleConoscoService.enviarMensagem(this.mensagem);
       toast('Sua mensagem foi enviada!', 4000, 'rounded');
     }
-    toast('Preencha os campos!', 4000, 'rounded');
+
   }
 
 }

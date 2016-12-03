@@ -15,10 +15,10 @@ export class AdminAddProdutoComponent implements OnInit {
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
 
-  search: string = "";
-  filtrados: Produto[] = [];
-  produto: Produto = new Produto();
-  quantidade: number;
+  private search: string = "";
+  private filtrados: Produto[] = [];
+  private produto: Produto = new Produto();
+  private quantidade: number;
 
   constructor(private router: Router, private userService: UserService, private produtosService: ProdutosService) {
     let stats = this.userService.userStats();
@@ -63,7 +63,21 @@ export class AdminAddProdutoComponent implements OnInit {
 
   /*adiciona a quantidade ao produto no banco de dados*/
   private adicionar(): void {
-    toast('Produto foi modificado!', 4000, 'rounded');
+    if (this.quantidade > 0) {
+      this.produto.quantidade = this.quantidade;
+      console.log(this.produto);
+      this.produtosService.addProduto(this.produto).then(res => {
+        if (res) {
+          toast('Produto foi modificado!', 4000, 'rounded');
+          this.produto = new Produto();
+          this.quantidade = 0;
+        } else {
+          toast('Ocorreu um erro!', 4000, 'rounded');
+        }
+      });
+    } else {
+      toast('Quantidade Inválida!', 4000, 'rounded');
+    }
   }
 
 }
