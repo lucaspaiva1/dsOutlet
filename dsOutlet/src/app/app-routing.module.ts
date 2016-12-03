@@ -69,7 +69,7 @@ const routes: Routes = [
     path: 'gerenciador/clientes/cadastro',
     component: AdminAddClientesComponent
   }, {
-    path: 'gerenciador/clientes/editar/:name',
+    path: 'gerenciador/clientes/editar/:id',
     component: AdminEditClientesComponent
   }
 ];

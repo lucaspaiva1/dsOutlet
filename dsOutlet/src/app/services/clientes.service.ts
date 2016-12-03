@@ -31,8 +31,9 @@ export class ClientesService {
   }
 
   addCliente(cliente: Cliente): Promise<boolean>{
+    console.log(cliente);
     return this.http
-        .post('http://localhost/dsoutlet/cadProd.php', JSON.stringify(cliente), {headers: this.headers})
+        .post('http://localhost/dsoutlet/cadCli.php', JSON.stringify(cliente), {headers: this.headers})
         .toPromise()
         .then(res => this.extractAddData(res))
         .catch(this.handleError);
