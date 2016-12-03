@@ -1,11 +1,14 @@
+import { Endereco } from './endereco';
+
 export class Cliente {
 
   id: number;
   nome: string;
   cpf: string;
-  endereco: string;
+  nascimento: Date;
+  email: string;
   telefone: string;
-  valor: number;
+  endereco: Endereco;
 
   constructor() {
   }
