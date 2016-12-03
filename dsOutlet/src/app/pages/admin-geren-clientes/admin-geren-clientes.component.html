@@ -41,9 +41,7 @@
                 <th data-field="nome">Nome</th>
                 <th data-field="cpf">CPF</th>
                 <th data-field="telefone">Telefone</th>
-                <th data-field="endereco">Endereço</th>
-                <th data-field="divida">Dívida</th>
-                <th data-field="vencimento">Vencimento</th>
+                <th data-field="divida">Dívida Total</th>
               </tr>
             </thead>
 
@@ -52,18 +50,18 @@
                 <td>{{cliente.nome}}</td>
                 <td>{{cliente.cpf}}</td>
                 <td>{{cliente.telefone}}</td>
-                <td>{{cliente.endereco}}</td>
-                <td>{{cliente.valor}}</td>
-                <td>{{cliente.vencimento}}</td>
+                <td>{{cliente.email}}</td>
               </tr>
             </tbody>
           </table>
           <!--Botão para adicionar cliente-->
           <div class="row">
-            <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
-              <a class="btn waves-effect waves-light blue darken-4" (click)="cadastrar()">Adicionar Cliente
+            <div class="section">
+              <div class="right">
+                <a class="btn waves-effect waves-light blue darken-4" (click)="cadastrar()">Adicionar
                   <i class="material-icons right">send</i>
                 </a>
+              </div>
             </div>
           </div>
         </div>

@@ -35,14 +35,19 @@ export class AdminAddClientesComponent implements OnInit {
   }
 
   adicionar() {
-    if (this.cliente.nome != null && this.cliente.cpf != null && this.cliente.telefone != null) {
-      this.cliente.endereco = this.endereco;
-      //this.clientesService.addCliente(this.cliente);
-      console.log(this.cliente);
-      this.cliente = new Cliente();
-      toast('Salvo!', 4000, 'rounded');
-    } else {
+    if (this.cliente.nome == null || this.cliente.cpf == null || this.cliente.telefone == null || this.endereco.cidade == null || this.endereco.uf == null || this.endereco.logradouro == null) {
       toast('Faltam Informações!', 4000, 'rounded');
+    } else {
+      this.cliente.endereco = this.endereco;
+      this.clientesService.addCliente(this.cliente).then(res => {
+        if (res) {
+          toast('Cliente foi cadastrado!', 4000, 'rounded');
+          this.cliente = new Cliente();
+          this.endereco = new Endereco();
+        } else {
+          toast('Cliente já cadastrado', 4000, 'rounded');
+        }
+      });
     }
   }
 

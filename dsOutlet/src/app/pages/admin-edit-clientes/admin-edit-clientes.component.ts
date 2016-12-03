@@ -30,7 +30,7 @@ export class AdminEditClientesComponent implements OnInit {
         this.router.navigate(['/home']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
       } else {
         this.route.params.forEach((params: Params) => {
-          let name = ""+params['name'];
+          let name = params['id'];
           //this.cliente = this.clientesService.getFuncionarioByName(name);
           console.log(this.cliente);
           })
