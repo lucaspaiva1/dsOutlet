@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/materialize-css/dist/css/materialize.css";
 
-body {
+.backgroundImage {
   background-image: url(css_imagens/fundo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,6 +10,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
 }
+
 main {
     flex: 1 0 auto;
 }
