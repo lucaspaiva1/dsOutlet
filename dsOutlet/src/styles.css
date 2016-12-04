@@ -1,31 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/materialize-css/dist/css/materialize.css";
 
+@import "../node_modules/materialize-css/dist/css/materialize.css";
 .backgroundImage {
   background-image: url(css_imagens/fundo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 main {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }
+
+
 /*Configuração dos elementos do corpo da pagina*/
-div.slogan{
+
+div.slogan {
   text-align: center;
 }
-div.slogan h1{
+
+div.slogan h1 {
   color: white;
   font-family: broadway;
   font-size: 70px;
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
-div.slogan h3{
+
+div.slogan h3 {
   margin-top: 0px;
   padding-top: 0px;
   margin-left: 10px;
@@ -35,55 +40,92 @@ div.slogan h3{
   color: white;
   font-size: 30px;
 }
-div.formulario{
+
+div.formulario {
   background-color: #64b5f6;
   margin-top: 30px;
   margin-bottom: 30px;
   padding: 30px;
 }
-div.backgroud{
+
+div.backgroud {
   background-color: #64b5f6;
   width: 95%;
   height: auto;
   margin: 20px;
   padding: 20px;
 }
+
+
 /* label color */
+
 .input-field label {
   color: white;
-  }
+}
+
+
 /* label focus color */
-  .input-field input[type=text]:focus + label {
-    color: white;
-  }
+
+.input-field input[type=text]:focus+label {
+  color: white;
+}
+
+
 /* label underline focus color */
-  .input-field input[type=text]:focus {
-    border-bottom: 1px solid white;
-    box-shadow: 0 1px 0 0 white;
-  }
-  /* icon prefix focus color */
-   .input-field .prefix.active {
-     color: white;
-   }
 
-   table.alter > tbody > tr:nth-child(odd) {
-     background-color: #f2f2f2;
-   }
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid white;
+  box-shadow: 0 1px 0 0 white;
+}
 
-   table.selectable > tbody > tr {
-     -webkit-transition: background-color 0.25s ease;
-     -moz-transition: background-color 0.25s ease;
-     -o-transition: background-color 0.25s ease;
-     -ms-transition: background-color 0.25s ease;
-     transition: background-color 0.25s ease;
-   }
-   table.selectable > tbody > tr:hover {
-     background-color: #CAE1FF;
-   }
 
+/* icon prefix focus color */
+
+.input-field .prefix.active {
+  color: white;
+}
+
+/*cores da tabela*/
+table.alter>tbody>tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+table.selectable>tbody>tr {
+  -webkit-transition: background-color 0.25s ease;
+  -moz-transition: background-color 0.25s ease;
+  -o-transition: background-color 0.25s ease;
+  -ms-transition: background-color 0.25s ease;
+  transition: background-color 0.25s ease;
+}
+
+table.selectable>tbody>tr:hover {
+  background-color: #dbdbdb;
+}
+
+/*cores menu de opcoes*/
+.myItem{
+  background-color: #fff;
+  line-height: 1.5rem;
+  padding: 10px 20px;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+  display: block;
+  transition: .25s;
+  color: #005db3;
+}
+
+.myItem.active {
+  color: #fff;
+  background-color: #005db3;
+}
+
+.myItem:not(.active):hover {
+  background-color: #e4e4e4;
+}
 
 /*Configuração do tamanho do google-maps*/
-div.google-maps{
+
+div.google-maps {
   width: 100%;
   height: 150px;
 }
