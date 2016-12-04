@@ -1,4 +1,4 @@
-<body>
+
   <!-- Cabeçalho -->
   <header>
     <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
@@ -17,22 +17,22 @@
       <div class="col s12 m8 l9">
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
-        <div class="collection backgroud z-depth-4">
+        <div >
           <!-- Formulário -->
           <div class="row">
             <form class="col s12">
               <div class="row">
                 <div class="input-field col s12 m6 l6">
-                  <input id="marca" type="text" class="validate white-text" [(ngModel)]="produto.marca" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="marca">Marca</label>
+                  <input id="marca" type="text" class="validate black-text" [(ngModel)]="produto.marca" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="marca">Marca</label>
                 </div>
-                <div class="input-field col s12 m6 l6 white-text">
-                  <input id="modelo" type="text" class="validate  white-text" [(ngModel)]="produto.modelo" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="modelo">Modelo</label>
+                <div class="input-field col s12 m6 l6 black-text">
+                  <input id="modelo" type="text" class="validate  black-text" [(ngModel)]="produto.modelo" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="modelo">Modelo</label>
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s12 m6 l6  white-text">
+                <div class="input-field col s12 m6 l6  black-text ">
                   <select materialize="material_select" [(ngModel)]="produto.tamanho" [ngModelOptions]="{standalone: true}">
                       <option value="none" disabled selected>Tamanho</option>
                       <option value="PP">PP</option>
@@ -42,28 +42,38 @@
                       <option value="GG">GG</option>
                       <option value="XG">XG</option>
                       <option value="XGG">XGG</option>
+                      <option value="36">34</option>
+                      <option value="36">35</option>
                       <option value="36">36</option>
+                      <option value="38">37</option>
                       <option value="38">38</option>
+                      <option value="38">39</option>
+                      <option value="38">40</option>
+                      <option value="38">41</option>
+                      <option value="38">42</option>
+                      <option value="38">43</option>
+                      <option value="38">44</option>
+                      <option value="38">46</option>
                     </select>
-                  <label class="white-text">Tamanho</label>
+                  <label class="black-text">Tamanho</label>
                 </div>
                 <div class="input-field col s12 m6 l6">
                   <input id="venda" type="number" class="validate" [(ngModel)]="produto.precoSaidaPadrao" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="venda">Preço de Venda</label>
+                  <label class="black-text" for="venda">Preço de Venda</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m4 l4">
                   <input id="max" type="number" class="validate" [(ngModel)]="produto.maximo" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="max">Máximo</label>
+                  <label class="black-text" for="max">Máximo</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
                   <input id="min" type="number" class="validate" [(ngModel)]="produto.minimo" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="min">Mínimo</label>
+                  <label class="black-text" for="min">Mínimo</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
                   <input id="quantidade" type="number" min="0" class="validate" [(ngModel)]="produto.quantidade" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="quantidade">Quantidade</label>
+                  <label class="black-text" for="quantidade">Quantidade</label>
                 </div>
               </div>
               <div class="row">
@@ -79,4 +89,4 @@
       </div>
     </div>
   </main>
-</body>
+
