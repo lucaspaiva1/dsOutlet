@@ -14,59 +14,69 @@
         <options [isAdmin]="isAdmin"></options>
       </div>
 
-      <div class="col s12 m8 l9">
+      <div class="col s12 m8 l9 collection">
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
-        <div class="collection backgroud z-depth-4">
 
-          <!--Loading - aparece enquanto carrega a tabela-->
-          <div *ngIf="loading" class="preloader-wrapper big active">
-            <div class="spinner-layer spinner-blue">
-              <div class="circle-clipper left">
-                <div class="circle"></div>
-              </div>
-              <div class="gap-patch">
-                <div class="circle"></div>
-              </div>
-              <div class="circle-clipper right">
-                <div class="circle"></div>
-              </div>
+        <!--Loading - aparece enquanto carrega a tabela-->
+        <div *ngIf="loading" class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
             </div>
           </div>
-
-          <!--Tabela de estoque-->
-          <table *ngIf="!loading" class="bordered striped responsive-table centered">
-            <thead>
-              <tr >
-                <th data-field="marca">Marca</th>
-                <th data-field="modelo">Modelo</th>
-                <th data-field="tamanho">Tamanho</th>
-                <th data-field="quantidade">Quantidade</th>
-                <th data-field="ultimaCompra">Ultima Compra</th>
-                <th data-field="precoVenda">Preço Venda</th>
-                <th data-field="precoCompra">Preço Compra</th>
-                <th data-field="max">Max</th>
-                <th data-field="min">Min</th>
-                <th data-field="estado">Estado</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr *ngFor="let produto of produtos">
-                <td>{{produto.marca}}</td>
-                <td>{{produto.modelo}}</td>
-                <td>{{produto.tamanho}}</td>
-                <td>{{produto.quantidade}}</td>
-                <td>{{produto.precoUltimaCompra}}</td>
-                <td>{{produto.precoSaidaPadrao}}</td>
-                <td>{{produto.precoEntrada}}</td>
-                <td>{{produto.maximo}}</td>
-                <td>{{produto.minimo}}</td>
-                <td>{{produto.estado}}</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
+
+        <nav class="white black-text">
+          <div class="nav-wrapper">
+            <form>
+              <div class="input-field">
+                <input [(ngModel)]="search" name="search" type="search" placeholder="Procurar mercadoria">
+                <label for="search"><i class="material-icons black-text" >search</i></label>
+                <i class="material-icons black-text" (click)="limpar()">close</i>
+              </div>
+            </form>
+          </div>
+        </nav>
+
+        <!--Tabela de estoque-->
+        <table *ngIf="!loading" class="bordered striped responsive-table centered">
+          <thead>
+            <tr>
+              <th data-field="marca">Marca</th>
+              <th data-field="modelo">Modelo</th>
+              <th data-field="tamanho">Tamanho</th>
+              <th data-field="quantidade">Quantidade</th>
+              <th data-field="ultimaCompra">Ultima Compra</th>
+              <th data-field="precoVenda">Preço Venda</th>
+              <th data-field="precoCompra">Preço Compra</th>
+              <th data-field="max">Max</th>
+              <th data-field="min">Min</th>
+              <th data-field="estado">Estado</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let produto of produtos">
+              <td>{{produto.marca}}</td>
+              <td>{{produto.modelo}}</td>
+              <td>{{produto.tamanho}}</td>
+              <td>{{produto.quantidade}}</td>
+              <td>{{produto.precoUltimaCompra}}</td>
+              <td>{{produto.precoSaidaPadrao}}</td>
+              <td>{{produto.precoEntrada}}</td>
+              <td>{{produto.maximo}}</td>
+              <td>{{produto.minimo}}</td>
+              <td>{{produto.estado}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </main>

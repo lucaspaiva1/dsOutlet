@@ -14,7 +14,7 @@ export class EstoqueComponent implements OnInit {
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
   private loading: boolean;
-
+  private search : string;
 
   produtos: Produto[];
 
@@ -22,6 +22,7 @@ export class EstoqueComponent implements OnInit {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
+    this.search = "";
   }
 
   ngOnInit() {
@@ -38,6 +39,10 @@ export class EstoqueComponent implements OnInit {
       this.produtos = res;
       this.loading = false;
     });
+  }
+
+  limpar(){
+    this.search = "";
   }
 
 }
