@@ -46,7 +46,7 @@
         </nav>
 
         <!--Tabela de estoque-->
-        <table *ngIf="!loading" class="bordered striped responsive-table centered">
+        <table *ngIf="!loading" class="bordered striped responsive-table centered highlight">
           <thead>
             <tr>
               <th data-field="marca">Marca</th>
@@ -63,7 +63,7 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let produto of produtos">
+            <tr *ngFor="let produto of produtos | filtroDeMercadoria: search">
               <td>{{produto.marca}}</td>
               <td>{{produto.modelo}}</td>
               <td>{{produto.tamanho}}</td>
