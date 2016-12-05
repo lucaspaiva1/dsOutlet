@@ -12,7 +12,8 @@ export class FiltroDeMercadoria implements PipeTransform {
         return produtos.filter(produto => (
             produto.marca.toLocaleLowerCase().includes(digitado) ||
             produto.modelo.toLocaleLowerCase().includes(digitado) ||
-            produto.tamanho.toLocaleLowerCase().includes(digitado)
+            produto.tamanho.toLocaleLowerCase().includes(digitado) ||
+            produto.estado.toLocaleLowerCase().includes(digitado)
         ));
     }
 }

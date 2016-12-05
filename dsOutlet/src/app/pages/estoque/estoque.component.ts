@@ -24,6 +24,7 @@ export class EstoqueComponent implements OnInit {
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
     this.search = "";
+    
   }
 
   ngOnInit() {
@@ -39,7 +40,20 @@ export class EstoqueComponent implements OnInit {
     this.produtosService.getProdutos().then(res => {
       this.produtos = res;
       this.loading = false;
+      this.estados();
     });
+  }
+
+  estados(){
+    for(let i = 0; i < this.produtos.length; i++){
+      if(this.produtos[i].minimo>=this.produtos[i].quantidade){
+        this.produtos[i].estado = "falta";
+      }else if(this.produtos[i].quantidade > this.produtos[i].maximo){
+        this.produtos[i].estado = "excesso";
+      }else{
+        this.produtos[i].estado = "certo";
+      }
+    }
   }
 
   limpar() {
