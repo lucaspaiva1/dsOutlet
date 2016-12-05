@@ -13,7 +13,6 @@
 		$request = json_decode($postdata);
 		
 		$id     	  = $request->id;
-		$precoE 	  = $request->precoEntrada;
 		$precoS	      = $request->precoSaidaPadrao;
 		$quantidade   = $request->quantidade;
 		
@@ -27,7 +26,7 @@
 			$dados = $result->fetch_assoc();
 			$amount = $dados['quantidade'];
 			$amount = $amount + $quantidade;
-			$sql = "UPDATE produto SET quantidade = '$amount', precoEntrada = '$precoE', precoSaidaPadrao = '$precoS' WHERE id = '$id'";
+			$sql = "UPDATE produto SET quantidade = '$amount' precoSaidaPadrao = '$precoS' WHERE id = '$id'";
 			$con->query($sql);
 			echo json_encode(true);
 		}
