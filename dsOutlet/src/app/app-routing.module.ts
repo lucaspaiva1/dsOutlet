@@ -16,6 +16,7 @@ import { AdminGerenClientesComponent } from './pages/admin-geren-clientes/admin-
 import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-clientes.component';
 import { AdminEditClientesComponent } from './pages/admin-edit-clientes/admin-edit-clientes.component';
 import { MinhaContaComponent } from './pages/minha-conta/minha-conta.component';
+import { RelatorioComponent } from './pages/relatorio/relatorio.component';
 
 
 const routes: Routes = [
@@ -76,6 +77,9 @@ const routes: Routes = [
   }, {
     path: 'gerenciador/minha-conta',
     component: MinhaContaComponent
+  }, {
+    path: 'gerenciador/relatorios',
+    component: RelatorioComponent
   }
 ];
 @NgModule({

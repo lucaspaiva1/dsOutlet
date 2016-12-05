@@ -1,0 +1,44 @@
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
+    <app-navbar [isAdmin]="isAdmin" [isLogado]="isLogado"></app-navbar>
+  </header>
+
+  <!-- Corpo da pagina -->
+  <main>
+    <div class="row">
+      <div class="col m4 l3 menu_lateral hide-on-small-and-down">
+        <!-- Note that "m4 l3" was added -->
+        <!-- small container -->
+        <options [isAdmin]="isAdmin"></options>
+      </div>
+
+      <div class="col s12 m8 l9">
+        <!-- Note that "m8 l9" was added -->
+
+            
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12 m4 l4">
+                <label class="black-text" for="Inicio">Inicio</label><br>
+                <input id="Inicio" type="date" class="validate" [(ngModel)]="inicio" name="inicio" [ngModelOptions]="{standalone: true}" >
+              </div>
+              <div class="input-field col s12 m4 l4">
+                <label class="black-text" for="Fim">Fim</label><br>
+                <input id="Fim" type="date" class="validate" [(ngModel)]="fim" name="fim" [ngModelOptions]="{standalone: true}" >
+              </div>
+              <div class="input-field col s12 m4 l4">
+                <a class="waves-effect waves-light blue btn btn-large" (click)="filtrar()">Filtrar</a>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+  </main>
+</body>
