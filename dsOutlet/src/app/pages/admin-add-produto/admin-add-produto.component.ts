@@ -18,7 +18,10 @@ export class AdminAddProdutoComponent implements OnInit {
   private search: string = "";
   private filtrados: Produto[] = [];
   private produto: Produto = new Produto();
-  private quantidade: number;
+  private quantidade: number = 0;
+  private precoVenda: number = 0;
+  private precoCompra: number = 0;
+
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private produtoService: ProdutosService) {
     let stats = this.userService.userStats();
@@ -45,6 +48,8 @@ export class AdminAddProdutoComponent implements OnInit {
         this.router.navigate(['/gerenciador']);
       } else {
         this.produto = res;
+        this.precoVenda = this.produto.precoSaidaPadrao;
+        this.precoCompra = this.produto.precoEntrada;
       }
     });
   }
@@ -54,6 +59,7 @@ export class AdminAddProdutoComponent implements OnInit {
     if (this.quantidade > 0) {
       this.produto.quantidade = this.quantidade;
       console.log(this.produto);
+      this.produto.precoUltimaCompra = this.produto.precoEntrada;
       this.produtoService.addProduto(this.produto).then(res => {
         if (res) {
           toast('Produto foi modificado!', 4000, 'rounded');

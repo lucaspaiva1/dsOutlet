@@ -17,44 +17,60 @@
       <div class="col s12 m8 l9">
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
-        <div class="collection backgroud z-depth-4">
+        <div>
           <!-- Formulário -->
           <div class="row">
             <form class="col s12">
+
               <div class="row">
-                <div class="input-field col s12 m12 l12 white-text">
-
-                  <input #searchBox id="search" type="text" class="validate" (focus)="onKeyup(searchBox.value)" (keyup)="onKeyup(searchBox.value)" [(ngModel)]="marca" [ngModelOptions]="{standalone: true}" />
-                  <label class="white-text" for="search">Produto</label>
-
-                  <a *ngFor="let produto of filtrados" (click)="abrir(produto)" (blur)="lostFocus()" class="collection-item">Marca: {{produto.marca}} Modelo: {{produto.modelo}} Tamanho: {{produto.tamanho}} Valor: {{produto.precoSaidaPadrao}}</a>
-
+                <div class="input-field col s12 m6 l6">
+                  <label class="black-text" for="marca">Marca</label>
+                  <h3>{{produto.marca}}</h3>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                  <label class="black-text" for="modelo">Modelo</label>
+                  <h3>{{produto.modelo}}</h3>
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field col s12 m6 l6">
-                  <input placeholder="" id="marca" type="text" class="validate" [(ngModel)]="produto.marca" [ngModelOptions]="{standalone: true}" />
-                  <label class="white-text" for="marca">Marca</label>
+                <div class="input-field col s12 m3 l3">
+                  <select materialize="material_select" [(ngModel)]="produto.tamanho" [ngModelOptions]="{standalone: true}" disabled>
+                      <option value="none" disabled selected>Tamanho</option>
+                      <option value="PP">PP</option>
+                      <option value="P">P</option>
+                      <option value="M">M</option>
+                      <option value="G">G</option>
+                      <option value="GG">GG</option>
+                      <option value="XG">XG</option>
+                      <option value="XGG">XGG</option>
+                      <option value="36">34</option>
+                      <option value="36">35</option>
+                      <option value="36">36</option>
+                      <option value="38">37</option>
+                      <option value="38">38</option>
+                      <option value="38">39</option>
+                      <option value="38">40</option>
+                      <option value="38">41</option>
+                      <option value="38">42</option>
+                      <option value="38">43</option>
+                      <option value="38">44</option>
+                      <option value="38">46</option>
+                    </select>
+                  <label class="black-text" for="tamanho">Tamanho</label>
                 </div>
-                <div class="input-field col s12 m6 l6">
-                  <input placeholder="" id="modelo" type="text" class="validate" [(ngModel)]="produto.modelo" [ngModelOptions]="{standalone: true}"/>
-                  <label class="white-text" for="modelo">Modelo</label>
+                <div class="input-field col s12 m3 l3">
+                  <input placeholder="" id="precoVenda" type="number" class="validate" [(ngModel)]="precoVenda" [ngModelOptions]="{standalone: true}" />
+                  <label class="black-text" for="precoVenda">Preço de venda</label>
                 </div>
-              </div>
-
-              <div class="row">
-                <div class="input-field col s12 m6 l4">
-                  <input placeholder="" id="tamanho" type="text" class="validate" [(ngModel)]="produto.tamanho" [ngModelOptions]="{standalone: true}"/>
-                  <label class="white-text" for="tamanho">Tamanho</label>
+                <div class="input-field col s12 m3 l3">
+                  <input placeholder="" id="quantidade" type="number" class="validate" [(ngModel)]="quantidade" [ngModelOptions]="{standalone: true}" />
+                  <label class="black-text" for="quantidade">Quantidade adicionada</label>
                 </div>
-                <div class="input-field col s12 m6 l4">
-                  <input placeholder="" id="precoEntrada" type="number" class="validate" [(ngModel)]="produto.precoEntrada" [ngModelOptions]="{standalone: true}"/>
-                  <label class="white-text" for="precoEntrada">Preço de Compra</label>
-                </div>
-                <div class="input-field col s12 m12 l4">
-                  <input id="quantidade" type="number" class="validate" [(ngModel)]="quantidade" [ngModelOptions]="{standalone: true}"/>
-                  <label class="white-text" for="quantidade">Quantidade adicionada</label>
+                <div class="input-field col s12 m3 l3" *ngIf="isAdmin">
+                  <input placeholder="" id="precoEntrada" type="number" class="validate" [(ngModel)]="produto.precoEntrada" [ngModelOptions]="{standalone: true}"
+                  />
+                  <label class="black-text" for="precoEntrada">Preço de Compra</label>
                 </div>
               </div>
               <div class="row">

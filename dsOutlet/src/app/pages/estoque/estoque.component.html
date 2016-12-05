@@ -54,9 +54,9 @@
                 <th data-field="modelo">Modelo</th>
                 <th data-field="tamanho">Tamanho</th>
                 <th data-field="quantidade">Quantidade</th>
-                <th data-field="ultimaCompra">Ultima Compra</th>
+                <th data-field="ultimaCompra" *ngIf="isAdmin">Ultima Compra</th>
                 <th data-field="precoVenda">Preço Venda</th>
-                <th data-field="precoCompra">Preço Compra</th>
+                <th data-field="precoCompra" *ngIf="isAdmin">Preço Compra</th>
                 <th data-field="max">Max</th>
                 <th data-field="min">Min</th>
                 <th data-field="estado">Estado</th>
@@ -69,9 +69,9 @@
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.modelo}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.tamanho}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.quantidade}}</td>
-                <td materialize="dropdown" data-activates="dropdown1">{{produto.precoUltimaCompra}}</td>
+                <td materialize="dropdown" data-activates="dropdown1" *ngIf="isAdmin">{{produto.precoUltimaCompra}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.precoSaidaPadrao}}</td>
-                <td materialize="dropdown" data-activates="dropdown1">{{produto.precoEntrada}}</td>
+                <td materialize="dropdown" data-activates="dropdown1" *ngIf="isAdmin">{{produto.precoEntrada}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.maximo}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.minimo}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.estado}}</td>
