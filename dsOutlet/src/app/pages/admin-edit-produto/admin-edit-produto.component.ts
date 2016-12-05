@@ -13,7 +13,9 @@ export class AdminEditProdutoComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
-  private produto:Produto = new Produto();
+  private produto: Produto = new Produto();
+  private marca: string = "";
+  private modelo: string = "";
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private produtoService: ProdutosService) {
     let stats = this.userService.userStats();
@@ -34,15 +36,26 @@ export class AdminEditProdutoComponent implements OnInit {
   }
 
 
-  private getProduto(id: number): void{
-    this.produtoService.getProduto(id).then(res=>{
+  private getProduto(id: number): void {
+    this.produtoService.getProduto(id).then(res => {
       console.log(res);
-      if(res == null){
+      if (res == null) {
         this.router.navigate(['/gerenciador']);
-      }else{
+      } else {
         this.produto = res;
+        this.marca = this.produto.marca;
+        this.modelo = this.produto.modelo;
       }
     });
+  }
+
+  excluir() {
+    this.router.navigate(['/gerenciador/estoque']);
+
+  }
+
+  salvar() {
+    this.router.navigate(['/gerenciador/estoque']);
   }
 
 }

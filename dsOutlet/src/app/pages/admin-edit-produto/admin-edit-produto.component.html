@@ -17,63 +17,81 @@
       <div class="col s12 m8 l9">
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
-        <div class="collection backgroud z-depth-4">
+        <div>
           <!-- Formulário -->
           <div class="row">
             <form class="col s12">
               <div class="row">
-                <div class="input-field col s12 m6 l6 white-text">
-                  <select id="marca" materialize="material_select">
-                    <!--Organiza a seleçao criando uma opção para cada marca reistrada no banco de dados, sendop que esta marca é retornada como uma string-->
-                    <option value="" disabled selected>Escolha uma marca</option>
-                    <option ngFor="let marca of marcas" value="{{marca}}">{{marca}}</option>
-                  </select>
-                  <label class="white-text">Marca</label>
+                <div class="input-field col s12 m6 l6 black-text">
+                  <label class="black-text">Marca</label>
+                  <h3>{{marca}}</h3>
                 </div>
-                <div class="input-field col s12 m6 l6 white-text">
-                  <select id="modelo" materialize="material_select">
-                    <!--Organiza a seleçao criando uma opção para cada modelo reistrada no banco de dados, sendop que este modelo é retornado como uma string-->
-                    <option value="" disabled selected>Escolha um modelo</option>
-                    <option ngFor="let modelo of modelos" value="{{modelo}}">{{modelo}}</option>
-                  </select>
-                  <label class="white-text">Marca</label>
+                <div class="input-field col s12 m6 l6 black-text">
+                  <label class="black-text">Modelo</label>
+                  <h3>{{modelo}}</h3>
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s12 m4 l4">
-                  <input id="max" type="number" class="validate">
-                  <label class="white-text" for="max">Máximo</label>
+                <div class="input-field col s12 m5 l5">
+                  <input placeholder="" id="marca" type="text" class="validate" name="marca" [(ngModel)]="produto.marca">
+                  <label class="black-text" for="marca">Marca</label>
                 </div>
-                <div class="input-field col s12 m4 l4">
-                  <input id="min" type="number" class="validate">
-                  <label class="white-text" for="min">Mínimo</label> </div>
-                <div class="input-field col s12 m4 l4">
-                  <input id="tam" type="text" class="validate">
-                  <label class="white-text" for="tam">Tamanho</label>
+                <div class="input-field col s12 m5 l5">
+                  <input placeholder="" id="modelo" type="text" class="validate" name="modelo" [(ngModel)]="produto.modelo">
+                  <label class="black-text" for="modelo">Modelo</label>
                 </div>
+                <div class="input-field col s12 m1 l1">
+                  <input placeholder="" id="max" type="number" class="validate" name="maximo" [(ngModel)]="produto.maximo">
+                  <label class="black-text" for="max">Máximo</label>
+                </div>
+                <div class="input-field col s12 m1 l1">
+                  <input placeholder="" id="min" type="number" class="validate" name="minimo" [(ngModel)]="produto.minimo">
+                  <label class="black-text" for="min">Mínimo</label> </div>
               </div>
               <div class="row">
-                <div class="input-field col s12 m4 l4">
-                  <input id="ultimaCompra" type="number" class="validate" readonly>
-                  <label class="white-text" for="ultimaCompra">Preço Ultima Compra</label>
+                <div class="input-field col s12 m3 l3">
+                  <select materialize="material_select" [(ngModel)]="produto.tamanho" [ngModelOptions]="{standalone: true}">
+                      <option value="none" disabled selected>Tamanho</option>
+                      <option value="PP">PP</option>
+                      <option value="P">P</option>
+                      <option value="M">M</option>
+                      <option value="G">G</option>
+                      <option value="GG">GG</option>
+                      <option value="XG">XG</option>
+                      <option value="XGG">XGG</option>
+                      <option value="36">34</option>
+                      <option value="36">35</option>
+                      <option value="36">36</option>
+                      <option value="38">37</option>
+                      <option value="38">38</option>
+                      <option value="38">39</option>
+                      <option value="38">40</option>
+                      <option value="38">41</option>
+                      <option value="38">42</option>
+                      <option value="38">43</option>
+                      <option value="38">44</option>
+                      <option value="38">46</option>
+                    </select>
+                  <label class="black-text" for="tam">Tamanho</label>
                 </div>
-                <div class="input-field col s12 m4 l4">
+                <div class="input-field col s12 m3 l3">
+                  <input id="ultimaCompra" type="number" class="validate">
+                  <label class="black-text" for="ultimaCompra">Preço Ultima Compra</label>
+                </div>
+                <div class="input-field col s12 m3 l3">
                   <input id="precoVenda" type="number" class="validate">
-                  <label class="white-text" for="precoVenda">Preço Venda</label> </div>
-                <div class="input-field col s12 m4 l4">
-                  <input id="precoMedio" type="number" class="validate" readonly>
-                  <label class="white-text" for="precoMedio" >Preço Médio</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12 m12 l12">
+                  <label class="black-text" for="precoVenda">Preço Venda</label> </div>
+                <div class="input-field col s12 m3 l3">
                   <input id="quantidade" type="number" class="validate">
-                  <label class="white-text" for="quantidade">Quantidade</label>
+                  <label class="black-text" for="quantidade">Quantidade</label>
                 </div>
               </div>
               <div class="row">
-                <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
-                  <a onclick="Materialize.toast('Produto foi modificado!', 4000, 'rouded')" class="btn waves-effect waves-light blue darken-4">Salvar
+                <div class="right">
+                  <a onclick="Materialize.toast('Produto foi excluido!', 4000, 'rounded')" class="btn waves-effect waves-light red darken-4" (click)="excluir()">Excluir
+                      <i class="material-icons right">delete</i>
+                    </a>
+                  <a onclick="Materialize.toast('Produto foi modificado!', 4000, 'rounded')" class="btn waves-effect waves-light blue darken-4" (click)="salvar()">Salvar
                       <i class="material-icons right">send</i>
                     </a>
                 </div>
