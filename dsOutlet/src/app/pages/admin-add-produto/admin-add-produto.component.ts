@@ -56,15 +56,15 @@ export class AdminAddProdutoComponent implements OnInit {
   private adicionar(): void {
     if (this.quantidade > 0) {
       this.produto.quantidade = this.quantidade;
-      console.log(this.produto);
-      this.produto.precoUltimaCompra = this.produto.precoEntrada;
+      this.produto.precoUltimaCompra = this.precoCompra;
       if (this.precoCompra != this.produto.precoEntrada) {
-        this.produto.precoEntrada = this.precoCompra;
+        console.log(this.produto);
         this.produtoService.newProduto(this.produto).then(res=>{
+          console.log(res);
           if(res){
             toast('Produto foi Cadastrado!', 4000, 'rounded');
           }else{
-            toast('Ocorreu um erro!', 4000, 'rounded');            
+            toast('Ocorreu um erro!', 4000, 'rounded');
           }
         });
 
