@@ -11,7 +11,10 @@
 	
 	if (isset($postdata)){
 		$request = json_decode($postdata);
-		$id     = $request->id;
+		
+		$id     	  = $request->id;
+		$precoE 	  = $request->precoEntrada;
+		$precoS	      = $request->precoSaidaPadrao;
 		$quantidade   = $request->quantidade;
 		
 		$sql = "SELECT * FROM produto WHERE id = '$id'";
@@ -21,10 +24,10 @@
 		if($numrow !== 1){
 			echo json_encode(false);
 		}else{
-			$dados = $result->assoc_fetch();
+			$dados = $result->fetch_assoc();
 			$amount = $dados['quantidade'];
 			$amount = $amount + $quantidade;
-			$sql = "UPDATE usuario SET quantidade = '$amount' WHERE id = '$id'";
+			$sql = "UPDATE produto SET quantidade = '$amount', precoEntrada = '$precoE', precoSaidaPadrao = '$precoS' WHERE id = '$id'";
 			$con->query($sql);
 			echo json_encode(true);
 		}
