@@ -19,7 +19,6 @@ export class AdminAddProdutoComponent implements OnInit {
   private filtrados: Produto[] = [];
   private produto: Produto = new Produto();
   private quantidade: number = 0;
-  private precoVenda: number = 0;
   private precoCompra: number = 0;
 
 
@@ -32,7 +31,7 @@ export class AdminAddProdutoComponent implements OnInit {
   ngOnInit() {
     if (!this.isLogado) {
       this.router.navigate(['/home']);//se os dados indicarem que usuario nao está logado, ele será redirecionado para homePage
-    }else {
+    } else {
       this.route.params.forEach((params: Params) => {
         let id = params['id'];
         this.getProduto(id);
@@ -48,7 +47,6 @@ export class AdminAddProdutoComponent implements OnInit {
         this.router.navigate(['/gerenciador']);
       } else {
         this.produto = res;
-        this.precoVenda = this.produto.precoSaidaPadrao;
         this.precoCompra = this.produto.precoEntrada;
       }
     });
@@ -60,15 +58,28 @@ export class AdminAddProdutoComponent implements OnInit {
       this.produto.quantidade = this.quantidade;
       console.log(this.produto);
       this.produto.precoUltimaCompra = this.produto.precoEntrada;
-      this.produtoService.addProduto(this.produto).then(res => {
-        if (res) {
-          toast('Produto foi modificado!', 4000, 'rounded');
-          this.produto = new Produto();
-          this.quantidade = 0;
-        } else {
-          toast('Ocorreu um erro!', 4000, 'rounded');
-        }
-      });
+      if (this.precoCompra != this.produto.precoEntrada) {
+        this.produto.precoEntrada = this.precoCompra;
+        this.produtoService.newProduto(this.produto).then(res=>{
+          if(res){
+            toast('Produto foi Cadastrado!', 4000, 'rounded');
+          }else{
+            toast('Ocorreu um erro!', 4000, 'rounded');            
+          }
+        });
+
+      } else {
+        this.produtoService.addProduto(this.produto).then(res => {
+          if (res) {
+            toast('Produto foi modificado!', 4000, 'rounded');
+            this.produto = new Produto();
+            this.quantidade = 0;
+          } else {
+            toast('Ocorreu um erro!', 4000, 'rounded');
+          }
+        });
+      }
+
     } else {
       toast('Quantidade Inválida!', 4000, 'rounded');
     }
