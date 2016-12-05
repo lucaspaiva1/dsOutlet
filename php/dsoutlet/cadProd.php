@@ -16,7 +16,7 @@
 		$modelo 	= $request->modelo;
 		$tamanho  	= $request->tamanho;
 		$quantidade = $request->quantidade;
-		$precoE     = 0;
+		$precoE     = $request->precoEntrada;
 		$precoS	    = $request->precoSaidaPadrao;
 		$max	    = $request->maximo;
 		$min	    = $request->minimo;

@@ -57,9 +57,13 @@
                     </select>
                   <label class="black-text">Tamanho</label>
                 </div>
-                <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12 m6 l3">
                   <input id="venda" type="number" class="validate" [(ngModel)]="produto.precoSaidaPadrao" [ngModelOptions]="{standalone: true}">
                   <label class="black-text" for="venda">Preço de Venda</label>
+                </div>
+                <div class="input-field col s12 m6 l3">
+                  <input id="compra" type="number" class="validate" [(ngModel)]="produto.precoEntrada" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="compra">Preço de Compra</label>
                 </div>
               </div>
               <div class="row">
