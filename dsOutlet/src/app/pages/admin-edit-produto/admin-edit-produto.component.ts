@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { ProdutosService } from '../../services/produtos.service';
+import { Produto } from '../../model/produto';
 
 @Component({
   selector: 'app-admin-edit-produto',
@@ -11,8 +13,9 @@ export class AdminEditProdutoComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
+  private produto:Produto = new Produto();
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private produtoService: ProdutosService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
@@ -21,7 +24,25 @@ export class AdminEditProdutoComponent implements OnInit {
   ngOnInit() {
     if (!this.isLogado) {
       this.router.navigate(['/home']);//se os dados indicarem que usuario nao está logado, ele será redirecionado
+    } else {
+      this.route.params.forEach((params: Params) => {
+        let id = params['id'];
+        this.getProduto(id);
+        console.log(this.produto);
+      })
     }
+  }
+
+
+  private getProduto(id: number): void{
+    this.produtoService.getProduto(id).then(res=>{
+      console.log(res);
+      if(res == null){
+        this.router.navigate(['/gerenciador']);
+      }else{
+        this.produto = res;
+      }
+    });
   }
 
 }

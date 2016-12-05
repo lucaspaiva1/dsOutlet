@@ -2,8 +2,6 @@
   <a class="myItem">Minha Conta</a>
   <a routerLink="/gerenciador/estoque" class="myItem" [class.active]="url == '/gerenciador/estoque'">Estoque</a>
   <a routerLink="/gerenciador/cadastrar-produto" class="myItem" [class.active]="url == '/gerenciador/cadastrar-produto'">Cadastrar Produto</a>
-  <a routerLink="/gerenciador/editar-produto" class="myItem" [class.active]="url == '/gerenciador/editar-produto'">Editar Produto</a>
-  <a routerLink="/gerenciador/adicionar-produto" class="myItem" [class.active]="url == '/gerenciador/adicionar-produto'">Adicionar Produto</a>
   <a *ngIf="isAdmin" routerLink="/gerenciador/relatorios" class="myItem" [class.active]="url == '/gerenciador/relatorios'">Relatórios</a>
   <a *ngIf="isAdmin" routerLink="/gerenciador/funcionarios" class="myItem" [class.active]="url == '/gerenciador/funcionarios'">Gerenciar Funcionários</a>
   <a routerLink="/gerenciador/clientes" class="myItem" [class.active]="url == '/gerenciador/clientes'">Gerenciar Clientes</a>

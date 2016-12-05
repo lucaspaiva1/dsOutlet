@@ -66,6 +66,11 @@ export class ProdutosService {
       .catch(this.handleError);
   }
 
+  getProduto(id: number): Promise<Produto> {
+    return this.getProdutos()
+               .then(produtos => produtos.find(produto => produto.id === id));
+  }
+
   private extractGetData(res: Response) {
     let data = res.json();
     if (data == null) {

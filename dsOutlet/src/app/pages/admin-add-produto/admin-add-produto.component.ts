@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { toast } from 'angular2-materialize';
 import { UserService } from '../../services/user.service';
 import { ProdutosService } from '../../services/produtos.service';
@@ -20,7 +20,7 @@ export class AdminAddProdutoComponent implements OnInit {
   private produto: Produto = new Produto();
   private quantidade: number;
 
-  constructor(private router: Router, private userService: UserService, private produtosService: ProdutosService) {
+  constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private produtoService: ProdutosService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
@@ -29,36 +29,24 @@ export class AdminAddProdutoComponent implements OnInit {
   ngOnInit() {
     if (!this.isLogado) {
       this.router.navigate(['/home']);//se os dados indicarem que usuario nao está logado, ele será redirecionado para homePage
+    }else {
+      this.route.params.forEach((params: Params) => {
+        let id = params['id'];
+        this.getProduto(id);
+        console.log(this.produto);
+      })
     }
   }
 
-  /* busca o texto recebido no evento do seachbar
-  nos atributos marca modelo e tamanho dos itens da lista de produtos*/
-  onKeyup(search: string): void {
-    this.produtosService.getProdutos().then(res => {
-      let produtos = res;
-      this.filtrados = produtos.filter(produto => (
-        produto.marca.includes(search) ||
-        produto.modelo.includes(search) ||
-        produto.tamanho.includes(search) ||
-        (produto.marca + " " + produto.modelo).includes(search) ||
-        (produto.marca + " " + produto.tamanho).includes(search) ||
-        (produto.modelo + " " + produto.tamanho).includes(search) ||
-        (produto.marca + " " + produto.modelo + " " + produto.tamanho).includes(search)
-      ));
-    }
-    );
-  }
-
-  /*quando perde o foco, a lista de filtrados é esvaziada para sair da tela*/
-  private lostFocus(): void {
-    this.filtrados = [];
-  }
-
-  /*abre um produto selecionado da lista de friltrados e esvazia a lista*/
-  private abrir(selecionado: Produto): void {
-    this.produto = selecionado;
-    this.filtrados = [];
+  private getProduto(id: number): void {
+    this.produtoService.getProduto(id).then(res => {
+      console.log(res);
+      if (res == null) {
+        this.router.navigate(['/gerenciador']);
+      } else {
+        this.produto = res;
+      }
+    });
   }
 
   /*adiciona a quantidade ao produto no banco de dados*/
@@ -66,7 +54,7 @@ export class AdminAddProdutoComponent implements OnInit {
     if (this.quantidade > 0) {
       this.produto.quantidade = this.quantidade;
       console.log(this.produto);
-      this.produtosService.addProduto(this.produto).then(res => {
+      this.produtoService.addProduto(this.produto).then(res => {
         if (res) {
           toast('Produto foi modificado!', 4000, 'rounded');
           this.produto = new Produto();

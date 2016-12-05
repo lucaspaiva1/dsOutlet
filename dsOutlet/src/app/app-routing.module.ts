@@ -40,11 +40,11 @@ const routes: Routes = [
     component: AdminCadProdutoComponent
   },
   {
-    path: 'gerenciador/editar-produto',
+    path: 'gerenciador/editar-produto/:id',
     component: AdminEditProdutoComponent
   },
   {
-    path: 'gerenciador/adicionar-produto',
+    path: 'gerenciador/adicionar-produto/:id',
     component: AdminAddProdutoComponent
   },
   {

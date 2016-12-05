@@ -14,7 +14,7 @@ export class EstoqueComponent implements OnInit {
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
   private loading: boolean;
-  private search : string;
+  private search: string;
   private selecionado: Produto;
 
   produtos: Produto[];
@@ -29,29 +29,35 @@ export class EstoqueComponent implements OnInit {
   ngOnInit() {
     if (!this.isLogado) {
       this.router.navigate(['/home']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
-    }else{
+    } else {
       this.getEstoque();
     }
   }
 
-  getEstoque(){
+  getEstoque() {
     this.loading = true;
-    this.produtosService.getProdutos().then(res=>{
+    this.produtosService.getProdutos().then(res => {
       this.produtos = res;
       this.loading = false;
     });
   }
 
-  limpar(){
+  limpar() {
     this.search = "";
   }
 
-  teste(produto){
+  teste(produto) {
     this.selecionado = produto;
   }
 
-  print(){
-    console.log(this.selecionado);
+  editar() {
+    this.router.navigate(['/gerenciador/editar-produto', this.selecionado.id]); //se os dados indicarem que usuario nao está logado, ele será redirecionado
+      console.log(this.selecionado);
+  }
+
+  adicionar() {
+    this.router.navigate(['/gerenciador/adicionar-produto', this.selecionado.id]); //se os dados indicarem que usuario nao está logado, ele será redirecionado
+
   }
 
 }
