@@ -16,7 +16,7 @@
 		$login = $request->login;
 		$senha = $request->senha;
 		
-		$sql = "SELECT * FROM usuario WHERE Login = '$login' AND Senha = '$senha'";
+		$sql = "SELECT * FROM usuario WHERE login = '$login' AND senha = '$senha'";
 		$result = $con->query($sql);
 		
 		$numrow = $result->num_rows;

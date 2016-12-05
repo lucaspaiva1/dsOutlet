@@ -24,15 +24,15 @@
 				$dados = $result->fetch_assoc();
 				$endID = $dados['enderecoIDEndereco'];
 				
-				$sql = "DELETE FROM endereco WHERE id = '$endID'";
-				$con->query($sql);
-				
 				$sql = "DELETE FROM divida WHERE cliente_IDCliente = '$id'";
 				$con->query($sql);
 				
 				$sql = "DELETE FROM cliente WHERE id = '$id'";
 				$con->query($sql);
-				
+							
+				$sql = "DELETE FROM endereco WHERE id = '$endID'";
+				$con->query($sql);
+								
 				echo json_encode(true);
 			}
 	}
