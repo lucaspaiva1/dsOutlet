@@ -16,6 +16,7 @@ export class AdminGerenClientesComponent implements OnInit {
   private isAdmin: boolean = false;
   private clientes: Cliente[];
   private loading: boolean;
+  private search: string = "";
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -50,6 +51,10 @@ export class AdminGerenClientesComponent implements OnInit {
   editar(cliente: Cliente) {
     console.log(cliente);
     this.router.navigate(['gerenciador/clientes/editar/', cliente.id]);
+  }
+
+  limpar(){
+    this.search = "";
   }
 
 }

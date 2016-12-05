@@ -17,60 +17,60 @@
       <div class="col s12 m8 l9">
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
-        <div class="collection backgroud z-depth-4">
+        <div>
           <!-- Formulário -->
           <div class="row">
-            <form class="col s12 white-text">
+            <form class="col s12 black-text">
               <div class="row">
-                <div class="input-field col s12 m6 l8 white-text">
+                <div class="input-field col s12 m6 l8 black-text">
                   <i class="material-icons prefix">perm_identity</i>
-                  <input id="name" type="text" class="validate white-text" [(ngModel)]="cliente.nome" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="first_name">Nome Completo</label>
+                  <input id="name" type="text" class="validate black-text" [(ngModel)]="cliente.nome" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="first_name">Nome Completo</label>
                 </div>
-                <div class="input-field col s12 m6 l4 white-text">
-                  <input id="cpf" type="number" class="validate white-text" [(ngModel)]="cliente.cpf" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="cpf">CPF</label>
+                <div class="input-field col s12 m6 l4 black-text">
+                  <input id="cpf" type="number" class="validate black-text" [(ngModel)]="cliente.cpf" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="cpf">CPF</label>
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field col s12 m6 l4 white-text">
-                  <label class="white-text" for="date">Nascimento</label><br>
-                  <input id="date" type="date" class="validate white-text" [(ngModel)]="cliente.nascimento" [ngModelOptions]="{standalone: true}">
+                <div class="input-field col s12 m6 l4 black-text">
+                  <label class="black-text" for="date">Nascimento</label><br>
+                  <input id="date" type="date" class="validate black-text" [(ngModel)]="cliente.nascimento" [ngModelOptions]="{standalone: true}">
                 </div>
                 <br>
-                <div class="input-field col s12 m6 l8 white-text">
-                  <input id="email" type="text" class="validate white-text" [(ngModel)]="cliente.email" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="email">Email</label>
+                <div class="input-field col s12 m6 l8 black-text">
+                  <input id="email" type="email" class="validate black-text" [(ngModel)]="cliente.email" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="email">Email</label>
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field col s12 m6 l4 white-text">
-                  <input id="telefone" type="number" class="validate white-text" [(ngModel)]="cliente.telefone" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="telefone">Telefone</label>
+                <div class="input-field col s12 m6 l4 black-text">
+                  <input id="telefone" type="number" class="validate black-text" [(ngModel)]="cliente.telefone" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="telefone">Telefone</label>
                 </div>
                 <div class="input-field col s12 m12 l4">
                   <input id="cidade" type="text" class="validate" [(ngModel)]="endereco.cidade" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="cidade">Cidade</label>
+                  <label class="black-text" for="cidade">Cidade</label>
                 </div>
                 <div class="input-field col s12 m12 l2">
                   <input id="uf" type="text" class="validate" [(ngModel)]="endereco.uf" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="uf">UF</label>
+                  <label class="black-text" for="uf">UF</label>
                 </div>
-                <div class="input-field col s12 m6 l2 white-text">
-                  <input id="cep" type="text" class="validate white-text" [(ngModel)]="endereco.cep" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="cep">CEP</label>
+                <div class="input-field col s12 m6 l2 black-text">
+                  <input id="cep" type="number" class="validate black-text" [(ngModel)]="endereco.cep" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="cep">CEP</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m12 l10">
                   <input id="logradouro" type="text" class="validate" [(ngModel)]="endereco.logradouro" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="logradouro">Endereço</label>
+                  <label class="black-text" for="logradouro">Endereço</label>
                 </div>
                 <div class="input-field col s12 m12 l2">
                   <input id="numero" type="text" class="validate" [(ngModel)]="endereco.numero" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="numero">Número</label>
+                  <label class="black-text" for="numero">Número</label>
                 </div>
               </div>
               <div class="row">

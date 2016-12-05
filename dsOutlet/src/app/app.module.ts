@@ -15,7 +15,8 @@ import { ClientesService } from './services/clientes.service';
 import { ProdutosService } from './services/produtos.service';
 import { EsqueciSenhaService } from './services/esqueci-senha.service';
 import { FiltroDeMercadoria } from './pages/estoque/produto.pipes';
-import { FiltroDeFuncionarios } from './pages/admin-geren-funcionarios/geren.pipes';
+import { FiltroDeFuncionarios } from './pages/admin-geren-funcionarios/geren-funcionario.pipes';
+import { FiltroDeCliente } from './pages/admin-geren-clientes/geren-cliente.pipes';
 /*Components*/
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -58,7 +59,8 @@ import { VendasComponent } from './pages/vendas/vendas.component';
     AdminAddClientesComponent,
     VendasComponent,
     FiltroDeMercadoria,
-    FiltroDeFuncionarios
+    FiltroDeFuncionarios,
+    FiltroDeCliente
   ],
   imports: [
     BrowserModule,

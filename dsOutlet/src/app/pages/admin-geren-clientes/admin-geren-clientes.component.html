@@ -17,7 +17,7 @@
       <div class="col s12 m8 l9">
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
-        <div class="collection backgroud z-depth-4">
+        <div>
 
           <!--Loading - aparece enquanto carrega a tabela-->
           <div *ngIf="loading" class="preloader-wrapper big active">
@@ -34,35 +34,40 @@
             </div>
           </div>
 
-          <!--Tabela de funcionarios, quando clicar em um itel vai abrir uma nova tela para editar as informaç~eos do mesmo e ao salvar retorna para esta tela-->
-          <table *ngIf="!loading" class="bordered striped responsive-table">
-            <thead>
-              <tr>
-                <th data-field="nome">Nome</th>
-                <th data-field="cpf">CPF</th>
-                <th data-field="telefone">Telefone</th>
-                <th data-field="divida">Dívida Total</th>
-              </tr>
-            </thead>
+          <div *ngIf="!loading" style=" padding-top: 8px">
+            <nav class=" white black-text row">
+              <ul id="nav-mobile" class="left ">
+                <li><a routerLink="/gerenciador/clientes/cadastro" class="white-text blue">CADASTRAR</a></li>
+              </ul>
+              <form class="col s7 m10 l10 ">
+                <div class="input-field">
+                  <input [(ngModel)]="search" name="search" type="search" placeholder="Procurar cliente">
+                  <label for="search"><i class="material-icons black-text" >search</i></label>
+                  <i class="material-icons black-text right" (click)="limpar()">close</i>
+                </div>
+              </form>
+            </nav>
 
-            <tbody>
-              <tr *ngFor="let cliente of clientes" (click)="editar(cliente)">
-                <td>{{cliente.nome}}</td>
-                <td>{{cliente.cpf}}</td>
-                <td>{{cliente.telefone}}</td>
-                <td>{{cliente.email}}</td>
-              </tr>
-            </tbody>
-          </table>
-          <!--Botão para adicionar cliente-->
-          <div class="row">
-            <div class="section">
-              <div class="right">
-                <a class="btn waves-effect waves-light blue darken-4" (click)="cadastrar()">Adicionar
-                  <i class="material-icons right">add</i>
-                </a>
-              </div>
-            </div>
+            <!--Tabela de funcionarios, quando clicar em um itel vai abrir uma nova tela para editar as informaç~eos do mesmo e ao salvar retorna para esta tela-->
+            <table *ngIf="!loading" class="bordered striped responsive-table">
+              <thead>
+                <tr>
+                  <th data-field="nome">Nome</th>
+                  <th data-field="cpf">CPF</th>
+                  <th data-field="telefone">Telefone</th>
+                  <th data-field="divida">Dívida Total</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let cliente of clientes | filtroDeCliente:search" (click)="editar(cliente)">
+                  <td>{{cliente.nome}}</td>
+                  <td>{{cliente.cpf}}</td>
+                  <td>{{cliente.telefone}}</td>
+                  <td>{{cliente.dividaTotal}}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

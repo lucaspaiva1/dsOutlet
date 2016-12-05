@@ -9,6 +9,7 @@ export class Cliente {
   email: string;
   telefone: string;
   endereco: Endereco;
+  dividaTotal:number;
 
   constructor() {
   }

@@ -16,7 +16,7 @@ export class AdminEditFuncionariosComponent implements OnInit {
   private isAdmin: boolean = false;
   private usuario: User = new User();
   private loading: boolean;
-  private confirmacaoSenha;
+  private senha: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) {
     let stats = this.userService.userStats();
@@ -31,17 +31,18 @@ export class AdminEditFuncionariosComponent implements OnInit {
       this.route.params.forEach((params: Params) => {
         let id = params['id'];
         this.getUser(id);
+        this.senha = this.usuario.senha;
       })
     }
   }
 
-  private getUser(id: number): void{
+  private getUser(id: number): void {
     this.loading = true;
-    this.userService.getUser(id).then(res=>{
+    this.userService.getUser(id).then(res => {
       console.log(res);
-      if(res == null){
+      if (res == null) {
         this.router.navigate(['/gerenciador']);
-      }else{
+      } else {
         this.usuario = res;
         this.loading = false;
       }
@@ -49,16 +50,24 @@ export class AdminEditFuncionariosComponent implements OnInit {
   }
 
   editar() {
-    console.log(this.usuario);
-    this.userService.editUser(this.usuario).then(res => {
-      if (res) {
-        toast('Salvo!', 4000, 'rouded');
-        this.router.navigate(['/gerenciador/funcionarios']);
-      } else {
-        toast('Não foi possível salvar!', 4000, 'rounded');
-      }
+    if (this.senha != this.usuario.senha) {
+      toast('Senhas incorretas!', 4000, 'rouded');
 
-    });
+    } else {
+      if (this.usuario.nome == null || this.usuario.nome == "" || this.usuario.login == null || this.usuario.senha == null || this.usuario.senha == "" || this.usuario.acesso == "" || this.usuario.email == null) {
+        toast('Falta dados!', 4000, 'rouded');
+      } else {
+        this.userService.editUser(this.usuario).then(res => {
+          if (res) {
+            toast('Salvo!', 4000, 'rouded');
+            this.router.navigate(['/gerenciador/funcionarios']);
+          } else {
+            toast('Não foi possível salvar!', 4000, 'rounded');
+          }
+
+        });
+      }
+    }
   }
 
   excluir() {
