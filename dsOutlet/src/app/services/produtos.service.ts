@@ -15,7 +15,6 @@ export class ProdutosService {
 
   /*Usuario envia dados para cadastrar produto atraves de um POST*/
   newProduto(produto: Produto): Promise<boolean> {
-    console.log(produto);
     return this.http
         .post('http://localhost/dsoutlet/cadProd.php', JSON.stringify(produto), {headers: this.headers})
         .toPromise()
@@ -40,7 +39,6 @@ export class ProdutosService {
 
   /*Método que converte o arquivo json recebido da api php*/
   private extractAddData(res: Response) {
-    console.log(res);
     let data = res.json();
     return data;
   }

@@ -20,13 +20,15 @@
 		$precoS	    = $request->precoSaidaPadrao;
 		$max	    = $request->maximo;
 		$min	    = $request->minimo;
+		date_default_timezone_set('America/Sao_Paulo');
+		$today = date('Y-m-d');
 		
-		$sql = "SELECT * FROM produto WHERE marca = '$marca' AND modelo = '$modelo' AND tamanho ='$tamanho'";
+		$sql = "SELECT * FROM produto WHERE marca = '$marca' AND modelo = '$modelo' AND tamanho = '$tamanho' AND precoEntrada = '$precoE'";
 		$result = $con->query($sql);
 		
 		$numrow = $result->num_rows;
 			if($numrow !== 1 && $marca != ""){
-				$sql = "INSERT INTO produto (marca, modelo, tamanho, quantidade, precoEntrada, precoSaidaPadrao, maximo, minimo) VALUES ('$marca', '$modelo', '$tamanho', '$quantidade','$precoE', '$precoS', '$max', '$min')";
+				$sql = "INSERT INTO produto (marca, modelo, tamanho, quantidade, precoEntrada, precoSaidaPadrao, maximo, minimo, dataUltimaCompra) VALUES ('$marca', '$modelo', '$tamanho', '$quantidade','$precoE', '$precoS', '$max', '$min', '$today')";
 				$con->query($sql);
 				echo json_encode(true);
 			}else{
