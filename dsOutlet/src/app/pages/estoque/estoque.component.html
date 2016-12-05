@@ -34,8 +34,6 @@
         </div>
 
         <div *ngIf="!loading">
-
-
           <nav class="white black-text">
             <div class="nav-wrapper">
               <form>
@@ -66,23 +64,29 @@
             </thead>
 
             <tbody>
-              <tr *ngFor="let produto of produtos | filtroDeMercadoria: search">
-                <td>{{produto.marca}}</td>
-                <td>{{produto.modelo}}</td>
-                <td>{{produto.tamanho}}</td>
-                <td>{{produto.quantidade}}</td>
-                <td>{{produto.precoUltimaCompra}}</td>
-                <td>{{produto.precoSaidaPadrao}}</td>
-                <td>{{produto.precoEntrada}}</td>
-                <td>{{produto.maximo}}</td>
-                <td>{{produto.minimo}}</td>
-                <td>{{produto.estado}}</td>
+              <tr *ngFor="let produto of produtos | filtroDeMercadoria: search" (click)="teste(produto)">
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.marca}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.modelo}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.tamanho}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.quantidade}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.precoUltimaCompra}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.precoSaidaPadrao}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.precoEntrada}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.maximo}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.minimo}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.estado}}</td>
               </tr>
             </tbody>
           </table>
-
         </div>
       </div>
     </div>
   </main>
 </body>
+
+<ul id="dropdown1" class="dropdown-content">
+  <li><a (click)="print()">Editar</a></li>
+  <li><a>Adicionar</a></li>
+  <li class="divider"></li>
+  <li><a>Cancelar</a></li>
+</ul>

@@ -15,6 +15,7 @@ export class EstoqueComponent implements OnInit {
   private isAdmin: boolean = false;
   private loading: boolean;
   private search : string;
+  private selecionado: Produto;
 
   produtos: Produto[];
 
@@ -43,6 +44,14 @@ export class EstoqueComponent implements OnInit {
 
   limpar(){
     this.search = "";
+  }
+
+  teste(produto){
+    this.selecionado = produto;
+  }
+
+  print(){
+    console.log(this.selecionado);
   }
 
 }
