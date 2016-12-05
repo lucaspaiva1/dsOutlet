@@ -16,12 +16,13 @@ export class AdminEditFuncionariosComponent implements OnInit {
   private isAdmin: boolean = false;
   private usuario: User = new User();
   private loading: boolean;
-  private senha: string;
+  private confirmaSenha: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
+
   }
 
   ngOnInit() {
@@ -31,7 +32,6 @@ export class AdminEditFuncionariosComponent implements OnInit {
       this.route.params.forEach((params: Params) => {
         let id = params['id'];
         this.getUser(id);
-        this.senha = this.usuario.senha;
       })
     }
   }
@@ -44,13 +44,14 @@ export class AdminEditFuncionariosComponent implements OnInit {
         this.router.navigate(['/gerenciador']);
       } else {
         this.usuario = res;
+        this.confirmaSenha = this.usuario.senha;
         this.loading = false;
       }
     });
   }
 
   editar() {
-    if (this.senha != this.usuario.senha) {
+    if (this.confirmaSenha != this.usuario.senha) {
       toast('Senhas incorretas!', 4000, 'rouded');
 
     } else {

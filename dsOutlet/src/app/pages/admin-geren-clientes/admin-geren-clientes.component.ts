@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Produto } from '../../model/produto';
 import { UserService } from '../../services/user.service';
 import { ClientesService } from '../../services/clientes.service';
 import { Cliente } from '../../model/cliente';
+import { Divida } from '../../model/divida';
 
 @Component({
   selector: 'app-admin-geren-clientes',
@@ -17,6 +18,7 @@ export class AdminGerenClientesComponent implements OnInit {
   private clientes: Cliente[];
   private loading: boolean;
   private search: string = "";
+  private dividas:Divida[] = [];
 
   constructor(private router: Router,
     private route: ActivatedRoute,
