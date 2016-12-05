@@ -17,46 +17,46 @@
       <div class="col s12 m8 l9">
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
-        <div class="collection backgroud z-depth-4">
+        <div >
           <!-- Formulário -->
           <div class="row">
             <form class="col s12">
               <div class="row">
-                <div class="input-field col s12 m6 l6 white-text">
+                <div class="input-field col s12 m6 l6 black-text">
                   <i class="material-icons prefix">perm_identity</i>
-                  <input id="first_name" type="text" class="validate white-text" [(ngModel)]="usuario.nome" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="first_name">Nome</label>
+                  <input id="first_name" type="text" class="validate black-text" [(ngModel)]="usuario.nome" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="first_name">Nome</label>
                 </div>
-                <div class="input-field col s12 m6 l6 white-text">
-                  <input id="email" type="text" class="validate  white-text" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="email">Email</label>
+                <div class="input-field col s12 m6 l6 black-text">
+                  <input id="email" type="text" class="validate  black-text" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="email">Email</label>
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s12 m4 l4 white-text">
+                <div class="input-field col s12 m4 l4 black-text">
                   <input id="max" type="text" class="validate" [(ngModel)]="usuario.login" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="max">Login</label>
+                  <label class="black-text" for="max">Login</label>
                 </div>
-                <div class="input-field col s12 m4 l4 white-text">
+                <div class="input-field col s12 m4 l4 black-text">
                   <input id="senha" type="password" class="validate" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="senha">Senha</label>
+                  <label class="black-text" for="senha">Senha</label>
                 </div>
-                <div class="input-field col s12 m4 l4 white-text">
+                <div class="input-field col s12 m4 l4 black-text">
                   <input id="rep-senha" type="password" class="validate" [(ngModel)]="confirmacaoSenha" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="rep-senha">Repetir senha</label>
+                  <label class="black-text" for="rep-senha">Repetir senha</label>
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s12 m6 l4 white-text">
-                  <label class="white-text" for="dataAdmissao">Data de Admissão</label><br>
+                <div class="input-field col s12 m6 l4 black-text">
+                  <label class="black-text" for="dataAdmissao">Data de Admissão</label><br>
                   <input id="dataAdmissao" type="date" class="validate" [(ngModel)]="usuario.dataAdmissao" [ngModelOptions]="{standalone: true}">
                 </div>
                 <br>
-                <div class="input-field col s12 m6 l4 white-text">
+                <div class="input-field col s12 m6 l4 black-text">
                   <input id="tel" type="text" class="validate" [(ngModel)]="usuario.telefone" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text">Telefone</label>
+                  <label class="black-text">Telefone</label>
                 </div>
-                <div class="input-field col s4 m4 l4 white-text">
+                <div class="input-field col s4 m4 l4 black-text">
                   <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="" disabled selected>Privilégio</option>
                     <option value="A">Administrador</option>

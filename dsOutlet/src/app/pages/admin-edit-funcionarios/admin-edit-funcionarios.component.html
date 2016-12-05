@@ -17,7 +17,7 @@
       <div class="col s12 m8 l9">
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
-        <div class="collection backgroud z-depth-4">
+        <div >
 
           <!--Loading - aparece enquanto carrega a tabela-->
           <div *ngIf="loading" class="preloader-wrapper big active">
@@ -36,43 +36,39 @@
 
           <!-- Formulário -->
           <div *ngIf="!loading" class="row">
-            <form class="col s12 white-text">
+            <form class="col s12 black-text">
               <div class="row">
-                <div class="input-field col s12 m6 l6 white-text">
+                <div class="input-field col s12 m6 l6 black-text">
                   <i class="material-icons prefix">perm_identity</i>
-                  <input placeholder="" id="first_name" type="text" class="validate white-text" [(ngModel)]="usuario.nome" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="first_name">Primeiro nome</label>
+                  <input placeholder="" id="first_name" type="text" class="validate black-text" [(ngModel)]="usuario.nome" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="first_name">Primeiro nome</label>
                 </div>
-                <div class="input-field col s12 m6 l6 white-text">
-                  <input placeholder="" id="email" type="text" class="validate  white-text" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="email">Email</label>
+                <div class="input-field col s12 m6 l6 black-text">
+                  <input placeholder="" id="email" type="text" class="validate  black-text" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="email">Email</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m4 l4">
                   <input placeholder="" id="max" type="text" class="validate" [(ngModel)]="usuario.login" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="max">Nome de usuário</label>
+                  <label class="black-text" for="max">Nome de usuário</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input placeholder="" id="senha" type="password" class="validate" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="senha">Senha</label>
-                </div>
-                <div class="input-field col s12 m4 l4">
-                  <input placeholder="" id="rep-senha" type="password" class="validate" [(ngModel)]="confirmacaoSenha" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="rep-senha">Repetir senha</label>
+                  <input placeholder="" id="senha" type="text" class="validate" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="senha">Senha</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m6 l4">
-                  <label class="white-text" for="dataAdmissao">Data de Admissão</label><br>
+                  <label class="black-text" for="dataAdmissao">Data de Admissão</label><br>
                   <input id="dataAdmissao" type="date" class="validate" [(ngModel)]="usuario.dataAdmissao" [ngModelOptions]="{standalone: true}">
                 </div>
                 <br>
                 <div class="input-field col s12 m6 l4">
                   <input placeholder="" id="tel" type="text" [(ngModel)]="usuario.telefone" [ngModelOptions]="{standalone: true}">
-                  <label class="white-text" for="tel">Telefone</label>
+                  <label class="black-text" for="tel">Telefone</label>
                 </div>
-                <div *ngIf="usuario.acesso=='A'" class="input-field col s4 m4 l4 white-text">
+                <div *ngIf="usuario.acesso=='A'" class="input-field col s4 m4 l4 black-text">
 
                   <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="A">Administrador</option>
@@ -81,7 +77,7 @@
                   </select>
                 </div>
 
-                <div *ngIf="usuario.acesso=='C'" class="input-field col s4 m4 l4 white-text">
+                <div *ngIf="usuario.acesso=='C'" class="input-field col s4 m4 l4 black-text">
                   <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="C">Vendedor</option>
                     <option value="A">Administrador</option>

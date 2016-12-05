@@ -17,7 +17,7 @@
       <div class="col s12 m8 l9">
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
-        <div class="collection backgroud z-depth-4">
+        <div>
 
           <!--Loading - aparece enquanto carrega a tabela-->
           <div *ngIf="loading" class="preloader-wrapper big active">
@@ -34,31 +34,46 @@
             </div>
           </div>
 
-          <!--Tabela de funcionarios, quando clicar em um itel vai abrir uma nova tela para editar as informaç~eos do mesmo e ao salvar retorna para esta tela-->
-          <table *ngIf="!loading" class="selectable alter bordered responsive-table">
-            <thead>
-              <tr>
-                <th data-field="nome">Nome</th>
-                <th data-field="privilegio">Privilégio</th>
-                <th data-field="status">Login</th>
-                <th data-field="status">Senha</th>
-                <th data-field="status">Data de Admissão</th>
-                <th data-field="status">Telefone</th>
-              </tr>
-            </thead>
+          <div *ngIf="!loading" style=" padding-top: 8px">
+            <nav class=" white black-text row">
+              <ul id="nav-mobile" class="left ">
+                <li><a routerLink="/gerenciador/cadastrar-funcionario" class="white-text blue">CADASTRAR</a></li>
+              </ul>
+              <form class="col s7 m10 l10 ">
+                <div class="input-field">
+                  <input [(ngModel)]="search" name="search" type="search" placeholder="Procurar funcionario">
+                  <label for="search"><i class="material-icons black-text" >search</i></label>
+                  <i class="material-icons black-text right" (click)="limpar()">close</i>
+                </div>
+              </form>
+            </nav>
 
-            <tbody>
-              <tr *ngFor="let usuario of usuarios" (click)="editar(usuario)">
-                <td>{{usuario.nome}}</td>
-                <td *ngIf="usuario.acesso=='A'">Administrador</td>
-                <td *ngIf="usuario.acesso=='C'">Vendedor</td>
-                <td>{{usuario.login}}</td>
-                <td>{{usuario.senha}}</td>
-                <td>{{usuario.dataAdmissao}}</td>
-                <td>{{usuario.telefone}}</td>
-              </tr>
-            </tbody>
-          </table>
+            <!--Tabela de funcionarios, quando clicar em um itel vai abrir uma nova tela para editar as informaç~eos do mesmo e ao salvar retorna para esta tela-->
+            <table *ngIf="!loading" class="selectable alter bordered responsive-table">
+              <thead>
+                <tr>
+                  <th data-field="nome">Nome</th>
+                  <th data-field="privilegio">Privilégio</th>
+                  <th data-field="status">Login</th>
+                  <th data-field="status">Senha</th>
+                  <th data-field="status">Data de Admissão</th>
+                  <th data-field="status">Telefone</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let usuario of usuarios | filtroDeFuncionarios: search" (click)="editar(usuario)">
+                  <td>{{usuario.nome}}</td>
+                  <td *ngIf="usuario.acesso=='A'">Administrador</td>
+                  <td *ngIf="usuario.acesso=='C'">Vendedor</td>
+                  <td>{{usuario.login}}</td>
+                  <td>{{usuario.senha}}</td>
+                  <td>{{usuario.dataAdmissao}}</td>
+                  <td>{{usuario.telefone}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

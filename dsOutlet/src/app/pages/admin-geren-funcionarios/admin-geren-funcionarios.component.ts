@@ -16,6 +16,7 @@ export class AdminGerenFuncionariosComponent implements OnInit {
   private isAdmin: boolean;
   private loading: boolean;
   private usuarios: User[];
+  private search:string = "";
 
   constructor(private router: Router, private userService: UserService) {
     let stats = this.userService.userStats();
@@ -41,6 +42,10 @@ export class AdminGerenFuncionariosComponent implements OnInit {
 
   editar(usuario: User) {
     this.router.navigate(['gerenciador/edit-funcionario/', usuario.id]);
+  }
+
+  limpar(){
+    this.search = "";
   }
 
 }
