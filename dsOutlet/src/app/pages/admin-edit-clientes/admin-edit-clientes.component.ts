@@ -69,4 +69,8 @@ export class AdminEditClientesComponent implements OnInit {
       });
     }
 
+    private pagamento(){
+      
+    }
+
   }
