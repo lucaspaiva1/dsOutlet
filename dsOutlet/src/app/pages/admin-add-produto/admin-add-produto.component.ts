@@ -72,8 +72,7 @@ export class AdminAddProdutoComponent implements OnInit {
         this.produtoService.addProduto(this.produto).then(res => {
           if (res) {
             toast('Produto foi modificado!', 4000, 'rounded');
-            this.produto = new Produto();
-            this.quantidade = 0;
+            this.router.navigate(['/gerenciador/estoque']);
           } else {
             toast('Ocorreu um erro!', 4000, 'rounded');
           }
