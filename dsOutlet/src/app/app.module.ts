@@ -34,6 +34,7 @@ import { AdminCadFuncionarioComponent } from './pages/admin-cad-funcionario/admi
 import { AdminGerenFuncionariosComponent } from './pages/admin-geren-funcionarios/admin-geren-funcionarios.component';
 import { AdminEditFuncionariosComponent } from './pages/admin-edit-funcionarios/admin-edit-funcionarios.component';
 import { AdminGerenClientesComponent } from './pages/admin-geren-clientes/admin-geren-clientes.component';
+import { MinhaContaComponent } from './pages/minha-conta/minha-conta.component';
 import { AdminEditClientesComponent } from './pages/admin-edit-clientes/admin-edit-clientes.component';
 import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-clientes.component';
 import { VendasComponent } from './pages/vendas/vendas.component';
@@ -60,7 +61,8 @@ import { VendasComponent } from './pages/vendas/vendas.component';
     VendasComponent,
     FiltroDeMercadoria,
     FiltroDeFuncionarios,
-    FiltroDeCliente
+    FiltroDeCliente,
+    MinhaContaComponent
   ],
   imports: [
     BrowserModule,

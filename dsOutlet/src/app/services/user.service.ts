@@ -136,4 +136,10 @@ export class UserService {
     return [user.logado, user.admin];
   }
 
+  /*Retorna um array de boolean ->primeiro index é logado, segundo é admin*/
+  myProfile(): User {
+    return <User>this.storage.get('user');
+    
+  }
+
 }

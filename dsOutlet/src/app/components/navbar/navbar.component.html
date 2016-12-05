@@ -39,7 +39,7 @@
     </li>
     <li class="divider"></li>
     <li class="divider"></li>
-    <li *ngIf="isLogado"><a class="collection-item">Minha Conta</a></li>
+    <li *ngIf="isLogado" [class.active]="url == 'gerenciador/minha-conta'"><a routerLink="/gerenciador/minha-conta"  class="collection-item">Minha Conta</a></li>
     <li *ngIf="isLogado" [class.active]="url == '/gerenciador/estoque'"><a routerLink="/estoque" class="collection-item">Estoque</a></li>
     <li *ngIf="(isLogado && isAdmin)" [class.active]="url == 'gerenciador/relatorios'"><a routerLink="/gerenciador/relatorios" class="collection-item">Relatórios</a></li>
     <li *ngIf="(isLogado && isAdmin)" [class.active]="url == 'gerenciador/funcionarios'"><a routerLink="/gerenciador/funcionarios" class="collection-item">Gerenciar Funcionários</a></li>

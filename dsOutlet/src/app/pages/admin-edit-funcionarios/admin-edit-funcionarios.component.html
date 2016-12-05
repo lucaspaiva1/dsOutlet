@@ -17,7 +17,7 @@
       <div class="col s12 m8 l9">
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
-        <div >
+        <div>
 
           <!--Loading - aparece enquanto carrega a tabela-->
           <div *ngIf="loading" class="preloader-wrapper big active">
@@ -56,9 +56,10 @@
                 <div class="input-field col s12 m4 l4">
                   <input placeholder="" id="senha" type="text" class="validate" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
                   <label class="black-text" for="senha">Senha</label>
-                </div> <div class="input-field col s12 m4 l4">
-                  <input placeholder="" id="senha" type="text" class="validate" [(ngModel)]="senha" [ngModelOptions]="{standalone: true}">
-                  <label class="black-text" for="senha">Repita Senha</label>
+                </div>
+                <div class="input-field col s12 m4 l4">
+                  <input placeholder="" id="confirmaSenha" type="text" class="validate" [(ngModel)]="confirmaSenha" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="confirmaSenha">Repita Senha</label>
                 </div>
               </div>
               <div class="row">
@@ -71,25 +72,18 @@
                   <input placeholder="" id="tel" type="text" [(ngModel)]="usuario.telefone" [ngModelOptions]="{standalone: true}">
                   <label class="black-text" for="tel">Telefone</label>
                 </div>
-                <div *ngIf="usuario.acesso=='A'" class="input-field col s4 m4 l4 black-text">
+                <div class="input-field col s4 m4 l4 black-text">
 
                   <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="A">Administrador</option>
                     <option value="C">Vendedor</option>
                     <option value="" disabled selected>Privilégio</option>
                   </select>
-                </div>
-
-                <div *ngIf="usuario.acesso=='C'" class="input-field col s4 m4 l4 black-text">
-                  <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
-                    <option value="C">Vendedor</option>
-                    <option value="A">Administrador</option>
-                    <option value="" disabled selected>Privilégio</option>
-                  </select>
+                  <label class="black-text" for="acesso">Privilégio</label>
                 </div>
 
               </div>
-                <div class="row">
+              <div class="row">
                 <div class="right">
                   <a (click)="excluir()" class="btn waves-effect waves-light red darken-4">Excluir
                     <i class="material-icons right">delete</i>
