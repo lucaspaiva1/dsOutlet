@@ -14,7 +14,7 @@
         <options [isAdmin]="isAdmin"></options>
       </div>
 
-      <div class="col s12 m8 l9">
+      <div class="col s12 m8 l9" style="padding-top: 8px">
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
         <div>
@@ -34,7 +34,7 @@
             </div>
           </div>
 
-          <div *ngIf="!loading" style=" padding-top: 8px">
+          <div *ngIf="!loading">
             <nav class=" white black-text row">
               <ul id="nav-mobile" class="left ">
                 <li><a routerLink="/gerenciador/clientes/cadastro" class="white-text blue">CADASTRAR</a></li>
@@ -49,7 +49,7 @@
             </nav>
 
             <!--Tabela de funcionarios, quando clicar em um itel vai abrir uma nova tela para editar as informaç~eos do mesmo e ao salvar retorna para esta tela-->
-            <table *ngIf="!loading" class="bordered striped responsive-table">
+            <table *ngIf="!loading" class="bordered alter selectable responsive-table">
               <thead>
                 <tr>
                   <th data-field="nome">Nome</th>
