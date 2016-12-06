@@ -47,7 +47,16 @@
 					$sql = "SELECT * FROM endereco WHERE id = '$endID'";
 					$result = $con->query($sql);
 					$end = $result->fetch_assoc();
-					array_push($vetor, $dados, $end);
+					
+					$sql = "SELECT * FROM divida WHERE cliente_IDCliente = '$id'";
+					$result = $con->query($sql);
+					$dividas = array();
+					
+					while ($row=$result->fetch_assoc()){
+						$dividas[] = $row;
+					}
+					
+					array_push($vetor, $dados, $end, $dividas);
 					echo json_encode($vetor);
 				}	
 			}
