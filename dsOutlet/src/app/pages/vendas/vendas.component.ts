@@ -39,7 +39,6 @@ export class VendasComponent implements OnInit {
     this.produtosService.getProdutos().then(res => {
       this.produtos = res;
       for(let produto of this.produtos){
-        console.log(produto);
         produto.estado = "";
       }
     });
@@ -48,8 +47,8 @@ export class VendasComponent implements OnInit {
   private adicionarItem() {
     toast('Produto adicionado!', 2000, 'rounded');
     for (let item of this.produtos) {
-      console.log(item); // 1, "string", false
-      this.valorTotal = this.valorTotal + item.precoSaidaPadrao;
+      //console.log(item);
+      this.valorTotal = this.valorTotal + (+item.precoSaidaPadrao);
     }
   }
 
