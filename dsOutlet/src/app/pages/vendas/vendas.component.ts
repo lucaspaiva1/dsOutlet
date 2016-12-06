@@ -16,25 +16,33 @@ export class VendasComponent implements OnInit {
   private isAdmin: boolean = false;
   private vendaFinalizada: boolean;
   private produtos: Produto[] = [];
-  private itens: Produto[]=[]; 
+  private itens: Produto[]=[];
   valorTotal: number = 0;
-  private search: string;
+  private search: string = "";
 
   constructor(private router: Router, private userService: UserService, private produtosService: ProdutosService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
-    this.produtosService.getProdutos().then(res => {
-      this.produtos = res;
-    });
-    this.search="";
   }
 
   ngOnInit() {
     /*se os dados indicarem que usuario não está logado, ele será redirecionado para a pagina principal*/
     if (!this.isLogado) {
       this.router.navigate(['/home']);
+    }else{
+      this.getEstoque();
     }
+  }
+
+  private getEstoque(){
+    this.produtosService.getProdutos().then(res => {
+      this.produtos = res;
+      for(let produto of this.produtos){
+        console.log(produto);
+        produto.estado = "";
+      }
+    });
   }
 
   private adicionarItem() {

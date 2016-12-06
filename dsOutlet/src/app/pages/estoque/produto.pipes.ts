@@ -8,6 +8,8 @@ import { Produto } from '../../model/produto';
 export class FiltroDeMercadoria implements PipeTransform {
 
     transform(produtos: Produto[], digitado: string) {
+    console.log(digitado);
+    console.log(produtos);
         digitado = digitado.toLocaleLowerCase();
         return produtos.filter(produto => (
             produto.marca.toLocaleLowerCase().includes(digitado) ||
