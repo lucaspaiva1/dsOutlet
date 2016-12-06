@@ -7,14 +7,14 @@
 
   <!-- Corpo da pagina -->
   <main>
-    <div class="row" style="padding-top: 15px">
+    <div class="row">
 
       <div class="col m4 l3 menu_lateral hide-on-small-and-down">
         <!-- Menu lateral -->
         <options [isAdmin]="isAdmin"></options>
       </div>
 
-      <div class="col s12 m8 l9">
+      <div class="col s12 m8 l9"  style="padding-top: 8px">
 
         <div>
           <!--divisão da página em duas colunas-->
@@ -68,6 +68,8 @@
               </div>
 
               <!--Tabela de produtos de venda-->
+              <div class="produtos">
+
               <table class="bordered alter responsive-table selectable">
                 <thead>
                   <tr>
@@ -89,6 +91,7 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
 
               <!--linha para seleção de tamanho e quantidade-->
               <div class="row">

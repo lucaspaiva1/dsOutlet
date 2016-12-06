@@ -1,6 +1,12 @@
 .compra{
-overflow: auto; 
-background-color: #ffff60;
-position: relative;
-height:  300px;
+  overflow: auto;
+  background-color: #ffff60;
+  position: relative;
+  height:  300px;
+}
+
+.produtos{
+  overflow: auto;
+  position: relative;
+  height: 209px;
 }
