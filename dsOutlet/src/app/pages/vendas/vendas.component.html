@@ -7,7 +7,7 @@
 
   <!-- Corpo da pagina -->
   <main>
-    <div class="row">
+    <div class="row" style="padding-top: 15px">
 
       <div class="col m4 l3 menu_lateral hide-on-small-and-down">
         <!-- Menu lateral -->
@@ -15,76 +15,90 @@
       </div>
 
       <div class="col s12 m8 l9">
-        <!--Container para plano de fundo azul-->
-        <div class="backgroud z-depth-4">
+
+        <div>
           <!--divisão da página em duas colunas-->
           <div class="row">
+
             <!--primeira coluna-->
             <div class="col s12 m12 l4">
               <!--Espaço para a listagem dos itens e informação do valor total-->
               <div>
                 <div class="row">
                   <div class="col s3 m2 l2">
-                    <i class="material-icons prefix white-text">shopping_cart</i>
+                    <i class="material-icons prefix black-text">shopping_cart</i>
                   </div>
                   <div class="col s9 m10 l10">
-                    <h6 class="white-text center">Lista de Compra</h6>
+                    <h6 class="black-text center">Lista de Compra</h6>
                   </div>
                 </div>
                 <!-- espaço onde sao listados os itens -->
-                <div *ngFor="let item of produtos">
-                  <div class="divider"></div>
-                    <p>{{item.nome}}</p>
-                    <p>R$ {{item.preco}}</p>
-                  <div class="divider"></div>
+                <div class="compra">
+                  <div *ngFor="let item of itens">
+                    <div class="divider"></div>
+                    <p>R$ {{item}}</p>
+                    <div class="divider"></div>
+                  </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col s12 m6 l6">
-                  <h6 class="white-text left">Valor Total:</h6>
+                  <h6 class="black-text left">Valor Total:</h6>
                 </div>
                 <div class="col s12 m6 l6">
-                  <input class="white-text" id="valor" type="text" name="valor" readonly [value]="valorTotal">
+                  <input class="black-text" id="valor" type="text" name="valor" readonly [value]="valorTotal">
                 </div>
               </div>
             </div>
 
             <!--segunda coluna-->
             <div class="col s12 m12 l8">
-              <div class="input-field">
-                <i class="material-icons prefix white-text">perm_identity</i>
-                <input id="nome" type="text" class="white-text">
-                <label class="white-text" for="nome">Nome do Cliente</label>
-              </div>
-              <!--linha para seleção de marca e modelo-->
+
               <div class="row">
-                <div class="input-field col s12 m6 l6 white-text">
-                  <select id="marca" materialize="material_select">
-                    <!--Organiza a seleçao criando uma opção para cada marca reistrada no banco de dados, sendop que esta marca é retornada como uma string-->
-                    <option value="" disabled selected>Escolha uma marca</option>
-                    <option ngFor="let marca of marcas" value="{{marca}}">{{marca}}</option>
-                  </select>
-                  <label class="white-text">Marca</label>
-                </div>
-                <div class="input-field col s12 m6 l6 white-text">
-                  <select id="modelo" materialize="material_select">
-                    <!--Organiza a seleçao criando uma opção para cada modelo reistrada no banco de dados, sendop que este modelo é retornado como uma string-->
-                    <option value="" disabled selected>Escolha um modelo</option>
-                    <option ngFor="let modelo of modelos" value="{{modelo}}">{{modelo}}</option>
-                  </select>
-                  <label class="white-text">Marca</label>
-                </div>
+                <nav class=" white black-text row">
+                  <form class="col s12 m12 l12 ">
+                    <div class="input-field">
+                      <input [(ngModel)]="search" name="search" type="search" placeholder="Procurar mercadoria">
+                      <label for="search"><i class="material-icons black-text" >search</i></label>
+                      <i class="material-icons black-text right" (click)="limpar()">close</i>
+                    </div>
+                  </form>
+                </nav>
               </div>
+
+              <!--Tabela de produtos de venda-->
+              <table class="bordered alter responsive-table selectable">
+                <thead>
+                  <tr>
+                    <th data-field="marca">Marca</th>
+                    <th data-field="modelo">Modelo</th>
+                    <th data-field="tamanho">Tamanho</th>
+                    <th data-field="quantidade">Quantidade</th>
+                    <th data-field="precoVenda">Preço Venda</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let produto of produtos | filtroDeMercadoria: search">
+                    <td >{{produto.marca}}</td>
+                    <td >{{produto.modelo}}</td>
+                    <td >{{produto.tamanho}}</td>
+                    <td >{{produto.quantidade}}</td>
+                    <td >{{produto.precoSaidaPadrao}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
               <!--linha para seleção de tamanho e quantidade-->
               <div class="row">
-                <div class="input-field col s12 m6 l6 white-text">
-                  <input id="tamanho" type="text" class="white-text">
-                  <label class="white-text" for="tamanho">Tamanho</label>
+                <div class="input-field col s12 m6 l6 black-text">
+                  <input id="tamanho" type="text" class="black-text">
+                  <label class="black-text" for="tamanho">Tamanho</label>
                 </div>
-                <div class="input-field col s12 m6 l6 white-text">
-                  <input id="quantidade" type="number" class="white-text">
-                  <label class="white-text" for="quantidade">Quantidade</label>
+                <div class="input-field col s12 m6 l6 black-text">
+                  <input id="quantidade" type="number" class="black-text">
+                  <label class="black-text" for="quantidade">Quantidade</label>
                 </div>
               </div>
               <!--Botão para adicionar item-->
@@ -106,7 +120,7 @@
               </div>
               <!--elementos para finalizar venda -->
               <div *ngIf="vendaFinalizada" class="row">
-                <div class="input-field col s12 m12 l12 white-text">
+                <div class="input-field col s12 m12 l12 black-text">
                   <select id="pagamento" materialize="material_select">
                     <!--Organiza a seleçao do modo de pagamento-->
                     <option value="" disabled selected>Escolha um modelo</option>
@@ -115,28 +129,28 @@
                     <option value="3">Cartão/Crédito</option>
                     <option value="4">Pendência</option>
                   </select>
-                  <label class="white-text">Forma de Pagamento</label>
+                  <label class="black-text">Forma de Pagamento</label>
                 </div>
-                <div *ngIf="vendaFinalizada" class="input-field col s12 m6 l6 white-text">
-                  <input id="desconto" type="number" class="white-text">
-                  <label class="white-text" for="desconto">Desconto</label>
+                <div *ngIf="vendaFinalizada" class="input-field col s12 m6 l6 black-text">
+                  <input id="desconto" type="number" class="black-text">
+                  <label class="black-text" for="desconto">Desconto</label>
                 </div>
-                <div *ngIf="vendaFinalizada" class="input-field col s12 m6 l6 white-text">
+                <div *ngIf="vendaFinalizada" class="input-field col s12 m6 l6 black-text">
                   <select id="tipodesconto" materialize="material_select">
                     <!--Organiza a seleçao do modo de pagamento-->
                     <option value="" disabled selected>Escolha um modelo</option>
                     <option value="1">Porcentagem</option>
                     <option value="2">Abatimento de valor</option>
                   </select>
-                  <label class="white-text">Forma de Desconto</label>
+                  <label class="black-text">Forma de Desconto</label>
                 </div>
-                <div *ngIf="vendaFinalizada" class="input-field col s12 m6 l6 white-text">
-                  <input id="valorTotal" type="number" class="white-text">
-                  <label class="white-text" for="valorTotal">Valor Total</label>
+                <div *ngIf="vendaFinalizada" class="input-field col s12 m6 l6 black-text">
+                  <input id="valorTotal" type="number" class="black-text">
+                  <label class="black-text" for="valorTotal">Valor Total</label>
                 </div>
-                <div *ngIf="vendaFinalizada" class="input-field col s12 m6 l6 white-text">
-                  <input id="valorPago" type="number" class="white-text">
-                  <label class="white-text" for="quantidade">Valor Pago</label>
+                <div *ngIf="vendaFinalizada" class="input-field col s12 m6 l6 black-text">
+                  <input id="valorPago" type="number" class="black-text">
+                  <label class="black-text" for="quantidade">Valor Pago</label>
                 </div>
               </div>
               <div *ngIf="vendaFinalizada" class="center input-field">
