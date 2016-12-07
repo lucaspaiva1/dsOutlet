@@ -75,6 +75,8 @@
 					echo json_encode($vetor);
 				}	
 			}
+		} else if isset($_GET["reg"])) {
+		
 		}
 	
 ?>
