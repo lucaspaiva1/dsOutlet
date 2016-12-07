@@ -8,5 +8,11 @@
 .produtos{
   overflow: auto;
   position: relative;
-  height: 209px;
+  height: 245px;
+}
+
+.marcaModelo{
+  overflow: auto;
+  position: relative;
+  height: 105px;
 }

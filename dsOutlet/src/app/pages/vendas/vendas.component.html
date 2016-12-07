@@ -14,7 +14,7 @@
         <options [isAdmin]="isAdmin"></options>
       </div>
 
-      <div class="col s12 m8 l9"  style="padding-top: 8px">
+      <div class="col s12 m8 l9" style="padding-top: 8px">
 
         <div>
           <!--divisão da página em duas colunas-->
@@ -34,9 +34,10 @@
                 </div>
                 <!-- espaço onde sao listados os itens -->
                 <div class="compra">
-                  <div *ngFor="let item of itens">
+                  <div *ngFor="let item of compra">
                     <div class="divider"></div>
-                    <p>R$ {{item}}</p>
+                    <p>{{item.marca}} {{item.modelo}} TAMANHO: {{item.tamanho}} <i class="material-icons right" (click)="removerProduto(item)" style="cursor:pointer;">close</i></p>
+                    <p>{{item.quantidade}} X R${{item.valorUnidade}} = R${{item.valor}}</p>
                     <div class="divider"></div>
                   </div>
                 </div>
@@ -70,44 +71,63 @@
               <!--Tabela de produtos de venda-->
               <div class="produtos">
 
-              <table class="bordered alter responsive-table selectable">
-                <thead>
-                  <tr>
-                    <th data-field="marca">Marca</th>
-                    <th data-field="modelo">Modelo</th>
-                    <th data-field="tamanho">Tamanho</th>
-                    <th data-field="quantidade">Quantidade</th>
-                    <th data-field="precoVenda">Preço Venda</th>
-                  </tr>
-                </thead>
+                <table class="bordered alter responsive-table selectable">
+                  <thead>
+                    <tr>
+                      <th data-field="marca">Marca</th>
+                      <th data-field="modelo">Modelo</th>
+                      <th data-field="tamanho">Tamanho</th>
+                      <th data-field="quantidade">Quantidade</th>
+                      <th data-field="precoVenda">Preço Venda</th>
+                    </tr>
+                  </thead>
 
-                <tbody>
-                  <tr *ngFor="let produto of produtos | filtroDeMercadoria: search">
-                    <td >{{produto.marca}}</td>
-                    <td >{{produto.modelo}}</td>
-                    <td >{{produto.tamanho}}</td>
-                    <td >{{produto.quantidade}}</td>
-                    <td >{{produto.precoSaidaPadrao}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                  <tbody>
+                    <tr *ngFor="let produto of produtos | filtroDeMercadoria: search" (click)="seleciona(produto)">
+                      <td>{{produto.marca}}</td>
+                      <td>{{produto.modelo}}</td>
+                      <td>{{produto.tamanho}}</td>
+                      <td>{{produto.quantidade}}</td>
+                      <td>{{produto.precoSaidaPadrao}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
               <!--linha para seleção de tamanho e quantidade-->
               <div class="row">
-                <div class="input-field col s12 m6 l6 black-text">
-                  <input id="tamanho" type="text" class="black-text">
+                <div class="marcaModelo">
+                  <div class="input-field col s12 m6 l6 black-text">
+                    <label class="black-text">Marca</label>
+                    <h3>{{itemSelecionado.marca}}</h3>
+                  </div>
+                  <div class="input-field col s12 m6 l6 black-text">
+                    <label class="black-text">Modelo</label>
+                    <h3>{{itemSelecionado.modelo}}</h3>
+                  </div>
+                </div>
+                <div class="input-field col s12 m6 l6  black-text ">
+                  <input placeholder="" id="tamanho" type="text" class="black-text" [(ngModel)]="itemSelecionado.tamanho" disabled>
                   <label class="black-text" for="tamanho">Tamanho</label>
                 </div>
                 <div class="input-field col s12 m6 l6 black-text">
-                  <input id="quantidade" type="number" class="black-text">
+                  <input id="quantidade" type="number" class="black-text" [(ngModel)]="quantidade" (keyup)="verifica()">
                   <label class="black-text" for="quantidade">Quantidade</label>
                 </div>
               </div>
+              <!--Botão para apagado item-->
+              <div class="row">
+                <div class="right">
+                  <a class="btn waves-effect waves-light blue darken-4" disabled *ngIf="!permitirCompra">Adicionar Item
+                      <i class="material-icons right">add</i>
+                  </a>
+                </div>
+              </div>
+
               <!--Botão para adicionar item-->
               <div class="row">
                 <div class="right">
-                  <a (click)="adicionarItem()" class="btn waves-effect waves-light blue darken-4">Adicionar Item
+                  <a (click)="adicionarItem()" class="btn waves-effect waves-light blue darken-4" *ngIf="permitirCompra">Adicionar Item
                       <i class="material-icons right">add</i>
                   </a>
                 </div>
