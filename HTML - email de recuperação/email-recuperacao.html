@@ -4,18 +4,23 @@
     <meta charset="utf-8">
     <title>Email de Recuperação</title>
     <style media="screen">
-      .header-backgound{
-        background-color: #01579b;
-        height: 100px;
+      .header{
+        background-color: ;
         padding: 20px;
         text-align: center;
       }
-      .body-backgound{
-        background-color: #03a9f4;
+      .body{
+        border-top-width: thin;
+        border-top-style: solid;
+        border-bottom-width: thin;
+        border-bottom-style: solid;
+        border-color: #e6e6e6;
         padding: 20px;
       }
-      .container{
-        padding: 100px;
+      .link{
+        color: black;
+        text-decoration: none;
+
       }
       .titulo{
         font-size: 30px;
@@ -29,31 +34,17 @@
     </style>
   </head>
   <body>
-    <header class="header-backgound">
+    <header class="header">
       Logo da DSOUTLET
     </header>
-    <div class="container">
-      <!--container interno com as informações-->
-      <div class="body-backgound">
-        <!--TÍTULO-->
-        <h1 class="titulo">Recupraçaõ de Senha</h1>
-        <!--CORPO DO EMAIL-->
-        <p class="texto">
-          Foi solicitado o envio deste email para a recuperação da senha do usuario: <br>
-          FULANO DE TAL<br> <!--NOME DO USUÁRIO-->
-          Se não é voçe, por favor desconsidere este email.
-        </p>
-        <p class="texto">
-          Sua senha é: <br>
-          ******* <br> <!--SENHA-->
-        </p>
-        <p class="texto">
-          Obrigado. <br>
-          Este email foi enviado por: <br>
-          <em>CODEBRO</em>
-        </p>
-      </div>
-
+    <div class="body">
+      Olá $Cliente,
+      <br>
+      <br>
+      Foi solicitado recentemente a recuperação dos dados de acesso do <a class="link" href="">DsOutlet</a>.
     </div>
+
+
+
   </body>
 </html>
