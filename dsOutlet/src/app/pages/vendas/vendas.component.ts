@@ -6,6 +6,11 @@ import { ProdutosService } from '../../services/produtos.service';
 import { Produto } from '../../model/produto';
 import { Divida } from '../../model/linhaDeitem';
 import { MaterializeAction } from 'angular2-materialize';
+import { Cliente } from '../../model/cliente';
+import { ClientesService } from '../../services/clientes.service';
+import { Endereco } from '../../model/endereco';
+
+
 
 @Component({
     selector: 'app-vendas',
@@ -15,6 +20,7 @@ import { MaterializeAction } from 'angular2-materialize';
 export class VendasComponent implements OnInit {
 
     private isLogado: boolean = false;
+    private loading: boolean = true;
     private isAdmin: boolean = false;
     private produtos: Produto[] = [];
     private itens: Produto[] = [];
@@ -29,13 +35,22 @@ export class VendasComponent implements OnInit {
     private desconto: string = "R$";
     private valorFinal: number = 0;
     private quantidadeDesconto: number = 0;
-    private modoPagamento:string="";
+    private modoPagamento: string = "";
+    private searchCliente: string = "";
+    private clientes: Cliente[];
+    private clienteComprador: Cliente = new Cliente();
+    private cliente: Cliente = new Cliente();
+    private endereco: Endereco = new Endereco();
 
-    constructor(private router: Router, private userService: UserService, private produtosService: ProdutosService) {
+
+
+
+    constructor(private router: Router, private userService: UserService, private produtosService: ProdutosService, private clientesService: ClientesService) {
         this.modalActions.emit({ action: "modal", params: ['close'] });
         let stats = this.userService.userStats();
         this.isLogado = stats[0];
         this.isAdmin = stats[1];
+
     }
 
     ngOnInit() {
@@ -73,6 +88,10 @@ export class VendasComponent implements OnInit {
         this.search = "";
     }
 
+    limparCliente() {
+        this.searchCliente = "";
+    }
+
     seleciona(produto) {
         this.itemSelecionado = produto;
         this.quantidade = 0;
@@ -101,9 +120,41 @@ export class VendasComponent implements OnInit {
         } else {
             this.valorFinal = (+this.valorFinal) - (+this.valorFinal) * (+this.quantidadeDesconto) / 100;
         }
+        this.getClientes();
     }
-    tipoAPagar(valor){
-      this.desconto=valor;
-      this.valorAPagar();
+    tipoAPagar(valor) {
+        this.desconto = valor;
+        this.valorAPagar();
+    }
+
+    private getClientes() {
+        this.loading = true;
+        this.clientesService.getClientes().then(res => {
+            this.clientes = res;
+            this.loading = false;
+        });
+
+    }
+
+    selecionarCliente(cliente) {
+        this.clienteComprador = cliente;
+    }
+
+    adicionarCliente() {
+        if (this.cliente.nome == null || this.cliente.cpf == null || this.cliente.telefone == null || this.endereco.cidade == null || this.endereco.uf == null || this.endereco.logradouro == null) {
+            toast('Faltam Informações!', 4000, 'rounded');
+        } else {
+            this.cliente.endereco = this.endereco;
+            this.clientesService.addCliente(this.cliente).then(res => {
+                if (res) {
+                    toast('Cliente foi cadastrado!', 4000, 'rounded');
+                    this.cliente = new Cliente();
+                    this.endereco = new Endereco();
+                } else {
+                    toast('Cliente já cadastrado', 4000, 'rounded');
+                }
+            });
+        }
+        this.valorAPagar()
     }
 }

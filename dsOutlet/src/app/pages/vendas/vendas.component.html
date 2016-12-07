@@ -143,26 +143,31 @@
                 </div>
               </div>
 
-              <!--Login Modal-->
-              <div materialize="modal" id="finalizarCompraModal" class="modal modal-fixed-footer" [materializeActions]="modalActions">
+              <!--finalizar compra Modal-->
+              <div materialize="modal" id="finalizarCompraModal" class="modal modal-fixed-footer " [materializeActions]="modalActions">
                 <div class="modal-content">
                   <h4 class="center black-text" style="padding-right: 10px">Finalizar Compra</h4>
                   <form>
                     <div>
-                      <div class="input-field col s6 m4 l4 black-text">
+                      <div class="input-field col s6 m3 l3 black-text">
                         <input placeholder="% ou R$" id="desconto" type="number" class="black-text" (keyup)="valorAPagar()" [(ngModel)]="quantidadeDesconto"
                           [ngModelOptions]="{standalone: true}">
                         <label class="black-text" for="desconto">Desconto ( {{desconto}} )</label>
                       </div>
-                      <div class="input-field col s6 m4 l4 black-text" >
-                            <input name="group1" type="radio" id="test1" checked  (click)="tipoAPagar('R$')"/>
-                            <label for="test1" (click)="tipoAPagar('R$')" class="black-text">Dinheiro</label>
-                            <input name="group1" type="radio" id="test2" (click)="tipoAPagar('%')"/>
-                            <label for="test2" (click)="tipoAPagar('%')" class="black-text">Porcentagem</label>
+                      <div class="input-field col s6 m3 l3 black-text">
+                        <input name="group1" type="radio" id="test1" checked (click)="tipoAPagar('R$')" />
+                        <label for="test1" (click)="tipoAPagar('R$')" class="black-text">Dinheiro</label>
+                        <input name="group1" type="radio" id="test2" (click)="tipoAPagar('%')" />
+                        <label for="test2" (click)="tipoAPagar('%')" class="black-text">Porcentagem</label>
                       </div>
-                      <div class="input-field col s12 m4 l4 black-text">
+                      <div class="input-field col s6 m3 l3 black-text">
                         <input placeholder="" id="valorFinal" type="number" class="black-text" disabled [(ngModel)]="valorFinal" [ngModelOptions]="{standalone: true}">
                         <label class="black-text" for="valorFinal" (click)="valorAPagar()">Valor a pagar</label>
+                      </div>
+                      <div class=" col s6 m3 l3 black-text">
+                        <a materialize="modal" class="waves-effect waves-light btn blue darken-4">Concluir
+                    <i class="material-icons right">done</i>
+                  </a>
                       </div>
                     </div>
                     <div class="input-field col s12 m12 l12 black-text">
@@ -177,21 +182,143 @@
                       <label class="black-text">Forma de Pagamento</label>
                     </div>
                   </form>
+                  <div class="row col s12 m12 l12 black-text">
+                    <div *ngIf="modoPagamento=='4'">
+
+                      <div>
+                        <h4>Comprador: {{clienteComprador.nome}} ({{clienteComprador.cpf}})</h4>
+                      </div>
+                      <div>
+                        <nav class=" white black-text row">
+                          <ul id="nav-mobile" class="left ">
+                            <li><a materialize="modal" class="waves-effect waves-light btn blue darken-4" href="#CadastrarUsuarioModal"
+                                class="white-text blue">CADASTRAR</a></li>
+                          </ul>
+                          <form class="col s7 m9 l9 ">
+                            <div class="input-field">
+                              <input [(ngModel)]="searchCliente" name="searchCliente" type="search" placeholder="Procurar cliente">
+                              <label for="searchCliente"><i class="material-icons black-text" >search</i></label>
+                              <i class="material-icons black-text right" (click)="limparCliente()">close</i>
+                            </div>
+                          </form>
+                        </nav>
+
+                        <div class="listaClientes">
+                          <!--Tabela de funcionarios, quando clicar em um itel vai abrir uma nova tela para editar as informaç~eos do mesmo e ao salvar retorna para esta tela-->
+                          <table *ngIf="!loading" class="bordered alter selectable responsive-table">
+                            <thead>
+                              <tr>
+                                <th data-field="nome">Nome</th>
+                                <th data-field="cpf">CPF</th>
+                                <th data-field="telefone">Telefone</th>
+                                <th data-field="divida">Dívida Total</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <tr *ngFor="let cliente of clientes | filtroDeCliente:searchCliente" (click)="selecionarCliente(cliente)">
+                                <td>{{cliente.nome}}</td>
+                                <td>{{cliente.cpf}}</td>
+                                <td>{{cliente.telefone}}</td>
+                                <td>{{cliente.dividaTotal}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
                 </div>
 
-                
 
-
-                <div class="modal-footer loginPaneFooter">
- 
-                </div>
               </div>
 
 
-       
-              <div class="center input-field">
-                <a class="btn waves-effect waves-light blue darken-4">Pagar</a>
+
+              <!--finalizar cadastrar usuario Modal-->
+              <div materialize="modal" id="CadastrarUsuarioModal" class="modal modal-fixed-footer " [materializeActions]="modalActions">
+                <div class="modal-content">
+
+                  <div>
+                    <!-- Formulário -->
+                    <div class="row">
+                      <form class="col s12 black-text">
+                        <div class="row">
+                          <div class="input-field col s12 m6 l8 black-text">
+                            <i class="material-icons prefix">perm_identity</i>
+                            <input id="name" type="text" class="validate black-text" [(ngModel)]="cliente.nome" [ngModelOptions]="{standalone: true}">
+                            <label class="black-text" for="first_name">Nome Completo</label>
+                          </div>
+                          <div class="input-field col s12 m6 l4 black-text">
+                            <input id="cpf" type="number" class="validate black-text" [(ngModel)]="cliente.cpf" [ngModelOptions]="{standalone: true}">
+                            <label class="black-text" for="cpf">CPF</label>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="input-field col s12 m6 l4 black-text">
+                            <label class="black-text" for="date">Nascimento</label><br>
+                            <input id="date" type="date" class="validate black-text" [(ngModel)]="cliente.nascimento" [ngModelOptions]="{standalone: true}">
+                          </div>
+                          <br>
+                          <div class="input-field col s12 m6 l8 black-text">
+                            <input id="email" type="email" class="validate black-text" [(ngModel)]="cliente.email" [ngModelOptions]="{standalone: true}">
+                            <label class="black-text" for="email">Email</label>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="input-field col s12 m6 l4 black-text">
+                            <input id="telefone" type="number" class="validate black-text" [(ngModel)]="cliente.telefone" [ngModelOptions]="{standalone: true}">
+                            <label class="black-text" for="telefone">Telefone</label>
+                          </div>
+                          <div class="input-field col s12 m12 l4">
+                            <input id="cidade" type="text" class="validate" [(ngModel)]="endereco.cidade" [ngModelOptions]="{standalone: true}">
+                            <label class="black-text" for="cidade">Cidade</label>
+                          </div>
+                          <div class="input-field col s12 m12 l2">
+                            <input id="uf" type="text" class="validate" [(ngModel)]="endereco.uf" [ngModelOptions]="{standalone: true}">
+                            <label class="black-text" for="uf">UF</label>
+                          </div>
+                          <div class="input-field col s12 m6 l2 black-text">
+                            <input id="cep" type="number" class="validate black-text" [(ngModel)]="endereco.cep" [ngModelOptions]="{standalone: true}">
+                            <label class="black-text" for="cep">CEP</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12 m12 l10">
+                            <input id="logradouro" type="text" class="validate" [(ngModel)]="endereco.logradouro" [ngModelOptions]="{standalone: true}">
+                            <label class="black-text" for="logradouro">Endereço</label>
+                          </div>
+                          <div class="input-field col s12 m12 l2">
+                            <input id="numero" type="text" class="validate" [(ngModel)]="endereco.numero" [ngModelOptions]="{standalone: true}">
+                            <label class="black-text" for="numero">Número</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="right">
+                            <a (click)="adicionarCliente()" class="btn waves-effect waves-light blue darken-4">Adicionar
+                      <i class="material-icons right">send</i>
+                    </a>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
+
+                </div>
+
+
               </div>
+
+
+
+
+
+
 
             </div>
           </div>
