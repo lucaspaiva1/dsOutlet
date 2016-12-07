@@ -14,6 +14,7 @@ import { UserService } from './services/user.service';
 import { ClientesService } from './services/clientes.service';
 import { ProdutosService } from './services/produtos.service';
 import { EsqueciSenhaService } from './services/esqueci-senha.service';
+import { RelatorioService } from './services/relatorio.service';
 import { FiltroDeMercadoria } from './pages/estoque/produto.pipes';
 import { FiltroDeFuncionarios } from './pages/admin-geren-funcionarios/geren-funcionario.pipes';
 import { FiltroDeCliente } from './pages/admin-geren-clientes/geren-cliente.pipes';
@@ -76,7 +77,7 @@ import { VendasComponent } from './pages/vendas/vendas.component';
       apiKey: 'AIzaSyB64Q-NvEJqxFf9PmJZHevjQdxzL9a3jZw' //chave do google para usar googlemaps
     })
   ],
-  providers: [UserService, EsqueciSenhaService, ProdutosService, ClientesService, LocalStorageService,
+  providers: [UserService, RelatorioService, EsqueciSenhaService, ProdutosService, ClientesService, LocalStorageService,
     {
       provide: LOCAL_STORAGE_SERVICE_CONFIG, useValue: {
         prefix: 'my-app',
