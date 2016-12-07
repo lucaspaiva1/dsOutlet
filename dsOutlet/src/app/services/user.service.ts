@@ -27,6 +27,7 @@ export class UserService {
   /*Método que converte o arquivo json recebido da api php*/
   private extractLoginData(res: Response) {
     let usuario = res.json();
+    console.log(usuario);
     /*se voltar false é pq nao foi possivel efetuar login*/
     if (usuario != false) {
       usuario.admin = usuario.acesso == 'A' ? true : false; //os valores booleanos do banco sao 0 (false) ou 1 (true)
@@ -128,18 +129,18 @@ export class UserService {
   }
 
   /*Retorna um array de boolean ->primeiro index é logado, segundo é admin*/
-  userStats(): boolean[] {
+  userStats(): any[] {
     let user = <User>this.storage.get('user');
     if (user == null) {
       return [false, false];
     }
-    return [user.logado, user.admin];
+    return [user.logado, user.admin, user.id];
   }
 
   /*Retorna um array de boolean ->primeiro index é logado, segundo é admin*/
   myProfile(): User {
     return <User>this.storage.get('user');
-    
+
   }
 
 }

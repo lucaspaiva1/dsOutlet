@@ -20,11 +20,10 @@
 		$precoS	    = $request->precoSaidaPadrao;
 		$max	    = $request->maximo;
 		$min	    = $request->minimo;
-		
-		$usuarioID    = $usuario->usuarioId;
+		$usuarioID  = $request->usuarioId;
 		
 		date_default_timezone_set('America/Sao_Paulo');
-		$today = date('Y-m-d');
+		$today = date('Y-m-d H:i:s');
 		
 		$sql = "SELECT * FROM produto WHERE marca = '$marca' AND modelo = '$modelo' AND tamanho = '$tamanho' AND precoEntrada = '$precoE'";
 		$result = $con->query($sql);

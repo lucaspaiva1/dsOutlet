@@ -14,6 +14,7 @@ export class AdminAddProdutoComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
+  private usuarioId: string;
 
   private search: string = "";
   private filtrados: Produto[] = [];
@@ -26,6 +27,8 @@ export class AdminAddProdutoComponent implements OnInit {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
+    this.usuarioId = stats[2];
+    console.log(this.usuarioId);
   }
 
   ngOnInit() {
@@ -35,14 +38,12 @@ export class AdminAddProdutoComponent implements OnInit {
       this.route.params.forEach((params: Params) => {
         let id = params['id'];
         this.getProduto(id);
-        console.log(this.produto);
       })
     }
   }
 
   private getProduto(id: number): void {
     this.produtoService.getProduto(id).then(res => {
-      console.log(res);
       if (res == null) {
         this.router.navigate(['/gerenciador']);
       } else {
@@ -54,13 +55,12 @@ export class AdminAddProdutoComponent implements OnInit {
 
   /*adiciona a quantidade ao produto no banco de dados*/
   private adicionar(): void {
+    this.produto.usuarioId = this.usuarioId;
     if (this.quantidade > 0) {
       this.produto.quantidade = this.quantidade;
       this.produto.precoUltimaCompra = this.precoCompra;
       if (this.precoCompra != this.produto.precoEntrada) {
-        console.log(this.produto);
         this.produtoService.newProduto(this.produto).then(res=>{
-          console.log(res);
           if(res){
             toast('Produto foi Cadastrado!', 4000, 'rounded');
           }else{
@@ -69,6 +69,7 @@ export class AdminAddProdutoComponent implements OnInit {
         });
 
       } else {
+        console.log(this.produto);
         this.produtoService.addProduto(this.produto).then(res => {
           if (res) {
             toast('Produto foi modificado!', 4000, 'rounded');

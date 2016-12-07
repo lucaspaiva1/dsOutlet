@@ -15,10 +15,10 @@
 		$id     	  = $request->id;
 		$precoS	      = $request->precoSaidaPadrao;
 		$quantidade   = $request->quantidade;
-		$usuarioID    = $usuario->usuarioId;
+		$usuarioID    = $request->usuarioId;
 		
 		date_default_timezone_set('America/Sao_Paulo');
-		$today = date('Y-m-d');
+		$today = date('Y-m-d H:i:s');
 		
 		$sql = "SELECT * FROM produto WHERE id = '$id'";
 		$result = $con->query($sql);
