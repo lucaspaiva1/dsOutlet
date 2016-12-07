@@ -44,9 +44,6 @@ export class VendasComponent implements OnInit {
   private getEstoque() {
     this.produtosService.getProdutos().then(res => {
       this.produtos = res;
-      for (let produto of this.produtos) {
-        produto.estado = "";
-      }
     });
   }
 
