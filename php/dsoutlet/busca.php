@@ -21,8 +21,23 @@
 				$sql = "SELECT * FROM produto";
 				$result = $con->query($sql);
 				while($row=$result->fetch_assoc()){
+					$maxx   = $row['maximo'];
+					$minn   = $row['minimo'];
+					$qnt    = $row['quantidade'];
+					$estado = "";
+					
+					if ($qnt <= $minn){
+						$estado = "Falta";
+					} else if ($qnt > $maxx){
+						$estado = "excesso";
+					} else {
+						$estado = "certo";
+					}
+					
+					$row['estado'] = $estado;
 					$vetor[] = $row;
 				}
+				
 				echo json_encode($vetor);
 			}
 		} else if (isset($_GET["cli"])){
