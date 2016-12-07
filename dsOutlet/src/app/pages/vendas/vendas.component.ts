@@ -150,6 +150,7 @@ export class VendasComponent implements OnInit {
                     toast('Cliente foi cadastrado!', 4000, 'rounded');
                     this.cliente = new Cliente();
                     this.endereco = new Endereco();
+                    this.getClientes();
                 } else {
                     toast('Cliente já cadastrado', 4000, 'rounded');
                 }
