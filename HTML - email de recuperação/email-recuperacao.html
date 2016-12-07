@@ -5,7 +5,6 @@
     <title>Email de Recuperação</title>
     <style media="screen">
       .header{
-        background-color: ;
         padding: 20px;
         text-align: center;
       }
@@ -16,35 +15,46 @@
         border-bottom-style: solid;
         border-color: #e6e6e6;
         padding: 20px;
+        font-family: Arial;
       }
       .link{
         color: black;
         text-decoration: none;
 
       }
-      .titulo{
-        font-size: 30px;
-        font-family: georgia;
-        text-align: center;
-      }
-      .texto{
-        font-family: georgia;
-        margin: 20px;
+      .dados{
+        color: white;
+        border-radius: 5px;
+        background-color: #0083b4;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 5px;
+        width: 50%;
       }
     </style>
   </head>
-  <body>
+  <body style="width: 500px">
     <header class="header">
       Logo da DSOUTLET
     </header>
     <div class="body">
-      Olá $Cliente,
+      <h3>Olá $Cliente,</h3>
+      <p>Foi solicitado recentemente a recuperação dos dados de acesso ao gerenciador <a class="link" href="">DsOutlet</a>.</p>
       <br>
-      <br>
-      Foi solicitado recentemente a recuperação dos dados de acesso do <a class="link" href="">DsOutlet</a>.
+      Seguem os dados:
+      <br><br>
+      <div class="dados">
+        <b style="margin-right: 5px;">Usuário:</b>$login
+        <br>
+        <b style="margin-right: 16px;">Senha:</b>$senha
+      </div>
+      <br><br>
+      <b style="color: #4b4b4b">Não solicitou esta Recuperação?</b>
+
+      <p style="font-size: 14px">Se você não solicitou a recuperação dos dados ignore esta mensagem.</p>
     </div>
-
-
-
+    <p style="font-size: 10px; color:#616161; font-family: Arial; margin-left: 5px">Essa mensagem foi enviada para $email a seu pedido. <br>
+      DsOutlet - Rua N sei o nome, Feira de Santana - BA (75)3623-0001
+    </p>
   </body>
 </html>
