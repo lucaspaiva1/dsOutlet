@@ -15,6 +15,11 @@
 		$id     	  = $request->id;
 		$precoS	      = $request->precoSaidaPadrao;
 		$quantidade   = $request->quantidade;
+		$usuario      = $request->usuario;
+		$usuarioID    = $usuario->id;
+		
+		date_default_timezone_set('America/Sao_Paulo');
+		$today = date('Y-m-d');
 		
 		$sql = "SELECT * FROM produto WHERE id = '$id'";
 		$result = $con->query($sql);
@@ -28,6 +33,18 @@
 			$amount = $amount + $quantidade;
 			$sql = "UPDATE produto SET quantidade = '$amount', precoSaidaPadrao = '$precoS' WHERE id = '$id'";
 			$con->query($sql);
+			
+			$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo) VALUES ('$today', '0', '$usuarioID', 'e')";
+			$con->query($sql);
+				
+			$sql = "SELECT * FROM registro WHERE tempo = '$today' AND loja_id = '0' AND usuario_id = '$usuarioID' AND tipo = 'e'";
+			$result = $con->query($sql);
+			$dados  = $result->fetch_assoc();
+			$regID = $dados['id'];
+				
+			$sql = "INSERT INTO registro_entrada (quantidade, produtoIDProduto, registro_id) VALUES ('$quantidade', '$id', '$regID')";
+			$con->query($sql);
+			
 			echo json_encode(true);
 		}
 	}
