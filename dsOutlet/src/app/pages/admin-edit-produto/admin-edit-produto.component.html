@@ -75,23 +75,23 @@
                   <label class="black-text" for="tam">Tamanho</label>
                 </div>
                 <div class="input-field col s12 m3 l3">
-                  <input id="ultimaCompra" type="number" class="validate">
+                  <input placeholder="" *ngIf="isAdmin" id="ultimaCompra" type="number" class="validate" disabled>
                   <label class="black-text" for="ultimaCompra">Preço Ultima Compra</label>
                 </div>
                 <div class="input-field col s12 m3 l3">
-                  <input id="precoVenda" type="number" class="validate">
+                  <input placeholder="" id="precoVenda" type="number" class="validate" [(ngModel)]="produto.precoSaidaPadrao" [ngModelOptions]="{standalone: true}">
                   <label class="black-text" for="precoVenda">Preço Venda</label> </div>
                 <div class="input-field col s12 m3 l3">
-                  <input id="quantidade" type="number" class="validate">
+                  <input placeholder="" id="quantidade" type="number" class="validate" disabled [value]="produto.quantidade">
                   <label class="black-text" for="quantidade">Quantidade</label>
                 </div>
               </div>
               <div class="row">
                 <div class="right">
-                  <a onclick="Materialize.toast('Produto foi excluido!', 4000, 'rounded')" class="btn waves-effect waves-light red darken-4" (click)="excluir()">Excluir
+                  <a (click)="excluir()" class="btn waves-effect waves-light red darken-4">Excluir
                       <i class="material-icons right">delete</i>
                     </a>
-                  <a onclick="Materialize.toast('Produto foi modificado!', 4000, 'rounded')" class="btn waves-effect waves-light blue darken-4" (click)="salvar()">Salvar
+                  <a (click)="salvar()" class="btn waves-effect waves-light blue darken-4">Salvar
                       <i class="material-icons right">send</i>
                     </a>
                 </div>

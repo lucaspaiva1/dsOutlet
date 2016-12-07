@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ProdutosService } from '../../services/produtos.service';
 import { Produto } from '../../model/produto';
+import { toast } from 'angular2-materialize';
 
 @Component({
   selector: 'app-admin-edit-produto',
@@ -50,12 +51,26 @@ export class AdminEditProdutoComponent implements OnInit {
   }
 
   excluir() {
-    this.router.navigate(['/gerenciador/estoque']);
+    this.produtoService.delProduto(this.produto.id).then(res=>{
+      if(res){
+        toast('Produto foi Deletado!', 4000, 'rounded');
+        this.router.navigate(['/gerenciador/estoque']);
+      }else{
+        toast('Ocorreu um erro!', 4000, 'rounded');
+      }
+    });
 
   }
 
   salvar() {
-    this.router.navigate(['/gerenciador/estoque']);
+    this.produtoService.editProduto(this.produto).then(res=>{
+      if(res){
+        toast('Produto foi Editado!', 4000, 'rounded');
+        this.router.navigate(['/gerenciador/estoque']);
+      }else{
+        toast('Ocorreu um erro!', 4000, 'rounded');
+      }
+    });
   }
 
 }

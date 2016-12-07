@@ -11,7 +11,8 @@ export class Produto {
   public maximo: number;
   public minimo: number;
   public estado: string;
-
+  public usuarioId: string;
+  
   constructor() {
   }
 

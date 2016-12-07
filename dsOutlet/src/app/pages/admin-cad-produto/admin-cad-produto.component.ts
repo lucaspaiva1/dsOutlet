@@ -14,6 +14,7 @@ export class AdminCadProdutoComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
+  private usuarioId: string;
 
   produto: Produto = new Produto();
 
@@ -21,6 +22,7 @@ export class AdminCadProdutoComponent implements OnInit {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
+    this.usuarioId = stats[2];
   }
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class AdminCadProdutoComponent implements OnInit {
       toast('Favor Preencher Campos Obrigatórios!', 4000, 'rounded');
     } else {
       if (this.produto.quantidade >= 0) {
+        this.produto.usuarioId = this.usuarioId;
         this.produtosService.newProduto(this.produto).then(res => {
           if (res) {
             console.log(res);

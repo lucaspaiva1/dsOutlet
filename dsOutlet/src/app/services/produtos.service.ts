@@ -64,11 +64,6 @@ export class ProdutosService {
       .catch(this.handleError);
   }
 
-  getProduto(id: number): Promise<Produto> {
-    return this.getProdutos()
-               .then(produtos => produtos.find(produto => produto.id === id));
-  }
-
   private extractGetData(res: Response) {
     let data = res.json();
     if (data == null) {
@@ -77,6 +72,37 @@ export class ProdutosService {
       this.produtos = data;
     }
     return this.produtos;
+  }
+
+  getProduto(id: number): Promise<Produto> {
+    return this.getProdutos()
+               .then(produtos => produtos.find(produto => produto.id === id));
+  }
+
+  delProduto(id:number): Promise<boolean>{
+    return this.http
+      .post('http://localhost/dsoutlet/deleteProd.php', JSON.stringify({id:id}), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractDelData(res))
+      .catch(this.handleError);
+  }
+
+  private extractDelData(res: Response){
+    let data = res.json();
+    return data;
+  }
+
+  editProduto(produto: Produto): Promise<boolean>{
+    return this.http
+      .post('http://localhost/dsoutlet/editProd.php', JSON.stringify(produto), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractEditData(res))
+      .catch(this.handleError);
+  }
+
+  private extractEditData(res: Response){
+    let data = res.json();
+    return data;
   }
 
   /*método chamado quando ocorre um erro no acesso a api php*/
