@@ -36,7 +36,8 @@
                 <div class="compra">
                   <div *ngFor="let item of compra">
                     <div class="divider"></div>
-                    <p>{{item.marca}} {{item.modelo}} TAMANHO: {{item.tamanho}} <i class="material-icons right" (click)="removerProduto(item)" style="cursor:pointer;">close</i></p>
+                    <p>{{item.marca}} {{item.modelo}} TAMANHO: {{item.tamanho}} <i class="material-icons right" (click)="removerProduto(item)"
+                        style="cursor:pointer;">close</i></p>
                     <p>{{item.quantidade}} X R${{item.valorUnidade}} = R${{item.valor}}</p>
                     <div class="divider"></div>
                   </div>
@@ -136,13 +137,41 @@
               <!--Botão para finalizar venda-->
               <div class="row">
                 <div class="right">
-                  <a (click)="finalizar()" class="btn waves-effect waves-light blue darken-4">Finalizar Compra
+                  <a materialize="modal" class="waves-effect waves-light btn blue darken-4" href="#finalizarCompraModal">Finalizar Compra
                     <i class="material-icons right">done</i>
                   </a>
                 </div>
               </div>
+
+              <!--Login Modal-->
+              <div materialize="modal" id="finalizarCompraModal" class="modal modal-fixed-footer loginPane light-blue" [materializeActions]="modalActions">
+                <div class="modal-content">
+                  <h4 class="center white-text" style="padding-right: 10px">LogIn</h4>
+                  <form class="">
+                    <div class="input-field white-text campo">
+                      <i class="material-icons prefix">perm_identity</i>
+                      <input id="usuario" type="text" class="validate white-text" [(ngModel)]="login" [ngModelOptions]="{standalone: true}">
+                      <label class="white-text" for="usuario">Nome de Usuário</label>
+                    </div>
+                    <div class="input-field  campo">
+                      <input id="senha" type="password" class="validate white-text" [(ngModel)]="senha" [ngModelOptions]="{standalone: true}">
+                      <label class="white-text" for="senha">Senha</label>
+                    </div>
+                    <p class="white-text">
+                      <input type="checkbox" class="white-text" id="remenber" />
+                      <label class="white-text" for="remenber">Lembrar de mim</label>
+                    </p>
+                  </form>
+                </div>
+                <div class="modal-footer light-blue loginPaneFooter">
+                  <a materialize="modal" href="#esqueciModal" class="left white-text">Esqueci minha senha</a>
+                  <a class="waves-effect waves-light btn blue darken-4" (click)="fazerLogin()">Login</a>
+                </div>
+              </div>
+
+
               <!--elementos para finalizar venda -->
-              <div *ngIf="vendaFinalizada" class="row">
+              <div class="row">
                 <div class="input-field col s12 m12 l12 black-text">
                   <select id="pagamento" materialize="material_select">
                     <!--Organiza a seleçao do modo de pagamento-->
@@ -154,11 +183,11 @@
                   </select>
                   <label class="black-text">Forma de Pagamento</label>
                 </div>
-                <div *ngIf="vendaFinalizada" class="input-field col s12 m6 l6 black-text">
+                <div class="input-field col s12 m6 l6 black-text">
                   <input id="desconto" type="number" class="black-text">
                   <label class="black-text" for="desconto">Desconto</label>
                 </div>
-                <div *ngIf="vendaFinalizada" class="input-field col s12 m6 l6 black-text">
+                <div class="input-field col s12 m6 l6 black-text">
                   <select id="tipodesconto" materialize="material_select">
                     <!--Organiza a seleçao do modo de pagamento-->
                     <option value="" disabled selected>Escolha um modelo</option>
@@ -167,16 +196,16 @@
                   </select>
                   <label class="black-text">Forma de Desconto</label>
                 </div>
-                <div *ngIf="vendaFinalizada" class="input-field col s12 m6 l6 black-text">
+                <div class="input-field col s12 m6 l6 black-text">
                   <input id="valorTotal" type="number" class="black-text">
                   <label class="black-text" for="valorTotal">Valor Total</label>
                 </div>
-                <div *ngIf="vendaFinalizada" class="input-field col s12 m6 l6 black-text">
+                <div class="input-field col s12 m6 l6 black-text">
                   <input id="valorPago" type="number" class="black-text">
                   <label class="black-text" for="quantidade">Valor Pago</label>
                 </div>
               </div>
-              <div *ngIf="vendaFinalizada" class="center input-field">
+              <div class="center input-field">
                 <a class="btn waves-effect waves-light blue darken-4">Pagar</a>
               </div>
 
