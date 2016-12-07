@@ -40,6 +40,7 @@ import { RelatorioComponent } from './pages/relatorio/relatorio.component';
 import { AdminEditClientesComponent } from './pages/admin-edit-clientes/admin-edit-clientes.component';
 import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-clientes.component';
 import { VendasComponent } from './pages/vendas/vendas.component';
+import { TabelaClienteComponent } from './components/tabela-cliente/tabela-cliente.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { VendasComponent } from './pages/vendas/vendas.component';
     FiltroDeFuncionarios,
     FiltroDeCliente,
     MinhaContaComponent,
-    RelatorioComponent
+    RelatorioComponent,
+    TabelaClienteComponent
   ],
   imports: [
     BrowserModule,
