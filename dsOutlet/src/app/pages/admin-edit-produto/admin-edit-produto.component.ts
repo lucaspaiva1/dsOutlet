@@ -63,7 +63,14 @@ export class AdminEditProdutoComponent implements OnInit {
   }
 
   salvar() {
-    this.router.navigate(['/gerenciador/estoque']);
+    this.produtoService.editProduto(this.produto).then(res=>{
+      if(res){
+        toast('Produto foi Editado!', 4000, 'rounded');
+        this.router.navigate(['/gerenciador/estoque']);
+      }else{
+        toast('Ocorreu um erro!', 4000, 'rounded');
+      }
+    });
   }
 
 }

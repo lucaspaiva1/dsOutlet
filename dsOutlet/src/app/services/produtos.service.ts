@@ -64,6 +64,16 @@ export class ProdutosService {
       .catch(this.handleError);
   }
 
+  private extractGetData(res: Response) {
+    let data = res.json();
+    if (data == null) {
+      this.produtos = [];
+    } else {
+      this.produtos = data;
+    }
+    return this.produtos;
+  }
+
   getProduto(id: number): Promise<Produto> {
     return this.getProdutos()
                .then(produtos => produtos.find(produto => produto.id === id));
@@ -71,7 +81,7 @@ export class ProdutosService {
 
   delProduto(id:number): Promise<boolean>{
     return this.http
-      .post('http://localhost/dsoutlet/delProd.php', JSON.stringify({id:id}), { headers: this.headers })
+      .post('http://localhost/dsoutlet/deleteProd.php', JSON.stringify({id:id}), { headers: this.headers })
       .toPromise()
       .then(res => this.extractDelData(res))
       .catch(this.handleError);
@@ -82,14 +92,17 @@ export class ProdutosService {
     return data;
   }
 
-  private extractGetData(res: Response) {
+  editProduto(produto: Produto): Promise<boolean>{
+    return this.http
+      .post('http://localhost/dsoutlet/editProd.php', JSON.stringify(produto), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractEditData(res))
+      .catch(this.handleError);
+  }
+
+  private extractEditData(res: Response){
     let data = res.json();
-    if (data == null) {
-      this.produtos = [];
-    } else {
-      this.produtos = data;
-    }
-    return this.produtos;
+    return data;
   }
 
   /*método chamado quando ocorre um erro no acesso a api php*/
