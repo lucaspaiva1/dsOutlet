@@ -20,9 +20,8 @@
 		$precoS	    = $request->precoSaidaPadrao;
 		$max	    = $request->maximo;
 		$min	    = $request->minimo;
-		$usuario    = $request->usuario;
 		
-		$usuarioID  = $usuario->id;
+		$usuarioID    = $usuario->usuarioId;
 		
 		date_default_timezone_set('America/Sao_Paulo');
 		$today = date('Y-m-d');

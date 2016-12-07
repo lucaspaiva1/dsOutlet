@@ -15,8 +15,7 @@
 		$id     	  = $request->id;
 		$precoS	      = $request->precoSaidaPadrao;
 		$quantidade   = $request->quantidade;
-		$usuario      = $request->usuario;
-		$usuarioID    = $usuario->id;
+		$usuarioID    = $usuario->usuarioId;
 		
 		date_default_timezone_set('America/Sao_Paulo');
 		$today = date('Y-m-d');
