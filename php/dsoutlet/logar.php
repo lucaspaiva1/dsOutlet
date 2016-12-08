@@ -23,7 +23,6 @@
 			if($numrow !== 1){
 				echo json_encode(false);
 			}else{
-				$dados = $result->fetch_assoc();
 				echo json_encode($dados);
 			}
 	}
