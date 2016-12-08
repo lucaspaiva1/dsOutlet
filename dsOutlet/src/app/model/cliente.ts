@@ -13,5 +13,6 @@ export class Cliente {
 
   constructor() {
     this.id = 0;
+    this.nome="";
   }
 }

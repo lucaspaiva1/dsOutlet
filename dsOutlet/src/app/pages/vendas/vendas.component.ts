@@ -164,6 +164,19 @@ export class VendasComponent implements OnInit {
         this.valorAPagar()
     }
 
+    podeConcluir():boolean{
+        let data = new Date();
+        if(this.divida.tipoVenda!=""){
+            if(this.divida.tipoVenda=="4"){
+                if(this.clienteComprador.nome=="" || this.divida.valorPorParcela<1 || this.divida.vencimento==null){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     concluirCompra() {
         this.vendaService.concluirCompra(this.clienteComprador.id, this.idUser, this.compra, this.divida).then(res => {
             if (res) {
