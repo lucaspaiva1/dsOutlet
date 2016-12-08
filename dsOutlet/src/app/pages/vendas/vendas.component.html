@@ -161,7 +161,7 @@
                         <label for="test2" (click)="tipoAPagar('%')" class="black-text">Porcentagem</label>
                       </div>
                       <div class="input-field col s6 m3 l3 black-text">
-                        <input placeholder="" id="valorFinal" type="number" class="black-text" disabled [(ngModel)]="valorFinal" [ngModelOptions]="{standalone: true}">
+                        <input placeholder="" id="valorFinal" type="number" class="black-text" disabled [(ngModel)]="divida.valor" [ngModelOptions]="{standalone: true}">
                         <label class="black-text" for="valorFinal" (click)="valorAPagar()">Valor a pagar</label>
                       </div>
                       <div class=" col s6 m3 l3 black-text">

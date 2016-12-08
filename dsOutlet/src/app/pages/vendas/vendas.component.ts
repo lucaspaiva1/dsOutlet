@@ -35,7 +35,6 @@ export class VendasComponent implements OnInit {
     private permitirCompra: boolean = false;
     modalActions = new EventEmitter<string | MaterializeAction>();
     private desconto: string = "R$";
-    private valorFinal: number = 0;
     private quantidadeDesconto: number = 0;
     private searchCliente: string = "";
     private clientes: Cliente[];
@@ -119,11 +118,11 @@ export class VendasComponent implements OnInit {
     }
 
     valorAPagar() {
-        this.valorFinal = this.valorTotal;
+        this.divida.valor = this.valorTotal;
         if (this.desconto == "R$") {
-            this.valorFinal = (+this.valorFinal) - (+this.quantidadeDesconto);
+            this.divida.valor = (+this.divida.valor) - (+this.quantidadeDesconto);
         } else {
-            this.valorFinal = (+this.valorFinal) - (+this.valorFinal) * (+this.quantidadeDesconto) / 100;
+            this.divida.valor = (+this.divida.valor) - (+this.divida.valor) * (+this.quantidadeDesconto) / 100;
         }
         this.getClientes();
     }
@@ -143,6 +142,7 @@ export class VendasComponent implements OnInit {
 
     selecionarCliente(cliente) {
         this.clienteComprador = cliente;
+        console.log(this.clienteComprador.id);
     }
 
     adicionarCliente() {

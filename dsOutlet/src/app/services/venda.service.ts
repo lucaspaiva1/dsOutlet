@@ -16,6 +16,10 @@ export class VendaService {
   }
 
   concluirCompra(idCliente:number, idUser:number, linhaDeItem:LinhaDeItem[], divida:Divida): Promise<any> {
+    console.log(idCliente);
+    console.log(idUser);
+    console.log(linhaDeItem);
+    console.log(divida);
     return this.http
       .post('http://localhost/dsoutlet/venda.php', JSON.stringify({idCliente, idUser, linhaDeItem, divida}), { headers: this.headers })
       .toPromise()
@@ -24,6 +28,7 @@ export class VendaService {
   }
 
   private extractAddData(res: Response) {
+    console.log(res);
     let data = res.json();
     return data;
   }

@@ -27,7 +27,7 @@
 			$sql = "INSERT INTO venda (valor, tipoDePagamento, usuario_IDUsuario, cliente_IDCliente, dataVenda) VALUES ('$valor', '$tipo', '$idU', '$idC', '$today')";
 			$con->query($sql);
 			
-			$sql = "SELECT * FROM venda WHERE valor = '$valor' AND tipoDePagame'nto = '$tipo' AND usuario_IDUsuario = '$idU' AND cliente_IDCliente = '$idC' AND dataVenda = '$today'";
+			$sql = "SELECT * FROM venda WHERE valor = '$valor' AND tipoDePagamento = '$tipo' AND usuario_IDUsuario = '$idU' AND cliente_IDCliente = '$idC' AND dataVenda = '$today'";
 			$result = $con->query($sql);
 			$dado  = $result->fetch_assoc();
 			$idV = $dado['id'];
@@ -41,7 +41,7 @@
 			
 			$sql = "SELECT * FROM cliente WHERE id = '$idC'";
 			$result = $con->query($sql);
-			$dado = $result->fetch_assoc();
+			$dado  = $result->fetch_assoc();
 			$cpf = $dado['cpf'];
 			
 			$parcela = $divida->parcelasAPagar;
@@ -63,17 +63,17 @@
 			else if ($divida->tipoVenda == "5")
 				$tipo = "cheque";
 			
-			$sql = "INSERT INTO venda (valor, tipoDePagamento, usuario_IDUsuario, cliente_IDCliente, dataVenda) VALUES ('$valor', '$tipo', '$idU', '$idC', '$today')";
+			$sql = "INSERT INTO venda (valor, tipoDePagamento, usuario_IDUsuario, dataVenda) VALUES ('$valor', '$tipo', '$idU', '$today')";
 			$con->query($sql);
 			
-			$sql = "SELECT * FROM venda WHERE valor = '$valor' AND tipoDePagamento = '$tipo' AND usuario_IDUsuario = '$idU' AND cliente_IDCliente = '$idC' AND dataVenda = '$today'";
+			$sql = "SELECT * FROM venda WHERE valor = '$valor' AND tipoDePagamento = '$tipo' AND usuario_IDUsuario = '$idU' AND dataVenda = '$today'";
 			$result = $con->query($sql);
 			$dado  = $result->fetch_assoc();
 			$idV = $dado['id'];
 			
-			foreach ($linha as $l){
-				$idP = $l->idProduto;
-				$qnt = $l->quantidade;
+			for ($i = 0; $i < count($linha); $i++){
+				$idP = $linha[$i]->idProduto;
+				$qnt = $linha[$i]->quantidade;
 				$sql = "INSERT INTO linha_de_venda (produto_IDProduto, venda_IDVenda, quantidade) VALUES ('$idP', '$idV', '$qnt')";
 				$con->query($sql);
 			}
