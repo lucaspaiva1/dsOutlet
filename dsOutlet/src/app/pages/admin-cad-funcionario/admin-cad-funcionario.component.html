@@ -17,7 +17,7 @@
       <div class="col s12 m8 l9" style="padding-top: 8px">
         <!-- Note that "m8 l9" was added -->
         <!-- Large container -->
-        <div >
+        <div>
           <!-- Formulário -->
           <div class="row">
             <form class="col s12">
@@ -51,12 +51,11 @@
                   <label class="black-text" for="dataAdmissao">Data de Admissão</label><br>
                   <input id="dataAdmissao" type="date" class="validate" [(ngModel)]="usuario.dataAdmissao" [ngModelOptions]="{standalone: true}">
                 </div>
-                <br>
                 <div class="input-field col s12 m6 l4 black-text">
-                  <input id="tel" type="text" class="validate" [(ngModel)]="usuario.telefone" [ngModelOptions]="{standalone: true}">
-                  <label class="black-text">Telefone</label>
-                </div>
-                <div class="input-field col s4 m4 l4 black-text">
+                  <label class="black-text">Telefone</label><br>
+                  <telefone (tel)="change($event)"></telefone>
+                </div><br>
+                <div class="input-field col s12 m12 l4 black-text">
                   <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="" disabled selected>Privilégio</option>
                     <option value="A">Administrador</option>

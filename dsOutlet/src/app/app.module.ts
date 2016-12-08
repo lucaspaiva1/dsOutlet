@@ -8,6 +8,7 @@ import { RouterModule }   from '@angular/router';
 import { MaterializeModule } from 'angular2-materialize';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { LocalStorageService, LOCAL_STORAGE_SERVICE_CONFIG } from 'angular-2-local-storage';
+import { TextMaskModule } from 'angular2-text-mask'
 /*importacoes do projeto*/
 /*servicos*/
 import { UserService } from './services/user.service';
@@ -40,6 +41,7 @@ import { RelatorioComponent } from './pages/relatorio/relatorio.component';
 import { AdminEditClientesComponent } from './pages/admin-edit-clientes/admin-edit-clientes.component';
 import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-clientes.component';
 import { VendasComponent } from './pages/vendas/vendas.component';
+import { TelefoneComponent } from './components/telefone/telefone.component';
 
 @NgModule({
   declarations: [
@@ -66,12 +68,14 @@ import { VendasComponent } from './pages/vendas/vendas.component';
     FiltroDeCliente,
     MinhaContaComponent,
     RelatorioComponent,
+    TelefoneComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MaterializeModule,
+    TextMaskModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB64Q-NvEJqxFf9PmJZHevjQdxzL9a3jZw' //chave do google para usar googlemaps

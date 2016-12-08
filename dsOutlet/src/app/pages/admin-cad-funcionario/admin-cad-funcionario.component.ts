@@ -17,6 +17,10 @@ export class AdminCadFuncionarioComponent implements OnInit {
   private usuario: User = new User();
   private confirmacaoSenha: string;
 
+  public myModel = '';
+  public t: string = '123';
+  public mask = ['(', /\d/, /\d/, ')', ' ', /\d/,/\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+
   constructor(private router: Router, private userService: UserService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
@@ -27,6 +31,11 @@ export class AdminCadFuncionarioComponent implements OnInit {
     if (!this.isLogado || !this.isAdmin) {
       this.router.navigate(['/home']);//se os dados indicarem que usuario nao está logado, ele será redirecionado
     }
+  }
+
+  change(event){
+    console.log(event);
+    this.usuario.telefone=event;
   }
 
   cadastrarUsuario() {
