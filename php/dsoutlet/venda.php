@@ -50,6 +50,8 @@
 			$sql = "INSERT INTO divida (valor, parcelasAPagar, vencimento, cliente_IDCliente, cliente_CPF) VALUES ('$valor', '$parcela', '$venc', '$idC', '$cpf')";
 			$con->query($sql);
 			
+			echo json_encode(true);
+			
 		} else {
 			$tipo = "";
 			if ($divida->tipoVenda == "1")
@@ -75,6 +77,8 @@
 				$sql = "INSERT INTO linha_de_venda (produto_IDProduto, venda_IDVenda, quantidade) VALUES ('$idP', '$idV', '$qnt')";
 				$con->query($sql);
 			}
+			
+			echo json_encode(true);
 		}
 	}
 ?>
