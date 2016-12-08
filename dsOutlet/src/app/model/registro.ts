@@ -1,11 +1,13 @@
+import { LinhaDeItem } from './linhaDeItem';
+
 export class Registro{
 
 
   tipo: string
   usuario: string;
-  data: date;
+  data: Date;
   quantidade: number;
-  produto: Produto;
+  linhaDeItem: LinhaDeItem[];
 
   constructor(){
     

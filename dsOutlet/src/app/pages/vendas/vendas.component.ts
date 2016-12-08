@@ -4,11 +4,12 @@ import { toast } from 'angular2-materialize';
 import { UserService } from '../../services/user.service';
 import { ProdutosService } from '../../services/produtos.service';
 import { Produto } from '../../model/produto';
-import { Divida } from '../../model/linhaDeitem';
+import { LinhaDeItem } from '../../model/linhaDeitem';
 import { MaterializeAction } from 'angular2-materialize';
 import { Cliente } from '../../model/cliente';
 import { ClientesService } from '../../services/clientes.service';
 import { Endereco } from '../../model/endereco';
+import { VendaService } from '../../services/venda.service';
 
 
 
@@ -28,7 +29,7 @@ export class VendasComponent implements OnInit {
     private search: string = "";
     private itemSelecionado: Produto = new Produto();
     private: string[] = [];
-    private compra: Divida[] = [];
+    private compra: LinhaDeItem[] = [];
     private quantidade: number = 0;
     private permitirCompra: boolean = false;
     modalActions = new EventEmitter<string | MaterializeAction>();
@@ -45,7 +46,7 @@ export class VendasComponent implements OnInit {
 
 
 
-    constructor(private router: Router, private userService: UserService, private produtosService: ProdutosService, private clientesService: ClientesService) {
+    constructor(private router: Router, private userService: UserService, private produtosService: ProdutosService, private clientesService: ClientesService, private vendaService: VendaService) {
         this.modalActions.emit({ action: "modal", params: ['close'] });
         let stats = this.userService.userStats();
         this.isLogado = stats[0];
@@ -70,7 +71,7 @@ export class VendasComponent implements OnInit {
 
     private adicionarItem() {
         toast('Produto adicionado!', 2000, 'rounded');
-        let compraAtual = new Divida();
+        let compraAtual = new LinhaDeItem();
         compraAtual.modelo = this.itemSelecionado.modelo;
         compraAtual.marca = this.itemSelecionado.marca;
         compraAtual.quantidade = this.quantidade;
@@ -94,6 +95,7 @@ export class VendasComponent implements OnInit {
 
     seleciona(produto) {
         this.itemSelecionado = produto;
+        this.itemSelecionado.id = produto.id;
         this.quantidade = 0;
         this.permitirCompra = false;
     }
@@ -160,6 +162,6 @@ export class VendasComponent implements OnInit {
     }
 
     concluirCompra(){
-        
+
     }
 }

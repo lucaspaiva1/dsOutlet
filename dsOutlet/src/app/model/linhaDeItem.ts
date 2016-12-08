@@ -1,4 +1,4 @@
-export class Divida{
+export class LinhaDeItem{
 
   valor: number;
   valorUnidade: number;
@@ -6,6 +6,7 @@ export class Divida{
   marca:string;
   modelo:string;
   tamanho:string;
+  idProduto:number;
 
   constructor(){
     this.valor = 0;
@@ -14,5 +15,6 @@ export class Divida{
     this.marca = "";
     this.modelo = "";
     this.tamanho = "";
+    this.idProduto = 0;
   }
 }
