@@ -161,33 +161,43 @@
                         <label for="test2" (click)="tipoAPagar('%')" class="black-text">Porcentagem</label>
                       </div>
                       <div class="input-field col s6 m3 l3 black-text">
-                        <input placeholder="" id="valorFinal" type="number" class="black-text" disabled [(ngModel)]="valorFinal" [ngModelOptions]="{standalone: true}">
+                        <input placeholder="" id="valorFinal" type="number" class="black-text" disabled [(ngModel)]="divida.valor" [ngModelOptions]="{standalone: true}">
                         <label class="black-text" for="valorFinal" (click)="valorAPagar()">Valor a pagar</label>
                       </div>
                       <div class=" col s6 m3 l3 black-text">
-                        <a materialize="modal" class="waves-effect waves-light btn blue darken-4">Concluir
+                        <a materialize="modal" class="waves-effect waves-light btn blue darken-4" (click)="concluirCompra()">Concluir
                     <i class="material-icons right">done</i>
                   </a>
                       </div>
                     </div>
                     <div class="input-field col s12 m12 l12 black-text">
-                      <select id="pagamento" materialize="material_select" [(ngModel)]="modoPagamento" [ngModelOptions]="{standalone: true}">
+                      <select id="pagamento" materialize="material_select" [(ngModel)]="divida.tipoVenda" [ngModelOptions]="{standalone: true}">
                         <!--Organiza a seleçao do modo de pagamento-->
                         <option value="" disabled selected>Escolha a Forma de Pagamento</option>
                         <option value="1">Dinheiro</option>
                         <option value="2">Cartão/Débito</option>
                         <option value="3">Cartão/Crédito</option>
                         <option value="4">Pendência</option>
+                        <option value="5">Cheque</option>
                       </select>
                       <label class="black-text">Forma de Pagamento</label>
                     </div>
                   </form>
                   <div class="row col s12 m12 l12 black-text">
-                    <div *ngIf="modoPagamento=='4'">
-
+                    <div *ngIf="divida.tipoVenda=='4'">
+                      
+                      <div class="input-field col s12 m6 l6 black-text">
+                        <label class="black-text" for="vencimento">Vencimento</label><br>
+                        <input placeholder="" id="vencimento" type="date" class="black-text" [(ngModel)]="divida.vencimento">                        
+                      </div><br>
+                      <div class="input-field col s12 m6 l6  black-text ">
+                        <input placeholder="" id="parcelasAPagar" type="number" class="black-text" [(ngModel)]="divida.parcelasAPagar">
+                        <label class="black-text" for="parcelasAPagar">Parcelas</label>
+                      </div>
                       <div>
                         <h4>Comprador: {{clienteComprador.nome}} ({{clienteComprador.cpf}})</h4>
                       </div>
+
                       <div>
                         <nav class=" white black-text row">
                           <ul id="nav-mobile" class="left ">

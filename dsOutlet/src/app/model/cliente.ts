@@ -12,5 +12,6 @@ export class Cliente {
   dividaTotal:number;
 
   constructor() {
+    this.id = 0;
   }
 }

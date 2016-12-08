@@ -4,11 +4,13 @@ import { toast } from 'angular2-materialize';
 import { UserService } from '../../services/user.service';
 import { ProdutosService } from '../../services/produtos.service';
 import { Produto } from '../../model/produto';
-import { Divida } from '../../model/linhaDeitem';
+import { LinhaDeItem } from '../../model/linhaDeitem';
 import { MaterializeAction } from 'angular2-materialize';
 import { Cliente } from '../../model/cliente';
 import { ClientesService } from '../../services/clientes.service';
 import { Endereco } from '../../model/endereco';
+import { Divida } from '../../model/divida';
+import { VendaService } from '../../services/venda.service';
 
 
 
@@ -28,28 +30,29 @@ export class VendasComponent implements OnInit {
     private search: string = "";
     private itemSelecionado: Produto = new Produto();
     private: string[] = [];
-    private compra: Divida[] = [];
+    private compra: LinhaDeItem[] = [];
     private quantidade: number = 0;
     private permitirCompra: boolean = false;
     modalActions = new EventEmitter<string | MaterializeAction>();
     private desconto: string = "R$";
-    private valorFinal: number = 0;
     private quantidadeDesconto: number = 0;
-    private modoPagamento: string = "";
     private searchCliente: string = "";
     private clientes: Cliente[];
     private clienteComprador: Cliente = new Cliente();
     private cliente: Cliente = new Cliente();
     private endereco: Endereco = new Endereco();
+    private divida: Divida = new Divida();
+    private idUser: number = 0;
 
 
 
 
-    constructor(private router: Router, private userService: UserService, private produtosService: ProdutosService, private clientesService: ClientesService) {
+    constructor(private router: Router, private userService: UserService, private produtosService: ProdutosService, private clientesService: ClientesService, private vendaService: VendaService) {
         this.modalActions.emit({ action: "modal", params: ['close'] });
         let stats = this.userService.userStats();
         this.isLogado = stats[0];
         this.isAdmin = stats[1];
+        this.idUser = stats[2];
 
     }
 
@@ -70,7 +73,7 @@ export class VendasComponent implements OnInit {
 
     private adicionarItem() {
         toast('Produto adicionado!', 2000, 'rounded');
-        let compraAtual = new Divida();
+        let compraAtual = new LinhaDeItem();
         compraAtual.modelo = this.itemSelecionado.modelo;
         compraAtual.marca = this.itemSelecionado.marca;
         compraAtual.quantidade = this.quantidade;
@@ -94,6 +97,7 @@ export class VendasComponent implements OnInit {
 
     seleciona(produto) {
         this.itemSelecionado = produto;
+        this.itemSelecionado.id = produto.id;
         this.quantidade = 0;
         this.permitirCompra = false;
     }
@@ -114,11 +118,11 @@ export class VendasComponent implements OnInit {
     }
 
     valorAPagar() {
-        this.valorFinal = this.valorTotal;
+        this.divida.valor = this.valorTotal;
         if (this.desconto == "R$") {
-            this.valorFinal = (+this.valorFinal) - (+this.quantidadeDesconto);
+            this.divida.valor = (+this.divida.valor) - (+this.quantidadeDesconto);
         } else {
-            this.valorFinal = (+this.valorFinal) - (+this.valorFinal) * (+this.quantidadeDesconto) / 100;
+            this.divida.valor = (+this.divida.valor) - (+this.divida.valor) * (+this.quantidadeDesconto) / 100;
         }
         this.getClientes();
     }
@@ -138,6 +142,7 @@ export class VendasComponent implements OnInit {
 
     selecionarCliente(cliente) {
         this.clienteComprador = cliente;
+        console.log(this.clienteComprador.id);
     }
 
     adicionarCliente() {
@@ -157,5 +162,17 @@ export class VendasComponent implements OnInit {
             });
         }
         this.valorAPagar()
+    }
+
+    concluirCompra() {
+        this.vendaService.concluirCompra(this.clienteComprador.id, this.idUser, this.compra, this.divida).then(res => {
+            if (res) {
+                toast('Compra efetuada com sucesso', 4000, 'rounded');
+                this.router.navigate(['/gerenciador/venda']);
+
+            } else {
+                toast('Compra não Cadastrado', 4000, 'rounded');
+            }
+        });;
     }
 }

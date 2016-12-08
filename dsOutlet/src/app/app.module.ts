@@ -19,6 +19,7 @@ import { RelatorioService } from './services/relatorio.service';
 import { FiltroDeMercadoria } from './pages/estoque/produto.pipes';
 import { FiltroDeFuncionarios } from './pages/admin-geren-funcionarios/geren-funcionario.pipes';
 import { FiltroDeCliente } from './pages/admin-geren-clientes/geren-cliente.pipes';
+import { VendaService } from './services/venda.service';
 /*Components*/
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -81,7 +82,7 @@ import { TelefoneComponent } from './components/telefone/telefone.component';
       apiKey: 'AIzaSyB64Q-NvEJqxFf9PmJZHevjQdxzL9a3jZw' //chave do google para usar googlemaps
     })
   ],
-  providers: [UserService, RelatorioService, EsqueciSenhaService, ProdutosService, ClientesService, LocalStorageService,
+  providers: [UserService, RelatorioService,VendaService, EsqueciSenhaService, ProdutosService, ClientesService, LocalStorageService,
     {
       provide: LOCAL_STORAGE_SERVICE_CONFIG, useValue: {
         prefix: 'my-app',
