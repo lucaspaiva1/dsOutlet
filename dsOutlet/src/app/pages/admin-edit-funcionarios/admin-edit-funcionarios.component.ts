@@ -36,6 +36,11 @@ export class AdminEditFuncionariosComponent implements OnInit {
     }
   }
 
+  change(event){
+    console.log(event);
+    this.usuario.telefone=event;
+  }
+
   private getUser(id: number): void {
     this.loading = true;
     this.userService.getUser(id).then(res => {

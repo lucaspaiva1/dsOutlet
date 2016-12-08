@@ -47,6 +47,11 @@ export class AdminEditClientesComponent implements OnInit {
       }
     }
 
+    change(event){
+      console.log(event);
+      this.cliente.telefone=event;
+    }
+
     private deletar(){
       this.clientesService.deleteCliente(this.cliente.id).then(res=>{
         if(res){
@@ -70,7 +75,7 @@ export class AdminEditClientesComponent implements OnInit {
     }
 
     private pagamento(){
-      
+
     }
 
   }

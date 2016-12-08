@@ -67,11 +67,10 @@
                   <label class="black-text" for="dataAdmissao">Data de Admissão</label><br>
                   <input id="dataAdmissao" type="date" class="validate" [(ngModel)]="usuario.dataAdmissao" [ngModelOptions]="{standalone: true}">
                 </div>
-                <br>
                 <div class="input-field col s12 m6 l4">
-                  <input placeholder="" id="tel" type="text" [(ngModel)]="usuario.telefone" [ngModelOptions]="{standalone: true}">
-                  <label class="black-text" for="tel">Telefone</label>
-                </div>
+                  <label class="black-text" for="telefone">Telefone</label><br>
+                  <telefone [valor]="usuario.telefone" (tel)="change($event)"></telefone>
+                </div><br>
                 <div class="input-field col s4 m4 l4 black-text">
 
                   <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
