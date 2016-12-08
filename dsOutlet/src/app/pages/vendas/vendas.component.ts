@@ -9,6 +9,7 @@ import { MaterializeAction } from 'angular2-materialize';
 import { Cliente } from '../../model/cliente';
 import { ClientesService } from '../../services/clientes.service';
 import { Endereco } from '../../model/endereco';
+import { Divida } from '../../model/divida';
 import { VendaService } from '../../services/venda.service';
 
 
@@ -42,6 +43,8 @@ export class VendasComponent implements OnInit {
     private clienteComprador: Cliente = new Cliente();
     private cliente: Cliente = new Cliente();
     private endereco: Endereco = new Endereco();
+    private divida:Divida= new Divida();
+    private idUser: number=0;
 
 
 
@@ -51,6 +54,7 @@ export class VendasComponent implements OnInit {
         let stats = this.userService.userStats();
         this.isLogado = stats[0];
         this.isAdmin = stats[1];
+        this.idUser = stats[2];
 
     }
 
@@ -162,6 +166,6 @@ export class VendasComponent implements OnInit {
     }
 
     concluirCompra(){
-
+        this.vendaService.concluirCompra(this.clienteComprador.id,this.idUser , this.compra, this.divida);
     }
 }

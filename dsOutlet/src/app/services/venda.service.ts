@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import { Headers, Http, Response } from '@angular/http';
 import { Cliente } from '../model/cliente';
-import { User } from '../model/user';
 import { LinhaDeItem } from '../model/linhaDeItem';
+import { Divida } from '../model/divida';
 
 
 @Injectable()
@@ -15,9 +15,9 @@ export class VendaService {
 
   }
 
-  concluirCompra(cliente:Cliente, user:User, linhaDeItem:LinhaDeItem[], valorCompra:number): Promise<any> {
+  concluirCompra(idCliente:number, idUser:number, linhaDeItem:LinhaDeItem[], divida:Divida): Promise<any> {
     return this.http
-      .post('http://localhost/dsoutlet/venda.php', JSON.stringify({cliente, user, linhaDeItem, valorCompra}), { headers: this.headers })
+      .post('http://localhost/dsoutlet/venda.php', JSON.stringify({idCliente, idUser, linhaDeItem, divida}), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);
