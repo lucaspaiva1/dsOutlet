@@ -9,8 +9,7 @@ export class Divida{
 
   constructor(){
     this.valor =0;
-    this.parcelasAPagar = 0;
+    this.parcelasAPagar = 1;
     this.tipoVenda="";
-    this.vencimento=new Date();
   }
 }

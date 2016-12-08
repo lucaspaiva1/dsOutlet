@@ -37,14 +37,13 @@ export class VendasComponent implements OnInit {
     private desconto: string = "R$";
     private valorFinal: number = 0;
     private quantidadeDesconto: number = 0;
-    private modoPagamento: string = "";
     private searchCliente: string = "";
     private clientes: Cliente[];
     private clienteComprador: Cliente = new Cliente();
     private cliente: Cliente = new Cliente();
     private endereco: Endereco = new Endereco();
-    private divida:Divida= new Divida();
-    private idUser: number=0;
+    private divida: Divida = new Divida();
+    private idUser: number = 0;
 
 
 
@@ -165,7 +164,15 @@ export class VendasComponent implements OnInit {
         this.valorAPagar()
     }
 
-    concluirCompra(){
-        this.vendaService.concluirCompra(this.clienteComprador.id,this.idUser , this.compra, this.divida);
+    concluirCompra() {
+        this.vendaService.concluirCompra(this.clienteComprador.id, this.idUser, this.compra, this.divida).then(res => {
+            if (res) {
+                toast('Compra efetuada com sucesso', 4000, 'rounded');
+                this.router.navigate(['/gerenciador/venda']);
+
+            } else {
+                toast('Compra não Cadastrado', 4000, 'rounded');
+            }
+        });;
     }
 }
