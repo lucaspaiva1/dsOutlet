@@ -158,4 +158,8 @@ export class VendasComponent implements OnInit {
         }
         this.valorAPagar()
     }
+
+    concluirCompra(){
+        
+    }
 }
