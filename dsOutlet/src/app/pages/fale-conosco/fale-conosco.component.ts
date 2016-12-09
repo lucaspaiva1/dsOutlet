@@ -18,12 +18,17 @@ export class FaleConoscoComponent {
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
 
-  mensagem = new Mensagem();
+  private mensagem = new Mensagem();
 
   constructor(private userService: UserService, private faleConoscoService: FaleConoscoService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
+  }
+
+  change(event) {
+    console.log(event);
+    this.mensagem.telefone = event;
   }
 
   enviarMensagem(){
@@ -33,7 +38,7 @@ export class FaleConoscoComponent {
       this.mensagem.assunto == null ||
       this.mensagem.telefone == null){
         toast('Preencha os campos!', 4000, 'rounded');
-      
+
     }else{
       this.faleConoscoService.enviarMensagem(this.mensagem);
       toast('Sua mensagem foi enviada!', 4000, 'rounded');

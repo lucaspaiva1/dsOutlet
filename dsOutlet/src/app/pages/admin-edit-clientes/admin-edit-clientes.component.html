@@ -47,9 +47,8 @@
 
               <div class="row">
                 <div class="input-field col s12 m6 l4 black-text">
-                  <label class="black-text" for="telefone">Telefone</label><br>
                   <telefone [valor]="cliente.telefone" (tel)="change($event)"></telefone>
-                </div><br>
+                </div>
                 <div class="input-field col s12 m12 l4">
                   <input placeholder="" id="cidade" type="text" class="validate" [(ngModel)]="cliente.endereco.cidade" [ngModelOptions]="{standalone: true}">
                   <label class="black-text" for="cidade">Cidade</label>

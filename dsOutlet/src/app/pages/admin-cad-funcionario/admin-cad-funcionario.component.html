@@ -50,11 +50,10 @@
                 <div class="input-field col s12 m6 l4 black-text">
                   <label class="black-text" for="dataAdmissao">Data de Admissão</label><br>
                   <input id="dataAdmissao" type="date" class="validate" [(ngModel)]="usuario.dataAdmissao" [ngModelOptions]="{standalone: true}">
-                </div>
-                <div class="input-field col s12 m6 l4 black-text">
-                  <label class="black-text">Telefone</label><br>
-                  <telefone (tel)="change($event)"></telefone>
                 </div><br>
+                <div class="input-field col s12 m6 l4 black-text">
+                  <telefone (tel)="change($event)"></telefone>
+                </div>
                 <div class="input-field col s12 m12 l4 black-text">
                   <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="" disabled selected>Privilégio</option>
@@ -64,7 +63,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
+                <div class="right">
                   <a (click)="cadastrarUsuario()" class="btn waves-effect waves-light blue darken-4">Cadastrar
                       <i class="material-icons right">send</i>
                     </a>
