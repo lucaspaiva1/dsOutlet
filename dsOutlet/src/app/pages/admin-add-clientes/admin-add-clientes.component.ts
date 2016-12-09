@@ -42,6 +42,10 @@ export class AdminAddClientesComponent implements OnInit {
     this.cliente.cpf = event;
   }
 
+  changeCEP(event) {
+    this.endereco.cep = event;
+  }
+
   adicionar() {
     if (this.cliente.nome == null || this.cliente.cpf == null || this.cliente.telefone == null || this.endereco.cidade == null || this.endereco.uf == null || this.endereco.logradouro == null) {
       toast('Faltam Informações!', 4000, 'rounded');

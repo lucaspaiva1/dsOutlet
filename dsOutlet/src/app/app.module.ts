@@ -44,6 +44,7 @@ import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-
 import { VendasComponent } from './pages/vendas/vendas.component';
 import { TelefoneComponent } from './components/telefone/telefone.component';
 import { CpfComponent } from './components/cpf/cpf.component';
+import { CepComponent } from './components/cep/cep.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { CpfComponent } from './components/cpf/cpf.component';
     RelatorioComponent,
     TelefoneComponent,
     CpfComponent,
+    CepComponent,
   ],
   imports: [
     BrowserModule,

@@ -57,8 +57,7 @@
                   <label class="black-text" for="uf">UF</label>
                 </div>
                 <div class="input-field col s12 m6 l2 black-text">
-                  <input placeholder="" id="cep" type="text" class="validate black-text" [(ngModel)]="cliente.endereco.cep" [ngModelOptions]="{standalone: true}">
-                  <label class="black-text" for="cep">CEP</label>
+                  <cep [valor]="cliente.endereco.cep" (cep)="changeCEP($event)"></cep>
                 </div>
               </div>
               <div class="row">

@@ -56,6 +56,10 @@ export class AdminEditClientesComponent implements OnInit {
       this.cliente.cpf = event;
     }
 
+    changeCEP(event) {
+      this.cliente.endereco.cep = event;
+    }
+
     private deletar(){
       this.clientesService.deleteCliente(this.cliente.id).then(res=>{
         if(res){
