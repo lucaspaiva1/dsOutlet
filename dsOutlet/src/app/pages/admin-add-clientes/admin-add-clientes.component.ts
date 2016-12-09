@@ -49,6 +49,7 @@ export class AdminAddClientesComponent implements OnInit {
           toast('Cliente foi cadastrado!', 4000, 'rounded');
           this.cliente = new Cliente();
           this.endereco = new Endereco();
+          this.router.navigate(['/gerenciador/clientes']);
         } else {
           toast('Cliente já cadastrado', 4000, 'rounded');
         }

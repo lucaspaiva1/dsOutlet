@@ -43,6 +43,7 @@ export class AdminCadProdutoComponent implements OnInit {
             console.log(res);
             toast('Produto foi cadastrado!', 4000, 'rounded');
             this.produto = new Produto();
+            this.router.navigate(['/gerenciador/estoque']);
           } else {
             toast('Produto já existe no estoque', 4000, 'rounded');
           }
