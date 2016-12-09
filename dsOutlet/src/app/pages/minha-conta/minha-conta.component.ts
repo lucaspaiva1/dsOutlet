@@ -10,27 +10,4 @@ import { User } from '../../model/user';
 })
 export class MinhaContaComponent {
 
-  private isLogado: boolean = false;
-  private isAdmin: boolean = false;
-  private user: User = new User();
-  private confirmaSenha: string = "";
-
-
-  constructor(
-    private route: ActivatedRoute,
-    private userService: UserService,
-  ) {
-
-    let stats = this.userService.userStats();
-    this.isLogado = stats[0];
-    this.isAdmin = stats[1];
-    this.user = this.userService.myProfile();
-    this.confirmaSenha = this.user.senha;
-  }
-
-  salvar() {
-
-  }
-
-
 }
