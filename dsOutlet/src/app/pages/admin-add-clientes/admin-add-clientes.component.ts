@@ -34,9 +34,12 @@ export class AdminAddClientesComponent implements OnInit {
     }
   }
 
-  change(event){
-    console.log(event);
-    this.cliente.telefone=event;
+  change(event) {
+    this.cliente.telefone = event;
+  }
+
+  changeCPF(event) {
+    this.cliente.cpf = event;
   }
 
   adicionar() {

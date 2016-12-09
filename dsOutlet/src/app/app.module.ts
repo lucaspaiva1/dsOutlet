@@ -43,6 +43,7 @@ import { AdminEditClientesComponent } from './pages/admin-edit-clientes/admin-ed
 import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-clientes.component';
 import { VendasComponent } from './pages/vendas/vendas.component';
 import { TelefoneComponent } from './components/telefone/telefone.component';
+import { CpfComponent } from './components/cpf/cpf.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { TelefoneComponent } from './components/telefone/telefone.component';
     MinhaContaComponent,
     RelatorioComponent,
     TelefoneComponent,
+    CpfComponent,
   ],
   imports: [
     BrowserModule,

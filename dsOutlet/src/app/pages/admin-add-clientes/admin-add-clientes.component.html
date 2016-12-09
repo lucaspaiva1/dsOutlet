@@ -28,8 +28,7 @@
                   <label class="black-text" for="first_name">Nome Completo</label>
                 </div>
                 <div class="input-field col s12 m6 l4 black-text">
-                  <input id="cpf" type="number" class="validate black-text" [(ngModel)]="cliente.cpf" [ngModelOptions]="{standalone: true}">
-                  <label class="black-text" for="cpf">CPF</label>
+                  <cpf (cpf)="changeCPF($event)"></cpf>
                 </div>
               </div>
 
