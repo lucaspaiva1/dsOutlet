@@ -37,6 +37,15 @@
 				$qnt = $l->quantidade;
 				$sql = "INSERT INTO linha_de_venda (produto_IDProduto, venda_IDVenda, quantidade) VALUES ('$idP', '$idV', '$qnt')";
 				$con->query($sql);
+				
+				$sql = "SELECT * FROM produto WHERE id = '$idP'";
+				$result = $con->query($sql);
+				$dados  = $result->fetch_assoc();
+				$amount = $dados['quantidade'];
+				$amount = $amount - $qnt;
+				
+				$sql = "UPDATE produto SET quantidade = '$amount' WHERE id = '$idP'";
+				$con->query($sql);
 			}
 			
 			$sql = "SELECT * FROM cliente WHERE id = '$idC'";
@@ -71,10 +80,19 @@
 			$dado  = $result->fetch_assoc();
 			$idV = $dado['id'];
 			
-			for ($i = 0; $i < count($linha); $i++){
-				$idP = $linha[$i]->idProduto;
-				$qnt = $linha[$i]->quantidade;
+			foreach ($linha as $l){
+				$idP = $l->idProduto;
+				$qnt = $l->quantidade;
 				$sql = "INSERT INTO linha_de_venda (produto_IDProduto, venda_IDVenda, quantidade) VALUES ('$idP', '$idV', '$qnt')";
+				$con->query($sql);
+				
+				$sql = "SELECT * FROM produto WHERE id = '$idP'";
+				$result = $con->query($sql);
+				$dados  = $result->fetch_assoc();
+				$amount = $dados['quantidade'];
+				$amount = $amount - $qnt;
+				
+				$sql = "UPDATE produto SET quantidade = '$amount' WHERE id = '$idP'";
 				$con->query($sql);
 			}
 			
