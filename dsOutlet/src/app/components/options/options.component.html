@@ -1,5 +1,5 @@
 <div class="collection">
-  <a routerLink="/gerenciador/minha-conta" class="myItem" [class.active]="url == '/gerenciador/minha-conta'">Minha Conta</a>
+  <a (click)="minhaConta()" class="myItem" [class.active]="url.includes('minha-conta')">Minha Conta</a>
   <a routerLink="/gerenciador/estoque" class="myItem" [class.active]="url == '/gerenciador/estoque'">Estoque</a>
   <a *ngIf="isAdmin" routerLink="/gerenciador/relatorios" class="myItem" [class.active]="url == '/gerenciador/relatorios'">Relatórios</a>
   <a *ngIf="isAdmin" routerLink="/gerenciador/funcionarios" class="myItem" [class.active]="url == '/gerenciador/funcionarios'">Gerenciar Funcionários</a>

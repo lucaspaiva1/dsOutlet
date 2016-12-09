@@ -6,7 +6,7 @@ import { User } from '../../model/user';
 import { toast } from 'angular2-materialize';
 
 @Component({
-  selector: 'app-admin-edit-funcionarios',
+  selector: 'edit-funcionarios',
   templateUrl: './admin-edit-funcionarios.component.html',
   styleUrls: ['./admin-edit-funcionarios.component.css']
 })
@@ -17,12 +17,13 @@ export class AdminEditFuncionariosComponent implements OnInit {
   private usuario: User = new User();
   private loading: boolean;
   private confirmaSenha: string;
+  private id: number;
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
-
+    this.id = stats[2];
   }
 
   ngOnInit() {
@@ -36,9 +37,9 @@ export class AdminEditFuncionariosComponent implements OnInit {
     }
   }
 
-  change(event){
+  change(event) {
     console.log(event);
-    this.usuario.telefone=event;
+    this.usuario.telefone = event;
   }
 
   private getUser(id: number): void {

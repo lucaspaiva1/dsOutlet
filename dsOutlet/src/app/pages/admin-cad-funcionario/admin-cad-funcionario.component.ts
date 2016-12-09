@@ -5,7 +5,7 @@ import { toast } from 'angular2-materialize';
 import { User } from '../../model/user';
 
 @Component({
-  selector: 'app-admin-cad-funcionario',
+  selector: 'cad-funcionario',
   templateUrl: './admin-cad-funcionario.component.html',
   styleUrls: ['./admin-cad-funcionario.component.css']
 })
@@ -16,10 +16,6 @@ export class AdminCadFuncionarioComponent implements OnInit {
 
   private usuario: User = new User();
   private confirmacaoSenha: string;
-
-  public myModel = '';
-  public t: string = '123';
-  public mask = ['(', /\d/, /\d/, ')', ' ', /\d/,/\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
   constructor(private router: Router, private userService: UserService) {
     let stats = this.userService.userStats();

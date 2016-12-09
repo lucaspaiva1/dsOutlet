@@ -132,7 +132,7 @@ export class UserService {
   userStats(): any[] {
     let user = <User>this.storage.get('user');
     if (user == null) {
-      return [false, false];
+      return [false, false, 0];
     }
     return [user.logado, user.admin, user.id];
   }

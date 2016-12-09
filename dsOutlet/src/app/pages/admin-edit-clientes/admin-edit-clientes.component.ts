@@ -9,7 +9,7 @@ import { Endereco } from '../../model/endereco';
 import { toast } from 'angular2-materialize';
 
 @Component({
-  selector: 'app-admin-edit-clientes',
+  selector: 'edit-clientes',
   templateUrl: './admin-edit-clientes.component.html',
   styleUrls: ['./admin-edit-clientes.component.css']
 })
