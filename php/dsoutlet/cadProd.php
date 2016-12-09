@@ -22,7 +22,7 @@
 		$min	    = $request->minimo;
 		$usuarioID  = $request->usuarioId;
 		
-		date_default_timezone_set('America/Sao_Paulo');
+		date_default_timezone_set('America/Bahia');
 		$today = date('Y-m-d H:i:s');
 		
 		$sql = "SELECT * FROM produto WHERE marca = '$marca' AND modelo = '$modelo' AND tamanho = '$tamanho' AND precoEntrada = '$precoE'";

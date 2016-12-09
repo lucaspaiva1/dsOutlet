@@ -17,7 +17,7 @@
 		$quantidade   = $request->quantidade;
 		$usuarioID    = $request->usuarioId;
 		
-		date_default_timezone_set('America/Sao_Paulo');
+		date_default_timezone_set('America/Bahia');
 		$today = date('Y-m-d H:i:s');
 		
 		$sql = "SELECT * FROM produto WHERE id = '$id'";

@@ -19,15 +19,16 @@
 		
 		$valor = $divida->valor;
 		
-		date_default_timezone_set('America/Sao_Paulo');
-		$today = date('Y-m-d H:i:s');
+		date_default_timezone_set('America/Bahia');
+		$today = date('Y-m-d');
+		$hora  = date('H:i:s');
 		
 		if ($divida->tipoVenda == "4") {
 			$tipo = "fiado";
-			$sql = "INSERT INTO venda (valor, tipoDePagamento, usuario_IDUsuario, cliente_IDCliente, dataVenda) VALUES ('$valor', '$tipo', '$idU', '$idC', '$today')";
+			$sql = "INSERT INTO venda (valor, tipoDePagamento, usuario_IDUsuario, cliente_IDCliente, dataVenda, horaVenda) VALUES ('$valor', '$tipo', '$idU', '$idC', '$today', '$hora')";
 			$con->query($sql);
 			
-			$sql = "SELECT * FROM venda WHERE valor = '$valor' AND tipoDePagamento = '$tipo' AND usuario_IDUsuario = '$idU' AND cliente_IDCliente = '$idC' AND dataVenda = '$today'";
+			$sql = "SELECT * FROM venda WHERE valor = '$valor' AND tipoDePagamento = '$tipo' AND usuario_IDUsuario = '$idU' AND cliente_IDCliente = '$idC' AND dataVenda = '$today' AND horaVenda = '$hora'";
 			$result = $con->query($sql);
 			$dado  = $result->fetch_assoc();
 			$idV = $dado['id'];
@@ -45,6 +46,9 @@
 				$amount = $amount - $qnt;
 				
 				$sql = "UPDATE produto SET quantidade = '$amount' WHERE id = '$idP'";
+				$con->query($sql);
+				
+				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '0', '$idU', 's', '$qnt', '$idP')";
 				$con->query($sql);
 			}
 			
@@ -72,10 +76,10 @@
 			else if ($divida->tipoVenda == "5")
 				$tipo = "cheque";
 			
-			$sql = "INSERT INTO venda (valor, tipoDePagamento, usuario_IDUsuario, dataVenda) VALUES ('$valor', '$tipo', '$idU', '$today')";
+			$sql = "INSERT INTO venda (valor, tipoDePagamento, usuario_IDUsuario, dataVenda, horaVenda) VALUES ('$valor', '$tipo', '$idU', '$today', '$hora')";
 			$con->query($sql);
 			
-			$sql = "SELECT * FROM venda WHERE valor = '$valor' AND tipoDePagamento = '$tipo' AND usuario_IDUsuario = '$idU' AND dataVenda = '$today'";
+			$sql = "SELECT * FROM venda WHERE valor = '$valor' AND tipoDePagamento = '$tipo' AND usuario_IDUsuario = '$idU' AND dataVenda = '$today' AND horaVenda = '$hora'";
 			$result = $con->query($sql);
 			$dado  = $result->fetch_assoc();
 			$idV = $dado['id'];
@@ -93,6 +97,9 @@
 				$amount = $amount - $qnt;
 				
 				$sql = "UPDATE produto SET quantidade = '$amount' WHERE id = '$idP'";
+				$con->query($sql);
+				
+				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '0', '$idU', 's', '$qnt', '$idP')";
 				$con->query($sql);
 			}
 			
