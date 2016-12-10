@@ -18,7 +18,7 @@ export class AdminEditClientesComponent implements OnInit {
     private isLogado: boolean;
     private isAdmin: boolean;
     private cliente: Cliente = new Cliente();
-    private divida: Divida = new Divida();
+    private dividas: Divida[] = [];
 
     constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private clientesService: ClientesService) {
       let stats = this.userService.userStats();
@@ -37,6 +37,7 @@ export class AdminEditClientesComponent implements OnInit {
             if(res){
               this.cliente = res[0];
               this.cliente.endereco = res[1];
+              this.dividas = res[2];
             }else{
               this.router.navigate(['/gerenciador']);
             }
@@ -82,8 +83,8 @@ export class AdminEditClientesComponent implements OnInit {
       });
     }
 
-    private pagamento(){
-
+    private pagamento(divida){
+      
     }
 
   }

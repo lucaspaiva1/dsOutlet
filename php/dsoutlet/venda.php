@@ -22,7 +22,6 @@
 		date_default_timezone_set('America/Bahia');
 		$today = date('Y-m-d');
 		$hora  = date('H:i:s');
-		
 		if ($divida->tipoVenda == "4") {
 			$tipo = "fiado";
 			$sql = "INSERT INTO venda (valor, tipoDePagamento, usuario_IDUsuario, cliente_IDCliente, dataVenda, horaVenda) VALUES ('$valor', '$tipo', '$idU', '$idC', '$today', '$hora')";
@@ -48,7 +47,8 @@
 				$sql = "UPDATE produto SET quantidade = '$amount' WHERE id = '$idP'";
 				$con->query($sql);
 				
-				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '0', '$idU', 's', '$qnt', '$idP')";
+				$hoje = date('Y-m-d H:i:s');
+				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$hoje', '1', '$idU', 's', '$qnt', '$idP')";
 				$con->query($sql);
 			}
 			
@@ -60,7 +60,8 @@
 			$parcela = $divida->parcelasAPagar;
 			$venc    = $divida->vencimento;
 			
-			$sql = "INSERT INTO divida (valor, parcelasAPagar, vencimento, cliente_IDCliente, cliente_CPF) VALUES ('$valor', '$parcela', '$venc', '$idC', '$cpf')";
+			
+			$sql = "INSERT INTO divida (valor, parcelasAPagar, vencimento, cliente_IDCliente, cliente_CPF, dataCompra) VALUES ('$valor', '$parcela', '$venc', '$idC', '$cpf', '$today')";
 			$con->query($sql);
 			
 			echo json_encode(true);
@@ -99,7 +100,8 @@
 				$sql = "UPDATE produto SET quantidade = '$amount' WHERE id = '$idP'";
 				$con->query($sql);
 				
-				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '0', '$idU', 's', '$qnt', '$idP')";
+				$hoje = date('Y-m-d H:i:s');
+				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '1', '$idU', 's', '$qnt', '$idP')";
 				$con->query($sql);
 			}
 			

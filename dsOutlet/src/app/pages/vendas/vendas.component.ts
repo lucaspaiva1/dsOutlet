@@ -83,6 +83,10 @@ export class VendasComponent implements OnInit {
         compraAtual.valor = (+compraAtual.valorUnidade) * (+compraAtual.quantidade);
         this.compra.push(compraAtual);
         this.valorTotal = this.valorTotal + (+compraAtual.valor);
+        for (let i = 0; i < this.produtos.length;i++) {
+            if(this.produtos[i].id==compraAtual.idProduto)
+                this.produtos[i].quantidade=(+this.produtos[i].quantidade) - (+this.quantidade);
+        }
         this.itemSelecionado = new Produto();
         this.quantidade = 0;
         this.permitirCompra = false;
@@ -113,9 +117,14 @@ export class VendasComponent implements OnInit {
     }
 
     removerProduto(item) {
+        console.log(item);
         let index = this.compra.indexOf(item);
         this.compra.splice(index, 1);
         this.valorTotal = this.valorTotal - (+item.valor);
+        for (let i = 0; i < this.produtos.length;i++) {
+            if(this.produtos[i].id==item.idProduto)
+                this.produtos[i].quantidade=(+this.produtos[i].quantidade) + (+item.quantidade);
+        }
     }
 
     valorAPagar() {
@@ -165,11 +174,11 @@ export class VendasComponent implements OnInit {
         this.valorAPagar()
     }
 
-    podeConcluir():boolean{
+    podeConcluir(): boolean {
         let data = new Date();
-        if(this.divida.tipoVenda!=""){
-            if(this.divida.tipoVenda=="4"){
-                if(this.clienteComprador.nome=="" || this.divida.valorPorParcela<1 || this.divida.vencimento==null){
+        if (this.divida.tipoVenda != "") {
+            if (this.divida.tipoVenda == "4") {
+                if (this.clienteComprador.nome == "" || this.divida.valorPorParcela < 1 || this.divida.vencimento == null) {
                     return false;
                 }
             }

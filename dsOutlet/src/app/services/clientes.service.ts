@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Cliente } from '../model/cliente';
+import { Divida } from '../model/divida';
 
 @Injectable()
 export class ClientesService {
@@ -71,6 +72,16 @@ export class ClientesService {
       .then(res => this.extractData(res))
       .catch(this.handleError);
   }
+
+    pagamentoPendencia(divida:Divida): Promise<any> {
+
+    return this.http
+      .post('http://localhost/dsoutlet/pagar.php', JSON.stringify(divida), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractAddData(res))
+      .catch(this.handleError);
+  }
+
 
   /*método chamado quando ocorre um erro no acesso a api php*/
   private handleError(error: any): Promise<any> {
