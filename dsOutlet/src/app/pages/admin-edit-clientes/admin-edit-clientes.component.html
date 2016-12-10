@@ -108,8 +108,8 @@
               <td>{{divida.parcelasAPagar}}</td>
               <td>{{divida.valorPorParcela}}</td>
               <td>{{divida.vencimento}}</td>
-              <td><input class="input-field col" placeholder="" type="number" value=""[(ngModel)]="divida.valorRecedido"></td>
-              <td><a (click)="pagamento(divida)" class="btn waves-effect waves-light green darken-4">Efetuar pagamento
+              <td><input class="input-field col" placeholder="" type="number" value="" [(ngModel)]="divida.valorRecedido"></td>
+              <td><a disabled="divida.valorRecedido > divida.valor" class="btn waves-effect waves-light green darken-4">Efetuar pagamento
                 <i class="material-icons right">credit_card</i>
               </a>
               </td>

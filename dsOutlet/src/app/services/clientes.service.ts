@@ -65,7 +65,7 @@ export class ClientesService {
       .catch(this.handleError);
   }
 
-  editCliente(cliente: Cliente){
+  editCliente(cliente: Cliente) {
     return this.http
       .post('http://localhost/dsoutlet/editCli.php', JSON.stringify(cliente), { headers: this.headers })
       .toPromise()
@@ -73,7 +73,7 @@ export class ClientesService {
       .catch(this.handleError);
   }
 
-    pagamentoPendencia(divida:Divida): Promise<any> {
+  pagamentoPendencia(divida: Divida): Promise<any> {
 
     return this.http
       .post('http://localhost/dsoutlet/pagar.php', JSON.stringify(divida), { headers: this.headers })
