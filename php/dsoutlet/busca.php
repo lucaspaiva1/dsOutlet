@@ -90,6 +90,17 @@
 				
 				echo json_encode($vetor);
 			}
+		} else if (isset($_GET['venda'])){
+			if ($_GET['venda'] == ""){
+				$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente)";
+				$result = $con->query($sql);
+				
+				while ($row=$result->fetch_assoc()){
+					$vetor[] = $row;
+				}
+				
+				echo json_encode($vetor);
+			}
 		}
 	
 ?>
