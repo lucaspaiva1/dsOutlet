@@ -60,7 +60,8 @@
 			$parcela = $divida->parcelasAPagar;
 			$venc    = $divida->vencimento;
 			
-			$sql = "INSERT INTO divida (valor, parcelasAPagar, vencimento, cliente_IDCliente, cliente_CPF) VALUES ('$valor', '$parcela', '$venc', '$idC', '$cpf')";
+			
+			$sql = "INSERT INTO divida (valor, parcelasAPagar, vencimento, cliente_IDCliente, cliente_CPF, dataCompra) VALUES ('$valor', '$parcela', '$venc', '$idC', '$cpf', '$today')";
 			$con->query($sql);
 			
 			echo json_encode(true);

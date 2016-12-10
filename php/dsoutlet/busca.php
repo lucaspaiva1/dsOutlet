@@ -68,12 +68,27 @@
 					$dividas = array();
 					
 					while ($row=$result->fetch_assoc()){
+						$valor = $row['valor'];
+						$parcelas = $row['parcelasAPagar'];
+						$value = $valor / $parcelas;
+						$row['valorPorParcela'] = $value;
 						$dividas[] = $row;
 					}
 					
 					array_push($vetor, $dados, $end, $dividas);
 					echo json_encode($vetor);
 				}	
+			}
+		} else if (isset($_GET['reg'])) {
+			if ($_GET['reg'] == ""){
+				$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id";
+				$result = $con->query($sql);
+				
+				while ($row=$result->fetch_assoc()){
+					$vetor[] = $row;
+				}
+				
+				echo json_encode($vetor);
 			}
 		}
 	
