@@ -1,5 +1,5 @@
 export class Divida{
-
+  id:number;
   valor: number;
   parcelasAPagar: number;
   tipoVenda:string;

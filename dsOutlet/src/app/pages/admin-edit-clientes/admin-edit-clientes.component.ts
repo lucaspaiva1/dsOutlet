@@ -84,7 +84,7 @@ export class AdminEditClientesComponent implements OnInit {
     }
 
     private pagamento(divida){
-      console.log(divida);
+      
     }
 
   }
