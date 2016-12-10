@@ -1,1 +1,66 @@
-<edit-funcionarios></edit-funcionarios>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <!-- NavBar esta dentro de um continer para que a mesma passe a ser fixa -->
+    <app-navbar [isAdmin]="isAdmin" [isLogado]="isLogado"></app-navbar>
+  </header>
+
+  <!-- Corpo da pagina -->
+  <main>
+    <div class="row">
+      <div class="col m4 l3 menu_lateral hide-on-small-and-down">
+        <!-- Note that "m4 l3" was added -->
+        <!-- small container -->
+        <options [isAdmin]="isAdmin"></options>
+      </div>
+
+      <div class="col s12 m8 l9" style="padding-top: 8px">
+        <!-- Note that "m8 l9" was added -->
+        <!-- Large container -->
+        <div>
+          <!-- Formulário -->
+          <div class="row">
+            <form class="col s12 black-text">
+              <div class="row">
+                <div class="input-field col s12 m6 l6 black-text">
+                  <i class="material-icons prefix">perm_identity</i>
+                  <input placeholder="" id="first_name" type="text" class="validate black-text" [(ngModel)]="usuario.nome" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="first_name">Primeiro nome</label>
+                </div>
+                <div class="input-field col s12 m6 l6 black-text">
+                  <input placeholder="" id="email" type="text" class="validate  black-text" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="email">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m4 l4">
+                  <input placeholder="" id="max" type="text" class="validate" [(ngModel)]="usuario.login" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="max">Nome de usuários</label>
+                </div>
+                <div class="input-field col s12 m4 l4">
+                  <input placeholder="" id="senha" type="text" class="validate" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="senha">Senha</label>
+                </div>
+                <div class="input-field col s12 m4 l4">
+                  <input placeholder="" id="confirmaSenha" type="text" class="validate" [(ngModel)]="confirmaSenha" [ngModelOptions]="{standalone: true}">
+                  <label class="black-text" for="confirmaSenha">Repita Senha</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="right">
+                  <a *ngIf="usuario.id!=id" (click)="excluir()" class="btn waves-effect waves-light red darken-4">Excluir
+                    <i class="material-icons right">delete</i>
+                  </a>
+                  <a (click)="editar()" class="btn waves-effect waves-light blue darken-4">Salvar
+                      <i class="material-icons right">send</i>
+                    </a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>

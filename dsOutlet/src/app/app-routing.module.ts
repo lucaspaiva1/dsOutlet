@@ -75,7 +75,7 @@ const routes: Routes = [
     path: 'gerenciador/clientes/editar/:id',
     component: AdminEditClientesComponent
   }, {
-    path: 'gerenciador/minha-conta/:id',
+    path: 'gerenciador/minha-conta',
     component: MinhaContaComponent
   }, {
     path: 'gerenciador/relatorios',

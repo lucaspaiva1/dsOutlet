@@ -52,16 +52,10 @@
 				$con->query($sql);
 			}
 			
-			$sql = "SELECT * FROM cliente WHERE id = '$idC'";
-			$result = $con->query($sql);
-			$dado  = $result->fetch_assoc();
-			$cpf = $dado['cpf'];
-			
 			$parcela = $divida->parcelasAPagar;
 			$venc    = $divida->vencimento;
 			
-			
-			$sql = "INSERT INTO divida (valor, parcelasAPagar, vencimento, cliente_IDCliente, cliente_CPF, dataCompra) VALUES ('$valor', '$parcela', '$venc', '$idC', '$cpf', '$today')";
+			$sql = "INSERT INTO divida (valor, parcelasAPagar, vencimento, cliente_IDCliente, dataCompra) VALUES ('$valor', '$parcela', '$venc', '$idC', '$today')";
 			$con->query($sql);
 			
 			echo json_encode(true);

@@ -17,13 +17,11 @@ export class AdminEditFuncionariosComponent implements OnInit {
   private usuario: User = new User();
   private loading: boolean;
   private confirmaSenha: string;
-  private id: number;
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
-    this.id = stats[2];
   }
 
   ngOnInit() {
@@ -45,7 +43,6 @@ export class AdminEditFuncionariosComponent implements OnInit {
   private getUser(id: number): void {
     this.loading = true;
     this.userService.getUser(id).then(res => {
-      console.log(res);
       if (res == null) {
         this.router.navigate(['/gerenciador']);
       } else {
@@ -58,15 +55,15 @@ export class AdminEditFuncionariosComponent implements OnInit {
 
   editar() {
     if (this.confirmaSenha != this.usuario.senha) {
-      toast('Senhas incorretas!', 4000, 'rouded');
+      toast('Senhas incorretas!', 4000, 'rounded');
 
     } else {
       if (this.usuario.nome == null || this.usuario.nome == "" || this.usuario.login == null || this.usuario.senha == null || this.usuario.senha == "" || this.usuario.acesso == "" || this.usuario.email == null) {
-        toast('Falta dados!', 4000, 'rouded');
+        toast('Falta dados!', 4000, 'rounded');
       } else {
         this.userService.editUser(this.usuario).then(res => {
           if (res) {
-            toast('Salvo!', 4000, 'rouded');
+            toast('Salvo!', 4000, 'rounded');
             this.router.navigate(['/gerenciador/funcionarios']);
           } else {
             toast('Não foi possível salvar!', 4000, 'rounded');
@@ -80,7 +77,7 @@ export class AdminEditFuncionariosComponent implements OnInit {
   excluir() {
     this.userService.deleteUser(this.usuario.id).then(res => {
       if (res) {
-        toast('Excluído!', 4000, 'rouded');
+        toast('Excluído!', 4000, 'rounded');
         this.router.navigate(['/gerenciador/funcionarios']);
       } else {
         toast('Não foi possível excluir', 4000, 'rounded');

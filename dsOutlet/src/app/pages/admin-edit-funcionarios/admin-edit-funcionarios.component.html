@@ -51,7 +51,7 @@
               <div class="row">
                 <div class="input-field col s12 m4 l4">
                   <input placeholder="" id="max" type="text" class="validate" [(ngModel)]="usuario.login" [ngModelOptions]="{standalone: true}">
-                  <label class="black-text" for="max">Nome de usuário</label>
+                  <label class="black-text" for="max">Nome de usuários</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
                   <input placeholder="" id="senha" type="text" class="validate" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
@@ -63,21 +63,48 @@
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s12 m6 l4">
+                <div class="input-field col s12 m6 l3">
                   <label class="black-text" for="dataAdmissao">Data de Admissão</label><br>
                   <input id="dataAdmissao" type="date" class="validate" [(ngModel)]="usuario.dataAdmissao" [ngModelOptions]="{standalone: true}">
                 </div><br>
-                <div class="input-field col s12 m6 l4">
+                <div class="input-field col s12 m6 l3">
                   <telefone [valor]="usuario.telefone" (tel)="change($event)"></telefone>
                 </div>
-                <div class="input-field col s4 m4 l4 black-text">
 
+                <div *ngIf="usuario.acesso == A" class="input-field col s4 m4 l3 black-text">
                   <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="A">Administrador</option>
                     <option value="C">Vendedor</option>
                     <option value="" disabled selected>Privilégio</option>
                   </select>
                   <label class="black-text" for="acesso">Privilégio</label>
+                </div>
+
+                <div *ngIf="usuario.acesso != A" class="input-field col s4 m4 l3 black-text">
+                  <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
+                    <option value="C">Vendedor</option>
+                    <option value="A">Administrador</option>
+                    <option value="" disabled selected>Privilégio</option>
+                  </select>
+                  <label class="black-text" for="acesso">Privilégio</label>
+                </div>
+
+                <div *ngIf="usuario.ativo == 0" class="input-field col s4 m4 l3 black-text">
+                  <select materialize="material_select" [(ngModel)]="usuario.ativo" [ngModelOptions]="{standalone: true}">
+                    <option value="0">Ativo</option>
+                    <option value="1">Desativado</option>
+                    <option value="" disabled selected>Ativação</option>
+                  </select>
+                  <label class="black-text" for="acesso">Ativação</label>
+                </div>
+
+                <div *ngIf="usuario.ativo != 0" class="input-field col s4 m4 l3 black-text">
+                  <select materialize="material_select" [(ngModel)]="usuario.ativo" [ngModelOptions]="{standalone: true}">
+                    <option value="1">Desativado</option>
+                    <option value="0">Ativo</option>
+                    <option value="" disabled selected>Ativação</option>
+                  </select>
+                  <label class="black-text" for="acesso">Ativação</label>
                 </div>
 
               </div>
