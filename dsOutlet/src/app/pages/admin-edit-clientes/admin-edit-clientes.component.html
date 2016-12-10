@@ -95,21 +95,21 @@
               <th data-field="pacelas">Parcelas</th>
               <th data-field="pacelasValor">Valor Parcela</th>
               <th data-field="vencimento">Vencimento</th>
-              <th>Valor a Pagar</th>
+              <th data-field="valorRecebido"> Valor recebido</th>
               <th></th>
             </tr>
           </thead>
 
           <tbody>
             <!--tr *ngFor="let divida of dividas"-->
-            <tr>
-              <td>02/07/2016</td>
-              <td>R$60,00</td>
-              <td>3</td>
-              <td>R$20,00</td>
-              <td>02/08/2016</td>
-              <td><input class="input-field col" type="number" value=""></td>
-              <td><a (click)="pagamento()" class="btn waves-effect waves-light green darken-4">Efetuar pagamento
+            <tr *ngFor="let divida of dividas">
+              <td>{{divida.dataCompra}}</td>
+              <td>{{divida.valor}}</td>
+              <td>{{divida.parcelasAPagar}}</td>
+              <td>{{divida.valorPorParcela}}</td>
+              <td>{{divida.vencimento}}</td>
+              <td><input class="input-field col" placeholder="" type="number" value=""[(ngModel)]="divida.valorRecedido"></td>
+              <td><a (click)="pagamento(divida)" class="btn waves-effect waves-light green darken-4">Efetuar pagamento
                 <i class="material-icons right">credit_card</i>
               </a>
               </td>
