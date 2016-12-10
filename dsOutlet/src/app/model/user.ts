@@ -10,6 +10,7 @@ export class User {
   acesso: string;
   dataAdmissao: Date;
   telefone: string;
+  ativo: number;
 
   constructor() {
   }

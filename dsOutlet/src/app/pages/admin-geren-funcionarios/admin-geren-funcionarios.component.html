@@ -58,6 +58,7 @@
                   <th data-field="status">Senha</th>
                   <th data-field="status">Data de Admissão</th>
                   <th data-field="status">Telefone</th>
+                  <th data-field="status">Ativo</th>
                 </tr>
               </thead>
 
@@ -70,6 +71,8 @@
                   <td>{{usuario.senha}}</td>
                   <td>{{usuario.dataAdmissao}}</td>
                   <td>{{usuario.telefone}}</td>
+                  <td *ngIf="usuario.ativo==0">Ativo</td>
+                  <td *ngIf="usuario.ativo!=0">Desativado</td>
                 </tr>
               </tbody>
             </table>

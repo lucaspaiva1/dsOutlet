@@ -18,10 +18,4 @@ export class OptionsComponent {
     console.log(this.url);
   }
 
-  private minhaConta() {
-    let stats = this.userService.userStats();
-    let id = stats[2];
-    this.router.navigate(['gerenciador/minha-conta/', id]);
-  }
-
 }
