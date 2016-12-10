@@ -22,9 +22,9 @@
           <div class="row">
             <form class="col s12 black-text">
               <div class="row">
-                <div class="input-field col s12 m6 l6 black-text">
+                <div class="input-field col s12 m6 l6">
                   <i class="material-icons prefix">perm_identity</i>
-                  <input placeholder="" id="first_name" type="text" class="validate black-text" [(ngModel)]="usuario.nome" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="first_name" type="text" class="validate" [(ngModel)]="usuario.nome" [ngModelOptions]="{standalone: true}" disabled>
                   <label class="black-text" for="first_name">Primeiro nome</label>
                 </div>
                 <div class="input-field col s12 m6 l6 black-text">
@@ -34,7 +34,7 @@
               </div>
               <div class="row">
                 <div class="input-field col s12 m4 l4">
-                  <input placeholder="" id="max" type="text" class="validate" [(ngModel)]="usuario.login" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="max" type="text" class="validate" [(ngModel)]="usuario.login" [ngModelOptions]="{standalone: true}" disabled>
                   <label class="black-text" for="max">Nome de usuários</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
