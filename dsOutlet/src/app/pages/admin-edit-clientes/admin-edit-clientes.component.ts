@@ -38,14 +38,20 @@ export class AdminEditClientesComponent implements OnInit {
             this.cliente = res[0];
             this.cliente.endereco = res[1];
             this.dividas = res[2];
+            this.initValorRecebido();
           } else {
             this.router.navigate(['/gerenciador']);
           }
-
           console.log(this.cliente);
         });
       })
     }
+  }
+
+  initValorRecebido(){
+    this.dividas.forEach(element => {
+      element.valorRecedido=0;
+    });
   }
 
   change(event) {
