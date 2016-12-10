@@ -79,6 +79,7 @@ export class VendasComponent implements OnInit {
         compraAtual.quantidade = this.quantidade;
         compraAtual.tamanho = this.itemSelecionado.tamanho;
         compraAtual.valorUnidade = this.itemSelecionado.precoSaidaPadrao;
+        compraAtual.idProduto = this.itemSelecionado.id;
         compraAtual.valor = (+compraAtual.valorUnidade) * (+compraAtual.quantidade);
         this.compra.push(compraAtual);
         this.valorTotal = this.valorTotal + (+compraAtual.valor);
