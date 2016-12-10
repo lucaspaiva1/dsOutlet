@@ -48,7 +48,7 @@
 				$sql = "UPDATE produto SET quantidade = '$amount' WHERE id = '$idP'";
 				$con->query($sql);
 				
-				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '0', '$idU', 's', '$qnt', '$idP')";
+				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '1', '$idU', 's', '$qnt', '$idP')";
 				$con->query($sql);
 			}
 			
@@ -100,7 +100,7 @@
 				$sql = "UPDATE produto SET quantidade = '$amount' WHERE id = '$idP'";
 				$con->query($sql);
 				
-				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '0', '$idU', 's', '$qnt', '$idP')";
+				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '1', '$idU', 's', '$qnt', '$idP')";
 				$con->query($sql);
 			}
 			

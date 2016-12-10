@@ -31,7 +31,11 @@
 			$value = $value - $valor;
 			
 			if ($value > 0) {
-				$parc = $parc - 1;
+				if ($parc > 1)
+					$parc = $parc - 1;
+				else
+					$parc = 1;
+				
 				$sql = "UPDATE divida SET valor = '$value', parcelasAPagar = '$parc' WHERE id = '$id'";
 				$con->query($sql);
 			} else {
