@@ -16,6 +16,7 @@
 		$id     = $divida->id;
 		
 		$valor  = $divida->valorRecebido;
+		$venc   = $divida->vencimento;
 		
 		$sql = "SELECT * FROM divida WHERE id = '$id'";
 		$result = $con->query($sql);
@@ -36,7 +37,9 @@
 				else
 					$parc = 1;
 				
-				$sql = "UPDATE divida SET valor = '$value', parcelasAPagar = '$parc' WHERE id = '$id'";
+				$mes = date('Y-m-d', strtotime('+1 month', strtotime($venc)));
+				
+				$sql = "UPDATE divida SET valor = '$value', parcelasAPagar = '$parc', vencimento = '$mes' WHERE id = '$id'";
 				$con->query($sql);
 			} else {
 				$sql "DELETE FROM divida WHERE id = '$id'";
