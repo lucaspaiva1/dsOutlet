@@ -28,9 +28,37 @@
 		if($numrow !== 1){
 			echo json_encode(false);
 		}else{
-			$sql = "UPDATE usuario SET nome = '$nome', email = '$email', login = '$login', senha = '$senha', acesso = '$acesso', dataAdmissao = '$admissao', telefone = '$telefone' WHERE id = '$id'";
-			$con->query($sql);
-			echo json_encode(true);
+			
+			$sql = "SELECT * FROM usuario WHERE nome = '$nome'";
+			$result = $con->query($sql);
+			
+			$isLogin = false;
+			$isNome  = false;
+			
+			while ($row=$result->fetch_assoc()){
+				if ($row['id'] != $id){
+					$isNome = true;
+				}
+			}
+			
+			$sql = "SELECT * FROM usuario WHERE login = '$login'";
+			$result = $con->query($sql);
+			
+			while ($row=$result->fetch_assoc()){
+				if ($row['id'] != $id){
+					$isLogin = true;
+				}
+			}
+			
+			if ($isLogin){
+				echo json_encode("login");
+			} else if ($isNome){
+				echo json_encode("nome");
+			} else {
+				$sql = "UPDATE usuario SET nome = '$nome', email = '$email', login = '$login', senha = '$senha', acesso = '$acesso', dataAdmissao = '$admissao', telefone = '$telefone' WHERE id = '$id'";
+				$con->query($sql);
+				echo json_encode(true);
+			}
 		}
 	}
 ?>
