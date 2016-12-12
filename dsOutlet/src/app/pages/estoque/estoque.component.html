@@ -71,9 +71,9 @@
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.modelo}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.tamanho}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.quantidade}}</td>
-                <td materialize="dropdown" data-activates="dropdown1" *ngIf="isAdmin">{{produto.precoUltimaCompra}}</td>
-                <td materialize="dropdown" data-activates="dropdown1">{{produto.precoSaidaPadrao}}</td>
-                <td materialize="dropdown" data-activates="dropdown1" *ngIf="isAdmin">{{produto.precoEntrada}}</td>
+                <td materialize="dropdown" data-activates="dropdown1" *ngIf="isAdmin">{{produto.precoUltimaCompra | currency:'BRL':true }}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.precoSaidaPadrao | currency:'BRL':true }}</td>
+                <td materialize="dropdown" data-activates="dropdown1" *ngIf="isAdmin">{{produto.precoEntrada | currency:'BRL':true }}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.maximo}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.minimo}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.estado}}</td>
