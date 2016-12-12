@@ -16,7 +16,6 @@
 		$id     = $divida->id;
 		
 		$valor  = $divida->valorRecebido;
-		$venc   = $divida->vencimento;
 		
 		$sql = "SELECT * FROM divida WHERE id = '$id'";
 		$result = $con->query($sql);
@@ -28,6 +27,7 @@
 			$dados = $result->fetch_assoc();
 			$parc  = $dados['parcelasAPagar'];
 			
+			$venc  = $dados['vencimento'];
 			$value = $dados['valor'];
 			$value = $value - $valor;
 			
@@ -49,7 +49,7 @@
 				
 				echo json_encode($dado);
 			} else {
-				$sql "DELETE FROM divida WHERE id = '$id'";
+				$sql = "DELETE FROM divida WHERE id = '$id'";
 				$con->query($sql);
 				$dados['valor'] = 0;
 				echo json_encode($dados);
