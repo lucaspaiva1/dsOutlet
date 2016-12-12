@@ -33,7 +33,8 @@
 			$sql = "UPDATE produto SET quantidade = '$amount', precoSaidaPadrao = '$precoS' WHERE id = '$id'";
 			$con->query($sql);
 			
-			$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '0', '$usuarioID', 'e', '$quantidade', '$prodID')";
+			$today = date('Y-m-d');
+			$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '1', '$usuarioID', 'e', '$quantidade', '$id')";
 			$con->query($sql);
 			
 			echo json_encode(true);
