@@ -32,6 +32,10 @@ export class AdminCadProdutoComponent implements OnInit {
     }
   }
 
+  teste(){
+    console.log("teste");
+  }
+
   cadastrarProduto() {
     if (this.produto.marca == null || this.produto.modelo == null || this.produto.tamanho == null) {
       toast('Favor Preencher Campos Obrigatórios!', 4000, 'rounded');

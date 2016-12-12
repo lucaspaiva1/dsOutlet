@@ -20,10 +20,10 @@
         <div >
           <!-- Formulário -->
           <div class="row">
-            <form class="col s12">
+            <form (ngSubmit)="cadastrarProduto()" class="col s12">
               <div class="row">
                 <div class="input-field col s12 m6 l6">
-                  <input id="marca" type="text" class="validate black-text" [(ngModel)]="produto.marca" [ngModelOptions]="{standalone: true}">
+                  <input id="marca" type="text" required class="validate black-text" [(ngModel)]="produto.marca" name="marca">
                   <label class="black-text" for="marca">Marca</label>
                 </div>
                 <div class="input-field col s12 m6 l6 black-text">
@@ -76,15 +76,13 @@
                   <label class="black-text" for="min">Mínimo</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="quantidade" type="number" min="0" class="validate" [(ngModel)]="produto.quantidade" [ngModelOptions]="{standalone: true}">
+                  <input id="quantidade" type="number" min="0" required class="validate" [(ngModel)]="produto.quantidade" [ngModelOptions]="{standalone: true}">
                   <label class="black-text" for="quantidade">Quantidade</label>
                 </div>
               </div>
               <div class="row">
                 <div class="right">
-                  <a (click)="cadastrarProduto()" class="btn waves-effect waves-light blue darken-4">Cadastrar
-                      <i class="material-icons right">send</i>
-                    </a>
+                  <button type="submit" name="submit" class="btn waves-effect waves-light blue darken-4"> Cadastrar <i class="material-icons right">send</i></button>
                 </div>
               </div>
             </form>
