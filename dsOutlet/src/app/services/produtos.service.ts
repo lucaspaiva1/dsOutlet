@@ -39,6 +39,7 @@ export class ProdutosService {
 
   /*Método que converte o arquivo json recebido da api php*/
   private extractAddData(res: Response) {
+    console.log(res);
     let data = res.json();
     return data;
   }

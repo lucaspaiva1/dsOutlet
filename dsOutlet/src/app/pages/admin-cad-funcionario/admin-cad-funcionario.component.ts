@@ -29,29 +29,27 @@ export class AdminCadFuncionarioComponent implements OnInit {
     }
   }
 
-  change(event){
+  change(event) {
     console.log(event);
-    this.usuario.telefone=event;
+    this.usuario.telefone = event;
   }
 
   cadastrarUsuario() {
     console.log(this.usuario);
-    if (this.usuario.nome == null || this.usuario.nome == "" || this.usuario.login == null || this.usuario.senha == null || this.usuario.senha == "" || this.usuario.acesso == "" || this.usuario.email== null) {
+    if (this.usuario.nome == null || this.usuario.nome == "" || this.usuario.login == null || this.usuario.senha == null || this.usuario.senha == "" || this.usuario.acesso == "" || this.usuario.email == null || this.usuario.telefone == null || this.usuario.acesso == null) {
       toast('Estão faltando dados!', 4000, 'rounded');
+    } else if (this.usuario.senha != this.confirmacaoSenha) {
+      toast('Senha não correspondem!', 4000, 'rounded');
     } else {
-      if (this.usuario.senha != this.confirmacaoSenha) {
-        toast('Senha não correspondem!', 4000, 'rounded');
-      } else {
-        this.userService.addUser(this.usuario)
-        .then(retorno=>{
-          if(retorno.type == 3){
+      this.userService.addUser(this.usuario)
+        .then(retorno => {
+          if (retorno.type == 3) {
             this.usuario = new User();
             this.confirmacaoSenha = '';
             this.router.navigate(['/gerenciador/funcionarios']);
           }
           toast(retorno.message, 4000, 'rounded');
         });
-      }
     }
   }
 

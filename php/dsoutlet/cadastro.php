@@ -18,6 +18,7 @@
 		$acesso	  = $request->acesso;
 		$admissao = $request->dataAdmissao;
 		$telefone = $request->telefone;
+		$ativo 	  = 0;
 
 		$sql = "SELECT * FROM usuario WHERE login = '$login'";
 		$result = $con->query($sql);
@@ -28,7 +29,7 @@
 				$result = $con->query($sql);
 				$numrow = $result->num_rows;
 				if ($numrow !== 1){
-					$sql = "INSERT INTO usuario (nome, email, login, senha, acesso, dataAdmissao, telefone) VALUES ('$nome', '$email', '$login', '$senha', '$acesso', '$admissao', '$telefone')";
+					$sql = "INSERT INTO usuario (nome, email, login, senha, acesso, dataAdmissao, telefone, ativo) VALUES ('$nome', '$email', '$login', '$senha', '$acesso', '$admissao', '$telefone', '$ativo')";
 					$con->query($sql);
 					echo json_encode(true);
 				} else {

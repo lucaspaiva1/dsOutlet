@@ -51,6 +51,7 @@ export class UserService {
 
   /*método que extrai os dados do json recebido do backend*/
   private extractAddData(res: Response) {
+    console.log(res);
     let data = res.json();
     let retorno = { type: 0, message: '' };
     if (data == "login") {

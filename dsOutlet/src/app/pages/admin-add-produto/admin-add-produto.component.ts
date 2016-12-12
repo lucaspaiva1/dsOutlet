@@ -55,7 +55,6 @@ export class AdminAddProdutoComponent implements OnInit {
 
   /*adiciona a quantidade ao produto no banco de dados*/
   private adicionar(): void {
-    console.log("teste");
     this.produto.usuarioId = this.usuarioId;
     if (this.quantidade > 0) {
       this.produto.quantidade = this.quantidade;
