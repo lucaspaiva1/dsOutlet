@@ -38,7 +38,7 @@
                     <div class="divider"></div>
                     <p>{{item.marca}} {{item.modelo}} TAMANHO: {{item.tamanho}} <i class="material-icons right" (click)="removerProduto(item)"
                         style="cursor:pointer;">close</i></p>
-                    <p>{{item.quantidade}} X R${{item.valorUnidade}} = R${{item.valor}}</p>
+                    <p>{{item.quantidade}} X R${{item.valorUnidade}} = R${{item.valorExibido}}</p>
                     <div class="divider"></div>
                   </div>
                 </div>
@@ -167,7 +167,7 @@
                         <label for="test2" (click)="tipoAPagar('%')" class="black-text">Porcentagem</label>
                       </div>
                       <div class="input-field col s6 m3 l3 black-text">
-                        <input placeholder="" id="valorFinal" type="number" class="black-text" disabled [(ngModel)]="divida.valor" [ngModelOptions]="{standalone: true}">
+                        <input placeholder="" id="valorFinal" type="number" class="black-text" disabled [(ngModel)]="divida.valorExibir" [ngModelOptions]="{standalone: true}">
                         <label class="black-text" for="valorFinal" (click)="valorAPagar()">Valor a pagar</label>
                       </div>
                       <div class=" col s6 m3 l3 black-text">

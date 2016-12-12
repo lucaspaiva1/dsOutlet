@@ -26,7 +26,9 @@ export class VendasComponent implements OnInit {
     private isAdmin: boolean = false;
     private produtos: Produto[] = [];
     private itens: Produto[] = [];
-    valorTotal: number = 0;
+    valorTotal: string = "0";
+    valorDivida: string = "0";
+    valorTotalConta: number = 0;
     private search: string = "";
     private itemSelecionado: Produto = new Produto();
     private: string[] = [];
@@ -81,8 +83,9 @@ export class VendasComponent implements OnInit {
         compraAtual.valorUnidade = this.itemSelecionado.precoSaidaPadrao;
         compraAtual.idProduto = this.itemSelecionado.id;
         compraAtual.valor = (+compraAtual.valorUnidade) * (+compraAtual.quantidade);
+        compraAtual.atualizar();
         this.compra.push(compraAtual);
-        this.valorTotal = this.valorTotal + (+compraAtual.valor);
+        this.valorTotalConta = this.valorTotalConta + (+compraAtual.valor);
         for (let i = 0; i < this.produtos.length;i++) {
             if(this.produtos[i].id==compraAtual.idProduto)
                 this.produtos[i].quantidade=(+this.produtos[i].quantidade) - (+this.quantidade);
@@ -90,6 +93,8 @@ export class VendasComponent implements OnInit {
         this.itemSelecionado = new Produto();
         this.quantidade = 0;
         this.permitirCompra = false;
+
+        this.valorTotal = this.valorTotalConta.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
     }
 
     limpar() {
@@ -120,20 +125,23 @@ export class VendasComponent implements OnInit {
         console.log(item);
         let index = this.compra.indexOf(item);
         this.compra.splice(index, 1);
-        this.valorTotal = this.valorTotal - (+item.valor);
+        this.valorTotalConta = this.valorTotalConta - (+item.valor);
         for (let i = 0; i < this.produtos.length;i++) {
             if(this.produtos[i].id==item.idProduto)
                 this.produtos[i].quantidade=(+this.produtos[i].quantidade) + (+item.quantidade);
         }
+        this.valorTotal = this.valorTotalConta.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+        
     }
 
     valorAPagar() {
-        this.divida.valor = this.valorTotal;
+        this.divida.valor = this.valorTotalConta;
         if (this.desconto == "R$") {
             this.divida.valor = (+this.divida.valor) - (+this.quantidadeDesconto);
         } else {
             this.divida.valor = (+this.divida.valor) - (+this.divida.valor) * (+this.quantidadeDesconto) / 100;
         }
+        this.divida.atualizar();
         this.getClientes();
     }
     tipoAPagar(valor) {

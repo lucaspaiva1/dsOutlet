@@ -48,9 +48,9 @@ export class AdminEditClientesComponent implements OnInit {
     }
   }
 
-  initValorRecebido(){
+  initValorRecebido() {
     this.dividas.forEach(element => {
-      element.valorRecedido=0;
+      element.valorRecebido = 0;
     });
   }
 
@@ -90,12 +90,15 @@ export class AdminEditClientesComponent implements OnInit {
   }
 
   private pagamento(divida) {
+    console.log("enviando");
+    console.log(divida);
     this.clientesService.pagamentoPendencia(divida).then(res => {
-      if (res[0]) {
-        let index = this.dividas.indexOf(divida);
-        this.dividas[index] = res[1];
-        this.dividas[index].valorRecedido = 0;
-      }
+    console.log("recebendo");      
+    console.log(res);      
+      let index = this.dividas.indexOf(divida);
+      this.dividas[index] = res;
+      this.dividas[index].valorRecebido = 0;
+
     });
   }
 
