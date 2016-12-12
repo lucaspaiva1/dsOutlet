@@ -62,13 +62,10 @@ export class AdminEditFuncionariosComponent implements OnInit {
         toast('Falta dados!', 4000, 'rounded');
       } else {
         this.userService.editUser(this.usuario).then(res => {
-          if (res) {
-            toast('Salvo!', 4000, 'rounded');
+          toast(res.message, 4000, 'rounded');
+          if (res.type === true) {
             this.router.navigate(['/gerenciador/funcionarios']);
-          } else {
-            toast('Não foi possível salvar!', 4000, 'rounded');
           }
-
         });
       }
     }

@@ -58,19 +58,22 @@ export class MinhaContaComponent {
 
     } else {
       if (this.usuario.nome == null || this.usuario.nome == "" || this.usuario.login == null || this.usuario.senha == null || this.usuario.senha == "" || this.usuario.acesso == "" || this.usuario.email == null) {
-        toast('Falta dados!', 4000, 'rounded');
+        toast('Faltam dados!', 4000, 'rounded');
       } else {
         this.userService.editUser(this.usuario).then(res => {
-          if (res) {
-            toast('Salvo!', 4000, 'rounded');
+          toast(res.message, 4000, 'rounded');
+          if (res.type === true) {
             this.router.navigate(['/gerenciador']);
-          } else {
-            toast('Não foi possível salvar!', 4000, 'rounded');
           }
-
-        });
+        }).catch(this.handleError);
       }
     }
+  }
+
+  private handleError(error: any): Promise<any> {
+    toast('ocorreu um erro!', 4000, 'rounded');
+    //console.error('Ocorreu um erro!', error); // for demo purposes only
+    return Promise.reject(error.message || error);
   }
 
   excluir() {

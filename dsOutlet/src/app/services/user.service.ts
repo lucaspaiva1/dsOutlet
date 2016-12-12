@@ -99,7 +99,7 @@ export class UserService {
     return data;
   }
 
-  editUser(user: User) {
+  editUser(user: User): Promise<any> {
     return this.http
       .post('http://localhost/dsoutlet/edit.php', JSON.stringify(user), { headers: this.headers })
       .toPromise()
@@ -109,7 +109,25 @@ export class UserService {
 
   private extractEditData(res: Response) {
     let data = res.json();
-    return data;
+    console.log(data);
+    let retorno = {type: false, message: ''};
+    if(data == "login"){
+      retorno.type = false;
+      retorno.message = 'Este Usuário já existe no sitema';
+      return retorno;
+    }else if(data == 'nome'){
+      retorno.type = false;
+      retorno.message = 'Este Nome já existe no sitema';
+      return retorno;
+    }else if (data == true){
+      retorno.type = true;
+      retorno.message = 'Editado com sucesso!';
+      return retorno;
+    }else{
+      retorno.type = false;
+      retorno.message = 'Ocorreu um erro!';
+      return retorno;
+    }
   }
 
   getUser(id: number): Promise<User> {
@@ -119,7 +137,7 @@ export class UserService {
 
   /*método chamado quando ocorre um erro no acesso a api php*/
   private handleError(error: any): Promise<any> {
-    console.error('Ocorreu um erro!', error); // for demo purposes only
+    //console.error('Ocorreu um erro!', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 
