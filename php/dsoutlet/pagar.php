@@ -51,7 +51,8 @@
 			} else {
 				$sql "DELETE FROM divida WHERE id = '$id'";
 				$con->query($sql);
-				echo json_encode(false);
+				$dados['valor'] = 0;
+				echo json_encode($dados);
 			}
 		}
 	}
