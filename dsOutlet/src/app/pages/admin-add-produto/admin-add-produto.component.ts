@@ -55,6 +55,7 @@ export class AdminAddProdutoComponent implements OnInit {
 
   /*adiciona a quantidade ao produto no banco de dados*/
   private adicionar(): void {
+    console.log("teste");
     this.produto.usuarioId = this.usuarioId;
     if (this.quantidade > 0) {
       this.produto.quantidade = this.quantidade;
@@ -62,6 +63,7 @@ export class AdminAddProdutoComponent implements OnInit {
       if (this.precoCompra != this.produto.precoEntrada) {
         this.produtoService.newProduto(this.produto).then(res=>{
           if(res){
+            this.router.navigate(['/gerenciador/estoque']);
             toast('Produto foi Cadastrado!', 4000, 'rounded');
           }else{
             toast('Ocorreu um erro!', 4000, 'rounded');

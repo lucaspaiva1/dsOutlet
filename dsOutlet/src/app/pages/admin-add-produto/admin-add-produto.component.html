@@ -20,7 +20,8 @@
         <div>
           <!-- Formulário -->
           <div class="row">
-            <form class="col s12">
+
+            <form (ngSubmit)="adicionar()" class="col s12">
 
               <div class="row">
                 <div class="input-field col s12 m6 l6">
@@ -34,6 +35,7 @@
               </div>
 
               <div class="row">
+
                 <div class="input-field col s12 m3 l3">
                   <select materialize="material_select" [(ngModel)]="produto.tamanho" [ngModelOptions]="{standalone: true}" disabled>
                       <option value="none" disabled selected>Tamanho</option>
@@ -59,27 +61,32 @@
                     </select>
                   <label class="black-text" for="tamanho">Tamanho</label>
                 </div>
+
                 <div class="input-field col s12 m3 l3">
-                  <input placeholder="" id="precoSaidaPadrao" type="number" class="validate" [(ngModel)]="produto.precoSaidaPadrao" [ngModelOptions]="{standalone: true}" />
+                  <input placeholder="" id="precoSaidaPadrao" type="number" min="0.01" step="0.01" required class="validate" [(ngModel)]="produto.precoSaidaPadrao" name="precoSaidaPadrao" />
                   <label class="black-text" for="precoSaidaPadrao">Preço de venda</label>
                 </div>
+
                 <div class="input-field col s12 m3 l3">
-                  <input placeholder="" id="quantidade" type="number" class="validate" [(ngModel)]="quantidade" [ngModelOptions]="{standalone: true}" />
+                  <input placeholder="" id="quantidade" type="number" min="1" required class="validate" [(ngModel)]="quantidade" name="quantidade"/>
                   <label class="black-text" for="quantidade">Quantidade adicionada</label>
                 </div>
+
                 <div class="input-field col s12 m3 l3" *ngIf="isAdmin">
-                  <input placeholder="" id="precoEntrada" type="number" class="validate" [(ngModel)]="produto.precoEntrada" [ngModelOptions]="{standalone: true}"
-                  />
+                  <input placeholder="" id="precoEntrada" type="number" min="0" step="0.01" required class="validate" [(ngModel)]="produto.precoEntrada" name="precoEntrada" />
                   <label class="black-text" for="precoEntrada">Preço de Compra</label>
                 </div>
+
               </div>
+
               <div class="row">
                 <div class="right">
-                  <a (click)="adicionar()" class="btn waves-effect waves-light blue darken-4">Adicionar
+                  <button type="submit" class="btn waves-effect waves-light blue darken-4">Adicionar
                       <i class="material-icons right">add</i>
-                    </a>
+                    </button>
                 </div>
               </div>
+
             </form>
           </div>
         </div>
