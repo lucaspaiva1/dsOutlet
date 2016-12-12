@@ -20,7 +20,7 @@
         <div>
           <!-- Formulário -->
           <div class="row">
-            <form class="col s12">
+            <form (ngSubmit)="salvar()" class="col s12">
               <div class="row">
                 <div class="input-field col s12 m6 l6 black-text">
                   <label class="black-text">Marca</label>
@@ -33,20 +33,21 @@
               </div>
               <div class="row">
                 <div class="input-field col s12 m5 l5">
-                  <input placeholder="" id="marca" type="text" class="validate" name="marca" [(ngModel)]="produto.marca">
+                  <input placeholder="" required id="marca" type="text" required class="validate" name="marca" [(ngModel)]="produto.marca">
                   <label class="black-text" for="marca">Marca</label>
                 </div>
                 <div class="input-field col s12 m5 l5">
-                  <input placeholder="" id="modelo" type="text" class="validate" name="modelo" [(ngModel)]="produto.modelo">
+                  <input placeholder="" id="modelo" type="text" required class="validate" name="modelo" [(ngModel)]="produto.modelo">
                   <label class="black-text" for="modelo">Modelo</label>
                 </div>
                 <div class="input-field col s12 m1 l1">
-                  <input placeholder="" id="max" type="number" class="validate" name="maximo" [(ngModel)]="produto.maximo">
-                  <label class="black-text" for="max">Máximo</label>
+                  <input #min placeholder="" id="min" type="number" min="0" required class="validate" name="minimo" [(ngModel)]="produto.minimo">
+                  <label class="black-text" for="min">Mínimo</label>
                 </div>
                 <div class="input-field col s12 m1 l1">
-                  <input placeholder="" id="min" type="number" class="validate" name="minimo" [(ngModel)]="produto.minimo">
-                  <label class="black-text" for="min">Mínimo</label> </div>
+                  <input placeholder="" id="max" type="number" [min]="min.value" required class="validate" name="maximo" [(ngModel)]="produto.maximo">
+                  <label class="black-text" for="max">Máximo</label>
+                </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m3 l3">
@@ -79,8 +80,9 @@
                   <label class="black-text" for="ultimaCompra">Preço Ultima Compra</label>
                 </div>
                 <div class="input-field col s12 m3 l3">
-                  <input placeholder="" id="precoVenda" type="number" class="validate" [(ngModel)]="produto.precoSaidaPadrao" [ngModelOptions]="{standalone: true}">
-                  <label class="black-text" for="precoVenda">Preço Venda</label> </div>
+                  <input placeholder="" id="precoVenda" type="number" min="0" step="0.01" required class="validate" name="precoSaidaPadrao" [(ngModel)]="produto.precoSaidaPadrao">
+                  <label class="black-text" for="precoVenda">Preço Venda</label>
+                </div>
                 <div class="input-field col s12 m3 l3">
                   <input placeholder="" id="quantidade" type="number" class="validate" disabled [value]="produto.quantidade">
                   <label class="black-text" for="quantidade">Quantidade</label>
@@ -91,9 +93,9 @@
                   <a (click)="excluir()" class="btn waves-effect waves-light red darken-4">Excluir
                       <i class="material-icons right">delete</i>
                     </a>
-                  <a (click)="salvar()" class="btn waves-effect waves-light blue darken-4">Salvar
+                  <button type="submit" name="submit" class="btn waves-effect waves-light blue darken-4">Salvar
                       <i class="material-icons right">send</i>
-                    </a>
+                    </button>
                 </div>
               </div>
             </form>

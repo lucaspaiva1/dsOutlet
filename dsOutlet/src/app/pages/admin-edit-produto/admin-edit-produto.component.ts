@@ -6,7 +6,7 @@ import { Produto } from '../../model/produto';
 import { toast } from 'angular2-materialize';
 
 @Component({
-  selector: 'app-admin-edit-produto',
+  selector: 'edit-produto',
   templateUrl: './admin-edit-produto.component.html',
   styleUrls: ['./admin-edit-produto.component.css']
 })
@@ -50,7 +50,7 @@ export class AdminEditProdutoComponent implements OnInit {
     });
   }
 
-  excluir() {
+  private excluir() {
     this.produtoService.delProduto(this.produto.id).then(res=>{
       if(res){
         toast('Produto foi Deletado!', 4000, 'rounded');
@@ -62,7 +62,7 @@ export class AdminEditProdutoComponent implements OnInit {
 
   }
 
-  salvar() {
+  private salvar() {
     this.produtoService.editProduto(this.produto).then(res=>{
       if(res){
         toast('Produto foi Editado!', 4000, 'rounded');
