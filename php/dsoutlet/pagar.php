@@ -50,7 +50,8 @@
 				$valor = $dado['valor'];
 				$parcelas = $dado['parcelasAPagar'];
 				$valor = $valor / $parcelas;
-				$dado['valorPorParcela'] = $valor;
+				$x = number_format($valor, 2, '.', ' ');
+				$dado['valorPorParcela'] = $x;
 				
 				
 				echo json_encode($dado);
