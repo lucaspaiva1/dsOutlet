@@ -41,11 +41,18 @@
 				
 				$sql = "UPDATE divida SET valor = '$value', parcelasAPagar = '$parc', vencimento = '$mes' WHERE id = '$id'";
 				$con->query($sql);
+				
+				$sql = "SELECT * FROM divida WHERE id = '$id'";
+				$result = $con->query($sql);
+				
+				$dado = $result->fetch_assoc();
+				
+				echo json_encode($dado);
 			} else {
 				$sql "DELETE FROM divida WHERE id = '$id'";
 				$con->query($sql);
+				echo json_encode(false);
 			}
-			echo json_encode(true);
 		}
 	}
 ?>
