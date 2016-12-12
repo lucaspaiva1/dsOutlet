@@ -47,6 +47,12 @@
 				
 				$dado = $result->fetch_assoc();
 				
+				$valor = $dado['valor'];
+				$parcelas = $dado['parcelasAPagar'];
+				$valor = $valor / $parcelas;
+				$dado['valorPorParcela'] = $valor;
+				
+				
 				echo json_encode($dado);
 			} else {
 				$sql = "DELETE FROM divida WHERE id = '$id'";
