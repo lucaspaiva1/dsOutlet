@@ -27,14 +27,14 @@
                   <label class="black-text" for="marca">Marca</label>
                 </div>
                 <div class="input-field col s12 m6 l6 black-text">
-                  <input id="modelo" type="text" class="validate  black-text" [(ngModel)]="produto.modelo" [ngModelOptions]="{standalone: true}">
+                  <input id="modelo" type="text" class="validate  black-text" required [(ngModel)]="produto.modelo" name="modelo">
                   <label class="black-text" for="modelo">Modelo</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m6 l6  black-text ">
                   <select materialize="material_select" [(ngModel)]="produto.tamanho" [ngModelOptions]="{standalone: true}">
-                      <option value="none" disabled selected>Tamanho</option>
+                      <option value="" disabled selected>Tamanho</option>
                       <option value="PP">PP</option>
                       <option value="P">P</option>
                       <option value="M">M</option>
@@ -58,25 +58,25 @@
                   <label class="black-text">Tamanho</label>
                 </div>
                 <div class="input-field col s12 m6 l3">
-                  <input id="venda" type="number" class="validate" [(ngModel)]="produto.precoSaidaPadrao" [ngModelOptions]="{standalone: true}">
-                  <label class="black-text" for="venda">Preço de Venda</label>
+                  <input #compra id="compra" type="number" min="0" step="0.01" required class="validate" [(ngModel)]="produto.precoEntrada" name="precoEntrada">
+                  <label class="black-text" for="compra">Preço de Compra</label>
                 </div>
                 <div class="input-field col s12 m6 l3">
-                  <input id="compra" type="number" class="validate" [(ngModel)]="produto.precoEntrada" [ngModelOptions]="{standalone: true}">
-                  <label class="black-text" for="compra">Preço de Compra</label>
+                  <input id="venda" type="number" [min]="compra.value" step="0.01" required class="validate" [(ngModel)]="produto.precoSaidaPadrao" name="precoSaidaPadrao">
+                  <label class="black-text" for="venda">Preço de Venda</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12 m4 l4">
-                  <input id="max" type="number" class="validate" [(ngModel)]="produto.maximo" [ngModelOptions]="{standalone: true}">
-                  <label class="black-text" for="max">Máximo</label>
-                </div>
-                <div class="input-field col s12 m4 l4">
-                  <input id="min" type="number" class="validate" [(ngModel)]="produto.minimo" [ngModelOptions]="{standalone: true}">
+                  <input #min id="min" type="number" min="0" required class="validate" [(ngModel)]="produto.minimo" name="minimo">
                   <label class="black-text" for="min">Mínimo</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input id="quantidade" type="number" min="0" required class="validate" [(ngModel)]="produto.quantidade" [ngModelOptions]="{standalone: true}">
+                  <input id="max" type="number" [min]="min.value" required  title="Maior que o mínimo." class="validate" [(ngModel)]="produto.maximo" name="maximo">
+                  <label class="black-text" for="max">Máximo</label>
+                </div>
+                <div class="input-field col s12 m4 l4">
+                  <input id="quantidade" type="number" min="0" required class="validate" [(ngModel)]="produto.quantidade" name="quantidade">
                   <label class="black-text" for="quantidade">Quantidade</label>
                 </div>
               </div>

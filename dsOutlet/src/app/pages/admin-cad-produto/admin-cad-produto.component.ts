@@ -16,7 +16,7 @@ export class AdminCadProdutoComponent implements OnInit {
   private isAdmin: boolean = false;
   private usuarioId: string;
 
-  produto: Produto = new Produto();
+  private produto: Produto = new Produto();
 
   constructor(private router: Router, private userService: UserService, private produtosService: ProdutosService) {
     let stats = this.userService.userStats();
@@ -32,29 +32,21 @@ export class AdminCadProdutoComponent implements OnInit {
     }
   }
 
-  teste(){
-    console.log("teste");
-  }
-
-  cadastrarProduto() {
-    if (this.produto.marca == null || this.produto.modelo == null || this.produto.tamanho == null) {
-      toast('Favor Preencher Campos Obrigatórios!', 4000, 'rounded');
+  private cadastrarProduto() {
+    if (this.produto.marca == null || this.produto.modelo == null || this.produto.tamanho == null || this.produto.quantidade < 0) {
+      toast('Favor Preencher os Campos Corretamente!', 4000, 'rounded');
     } else {
-      if (this.produto.quantidade >= 0) {
-        this.produto.usuarioId = this.usuarioId;
-        this.produtosService.newProduto(this.produto).then(res => {
-          if (res) {
-            console.log(res);
-            toast('Produto foi cadastrado!', 4000, 'rounded');
-            this.produto = new Produto();
-            this.router.navigate(['/gerenciador/estoque']);
-          } else {
-            toast('Produto já existe no estoque', 4000, 'rounded');
-          }
-        });
-      }else{
-        toast('Quantidade Inválida', 4000, 'rounded');
-      }
+      this.produto.usuarioId = this.usuarioId;
+      this.produtosService.newProduto(this.produto).then(res => {
+        if (res) {
+          console.log(res);
+          toast('Produto foi cadastrado!', 4000, 'rounded');
+          this.produto = new Produto();
+          this.router.navigate(['/gerenciador/estoque']);
+        } else {
+          toast('Produto já existe no estoque', 4000, 'rounded');
+        }
+      });
     }
   }
 
