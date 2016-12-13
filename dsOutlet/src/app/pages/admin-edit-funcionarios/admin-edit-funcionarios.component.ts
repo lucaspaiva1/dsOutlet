@@ -71,15 +71,4 @@ export class AdminEditFuncionariosComponent implements OnInit {
     }
   }
 
-  excluir() {
-    this.userService.deleteUser(this.usuario.id).then(res => {
-      if (res) {
-        toast('Excluído!', 4000, 'rounded');
-        this.router.navigate(['/gerenciador/funcionarios']);
-      } else {
-        toast('Não foi possível excluir', 4000, 'rounded');
-      }
-    });
-  }
-
 }

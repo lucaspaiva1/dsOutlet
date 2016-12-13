@@ -33,7 +33,7 @@
               </div>
               <div class="row">
                 <div class="input-field col s12 m6 l6  black-text ">
-                  <select materialize="material_select" [(ngModel)]="produto.tamanho" [ngModelOptions]="{standalone: true}">
+                  <select materialize="material_select" [(ngModel)]="produto.tamanho" [ngModelOptions]="{standalone: true}" required>
                       <option value="" disabled selected>Tamanho</option>
                       <option value="PP">PP</option>
                       <option value="P">P</option>
