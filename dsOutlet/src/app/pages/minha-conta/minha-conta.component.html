@@ -20,7 +20,7 @@
         <div>
           <!-- Formulário -->
           <div class="row">
-            <form class="col s12 black-text">
+            <form (ngSubmit)="editar()" class="col s12 black-text">
               <div class="row">
                 <div class="input-field col s12 m6 l6">
                   <i class="material-icons prefix">perm_identity</i>
@@ -38,11 +38,11 @@
                   <label class="black-text" for="max">Nome de usuários</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input placeholder="" id="senha" type="text" class="validate" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="senha" type="text" required class="validate" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
                   <label class="black-text" for="senha">Senha</label>
                 </div>
                 <div class="input-field col s12 m4 l4">
-                  <input placeholder="" id="confirmaSenha" type="text" class="validate" [(ngModel)]="confirmaSenha" [ngModelOptions]="{standalone: true}">
+                  <input placeholder="" id="confirmaSenha" type="text" required class="validate" [(ngModel)]="confirmaSenha" [ngModelOptions]="{standalone: true}">
                   <label class="black-text" for="confirmaSenha">Repita Senha</label>
                 </div>
               </div>
@@ -52,9 +52,9 @@
                   <a *ngIf="usuario.id!=id" (click)="excluir()" class="btn waves-effect waves-light red darken-4">Excluir
                     <i class="material-icons right">delete</i>
                   </a>
-                  <a (click)="editar()" class="btn waves-effect waves-light blue darken-4">Salvar
-                      <i class="material-icons right">send</i>
-                    </a>
+                  <button type="submit" name="submit" class="btn waves-effect waves-light blue darken-4">Salvar
+                    <i class="material-icons right">send</i>
+                  </button>
                 </div>
               </div>
             </form>

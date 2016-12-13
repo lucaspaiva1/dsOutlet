@@ -42,7 +42,6 @@ export class AdminEditClientesComponent implements OnInit {
           } else {
             this.router.navigate(['/gerenciador']);
           }
-          console.log(this.cliente);
         });
       })
     }
@@ -55,7 +54,6 @@ export class AdminEditClientesComponent implements OnInit {
   }
 
   change(event) {
-    console.log(event);
     this.cliente.telefone = event;
   }
 
@@ -79,26 +77,25 @@ export class AdminEditClientesComponent implements OnInit {
   }
 
   private editar() {
-    this.clientesService.editCliente(this.cliente).then(res => {
-      if (res) {
-        toast('Editado com sucesso!', 4000, 'rounded');
-        this.router.navigate(['/gerenciador/clientes']);
-      } else {
-
-      }
-    });
+    if (this.cliente.nome == null || this.cliente.cpf == null || this.cliente.telefone == null || this.cliente.endereco.cidade == null || this.cliente.endereco.uf == null || this.cliente.endereco.logradouro == null) {
+      toast('Faltam Informações!', 4000, 'rounded');
+    } else {
+      this.clientesService.editCliente(this.cliente).then(res => {
+        if (res) {
+          toast('Editado com sucesso!', 4000, 'rounded');
+          this.router.navigate(['/gerenciador/clientes']);
+        } else {
+          toast('Ocorreu um erro', 4000, 'rounded');
+        }
+      });
+    }
   }
 
   private pagamento(divida) {
-    console.log("enviando");
-    console.log(divida);
     this.clientesService.pagamentoPendencia(divida).then(res => {
-    console.log("recebendo");      
-    console.log(res);      
       let index = this.dividas.indexOf(divida);
       this.dividas[index] = res;
       this.dividas[index].valorRecebido = 0;
-
     });
   }
 

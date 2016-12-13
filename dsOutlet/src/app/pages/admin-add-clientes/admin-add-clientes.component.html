@@ -20,61 +20,73 @@
         <div>
           <!-- Formulário -->
           <div class="row">
-            <form class="col s12 black-text">
+            <form (ngSubmit)="adicionar()" class="col s12 black-text">
+
               <div class="row">
+
                 <div class="input-field col s12 m6 l8 black-text">
                   <i class="material-icons prefix">perm_identity</i>
-                  <input id="name" type="text" class="validate black-text" [(ngModel)]="cliente.nome" [ngModelOptions]="{standalone: true}">
+                  <input id="name" type="text" required class="validate black-text" [(ngModel)]="cliente.nome" name="nome">
                   <label class="black-text" for="first_name">Nome Completo</label>
                 </div>
+
                 <div class="input-field col s12 m6 l4 black-text">
                   <cpf (cpf)="changeCPF($event)"></cpf>
                 </div>
               </div>
 
               <div class="row">
+
                 <div class="input-field col s12 m6 l4 black-text">
                   <label class="black-text" for="date">Nascimento</label><br>
-                  <input id="date" type="date" class="validate black-text" [(ngModel)]="cliente.nascimento" [ngModelOptions]="{standalone: true}">
-                </div>
-                <br>
+                  <input id="date" type="date" required class="validate black-text" [(ngModel)]="cliente.nascimento" [ngModelOptions]="{standalone: true}">
+                </div><br>
+
                 <div class="input-field col s12 m6 l8 black-text">
-                  <input id="email" type="email" class="validate black-text" [(ngModel)]="cliente.email" [ngModelOptions]="{standalone: true}">
+                  <input id="email" type="email" required class="validate black-text" [(ngModel)]="cliente.email" name="email">
                   <label class="black-text" for="email">Email</label>
                 </div>
               </div>
 
               <div class="row">
+
                 <div class="input-field col s12 m6 l4 black-text">
                   <telefone id="telefone" (tel)="change($event)"></telefone>
                 </div>
+
                 <div class="input-field col s12 m12 l4">
-                  <input id="cidade" type="text" class="validate" [(ngModel)]="endereco.cidade" [ngModelOptions]="{standalone: true}">
+                  <input id="cidade" type="text" required class="validate" [(ngModel)]="endereco.cidade" name="cidade">
                   <label class="black-text" for="cidade">Cidade</label>
                 </div>
+
                 <div class="input-field col s12 m12 l2">
-                  <input id="uf" type="text" class="validate" [(ngModel)]="endereco.uf" [ngModelOptions]="{standalone: true}">
+                  <input id="uf" type="text" pattern="[A-Za-z]{2}" required class="validate" [(ngModel)]="endereco.uf" name="uf">
                   <label class="black-text" for="uf">UF</label>
                 </div>
+
                 <div class="input-field col s12 m6 l2 black-text">
                   <cep (cep)="changeCEP($event)"></cep>
                 </div>
               </div>
+
               <div class="row">
+
                 <div class="input-field col s12 m12 l10">
-                  <input id="logradouro" type="text" class="validate" [(ngModel)]="endereco.logradouro" [ngModelOptions]="{standalone: true}">
+                  <input id="logradouro" type="text" required class="validate" [(ngModel)]="endereco.logradouro" name="endereco">
                   <label class="black-text" for="logradouro">Endereço</label>
                 </div>
+
                 <div class="input-field col s12 m12 l2">
-                  <input id="numero" type="text" class="validate" [(ngModel)]="endereco.numero" [ngModelOptions]="{standalone: true}">
+                  <input id="numero" type="text" required class="validate" [(ngModel)]="endereco.numero" name="numero">
                   <label class="black-text" for="numero">Número</label>
                 </div>
               </div>
+
               <div class="row">
                 <div class="right">
-                  <a (click)="adicionar()" class="btn waves-effect waves-light blue darken-4">Adicionar
+                  <button type="submit" name="submit" class="btn waves-effect waves-light blue darken-4">Adicionar
                       <i class="material-icons right">send</i>
-                    </a>
+                  </button>
                 </div>
               </div>
             </form>

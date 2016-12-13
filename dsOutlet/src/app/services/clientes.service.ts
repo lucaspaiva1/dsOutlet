@@ -67,14 +67,13 @@ export class ClientesService {
 
   editCliente(cliente: Cliente) {
     return this.http
-      .post('http://localhost/dsoutlet/editCli.php', JSON.stringify({cliente}), { headers: this.headers })
+      .post('http://localhost/dsoutlet/editCli.php', JSON.stringify(cliente), { headers: this.headers })
       .toPromise()
       .then(res => this.extractData(res))
       .catch(this.handleError);
   }
 
   pagamentoPendencia(divida: Divida): Promise<any> {
-
     return this.http
       .post('http://localhost/dsoutlet/pagar.php', JSON.stringify({divida}), { headers: this.headers })
       .toPromise()
