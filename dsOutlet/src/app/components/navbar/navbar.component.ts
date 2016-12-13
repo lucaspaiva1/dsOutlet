@@ -14,7 +14,7 @@ export class NavbarComponent {
 
   @Input() isAdmin: boolean;
   @Input() isLogado: boolean;
-  modalActions = new EventEmitter<string|MaterializeAction>();
+  modalActions = new EventEmitter<string | MaterializeAction>();
   private login: string;
   private senha: string;
   private url: string;
@@ -25,18 +25,17 @@ export class NavbarComponent {
   }
 
   private fazerLogin(): void {
-    if(!(this.login == null || this.senha == null)){
+    if (!(this.login == null || this.senha == null)) {
       this.userService.login(this.login, this.senha)
-      .then(sucess => {
-        if(sucess == true){
-            this.modalActions.emit({action:"modal",params:['close']});
+        .then(res => {
+          if (res.type == true) {
+            this.modalActions.emit({ action: "modal", params: ['close'] });
             this.router.navigate(['/gerenciador']);
-        }else{
-          toast('Login ou senha incorretos', 4000, 'rounded');
-        }
-      });
-    }else{
-      toast('Login ou senha incorretos', 4000, 'rounded');
+          }
+          toast(res.message, 4000, 'rounded');
+        });
+    } else {
+      toast('Preencha os campos', 4000, 'rounded');
     }
   }
 
@@ -49,10 +48,10 @@ export class NavbarComponent {
   }
 
   private enviar(): void {
-    this.esqueciSenha.enviaEmail(this.email).then(res=>{
-      if(res){
+    this.esqueciSenha.enviaEmail(this.email).then(res => {
+      if (res) {
         toast('Email Enviado', 4000, 'rounded');
-      }else{
+      } else {
         toast('Email não Cadastrado', 4000, 'rounded');
       }
     });

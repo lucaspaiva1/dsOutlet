@@ -14,7 +14,7 @@ export class UserService {
   }
 
   /*Usuario envia dados para solicitar login atraves de um POST*/
-  login(login: string, senha: string): Promise<boolean> {
+  login(login: string, senha: string): Promise<any> {
 
     /*dados sao enviados para api*/
     return this.http
@@ -28,14 +28,22 @@ export class UserService {
   private extractLoginData(res: Response) {
     let usuario = res.json();
     console.log(usuario);
+    let resposta = {type: false , message: ""};
     /*se voltar false é pq nao foi possivel efetuar login*/
-    if (usuario != false) {
+    if (usuario == false) {
+      resposta.message = "Usuario ou Senha Incorretos";
+      return resposta;
+    /*se voltar desativado é pq nao usuario nao está ativo*/
+    } else if (usuario == "desativado") {
+      resposta.message = "Usuario desativado";
+      return resposta;
+    } else {
       usuario.admin = usuario.acesso == 'A' ? true : false; //os valores booleanos do banco sao 0 (false) ou 1 (true)
       usuario.logado = true;
       let logado = this.storage.set('user', usuario);
-      return true
-    } else {
-      return false;
+      resposta.type = true;
+      resposta.message = "Logado com Sucesso!";
+      return resposta;
     }
   }
 
@@ -111,20 +119,20 @@ export class UserService {
   private extractEditData(res: Response) {
     let data = res.json();
     console.log(data);
-    let retorno = {type: false, message: ''};
-    if(data == "login"){
+    let retorno = { type: false, message: '' };
+    if (data == "login") {
       retorno.type = false;
       retorno.message = 'Este Usuário já existe no sitema';
       return retorno;
-    }else if(data == 'nome'){
+    } else if (data == 'nome') {
       retorno.type = false;
       retorno.message = 'Este Nome já existe no sitema';
       return retorno;
-    }else if (data == true){
+    } else if (data == true) {
       retorno.type = true;
       retorno.message = 'Editado com sucesso!';
       return retorno;
-    }else{
+    } else {
       retorno.type = false;
       retorno.message = 'Ocorreu um erro!';
       return retorno;
@@ -133,7 +141,7 @@ export class UserService {
 
   getUser(id: number): Promise<User> {
     return this.getUsers()
-               .then(users => users.find(user => user.id === id));
+      .then(users => users.find(user => user.id === id));
   }
 
   /*método chamado quando ocorre um erro no acesso a api php*/
@@ -162,7 +170,7 @@ export class UserService {
 
   }
 
-    /*Método que retorna o relatório de vendas e estoque*/
+  /*Método que retorna o relatório de vendas e estoque*/
   getRelatorio(): Promise<any[]> {
     return this.http.get('http://localhost/dsoutlet/busca.php?relatorio')
       .toPromise()
@@ -170,9 +178,9 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  getRelatorioFiltro(tipo: string, inicio:Date, fim:Date): Promise<any> {
+  getRelatorioFiltro(tipo: string, inicio: Date, fim: Date): Promise<any> {
     return this.http
-      .post('http://localhost/dsoutlet/relatorio.php', JSON.stringify({tipo, inicio, fim}), { headers: this.headers })
+      .post('http://localhost/dsoutlet/relatorio.php', JSON.stringify({ tipo, inicio, fim }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractEditData(res))
       .catch(this.handleError);

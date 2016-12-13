@@ -29,7 +29,7 @@
 				if ($ativo == 0)
 					echo json_encode($dados);
 				else
-					echo json_encode("desativo");
+					echo json_encode("desativado");
 			}
 	}
 ?>
