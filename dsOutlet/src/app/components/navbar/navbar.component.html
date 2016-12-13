@@ -39,8 +39,8 @@
     </li>
     <li class="divider"></li>
     <li class="divider"></li>
-    <li *ngIf="isLogado" [class.active]="url == 'gerenciador/minha-conta'"><a routerLink="/gerenciador/minha-conta"  class="collection-item">Minha Conta</a></li>
-    <li *ngIf="isLogado" [class.active]="url == '/gerenciador/estoque'"><a routerLink="/estoque" class="collection-item">Estoque</a></li>
+    <li *ngIf="isLogado" [class.active]="url == 'gerenciador/minha-conta'"><a routerLink="/gerenciador/minha-conta" class="collection-item">Minha Conta</a></li>
+    <li *ngIf="isLogado" [class.active]="url == '/gerenciador/estoque'"><a routerLink="/gerenciador/estoque" class="collection-item">Estoque</a></li>
     <li *ngIf="(isLogado && isAdmin)" [class.active]="url == 'gerenciador/relatorios'"><a routerLink="/gerenciador/relatorios" class="collection-item">Relatórios</a></li>
     <li *ngIf="(isLogado && isAdmin)" [class.active]="url == 'gerenciador/funcionarios'"><a routerLink="/gerenciador/funcionarios" class="collection-item">Gerenciar Funcionários</a></li>
     <li *ngIf="isLogado" [class.active]="url == '/gerenciador/clientes'"><a routerLink="/gerenciador/clientes" class="collection-item">Gerenciar Clientes</a></li>
@@ -55,11 +55,11 @@
     <form class="">
       <div class="input-field white-text campo">
         <i class="material-icons prefix">perm_identity</i>
-        <input id="usuario" type="text" class="validate white-text" [(ngModel)]="login" [ngModelOptions]="{standalone: true}">
+        <input id="usuario" type="text" class="validate white-text" [(ngModel)]="login" name="login">
         <label class="white-text" for="usuario">Nome de Usuário</label>
       </div>
       <div class="input-field  campo">
-        <input id="senha" type="password" class="validate white-text" [(ngModel)]="senha" [ngModelOptions]="{standalone: true}">
+        <input id="senha" type="password" class="validate white-text" [(ngModel)]="senha" name="senha">
         <label class="white-text" for="senha">Senha</label>
       </div>
     </form>
@@ -77,7 +77,7 @@
     <form class="">
       <div class="input-field white-text campo">
         <i class="material-icons prefix">perm_identity</i>
-        <input id="usuario" type="text" class="validate white-text" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+        <input id="usuario" type="text" class="validate white-text" [(ngModel)]="email" name="email">
         <label class="white-text" for="usuario">Email</label>
       </div>
       <div class="">

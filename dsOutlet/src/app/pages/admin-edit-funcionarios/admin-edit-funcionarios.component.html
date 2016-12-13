@@ -84,7 +84,7 @@
                   <telefone [valor]="usuario.telefone" (tel)="change($event)"></telefone>
                 </div>
 
-                <div *ngIf="usuario.acesso == A" class="input-field col s4 m4 l3 black-text">
+                <div *ngIf="usuario.acesso == A" class="input-field col s12 m4 l3 black-text">
                   <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="A">Administrador</option>
                     <option value="C">Vendedor</option>
@@ -93,7 +93,7 @@
                   <label class="black-text" for="acesso">Privilégio</label>
                 </div>
 
-                <div *ngIf="usuario.acesso != A" class="input-field col s4 m4 l3 black-text">
+                <div *ngIf="usuario.acesso != A" class="input-field col s12 m4 l3 black-text">
                   <select materialize="material_select" [(ngModel)]="usuario.acesso" [ngModelOptions]="{standalone: true}">
                     <option value="C">Vendedor</option>
                     <option value="A">Administrador</option>
@@ -102,7 +102,7 @@
                   <label class="black-text" for="acesso">Privilégio</label>
                 </div>
 
-                <div *ngIf="usuario.ativo == 0" class="input-field col s4 m4 l3 black-text">
+                <div *ngIf="usuario.ativo == 0" class="input-field col s12 m4 l3 black-text">
                   <select materialize="material_select" [(ngModel)]="usuario.ativo" [ngModelOptions]="{standalone: true}">
                     <option value="0">Ativo</option>
                     <option value="1">Desativado</option>
@@ -111,7 +111,7 @@
                   <label class="black-text" for="acesso">Ativação</label>
                 </div>
 
-                <div *ngIf="usuario.ativo != 0" class="input-field col s4 m4 l3 black-text">
+                <div *ngIf="usuario.ativo != 0" class="input-field col s12 m4 l3 black-text">
                   <select materialize="material_select" [(ngModel)]="usuario.ativo" [ngModelOptions]="{standalone: true}">
                     <option value="1">Desativado</option>
                     <option value="0">Ativo</option>

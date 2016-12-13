@@ -27,7 +27,6 @@ export class UserService {
   /*Método que converte o arquivo json recebido da api php*/
   private extractLoginData(res: Response) {
     let usuario = res.json();
-    console.log(usuario);
     let resposta = {type: false , message: ""};
     /*se voltar false é pq nao foi possivel efetuar login*/
     if (usuario == false) {
@@ -60,7 +59,6 @@ export class UserService {
 
   /*método que extrai os dados do json recebido do backend*/
   private extractAddData(res: Response) {
-    console.log(res);
     let data = res.json();
     let retorno = { type: 0, message: '' };
     if (data == "login") {
@@ -157,7 +155,6 @@ export class UserService {
 
   /*Retorna um array de boolean ->primeiro index é logado, segundo é admin*/
   userStats(): any[] {
-    console.log(this.user);
     if (this.user == null) {
       return [false, false, 0];
     }
