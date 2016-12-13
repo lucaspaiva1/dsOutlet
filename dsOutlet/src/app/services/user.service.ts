@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { LocalStorageService } from 'angular-2-local-storage';
 import { User } from '../model/user';
 
 @Injectable()
 export class UserService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
+  private user: User = null;
 
-  constructor(private storage: LocalStorageService, private http: Http) {
+  constructor(private http: Http) {
 
   }
 
@@ -40,7 +40,8 @@ export class UserService {
     } else {
       usuario.admin = usuario.acesso == 'A' ? true : false; //os valores booleanos do banco sao 0 (false) ou 1 (true)
       usuario.logado = true;
-      let logado = this.storage.set('user', usuario);
+      this.user = usuario;
+
       resposta.type = true;
       resposta.message = "Logado com Sucesso!";
       return resposta;
@@ -118,7 +119,6 @@ export class UserService {
 
   private extractEditData(res: Response) {
     let data = res.json();
-    console.log(data);
     let retorno = { type: false, message: '' };
     if (data == "login") {
       retorno.type = false;
@@ -152,22 +152,21 @@ export class UserService {
 
   /*método que remove do cache os dados do usuario depois do logout*/
   logout(): void {
-    this.storage.remove('user');
+    this.user = null;
   }
 
   /*Retorna um array de boolean ->primeiro index é logado, segundo é admin*/
   userStats(): any[] {
-    let user = <User>this.storage.get('user');
-    if (user == null) {
+    console.log(this.user);
+    if (this.user == null) {
       return [false, false, 0];
     }
-    return [user.logado, user.admin, user.id];
+    return [this.user.logado, this.user.admin, this.user.id];
   }
 
   /*Retorna um array de boolean ->primeiro index é logado, segundo é admin*/
   myProfile(): User {
-    return <User>this.storage.get('user');
-
+    return this.user;
   }
 
   /*Método que retorna o relatório de vendas e estoque*/
