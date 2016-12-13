@@ -162,4 +162,20 @@ export class UserService {
 
   }
 
+    /*Método que retorna o relatório de vendas e estoque*/
+  getRelatorio(): Promise<any[]> {
+    return this.http.get('http://localhost/dsoutlet/busca.php?relatorio')
+      .toPromise()
+      .then(response => this.extractGetData(response))
+      .catch(this.handleError);
+  }
+
+  getRelatorioFiltro(tipo: string, inicio:Date, fim:Date): Promise<any> {
+    return this.http
+      .post('http://localhost/dsoutlet/relatorio.php', JSON.stringify({tipo, inicio, fim}), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractEditData(res))
+      .catch(this.handleError);
+  }
+
 }

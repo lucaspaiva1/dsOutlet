@@ -129,3 +129,7 @@ div.google-maps {
   width: 100%;
   height: 150px;
 }
+
+.tabs .indicator{
+    background-color: #64b5f6 !important ;
+}
