@@ -20,6 +20,7 @@
 		$acesso   = $request->acesso;
 		$admissao = $request->dataAdmissao;
 		$telefone = $request->telefone;
+		$ativo 	  = $request->ativo;
 				
 		$sql = "SELECT * FROM usuario WHERE id = '$id'";
 		$result = $con->query($sql);
@@ -55,7 +56,7 @@
 			} else if ($isNome){
 				echo json_encode("nome");
 			} else {
-				$sql = "UPDATE usuario SET nome = '$nome', email = '$email', login = '$login', senha = '$senha', acesso = '$acesso', dataAdmissao = '$admissao', telefone = '$telefone' WHERE id = '$id'";
+				$sql = "UPDATE usuario SET nome = '$nome', email = '$email', login = '$login', senha = '$senha', acesso = '$acesso', dataAdmissao = '$admissao', telefone = '$telefone', ativo = '$ativo' WHERE id = '$id'";
 				$con->query($sql);
 				echo json_encode(true);
 			}
