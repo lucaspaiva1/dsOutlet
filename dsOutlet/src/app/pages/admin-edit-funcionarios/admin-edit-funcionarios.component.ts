@@ -36,7 +36,6 @@ export class AdminEditFuncionariosComponent implements OnInit {
   }
 
   change(event) {
-    console.log(event);
     this.usuario.telefone = event;
   }
 
@@ -54,20 +53,17 @@ export class AdminEditFuncionariosComponent implements OnInit {
   }
 
   editar() {
-    if (this.confirmaSenha != this.usuario.senha) {
-      toast('Senhas incorretas!', 4000, 'rounded');
-
+    if (this.usuario.nome == null || this.usuario.nome == "" || this.usuario.login == null || this.usuario.senha == null || this.usuario.senha == "" || this.usuario.acesso == "" || this.usuario.telefone == "" || this.usuario.email == null) {
+      toast('Estão faltando dados!', 4000, 'rounded');
+    } else if (this.confirmaSenha != this.usuario.senha) {
+      toast('Senha não correspondem!', 4000, 'rounded');
     } else {
-      if (this.usuario.nome == null || this.usuario.nome == "" || this.usuario.login == null || this.usuario.senha == null || this.usuario.senha == "" || this.usuario.acesso == "" || this.usuario.email == null) {
-        toast('Falta dados!', 4000, 'rounded');
-      } else {
-        this.userService.editUser(this.usuario).then(res => {
-          toast(res.message, 4000, 'rounded');
-          if (res.type === true) {
-            this.router.navigate(['/gerenciador/funcionarios']);
-          }
-        });
-      }
+      this.userService.editUser(this.usuario).then(res => {
+        toast(res.message, 4000, 'rounded');
+        if (res.type === true) {
+          this.router.navigate(['/gerenciador/funcionarios']);
+        }
+      });
     }
   }
 
