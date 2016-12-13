@@ -18,7 +18,7 @@
 			}
 		} else if (isset($_GET["prod"])){
 			if ($_GET["prod"] == ""){
-				$sql = "SELECT min(id) id, p.marca, p.modelo, p.tamanho,sum(quantidade) quantidade, sum(quantidade*precoEntrada)/sum(quantidade) precoEntrada, p.precoSaidaPadrao, p.maximo, p.minimo, p.dataUltimaCompra FROM produto p group by p.marca, p.modelo, p.tamanho;";
+				$sql = "SELECT * FROM produto ORDER BY marca ASC";
 				$result = $con->query($sql);
 				while($row=$result->fetch_assoc()){
 					$maxx   = $row['maximo'];
