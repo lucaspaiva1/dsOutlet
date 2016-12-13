@@ -33,9 +33,7 @@ export class AdminCadProdutoComponent implements OnInit {
   }
 
   private cadastrarProduto() {
-    if (this.produto.marca == null || this.produto.modelo == null || this.produto.tamanho == null || this.produto.quantidade < 0) {
-      toast('Favor Preencher os Campos Corretamente!', 4000, 'rounded');
-    } else {
+    if (this.produto.marca != null && this.produto.modelo != null && this.produto.tamanho != null && this.produto.quantidade < 0) {
       this.produto.usuarioId = this.usuarioId;
       this.produtosService.newProduto(this.produto).then(res => {
         if (res) {
