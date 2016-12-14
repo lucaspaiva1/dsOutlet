@@ -13,8 +13,8 @@ export class RelatorioComponent {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
-  private inicio: Date = new Date();
-  private fim: Date = new Date();
+  private inicio: Date;
+  private fim: Date;
   private tipo: string = "3";//inicializando com entrada e saída entrada/saida
   private venda: Venda[] = [];
   private estoque: Estoque[] = [];
@@ -27,7 +27,7 @@ export class RelatorioComponent {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
-    this.getVendaEstoque();
+    this.filtrar();
 
   }
 
@@ -38,12 +38,5 @@ export class RelatorioComponent {
     });
 
   }
-
-  getVendaEstoque() {
-    let relatorio = this.userService.getRelatorio();
-    this.venda = relatorio[0];
-    this.estoque = relatorio[1];
-  }
-
 
 }
