@@ -32,7 +32,11 @@ export class RelatorioComponent {
   }
 
   filtrar() {
+    console.log(this.tipo);
+    console.log(this.inicio);
+    console.log(this.fim);
     this.userService.getRelatorioFiltro(this.tipo, this.inicio, this.fim).then(res => {
+      console.log("chegou" + res);
       this.venda = res[0];
       this.estoque = res[1];
     });
