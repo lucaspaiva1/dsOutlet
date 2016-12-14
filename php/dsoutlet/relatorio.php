@@ -216,6 +216,13 @@
 			}
 		}
 		
+		for ($i = 0; $i < count($estoque); $i++){
+			if ($estoque[$i]['tipo'] == 'e')
+				$estoque[$i]['tipo'] = "Entrada";
+			else if ($estoque[$i]['tipo'] == 's')
+				$estoque[$i]['tipo'] = "Saida";
+		}
+		
 		$dados = array();
 		array_push($dados, $venda, $estoque);
 		echo json_encode($dados);

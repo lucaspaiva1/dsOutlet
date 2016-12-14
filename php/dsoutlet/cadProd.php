@@ -22,7 +22,7 @@
 		$min	    = $request->minimo;
 		$usuarioID  = $request->usuarioId;
 		
-		date_default_timezone_set('America/Sao_Paulo');
+		date_default_timezone_set('America/Bahia');
 		$today = date('Y-m-d H:i:s');
 		
 		$sql = "SELECT * FROM produto WHERE marca = '$marca' AND modelo = '$modelo' AND tamanho = '$tamanho' AND precoEntrada = '$precoE'";
@@ -33,7 +33,7 @@
 				$sql = "INSERT INTO produto (marca, modelo, tamanho, quantidade, precoEntrada, precoSaidaPadrao, maximo, minimo, dataUltimaCompra) VALUES ('$marca', '$modelo', '$tamanho', '$quantidade','$precoE', '$precoS', '$max', '$min', '$today')";
 				$con->query($sql);
 				
-				$sql = "SELECT * FROM produto WHERE marca = '$marca' AND modelo = '$modelo' AND tamanho = '$tamanho' AND precoEntrada = '$precoE'";
+				$sql = "SELECT * FROM produto WHERE marca = '$marca' AND modelo = '$modelo' AND tamanho = '$tamanho' AND quantidade = '$quantidade' AND precoEntrada = '$precoE' AND precoSaidaPadrao = '$precoS' AND maximo = '$max' AND minimo = '$min' AND dataUltimaCompra = '$today'";
 				$result = $con->query($sql);
 				$dados  = $result->fetch_assoc();
 				$prodID = $dados['id'];
