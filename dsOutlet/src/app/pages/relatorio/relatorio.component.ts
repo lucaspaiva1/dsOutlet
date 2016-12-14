@@ -14,8 +14,8 @@ export class RelatorioComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
-  private inicio: string = null;
-  private fim: string = null;
+  private inicio: string = "";
+  private fim: string = "";
   private tipo: string = "3";//inicializando com entrada e saída entrada/saida
   private venda: Venda[] = [];
   private estoque: Estoque[] = [];
@@ -40,10 +40,11 @@ export class RelatorioComponent implements OnInit {
   filtrar() {
     let inicio = this.inicio;
     let fim = this.fim;
-    if (this.inicio == null) {
+    console.log(this.fim);
+    if (this.inicio== "") {
       inicio = "null";
     }
-    if (this.fim == null) {
+    if (this.fim== "") {
       fim = "null";
     }
     this.relatorioService.getRelatorioFiltro(this.tipo, inicio, fim).then(res => {
