@@ -90,7 +90,7 @@ import { CepComponent } from './components/cep/cep.component';
     {
       provide: LOCAL_STORAGE_SERVICE_CONFIG, useValue: {
         prefix: 'my-app',
-        storageType: 'localStorage'
+        storageType: 'sessionStorage'
         //localStorage: quando fecharo browser os dados permanecem salvos;
         //sessiosStorage: se fechar perde os dados
       }

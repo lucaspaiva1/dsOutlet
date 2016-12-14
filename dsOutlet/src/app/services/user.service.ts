@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { User } from '../model/user';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Injectable()
 export class UserService {
@@ -9,7 +10,7 @@ export class UserService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
   private user: User = null;
 
-  constructor(private http: Http) {
+  constructor(private storage: LocalStorageService, private http: Http) {
 
   }
 
