@@ -65,7 +65,7 @@
       Logo da DSOUTLET
     </header>
     <div class='body'>
-      <h3>Olá $Cliente,</h3>
+      <h3>Olá $nome,</h3>
       <p>Foi solicitado recentemente a recuperação dos dados de acesso ao gerenciador <a class='link' href=''>DsOutlet</a>.</p>
       <br>
       Seguem os dados:
@@ -87,7 +87,7 @@
   </html>";
 				
 				$header = "MIME-Version: 1.0\n";
-				$header .= "Content-type: text/html; charset=iso-8859-1\n";
+				$header .= "Content-type: text/html; charset=UTF-8 charset=iso-8859-1\n";
 				$header .= "FROM: no-reply@dsoutlet.com\n";
 				mail($email, $assunto, $mensagem, $header);
 				echo json_encode(true);
