@@ -86,9 +86,9 @@ export class VendasComponent implements OnInit {
         compraAtual.atualizar();
         this.compra.push(compraAtual);
         this.valorTotalConta = this.valorTotalConta + (+compraAtual.valor);
-        for (let i = 0; i < this.produtos.length;i++) {
-            if(this.produtos[i].id==compraAtual.idProduto)
-                this.produtos[i].quantidade=(+this.produtos[i].quantidade) - (+this.quantidade);
+        for (let i = 0; i < this.produtos.length; i++) {
+            if (this.produtos[i].id == compraAtual.idProduto)
+                this.produtos[i].quantidade = (+this.produtos[i].quantidade) - (+this.quantidade);
         }
         this.itemSelecionado = new Produto();
         this.quantidade = 0;
@@ -99,6 +99,7 @@ export class VendasComponent implements OnInit {
 
     limpar() {
         this.search = "";
+        console.log(this.detectar_mobile());
     }
 
     limparCliente() {
@@ -121,89 +122,105 @@ export class VendasComponent implements OnInit {
 
     }
 
-    removerProduto(item) {
-        console.log(item);
-        let index = this.compra.indexOf(item);
-        this.compra.splice(index, 1);
-        this.valorTotalConta = this.valorTotalConta - (+item.valor);
-        for (let i = 0; i < this.produtos.length;i++) {
-            if(this.produtos[i].id==item.idProduto)
-                this.produtos[i].quantidade=(+this.produtos[i].quantidade) + (+item.quantidade);
-        }
-        this.valorTotal = this.valorTotalConta.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-        
+    detectar_mobile() {
+    if (navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+    ) {
+        return true;
     }
-
-    valorAPagar() {
-        this.divida.valor = this.valorTotalConta;
-        if (this.desconto == "R$") {
-            this.divida.valor = (+this.divida.valor) - (+this.quantidadeDesconto);
-        } else {
-            this.divida.valor = (+this.divida.valor) - (+this.divida.valor) * (+this.quantidadeDesconto) / 100;
-        }
-        this.divida.atualizar();
-        this.getClientes();
-    }
-    tipoAPagar(valor) {
-        this.desconto = valor;
-        this.valorAPagar();
-    }
-
-    private getClientes() {
-        this.loading = true;
-        this.clientesService.getClientes().then(res => {
-            this.clientes = res;
-            this.loading = false;
-        });
-
-    }
-
-    selecionarCliente(cliente) {
-        this.clienteComprador = cliente;
-        console.log(this.clienteComprador.id);
-    }
-
-    adicionarCliente() {
-        if (this.cliente.nome == null || this.cliente.cpf == null || this.cliente.telefone == null || this.endereco.cidade == null || this.endereco.uf == null || this.endereco.logradouro == null) {
-            toast('Faltam Informações!', 4000, 'rounded');
-        } else {
-            this.cliente.endereco = this.endereco;
-            this.clientesService.addCliente(this.cliente).then(res => {
-                if (res) {
-                    toast('Cliente foi cadastrado!', 4000, 'rounded');
-                    this.cliente = new Cliente();
-                    this.endereco = new Endereco();
-                    this.getClientes();
-                } else {
-                    toast('Cliente já cadastrado', 4000, 'rounded');
-                }
-            });
-        }
-        this.valorAPagar()
-    }
-
-    podeConcluir(): boolean {
-        let data = new Date();
-        if (this.divida.tipoVenda != "") {
-            if (this.divida.tipoVenda == "4") {
-                if (this.clienteComprador.nome == "" || this.divida.valorPorParcela < 1 || this.divida.vencimento == null) {
-                    return false;
-                }
-            }
-            return true;
-        }
+    else {
         return false;
     }
+}
 
-    concluirCompra() {
-        this.vendaService.concluirCompra(this.clienteComprador.id, this.idUser, this.compra, this.divida).then(res => {
-            if (res) {
-                toast('Compra efetuada com sucesso', 4000, 'rounded');
-                this.router.navigate(['/gerenciador/venda']);
-
-            } else {
-                toast('Compra não Cadastrado', 4000, 'rounded');
-            }
-        });;
+removerProduto(item) {
+    console.log(item);
+    let index = this.compra.indexOf(item);
+    this.compra.splice(index, 1);
+    this.valorTotalConta = this.valorTotalConta - (+item.valor);
+    for (let i = 0; i < this.produtos.length; i++) {
+        if (this.produtos[i].id == item.idProduto)
+            this.produtos[i].quantidade = (+this.produtos[i].quantidade) + (+item.quantidade);
     }
+    this.valorTotal = this.valorTotalConta.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+
+}
+
+valorAPagar() {
+    this.divida.valor = this.valorTotalConta;
+    if (this.desconto == "R$") {
+        this.divida.valor = (+this.divida.valor) - (+this.quantidadeDesconto);
+    } else {
+        this.divida.valor = (+this.divida.valor) - (+this.divida.valor) * (+this.quantidadeDesconto) / 100;
+    }
+    this.divida.atualizar();
+    this.getClientes();
+}
+tipoAPagar(valor) {
+    this.desconto = valor;
+    this.valorAPagar();
+}
+
+    private getClientes() {
+    this.loading = true;
+    this.clientesService.getClientes().then(res => {
+        this.clientes = res;
+        this.loading = false;
+    });
+
+}
+
+selecionarCliente(cliente) {
+    this.clienteComprador = cliente;
+    console.log(this.clienteComprador.id);
+}
+
+adicionarCliente() {
+    if (this.cliente.nome == null || this.cliente.cpf == null || this.cliente.telefone == null || this.endereco.cidade == null || this.endereco.uf == null || this.endereco.logradouro == null) {
+        toast('Faltam Informações!', 4000, 'rounded');
+    } else {
+        this.cliente.endereco = this.endereco;
+        this.clientesService.addCliente(this.cliente).then(res => {
+            if (res) {
+                toast('Cliente foi cadastrado!', 4000, 'rounded');
+                this.cliente = new Cliente();
+                this.endereco = new Endereco();
+                this.getClientes();
+            } else {
+                toast('Cliente já cadastrado', 4000, 'rounded');
+            }
+        });
+    }
+    this.valorAPagar()
+}
+
+podeConcluir(): boolean {
+    let data = new Date();
+    if (this.divida.tipoVenda != "") {
+        if (this.divida.tipoVenda == "4") {
+            if (this.clienteComprador.nome == "" || this.divida.valorPorParcela < 1 || this.divida.vencimento == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+    return false;
+}
+
+concluirCompra() {
+    this.vendaService.concluirCompra(this.clienteComprador.id, this.idUser, this.compra, this.divida).then(res => {
+        if (res) {
+            toast('Compra efetuada com sucesso', 4000, 'rounded');
+            this.router.navigate(['/gerenciador/venda']);
+
+        } else {
+            toast('Compra não Cadastrado', 4000, 'rounded');
+        }
+    });;
+}
 }

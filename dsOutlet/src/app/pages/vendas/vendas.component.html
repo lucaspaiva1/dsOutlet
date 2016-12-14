@@ -154,7 +154,7 @@
                 <div class="modal-content">
                   <h4 class="center black-text" style="padding-right: 10px">Finalizar Compra</h4>
                   <form>
-                    <div>
+                    <div *ngIf="!detectar_mobile()">
                       <div class="input-field col s6 m3 l3 black-text">
                         <input placeholder="% ou R$" id="desconto" type="number" class="black-text" (keyup)="valorAPagar()" [(ngModel)]="quantidadeDesconto"
                           [ngModelOptions]="{standalone: true}">
@@ -179,6 +179,37 @@
                   </a>
                       </div>
                     </div>
+
+                    <div *ngIf="detectar_mobile()">
+                      <div class="row">
+                        <div class="input-field col s6 m6 l6 black-text">
+                          <input placeholder="% ou R$" id="desconto" type="number" class="black-text" (keyup)="valorAPagar()" [(ngModel)]="quantidadeDesconto"
+                            [ngModelOptions]="{standalone: true}">
+                          <label class="black-text" for="desconto">Desconto ( {{desconto}} )</label>
+                        </div>
+                        <div class="input-field col s6 m6 l6 black-text">
+                          <input name="group1" type="radio" id="test1" checked (click)="tipoAPagar('R$')" />
+                          <label for="test1" (click)="tipoAPagar('R$')" class="black-text">Dinheiro</label>
+                          <input name="group1" type="radio" id="test2" (click)="tipoAPagar('%')" />
+                          <label for="test2" (click)="tipoAPagar('%')" class="black-text">Porcentagem</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s6 m6 l6 black-text">
+                          <input placeholder="" id="valorFinal" type="number" class="black-text" disabled [(ngModel)]="divida.valorExibir" [ngModelOptions]="{standalone: true}">
+                          <label class="black-text" for="valorFinal" (click)="valorAPagar()">Valor a pagar</label>
+                        </div>
+                        <div class=" col s6 m6 l6 black-text">
+                          <a materialize="modal" class="waves-effect waves-light btn blue darken-4" (click)="concluirCompra()" *ngIf="podeConcluir()">Concluir
+                    <i class="material-icons right">done</i>
+                  </a>
+                          <a materialize="modal" disabled class="waves-effect waves-light btn blue darken-4" (click)="concluirCompra()" *ngIf="!podeConcluir()">Concluir
+                    <i class="material-icons right">done</i>
+                  </a>
+                        </div>
+                      </div>
+                    </div>
+
                     <div class="input-field col s12 m12 l12 black-text">
                       <select id="pagamento" materialize="material_select" [(ngModel)]="divida.tipoVenda" [ngModelOptions]="{standalone: true}">
                         <!--Organiza a seleçao do modo de pagamento-->
