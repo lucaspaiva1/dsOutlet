@@ -136,8 +136,7 @@
 
               <!--Botão para finalizar venda-->
               <div class="right">
-                <a materialize="modal" class="waves-effect waves-light btn blue darken-4" href="#finalizarCompraModal" (click)="valorAPagar()"
-                  disabled *ngIf="compra.length==0">Finalizar Compra
+                <a materialize="modal" class="waves-effect waves-light btn blue darken-4" disabled *ngIf="compra.length==0">Finalizar Compra
                     <i class="material-icons right">done</i>
                   </a>
               </div>
@@ -171,10 +170,10 @@
                         <label class="black-text" for="valorFinal" (click)="valorAPagar()">Valor a pagar</label>
                       </div>
                       <div class=" col s6 m3 l3 black-text">
-                        <a materialize="modal" class="waves-effect waves-light btn blue darken-4" (click)="concluirCompra()" *ngIf="podeConcluir()">Concluir
+                        <a materialize="modal" class="waves-effect waves-light btn blue darken-4 modal-action modal-close" (click)="concluirCompra()" *ngIf="podeConcluir()">Concluir
                     <i class="material-icons right">done</i>
                   </a>
-                        <a materialize="modal" disabled class="waves-effect waves-light btn blue darken-4" (click)="concluirCompra()" *ngIf="!podeConcluir()">Concluir
+                        <a materialize="modal" disabled class="waves-effect waves-light btn blue darken-4"  *ngIf="!podeConcluir()">Concluir
                     <i class="material-icons right">done</i>
                   </a>
                       </div>
