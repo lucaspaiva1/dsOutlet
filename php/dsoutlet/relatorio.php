@@ -133,7 +133,7 @@
 				$venda[] = $row;
 			}
 			
-			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tipo = 'e' and r.tempo <= timestamp('$fim','YYYY-MM-DD') ORDER BY r.tempo DESC";
+			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tipo = 'e' and r.tempo <= timestamp('$fim 23:59:59','YYYY-MM-DD HH:MI:SS') ORDER BY r.tempo DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -148,7 +148,7 @@
 				$venda[] = $row;
 			}
 			
-			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tipo = 's' and r.tempo <= timestamp('$fim','YYYY-MM-DD') ORDER BY r.tempo DESC";
+			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tipo = 's' and r.tempo <= timestamp('$fim 23:59:59','YYYY-MM-DD HH:MI:SS') ORDER BY r.tempo DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -163,7 +163,52 @@
 				$venda[] = $row;
 			}
 			
-			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tempo <= timestamp('$fim','YYYY-MM-DD') ORDER BY r.tempo DESC";
+			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tempo <= timestamp('$fim 23:59:59','YYYY-MM-DD HH:MI:SS') ORDER BY r.tempo DESC";
+			$result = $con->query($sql);
+			
+			while ($row=$result->fetch_assoc()){
+				$estoque[] = $row;
+			}
+		}
+		else if ($tipo == "1" && $inicio != "null" && $fim != "null"){
+			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') and v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.dataVenda DESC";
+			$result = $con->query($sql);
+			
+			while ($row=$result->fetch_assoc()){
+				$venda[] = $row;
+			}
+			
+			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tipo = 'e' and r.tempo >= timestamp('$inicio','YYYY-MM-DD') and r.tempo <= timestamp('$fim 23:59:59','YYYY-MM-DD HH:MI:SS') ORDER BY r.tempo DESC";
+			$result = $con->query($sql);
+			
+			while ($row=$result->fetch_assoc()){
+				$estoque[] = $row;
+			}
+		}
+		else if ($tipo == "2" && $inicio != "null" && $fim != "null"){
+			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') and v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.dataVenda DESC";
+			$result = $con->query($sql);
+			
+			while ($row=$result->fetch_assoc()){
+				$venda[] = $row;
+			}
+			
+			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tipo = 's' and r.tempo >= timestamp('$inicio','YYYY-MM-DD') and r.tempo <= timestamp('$fim 23:59:59','YYYY-MM-DD HH:MI:SS') ORDER BY r.tempo DESC";
+			$result = $con->query($sql);
+			
+			while ($row=$result->fetch_assoc()){
+				$estoque[] = $row;
+			}
+		}
+		else if ($tipo == "3" && $inicio != "null" && $fim != "null"){
+			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') and v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.dataVenda DESC";
+			$result = $con->query($sql);
+			
+			while ($row=$result->fetch_assoc()){
+				$venda[] = $row;
+			}
+			
+			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tempo >= timestamp('$inicio','YYYY-MM-DD') and r.tempo <= timestamp('$fim 23:59:59','YYYY-MM-DD HH:MI:SS') ORDER BY r.tempo DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
