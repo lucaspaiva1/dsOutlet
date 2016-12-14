@@ -9,7 +9,7 @@ import { Estoque } from '../../model/estoque';
   templateUrl: './relatorio.component.html',
   styleUrls: ['./relatorio.component.css']
 })
-export class RelatorioComponent {
+export class RelatorioComponent implements OnInit {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
@@ -19,8 +19,7 @@ export class RelatorioComponent {
   private venda: Venda[] = [];
   private estoque: Estoque[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
+  constructor(private router: Router, private route: ActivatedRoute,
     private userService: UserService,
   ) {
 
@@ -29,6 +28,12 @@ export class RelatorioComponent {
     this.isAdmin = stats[1];
     this.filtrar();
 
+  }
+
+  ngOnInit() {
+    if (!this.isLogado || !this.isAdmin) {
+      this.router.navigate(['/home']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
+    }
   }
 
   filtrar() {
