@@ -20,7 +20,7 @@
 		$venda   = array();
 		$estoque = array();
 		
-		if ($tipo == "3"){
+		if ($tipo == "3" & $inicio == null & $fim == null){
 			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente)";
 			$result = $con->query($sql);
 			
