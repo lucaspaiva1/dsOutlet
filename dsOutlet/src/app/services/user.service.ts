@@ -181,7 +181,11 @@ export class UserService {
 
     try{
       let localUser = <User>this.storage.get('user');
-      return [localUser.logado, localUser.admin, localUser.id];
+      if (localUser == null) {
+        return [false, false, 0];
+      }else{
+        return [localUser.logado, localUser.admin, localUser.id];
+      }
     }catch(e){
       console.log("entrou no catch");
       console.log(e);
@@ -191,11 +195,6 @@ export class UserService {
         return [this.user.logado, this.user.admin, this.user.id];
       }
     }
-  }
-
-  /*Retorna um array de boolean ->primeiro index é logado, segundo é admin*/
-  myProfile(): User {
-    return this.user;
   }
 
   getRelatorioFiltro(tipo: string, inicio: Date, fim: Date): Promise<any> {
