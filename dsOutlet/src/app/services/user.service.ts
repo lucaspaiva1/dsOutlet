@@ -11,7 +11,16 @@ export class UserService {
   private user: User = null;
 
   constructor(private storage: LocalStorageService, private http: Http) {
-
+    console.log("leu");
+    try{
+      let localUser = <User>this.storage.get('user');
+      if(localUser != null){
+        this.user = localUser;
+      }
+    }catch(e){
+      console.log("entrou no catch");
+      console.log(e);
+    }
   }
 
   /*Usuario envia dados para solicitar login atraves de um POST*/
@@ -41,6 +50,13 @@ export class UserService {
       usuario.admin = usuario.acesso == 'A' ? true : false; //os valores booleanos do banco sao 0 (false) ou 1 (true)
       usuario.logado = true;
       this.user = usuario;
+
+      try{
+        this.storage.set('user', this.user);
+      }catch(e){
+        console.log("entrou no catch");
+        console.log(e);
+      }
 
       resposta.type = true;
       resposta.message = "Logado com Sucesso!";
@@ -151,15 +167,30 @@ export class UserService {
 
   /*método que remove do cache os dados do usuario depois do logout*/
   logout(): void {
+    try{
+      this.storage.remove('user');
+    }catch(e){
+      console.log("entrou no catch");
+      console.log(e);
+    }
     this.user = null;
   }
 
   /*Retorna um array de boolean ->primeiro index é logado, segundo é admin*/
   userStats(): any[] {
-    if (this.user == null) {
-      return [false, false, 0];
+
+    try{
+      let localUser = <User>this.storage.get('user');
+      return [localUser.logado, localUser.admin, localUser.id];
+    }catch(e){
+      console.log("entrou no catch");
+      console.log(e);
+      if (this.user == null) {
+        return [false, false, 0];
+      }else{
+        return [this.user.logado, this.user.admin, this.user.id];
+      }
     }
-    return [this.user.logado, this.user.admin, this.user.id];
   }
 
   /*Retorna um array de boolean ->primeiro index é logado, segundo é admin*/
