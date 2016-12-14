@@ -19,6 +19,7 @@ export class NavbarComponent {
   private senha: string;
   private url: string;
   private email: string;
+  private loading: boolean;
 
   constructor(private router: Router, private userService: UserService, private esqueciSenha: EsqueciSenhaService) {
     this.url = this.router.url;
@@ -26,12 +27,14 @@ export class NavbarComponent {
 
   private fazerLogin(): void {
     if (!(this.login == null || this.senha == null)) {
+      this.loading = true;
       this.userService.login(this.login, this.senha)
         .then(res => {
           if (res.type == true) {
             this.modalActions.emit({ action: "modal", params: ['close'] });
             this.router.navigate(['/gerenciador']);
           }
+          this.loading = false;
           toast(res.message, 4000, 'rounded');
         });
     } else {
