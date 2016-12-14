@@ -21,14 +21,14 @@
 		$estoque = array();
 		
 		if ($tipo == "1" && $inicio == "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente)";
+			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.dataVenda DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
 				$venda[] = $row;
 			}
 			
-			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tipo = 'e'";
+			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tipo = 'e' ORDER BY r.tempo DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -36,14 +36,14 @@
 			}
 		}
 		else if ($tipo == "2" && $inicio == "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente)";
+			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.dataVenda DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
 				$venda[] = $row;
 			}
 			
-			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tipo = 's'";
+			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id and r.tipo = 's' ORDER BY r.tempo DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -51,14 +51,14 @@
 			}
 		}
 		else if ($tipo == "3" && $inicio == "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente)";
+			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.dataVenda DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
 				$venda[] = $row;
 			}
 			
-			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id";
+			$sql = "SELECT r.tempo, r.tipo, r.quantidade, p.marca, p.modelo, p.tamanho, p.precoEntrada, u.nome usuario FROM registro r, usuario u, produto p where p.id = produto_id and u.id = usuario_id ORDER BY r.tempo DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
