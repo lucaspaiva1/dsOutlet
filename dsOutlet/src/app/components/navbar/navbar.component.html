@@ -52,15 +52,17 @@
 <div materialize="modal" id="loginModal" class="modal modal-fixed-footer loginPane light-blue" [materializeActions]="modalActions">
   <div class="modal-content">
     <h4 class="center white-text" style="padding-right: 10px">LogIn</h4>
-    <form class="">
+    <form>
       <div class="input-field white-text campo">
-        <i class="material-icons prefix">perm_identity</i>
-        <input id="usuario" type="text" class="validate white-text" [(ngModel)]="login" name="login">
+        <input id="usuario" type="text" class="white-text" [(ngModel)]="login" name="login">
         <label class="white-text" for="usuario">Nome de Usuário</label>
       </div>
       <div class="input-field  campo">
-        <input id="senha" type="password" class="validate white-text" [(ngModel)]="senha" name="senha">
+        <input id="senha" type="password" class="white-text" [(ngModel)]="senha" name="senha">
         <label class="white-text" for="senha">Senha</label>
+      </div>
+      <div *ngIf="loading" class="progress blue lighten-5" style="width: 91%">
+        <div class="indeterminate blue darken-4"></div>
       </div>
     </form>
   </div>
