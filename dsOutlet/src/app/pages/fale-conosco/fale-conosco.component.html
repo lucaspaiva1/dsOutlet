@@ -10,44 +10,46 @@
     <div class="container formulario z-depth-5">
       <!-- Formulário -->
       <div class="row">
-        <form class="col s12">
+
+        <form (ngSubmit)="enviarMensagem()" class="col s12">
           <div class="row">
             <div class="input-field col s12 m6 l12">
               <i class="material-icons prefix">perm_identity</i>
-              <input id="first_name" type="text" class="validate white-text" [(ngModel)]="mensagem.nome" [ngModelOptions]="{standalone: true}">
+              <input id="first_name" type="text" required class="validate white-text" [(ngModel)]="mensagem.nome" name="nome">
               <label class="white-text" for="first_name">Primeiro nome</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12 m6 l6">
               <i class="material-icons prefix">phone</i>
-              <telefone [valor]="mensagem.telefone" (tel)="change($event)"></telefone>
+              <input id="telefone" [textMask]="{mask: mask}" [(ngModel)]="mensagem.telefone" required type="text" name="number" (keyup)="change()" class="white-text"/>
+              <label class="white-text" for="telefone">Telefone</label>
             </div>
             <div class="input-field col s12 m6 l6">
               <i class="material-icons prefix">email</i>
-              <input id="email" type="email" class="validate" [(ngModel)]="mensagem.email" [ngModelOptions]="{standalone: true}">
+              <input id="email" type="email" required class="validate white-text" [(ngModel)]="mensagem.email" name="email">
               <label class="white-text" for="email" data-error="wrong" data-success="right">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">label</i>
-              <input id="subject" type="text" class="validate" [(ngModel)]="mensagem.assunto" [ngModelOptions]="{standalone: true}">
+              <input id="subject" type="text" required class="validate white-text" [(ngModel)]="mensagem.assunto" name="assunto">
               <label class="white-text" for="subject">Assunto</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">mode_edit</i>
-              <textarea materialize="characterCounter" id="mensage" class="materialize-textarea validate" length="500" [(ngModel)]="mensagem.texto" [ngModelOptions]="{standalone: true}"></textarea>
+              <textarea materialize="characterCounter" id="mensage" required class="materialize-textarea validate white-text" length="500" [(ngModel)]="mensagem.texto" [ngModelOptions]="{standalone: true}"></textarea>
               <label class="white-text" for="mensage">Mensagem</label>
             </div>
           </div>
           <div class="row">
-            <div class="col s3 offset-s7 m3 offset-m7 l3 offset-l9">
-              <a (click)="enviarMensagem()" class="btn waves-effect waves-light blue darken-4">Enviar
+            <div class="right">
+              <button type="submit" name="submit" class="btn waves-effect waves-light blue darken-4">Enviar
                 <i class="material-icons right">send</i>
-              </a>
+              </button>
             </div>
           </div>
         </form>

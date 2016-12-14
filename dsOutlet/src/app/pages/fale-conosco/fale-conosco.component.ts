@@ -17,7 +17,7 @@ export class FaleConoscoComponent {
 
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
-
+  private mask = ['(', /\d/, /\d/, ')', ' ', /\d/,/\d/,/\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   private mensagem = new Mensagem();
 
   constructor(private userService: UserService, private faleConoscoService: FaleConoscoService) {
@@ -26,9 +26,8 @@ export class FaleConoscoComponent {
     this.isAdmin = stats[1];
   }
 
-  change(event) {
-    console.log(event);
-    this.mensagem.telefone = event;
+  change() {
+    console.log(this.mensagem.telefone);
   }
 
   enviarMensagem(){
