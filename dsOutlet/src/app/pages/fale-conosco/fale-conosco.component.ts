@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { toast } from 'angular2-materialize';
 
@@ -20,7 +21,7 @@ export class FaleConoscoComponent {
   private mask = ['(', /\d/, /\d/, ')', ' ', /\d/,/\d/,/\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   private mensagem = new Mensagem();
 
-  constructor(private userService: UserService, private faleConoscoService: FaleConoscoService) {
+  constructor(private router: Router, private userService: UserService, private faleConoscoService: FaleConoscoService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
@@ -40,7 +41,8 @@ export class FaleConoscoComponent {
 
     }else{
       this.faleConoscoService.enviarMensagem(this.mensagem);
-      toast('Sua mensagem foi enviada!', 4000, 'rounded');
+      toast('Sua mensagem foi enviada!', 5000, 'rounded');
+      this.router.navigate(['/home']);
     }
 
   }
