@@ -166,12 +166,8 @@ export class UserService {
     return this.user;
   }
 
-  getRelatorioFiltro(tipo: string, inicio: Date, fim: Date): Promise<any> {
-    return this.http
-      .post('http://localhost/dsoutlet/relatorio.php', JSON.stringify({ tipo, inicio, fim }), { headers: this.headers })
-      .toPromise()
-      .then(res => this.extractEditData(res))
-      .catch(this.handleError);
-  }
+
+
+ 
 
 }
