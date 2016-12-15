@@ -18,7 +18,7 @@
 			}
 		} else if (isset($_GET["prod"])){
 			if ($_GET["prod"] == ""){
-				$sql = "SELECT * FROM produto ORDER BY marca ASC";
+				$sql = "SELECT * FROM produto WHERE ativo = '0' ORDER BY marca ASC";
 				$result = $con->query($sql);
 				while($row=$result->fetch_assoc()){
 					$maxx   = $row['maximo'];
@@ -134,7 +134,7 @@
 					$row['valorParcela'] = $x;
 					$divida[] = $row;
 				}
-				$sql = "SELECT id, marca, modelo, tamanho, quantidade, minimo from produto where quantidade <= minimo";
+				$sql = "SELECT id, marca, modelo, tamanho, quantidade, minimo from produto where ativo = '0' and quantidade <= minimo";
 				$result = $con->query($sql);
 				$estoque = array();
 				while ($row=$result->fetch_assoc()){
