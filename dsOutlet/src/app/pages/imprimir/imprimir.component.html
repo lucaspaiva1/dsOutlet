@@ -1,0 +1,95 @@
+
+<div class="page">
+
+  <div class="cabecalho row">
+      <img src="logo.png" width="200">
+        <div style="margin-left: 10px">
+          <div class="endereco">Av. Ferreira Brito, 43 | (75) 99184-0488 </div>
+        </div>
+  </div>
+
+  <div class="row titulo">
+    <p class="linha"><b>CUPOM DE VENDA - NÃO FISCAL</b></p>
+    <p class="left linha"><b>Código: </b>00002</p>
+    <p class="right linha"><b>Data: </b>12/12/2012</p>
+  </div>
+
+<div class="lista">
+
+  <table class="tabela">
+    <thead class="tabela">
+      <tr class="tabela">
+        <th class="linha">Marca</th>
+        <th class="linha">Modelo</th>
+        <th class="linha">Tam.</th>
+        <th class="linha">V. UNIT</th>
+        <th class="linha">QNT</th>
+        <th class="linha right">V. Item</th>
+      </tr>
+    </thead>
+
+    <tbody class="tabela">
+      <tr class="tabela" *ngFor="let nome of nomes">
+        <td class="linha">{{nome}}</td>
+        <td class="linha">modelo</td>
+        <td class="linha">tamanho</td>
+        <td class="linha">R$ 2,00</td>
+        <td class="linha">X3</td>
+        <td class="linha right">R$ 6,00</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--
+  <div class="lista">
+    <ul class="item">
+      <li *ngFor="let item of nomes">
+      <a class="left">{{ item }}</a><a class="s4 m4 l4">R$ 1,00 x4</a><a class="right item">R$ 4,00</a>
+      </li>
+    </ul>
+  </div>
+-->
+
+  <div class="row rodape">
+    <div class="row" style="padding: 0px; margin:0px">
+
+      <div>
+        <b>Subtotal:</b>
+        <div class="right">
+          <b>R$ 60,00</b>
+        </div>
+      </div>
+
+      <div style="border-bottom: thin solid;">
+        <b>Desconto:</b>
+        <div class="right">
+          - R$ 10,00
+        </div>
+      </div>
+
+      <div>
+        <b>Valor Total:</b>
+        <div class="right">
+          <b>R$ 50,00</b>
+        </div>
+      </div>
+
+      <div>
+        <b>Tipo de Pagamento:</b>
+        <div class="right">
+          cartão credito/débito
+        </div>
+      </div>
+
+      <div>
+        <b>Quantidade de Parcelas:</b>
+        <div class="right">
+          5 vezes
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

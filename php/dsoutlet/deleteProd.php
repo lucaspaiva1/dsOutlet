@@ -21,7 +21,7 @@
 			if($numrow !== 1){
 				echo json_encode(false);
 			}else{
-				$sql = "DELETE FROM produto WHERE id = '$id'";
+				$sql = "UPDATE produto SET ativo = '1' WHERE id = '$id'";
 				$con->query($sql);
 				echo json_encode(true);
 			}

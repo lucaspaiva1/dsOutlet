@@ -1,3 +1,0 @@
-adicionar biblioteca npm install angular-2-local-storage para armazenar dados do usuario e informaçoes o estado de logado e se é o administrador.
- |-> tirar o @input e tag do html do app.component, sempre que entrar em uma pagina verificar as      informacoes.
- |-> se o acesso nao for permitido, redirecionar o usuario.

@@ -30,10 +30,10 @@
 		
 		$numrow = $result->num_rows;
 			if($numrow !== 1 && $marca != ""){
-				$sql = "INSERT INTO produto (marca, modelo, tamanho, quantidade, precoEntrada, precoSaidaPadrao, maximo, minimo, dataUltimaCompra) VALUES ('$marca', '$modelo', '$tamanho', '$quantidade','$precoE', '$precoS', '$max', '$min', '$today')";
+				$sql = "INSERT INTO produto (marca, modelo, tamanho, quantidade, precoEntrada, precoSaidaPadrao, maximo, minimo, dataUltimaCompra, ativo) VALUES ('$marca', '$modelo', '$tamanho', '$quantidade','$precoE', '$precoS', '$max', '$min', '$today', '0')";
 				$con->query($sql);
 				
-				$sql = "SELECT * FROM produto WHERE marca = '$marca' AND modelo = '$modelo' AND tamanho = '$tamanho' AND quantidade = '$quantidade' AND precoEntrada = '$precoE' AND precoSaidaPadrao = '$precoS' AND maximo = '$max' AND minimo = '$min' AND dataUltimaCompra = '$today'";
+				$sql = "SELECT * FROM produto WHERE marca = '$marca' AND modelo = '$modelo' AND tamanho = '$tamanho' AND quantidade = '$quantidade' AND precoEntrada = '$precoE' AND precoSaidaPadrao = '$precoS' AND maximo = '$max' AND minimo = '$min' AND dataUltimaCompra = '$today' AND ativo = '0'";
 				$result = $con->query($sql);
 				$dados  = $result->fetch_assoc();
 				$prodID = $dados['id'];
@@ -44,7 +44,11 @@
 				
 				echo json_encode(true);
 			}else{
-				echo json_encode(false);
+				$dados = $result->fetch_assoc();
+				$id = $dados['id'];
+				$sql = "UPDATE produto SET ativo = '0', quantidade = '$quantidade', maximo = '$max', minimo = '$min', precoSaidaPadrao = '$precoS' WHERE id = '$id'";
+				$con->query($sql);
+				echo json_encode(true);
 			}
 	}
 ?>
