@@ -38,7 +38,7 @@
                     <div class="divider"></div>
                     <p>{{item.marca}} {{item.modelo}} TAMANHO: {{item.tamanho}} <i class="material-icons right" (click)="removerProduto(item)"
                         style="cursor:pointer;">close</i></p>
-                    <p>{{item.quantidade}} X R${{item.valorUnidade}} = R${{item.valorExibido}}</p>
+                    <p>{{item.quantidade}} X {{item.valorUnidade | currency:'BRL':true}} = {{item.valor | currency:'BRL':true}}</p>
                     <div class="divider"></div>
                   </div>
                 </div>
@@ -48,8 +48,8 @@
                 <div class="col s12 m6 l6">
                   <h6 class="black-text left">Valor Total:</h6>
                 </div>
-                <div class="col s12 m6 l6">
-                  <input class="black-text" id="valor" type="text" name="valor" readonly [value]="valorTotal">
+                <div class="col s12 m6 l6 right" style="margin-top: 5px; border-bottom: solid">
+                  {{valorTotalConta | currency:'BRL':true}}
                 </div>
               </div>
             </div>
@@ -89,7 +89,7 @@
                       <td>{{produto.modelo}}</td>
                       <td>{{produto.tamanho}}</td>
                       <td>{{produto.quantidade}}</td>
-                      <td>{{produto.precoSaidaPadrao}}</td>
+                      <td>{{produto.precoSaidaPadrao | currency:'BRL':true}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -167,7 +167,7 @@
                         <label for="test2" (click)="tipoAPagar('%')" class="black-text">Porcentagem</label>
                       </div>
                       <div class="input-field col s6 m3 l3 black-text">
-                        <input placeholder="" id="valorFinal" type="number" class="black-text" disabled [(ngModel)]="divida.valorExibir" [ngModelOptions]="{standalone: true}">
+                        <input placeholder="" id="valorFinal" type="text" class="black-text" disabled value="{{ divida.valor  | currency:'BRL':true }}">
                         <label class="black-text" for="valorFinal" (click)="valorAPagar()">Valor a pagar</label>
                       </div>
                       <div class=" col s6 m3 l3 black-text">
@@ -196,7 +196,7 @@
                       </div>
                       <div class="row">
                         <div class="input-field col s6 m6 l6 black-text">
-                          <input placeholder="" id="valorFinal" type="number" class="black-text" disabled [(ngModel)]="divida.valorExibir" [ngModelOptions]="{standalone: true}">
+                          <input placeholder="" id="valorFinal" type="text" class="black-text" disabled value="{{ divida.valor  | currency:'BRL':true }}">
                           <label class="black-text" for="valorFinal" (click)="valorAPagar()">Valor a pagar</label>
                         </div>
                         <div class=" col s6 m6 l6 black-text">
