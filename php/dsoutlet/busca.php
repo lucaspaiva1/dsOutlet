@@ -42,19 +42,9 @@
 			}
 		} else if (isset($_GET["cli"])){
 			if ($_GET["cli"] == ""){
-				$sql = "SELECT * FROM cliente ORDER BY nome";
+				$sql = "SELECT c.id, c.nome, c.cpf, c.Telefone, sum(d.valor) dividaTotal from cliente c left join divida d on (c.id = d.cliente_IDCliente) group by cpf ORDER BY c.nome";
 				$result = $con->query($sql);
 				while($row=$result->fetch_assoc()){
-					$id = $row['id'];
-					$sql = "SELECT * FROM divida WHERE cliente_IDCliente = '$id'";
-					$resultado = $con->query($sql);
-					$total = 0;
-					
-					while($fila = $resultado->fetch_assoc()){
-						$total = $total + $fila['valor'];
-					}
-					
-					$row['dividaTotal'] = $total;
 					$vetor[] = $row;
 				}
 				echo json_encode($vetor);
