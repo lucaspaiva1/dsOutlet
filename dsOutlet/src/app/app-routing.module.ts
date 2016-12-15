@@ -17,6 +17,7 @@ import { AdminAddClientesComponent } from './pages/admin-add-clientes/admin-add-
 import { AdminEditClientesComponent } from './pages/admin-edit-clientes/admin-edit-clientes.component';
 import { MinhaContaComponent } from './pages/minha-conta/minha-conta.component';
 import { RelatorioComponent } from './pages/relatorio/relatorio.component';
+import { ImprimirComponent } from './pages/imprimir/imprimir.component';
 
 
 const routes: Routes = [
@@ -80,7 +81,11 @@ const routes: Routes = [
   }, {
     path: 'gerenciador/relatorios',
     component: RelatorioComponent
-  }
+  },
+  {
+   path: 'imprimir',
+   component: ImprimirComponent
+ }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

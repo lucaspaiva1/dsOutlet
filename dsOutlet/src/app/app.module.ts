@@ -45,6 +45,7 @@ import { VendasComponent } from './pages/vendas/vendas.component';
 import { TelefoneComponent } from './components/telefone/telefone.component';
 import { CpfComponent } from './components/cpf/cpf.component';
 import { CepComponent } from './components/cep/cep.component';
+import { ImprimirComponent } from './pages/imprimir/imprimir.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { CepComponent } from './components/cep/cep.component';
     TelefoneComponent,
     CpfComponent,
     CepComponent,
+    ImprimirComponent,
   ],
   imports: [
     BrowserModule,

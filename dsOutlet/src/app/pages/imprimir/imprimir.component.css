@@ -1,0 +1,67 @@
+.page{
+  height: 491px;
+  max-height: 491px;
+  width: 340px;
+  max-width: 340px;
+  border-width: thin;
+  border-style: solid;
+  padding: 20px;
+}
+
+.cabecalho{
+  border-bottom: solid;
+  border-width: 1px;
+  margin: 0px;
+}
+
+.titulo{
+  text-align: center;
+  border-bottom: solid;
+  border-width: 1px;
+  padding: 0px;
+  margin: 0px;
+  font-size: 9px;
+}
+
+
+
+.item{
+  padding: 0px;
+  margin: 0px;
+  font-size: 8px;
+  color: black;
+}
+
+.rodape{
+  font-size: 9px;
+
+}
+
+.endereco{
+  color: black;
+  text-align: center;
+  font-size: 10px;
+}
+
+.tabela{
+  padding: 0px;
+  margin: 0px;
+  font-size: 8px;
+  word-wrap: break-word;
+  overflow-x: auto;
+}
+
+.linha{
+  padding: 0px;
+  margin: 0px;
+  font-size: 8px;
+  overflow: hidden;
+}
+
+.lista{
+  padding: 0px;
+  margin: 0px;
+  font-size: 8px;
+  border-bottom: thin solid;
+
+}
