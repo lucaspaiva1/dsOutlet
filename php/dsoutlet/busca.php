@@ -132,7 +132,7 @@
 					$row['valorParcela'] = $x;
 					$divida[] = $row;
 				}
-				$sql = "SELECT marca, modelo, tamanho, quantidade, minimo from produto where quantidade <= minimo";
+				$sql = "SELECT id, marca, modelo, tamanho, quantidade, minimo from produto where quantidade <= minimo";
 				$result = $con->query($sql);
 				$estoque = array();
 				while ($row=$result->fetch_assoc()){
