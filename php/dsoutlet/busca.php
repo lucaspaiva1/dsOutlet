@@ -63,7 +63,7 @@
 					$result = $con->query($sql);
 					$end = $result->fetch_assoc();
 					
-					$sql = "SELECT * FROM divida WHERE cliente_IDCliente = '$id'";
+					$sql = "SELECT * FROM divida WHERE cliente_IDCliente = '$id' ORDER BY vencimento ASC";
 					$result = $con->query($sql);
 					$dividas = array();
 					
