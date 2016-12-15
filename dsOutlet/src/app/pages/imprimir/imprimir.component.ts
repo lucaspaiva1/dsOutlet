@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { VendaService } from '../../services/venda.service';
+import { Impressao } from '../../model/impressao';
 
 @Component({
   selector: 'app-imprimir',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImprimirComponent implements OnInit {
 
-  venda = ['lucas','lucas','lucas','lucas','lucas','lucas','lucas','lucas','lucas','lucas','lucas','lucas','lucas','lucas'  ]
+  impressao: Impressao = new Impressao();
 
-  constructor() { }
+  constructor(private vendaService: VendaService) {
+    this.getInfo();
+  }
+
+  private getInfo(){
+    this.impressao = this.vendaService.getVenda();
+  }
 
   ngOnInit() {
     window.print();

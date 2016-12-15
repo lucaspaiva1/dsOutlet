@@ -98,7 +98,6 @@ export class VendasComponent implements OnInit {
 
     limpar() {
         this.search = "";
-        console.log(this.detectar_mobile());
     }
 
     limparCliente() {
@@ -138,7 +137,6 @@ export class VendasComponent implements OnInit {
     }
 
     removerProduto(item) {
-        console.log(item);
         let index = this.compra.indexOf(item);
         this.compra.splice(index, 1);
         this.valorTotalConta = this.valorTotalConta - (+item.valor);
@@ -176,7 +174,6 @@ export class VendasComponent implements OnInit {
 
     selecionarCliente(cliente) {
         this.clienteComprador = cliente;
-        console.log(this.clienteComprador.id);
     }
 
     adicionarCliente() {
@@ -212,9 +209,10 @@ export class VendasComponent implements OnInit {
     }
 
     concluirCompra() {
-        this.vendaService.concluirCompra(this.clienteComprador.id, this.idUser, this.compra, this.divida).then(res => {
+        this.vendaService.concluirCompra(this.clienteComprador.id, this.idUser, this.compra, this.divida, {subtotal: this.valorTotalConta, desconto: this.quantidadeDesconto, total: this.divida.valor}).then(res => {
             if (res) {
                 toast('Compra efetuada com sucesso', 4000, 'rounded');
+                window.open("/imprimir", "_blank");
                 this.router.navigate(['/gerenciador/venda']);
 
             } else {
@@ -225,9 +223,6 @@ export class VendasComponent implements OnInit {
     }
 
     inicializar() {
-        this.isLogado = false;
-        this.loading = true;
-        this.isAdmin = false;
         this.produtos = [];
         this.itens = [];
         this.valorTotal = "0";
@@ -246,7 +241,6 @@ export class VendasComponent implements OnInit {
         this.cliente = new Cliente();
         this.endereco = new Endereco();
         this.divida = new Divida();
-        this.idUser = 0;
         this.getEstoque();
     }
 }

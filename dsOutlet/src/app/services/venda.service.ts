@@ -1,25 +1,36 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
+import { LocalStorageService } from 'angular-2-local-storage';
 import { Headers, Http, Response } from '@angular/http';
 import { Cliente } from '../model/cliente';
 import { LinhaDeItem } from '../model/linhaDeItem';
 import { Divida } from '../model/divida';
+import { Impressao } from '../model/impressao';
 
 
 @Injectable()
 export class VendaService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
+  private impressao: Impressao;
 
-  constructor(private http: Http) {
+  constructor(private storage: LocalStorageService, private http: Http) {
 
   }
 
-  concluirCompra(idCliente:number, idUser:number, linhaDeItem:LinhaDeItem[], divida:Divida): Promise<any> {
-    console.log(idCliente);
-    console.log(idUser);
-    console.log(linhaDeItem);
-    console.log(divida);
+  concluirCompra(idCliente:number, idUser:number, linhaDeItem:LinhaDeItem[], divida:Divida, valor: any): Promise<any> {
+
+    this.impressao = new Impressao();
+    this.impressao.tipoPagamento = divida.tipoVenda;
+    this.impressao.idUsuario = idUser;
+    this.impressao.desconto = valor.desconto;
+    this.impressao.total = valor.total;
+    this.impressao.subtotal = valor.subtotal;
+    this.impressao.linhaDeItem = linhaDeItem;
+
+    console.log(valor.total);
+
+
     return this.http
       .post('http://localhost/dsoutlet/venda.php', JSON.stringify({idCliente, idUser, linhaDeItem, divida}), { headers: this.headers })
       .toPromise()
@@ -28,14 +39,34 @@ export class VendaService {
   }
 
   private extractAddData(res: Response) {
-    console.log(res);
     let data = res.json();
+    if(typeof data == "string"){
+      this.impressao.idVenda = data;
+      try{
+        this.storage.set('venda', this.impressao);
+      }catch(e){
+
+      }
+    }
     return data;
   }
 
   private handleError(error: any): Promise<any> {
     console.error('Ocorreu um erro!', error);
     return Promise.reject(error.message || error);
+  }
+
+  getVenda(): Impressao{
+
+    let venda = <Impressao>this.storage.get('venda');
+    console.log(venda);
+    if(venda != null){
+      return venda;
+    }else if(this.impressao != null){
+      return this.impressao;
+    }else{
+      return new Impressao();
+    }
   }
 
 }

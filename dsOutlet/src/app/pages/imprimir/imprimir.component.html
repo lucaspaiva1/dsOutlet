@@ -10,8 +10,8 @@
 
   <div class="row titulo">
     <p class="linha"><b>CUPOM DE VENDA - NÃO FISCAL</b></p>
-    <p class="left linha"><b>Código: </b>00002</p>
-    <p class="right linha"><b>Data: </b>12/12/2012</p>
+    <p class="left linha"><b>Código: </b>{{ impressao.idUsuario }}00{{ impressao.idVenda }}</p>
+    <p class="right linha"><b>Data: </b>{{impressao.data | date:'dd/MM/yyyy' }}</p>
   </div>
 
 <div class="lista">
@@ -29,13 +29,13 @@
     </thead>
 
     <tbody class="tabela">
-      <tr class="tabela" *ngFor="let nome of nomes">
-        <td class="linha">{{nome}}</td>
-        <td class="linha">modelo</td>
-        <td class="linha">tamanho</td>
-        <td class="linha">R$ 2,00</td>
-        <td class="linha">X3</td>
-        <td class="linha right">R$ 6,00</td>
+      <tr class="tabela" *ngFor="let produto of impressao.linhaDeItem">
+        <td class="linha">{{ produto.marca }}</td>
+        <td class="linha">{{ produto.modelo }}</td>
+        <td class="linha">{{ produto.tamanho }}</td>
+        <td class="linha">{{ produto.valorUnidade }}</td>
+        <td class="linha">X{{ produto.quantidade }}</td>
+        <td class="linha right">R$ {{ produto.valor }}</td>
       </tr>
     </tbody>
   </table>
@@ -57,21 +57,21 @@
       <div>
         <b>Subtotal:</b>
         <div class="right">
-          <b>R$ 60,00</b>
+          <b>R$ {{ impressao.subtotal }}</b>
         </div>
       </div>
 
       <div style="border-bottom: thin solid;">
         <b>Desconto:</b>
         <div class="right">
-          - R$ 10,00
+          - R$ {{ impressao.desconto }}
         </div>
       </div>
 
       <div>
         <b>Valor Total:</b>
         <div class="right">
-          <b>R$ 50,00</b>
+          <b>R$ {{ impressao.total }}</b>
         </div>
       </div>
 

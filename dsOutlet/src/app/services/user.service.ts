@@ -11,7 +11,6 @@ export class UserService {
   private user: User = null;
 
   constructor(private storage: LocalStorageService, private http: Http) {
-    console.log("leu");
     try{
       let localUser = <User>this.storage.get('user');
       if(localUser != null){
