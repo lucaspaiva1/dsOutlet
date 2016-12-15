@@ -26,7 +26,7 @@
 
 		$sql = "INSERT INTO endereco (cep, logradouro, numero, uf, cidade) VALUES ('$cep', '$logradouro', '$numero', '$uf', '$cidade')";
 		$con->query($sql);
-		$sql = "SELECT * FROM endereco WHERE cep = '$cep' AND logradouro = '$logradouro' AND numero = '$numero' AND uf ='$uf'AND cidade = '$cidade'";
+		$sql = "SELECT * FROM endereco WHERE logradouro = '$logradouro' AND numero = '$numero' AND uf ='$uf'AND cidade = '$cidade'";
 		$result = $con->query($sql);
 		$dado = $result->fetch_assoc();
 		$id = $dado['id'];
