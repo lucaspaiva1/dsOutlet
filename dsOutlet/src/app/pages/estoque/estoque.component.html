@@ -37,12 +37,12 @@
         <div *ngIf="!loading">
           <nav class=" white black-text row">
             <ul id="nav-mobile" class="left ">
-              <li><a routerLink="/gerenciador/cadastrar-produto" class="white-text blue">CADASTRAR</a></li>
+              <li><a (click)="cadastrarProduto()" class="white-text blue">CADASTRAR</a></li>
             </ul>
              <form class="col s7 m10 l10 " >
                   <div class="input-field">
                     <input [(ngModel)]="search" name="search" type="search" placeholder="Procurar mercadoria">
-                    <label for="search"><i class="material-icons black-text" >search</i></label>
+                    <label for="search"><i class="material-icons black-text">search</i></label>
                     <i class="material-icons black-text right" (click)="limpar()">close</i>
                   </div>
                 </form>
@@ -56,7 +56,6 @@
                 <th data-field="modelo">Modelo</th>
                 <th data-field="tamanho">Tamanho</th>
                 <th data-field="quantidade">Quantidade</th>
-                <th data-field="ultimaCompra" *ngIf="isAdmin">Ultima Compra</th>
                 <th data-field="precoVenda">Preço Venda</th>
                 <th data-field="precoCompra" *ngIf="isAdmin">Preço Compra</th>
                 <th data-field="max">Max</th>
@@ -71,7 +70,6 @@
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.modelo}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.tamanho}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.quantidade}}</td>
-                <td materialize="dropdown" data-activates="dropdown1" *ngIf="isAdmin">{{produto.precoUltimaCompra | currency:'BRL':true }}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.precoSaidaPadrao | currency:'BRL':true }}</td>
                 <td materialize="dropdown" data-activates="dropdown1" *ngIf="isAdmin">{{produto.precoEntrada | currency:'BRL':true }}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.maximo}}</td>
@@ -86,7 +84,7 @@
   </main>
 </body>
 
-<ul id="dropdown1" class="dropdown-content">
+<ul *ngIf="isAdmin" id="dropdown1" class="dropdown-content">
   <li><a (click)="editar()">Editar</a></li>
   <li><a (click)=" adicionar() ">Adicionar</a></li>
   <li class="divider"></li>

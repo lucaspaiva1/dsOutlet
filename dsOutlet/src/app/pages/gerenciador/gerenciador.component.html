@@ -17,9 +17,67 @@
       <!-- Note that "m8 l9" was added -->
       <!-- Large container -->
       <h2 class="center"> Bem vindo ao gerenciador </h2>
-      <h5 class="center">
-        <br> Utilize o menu lateral para escolher a opção desejada
-      </h5>
+      <div class="row">
+        <div class="col s12 ">
+          <ul class="tabs " materialize="tabs">
+            <li class="tab col s6 m6 l6 "><a class="active blue-text" href="#divida">Dividas</a></li>
+            <li class="tab col s6 m5 l5 " *ngIf="isAdmin"><a class="blue-text" href="#estoque">Estoque</a></li>
+          </ul>
+        </div>
+        <div id="divida" class="col s12 m12 l12">
+
+          <table class="bordered alter responsive-table selectable">
+            <thead>
+              <tr>
+                <th data-field="Nome">Nome</th>
+                <th data-field="Vencimento">Vencimento</th>
+                <th data-field="Quantidade">Quantidade de Parcelas</th>
+                <th data-field="ValorParcelas">Valor das Parcelas</th>
+                <th data-field="Total">Valor Total</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let cliente of dividaVencidas" (click)="abrirCliente(cliente)">
+                <td>{{cliente.nomeCliente}}</td>
+                <td>{{cliente.vencimento}}</td>
+                <td>{{cliente.quantidadeParcelas}}</td>
+                <td>{{cliente.valorParcela}}</td>
+                <td>{{cliente.valorTotal}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        </div>
+        <div id="estoque" class="col s12 m12 l12" *ngIf="isAdmin">
+
+          <table class="bordered alter responsive-table selectable">
+            <thead>
+              <tr>
+                <th data-field="marca">Marca</th>
+                <th data-field="modelo">Modelo</th>
+                <th data-field="tamanho">Tamanho</th>
+                <th data-field="quantidade">Quantidade</th>
+                <th data-field="min">Min</th>
+                <th data-field="estado">Estado</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let produto of produtosFaltante " (click)="selectProduto(produto)">
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.marca}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.modelo}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.tamanho}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.quantidade}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.minimo}}</td>
+                <td materialize="dropdown" data-activates="dropdown1">{{produto.estado}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
     </div>
   </div>
 </main>

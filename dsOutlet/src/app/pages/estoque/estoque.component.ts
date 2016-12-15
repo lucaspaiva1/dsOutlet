@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Produto } from '../../model/produto';
 import { UserService } from '../../services/user.service';
 import { ProdutosService } from '../../services/produtos.service';
+import { toast } from 'angular2-materialize';
 
 @Component({
   selector: 'estoque',
@@ -24,7 +25,7 @@ export class EstoqueComponent implements OnInit {
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
     this.search = "";
-    
+
   }
 
   ngOnInit() {
@@ -53,11 +54,19 @@ export class EstoqueComponent implements OnInit {
 
   editar() {
     this.router.navigate(['/gerenciador/editar-produto', this.selecionado.id]); //se os dados indicarem que usuario nao está logado, ele será redirecionado
-      console.log(this.selecionado);
   }
 
   adicionar() {
     this.router.navigate(['/gerenciador/adicionar-produto', this.selecionado.id]); //se os dados indicarem que usuario nao está logado, ele será redirecionado
+
+  }
+
+  cadastrarProduto() {
+    if(this.isAdmin){
+    this.router.navigate(['/gerenciador/cadastrar-produto']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
+    }else{
+      toast('Funcionalidade permitida somente para adiministrador!', 4000, 'rounded');
+    }
 
   }
 
