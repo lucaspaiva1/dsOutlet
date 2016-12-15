@@ -21,7 +21,7 @@
 		$estoque = array();
 		
 		if ($tipo == "1" && $inicio == "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.dataVenda DESC";
+			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -36,7 +36,7 @@
 			}
 		}
 		else if ($tipo == "2" && $inicio == "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.dataVenda DESC";
+			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -51,7 +51,7 @@
 			}
 		}
 		else if ($tipo == "3" && $inicio == "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.dataVenda DESC";
+			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
