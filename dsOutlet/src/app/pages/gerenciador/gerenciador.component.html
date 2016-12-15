@@ -39,11 +39,11 @@
 
             <tbody>
               <tr *ngFor="let cliente of dividaVencidas" (click)="abrirCliente(cliente)">
-                <td>{{cliente.nomeCliente}}</td>
+                <td>{{cliente.nome}}</td>
                 <td>{{cliente.vencimento}}</td>
-                <td>{{cliente.quantidadeParcelas}}</td>
+                <td>{{cliente.parcelasApagar}}</td>
                 <td>{{cliente.valorParcela}}</td>
-                <td>{{cliente.valorTotal}}</td>
+                <td>{{cliente.valor}}</td>
               </tr>
             </tbody>
           </table>

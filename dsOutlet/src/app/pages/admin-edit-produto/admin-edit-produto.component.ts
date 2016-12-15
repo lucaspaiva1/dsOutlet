@@ -51,7 +51,9 @@ export class AdminEditProdutoComponent implements OnInit {
   }
 
   private excluir() {
+    console.log("exclut");
     this.produtoService.delProduto(this.produto.id).then(res=>{
+    console.log(res);      
       if(res){
         toast('Produto foi Deletado!', 4000, 'rounded');
         this.router.navigate(['/gerenciador/estoque']);

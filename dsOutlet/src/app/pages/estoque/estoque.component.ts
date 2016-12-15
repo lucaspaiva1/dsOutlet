@@ -65,7 +65,7 @@ export class EstoqueComponent implements OnInit {
     if(this.isAdmin){
     this.router.navigate(['/gerenciador/cadastrar-produto']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
     }else{
-      toast('Funcionalidade permitida somente para adiministrador!', 4000, 'rounded');
+      toast('Funcionalidade permitida somente para administrador!', 4000, 'rounded');
     }
 
   }

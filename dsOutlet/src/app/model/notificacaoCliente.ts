@@ -1,11 +1,11 @@
 export class NotificacaoCliente {
   
   idCliente: number;
-  nomeCliente: string;
+  nome: string;
   vencimento: string;
   valorParcela: number;
-  valorTotal: number;
-  quantidadeParcelas: number;
+  valor: number;
+  parcelasApagar: number;
 
 
 

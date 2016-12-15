@@ -22,7 +22,7 @@ export class GerenciadorComponent implements OnInit {
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
     this.notificacoesService.getNotificacoes().then(res => {
-      
+
       this.dividaVencidas = res[0];
       this.produtosFaltante = res[1];
     });

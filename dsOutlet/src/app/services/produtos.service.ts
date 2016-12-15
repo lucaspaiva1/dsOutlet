@@ -15,11 +15,12 @@ export class ProdutosService {
 
   /*Usuario envia dados para cadastrar produto atraves de um POST*/
   newProduto(produto: Produto): Promise<boolean> {
+    console.log("chegou aqui");
     return this.http
-        .post('http://localhost/dsoutlet/cadProd.php', JSON.stringify(produto), {headers: this.headers})
-        .toPromise()
-        .then(res => this.extractNewData(res))
-        .catch(this.handleError);
+      .post('http://localhost/dsoutlet/cadProd.php', JSON.stringify(produto), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractNewData(res))
+      .catch(this.handleError);
   }
 
   /*Método que converte o arquivo json recebido da api php*/
@@ -44,7 +45,7 @@ export class ProdutosService {
     return data;
   }
 
-  sellProduto(produto: Produto): Promise<boolean>{
+  sellProduto(produto: Produto): Promise<boolean> {
     return this.http
       .post('http://localhost/dsoutlet/logar.php', JSON.stringify(produto), { headers: this.headers })
       .toPromise()
@@ -58,7 +59,7 @@ export class ProdutosService {
     return data;
   }
 
-  getProdutos(): Promise<Produto[]>{
+  getProdutos(): Promise<Produto[]> {
     return this.http.get('http://localhost/dsoutlet/busca.php?prod')
       .toPromise()
       .then(response => this.extractGetData(response))
@@ -77,23 +78,26 @@ export class ProdutosService {
 
   getProduto(id: number): Promise<Produto> {
     return this.getProdutos()
-               .then(produtos => produtos.find(produto => produto.id === id));
+      .then(produtos => produtos.find(produto => produto.id === id));
   }
 
-  delProduto(id:number): Promise<boolean>{
+  delProduto(id: number): Promise<boolean> {
+    console.log("excluteses");
+    console.log(id);
+
     return this.http
-      .post('http://localhost/dsoutlet/deleteProd.php', JSON.stringify({id:id}), { headers: this.headers })
+      .post('http://localhost/dsoutlet/deleteProd.php', JSON.stringify({ id: id }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractDelData(res))
       .catch(this.handleError);
   }
 
-  private extractDelData(res: Response){
+  private extractDelData(res: Response) {
     let data = res.json();
     return data;
   }
 
-  editProduto(produto: Produto): Promise<boolean>{
+  editProduto(produto: Produto): Promise<boolean> {
     return this.http
       .post('http://localhost/dsoutlet/editProd.php', JSON.stringify(produto), { headers: this.headers })
       .toPromise()
@@ -101,7 +105,7 @@ export class ProdutosService {
       .catch(this.handleError);
   }
 
-  private extractEditData(res: Response){
+  private extractEditData(res: Response) {
     let data = res.json();
     return data;
   }

@@ -58,7 +58,7 @@
 			$sql = "INSERT INTO divida (valor, parcelasAPagar, vencimento, cliente_IDCliente, dataCompra) VALUES ('$valor', '$parcela', '$venc', '$idC', '$today')";
 			$con->query($sql);
 			
-			echo json_encode(true);
+			echo json_encode($idV);
 			
 		} else {
 			$tipo = "";
@@ -99,7 +99,7 @@
 				$con->query($sql);
 			}
 			
-			echo json_encode(true);
+			echo json_encode($idV);
 		}
 	}
 ?>

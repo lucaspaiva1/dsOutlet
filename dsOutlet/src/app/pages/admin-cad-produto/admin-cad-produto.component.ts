@@ -15,7 +15,6 @@ export class AdminCadProdutoComponent implements OnInit {
   private isLogado: boolean = false;
   private isAdmin: boolean = false;
   private usuarioId: string;
-
   private produto: Produto = new Produto();
 
   constructor(private router: Router, private userService: UserService, private produtosService: ProdutosService) {
@@ -34,7 +33,7 @@ export class AdminCadProdutoComponent implements OnInit {
 
   private cadastrarProduto() {
     console.log("teste");
-    if (this.produto.marca != null && this.produto.modelo != null && this.produto.tamanho != null && this.produto.quantidade < 0) {
+    if (this.produto.marca != null && this.produto.modelo != null && this.produto.tamanho != null && this.produto.quantidade > 0) {
       this.produto.usuarioId = this.usuarioId;
       this.produtosService.newProduto(this.produto).then(res => {
         if (res) {

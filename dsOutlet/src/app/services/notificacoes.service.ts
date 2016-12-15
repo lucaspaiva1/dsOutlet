@@ -17,7 +17,7 @@ export class NotificacoesService {
     }
 
     getNotificacoes(): Promise<any> {
-        return this.http.get('http://localhost/dsoutlet/notificacoes.php')
+        return this.http.get('http://localhost/dsoutlet/busca.php?notificacoes')
             .toPromise()
             .then(response => this.extractNotificacaoData(response))
             .catch(this.handleError);;
