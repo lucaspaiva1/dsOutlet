@@ -9,7 +9,7 @@
 		$the_request = &$_GET;
 		if (isset($_GET["id"])){
 			if ($_GET["id"] == ""){
-				$sql = "SELECT * FROM usuario";
+				$sql = "SELECT * FROM usuario ORDER BY nome";
 				$result = $con->query($sql);
 				while($row=$result->fetch_assoc()){
 					$vetor[] = $row;
@@ -42,9 +42,19 @@
 			}
 		} else if (isset($_GET["cli"])){
 			if ($_GET["cli"] == ""){
-				$sql = "SELECT * FROM cliente";
+				$sql = "SELECT * FROM cliente ORDER BY nome";
 				$result = $con->query($sql);
 				while($row=$result->fetch_assoc()){
+					$id = $row['id'];
+					$sql = "SELECT * FROM divida WHERE cliente_IDCliente = '$id'";
+					$resultado = $con->query($sql);
+					$total = 0;
+					
+					while($fila = $resultado->fetch_assoc()){
+						$total = $total + $fila['valor'];
+					}
+					
+					$row['dividaTotal'] = $total;
 					$vetor[] = $row;
 				}
 				echo json_encode($vetor);
