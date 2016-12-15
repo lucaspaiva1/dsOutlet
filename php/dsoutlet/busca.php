@@ -63,7 +63,7 @@
 					$result = $con->query($sql);
 					$end = $result->fetch_assoc();
 					
-					$sql = "SELECT * FROM divida WHERE cliente_IDCliente = '$id'";
+					$sql = "SELECT * FROM divida WHERE cliente_IDCliente = '$id' ORDER BY vencimento ASC";
 					$result = $con->query($sql);
 					$dividas = array();
 					
@@ -118,6 +118,32 @@
 				}
 				$dados = array();
 				array_push($dados, $venda, $estoque);
+				echo json_encode($dados);
+			}
+		} else if (isset($_GET['notificacoes'])){
+			if ($_GET['notificacoes'] == ""){
+				$today = date('Y-m-d');
+				$day   = date('Y-m-d', strtotime('+ 2 day', strtotime($today)));
+				$sql = "SELECT c.id, c.nome, d.vencimento, d.valor, d.parcelasApagar from divida d, cliente c where d.cliente_IDCliente = c.id and d.vencimento <= '$day' ORDER BY d.vencimento ASC";
+				$result = $con->query($sql);
+				$divida = array();
+				while ($row=$result->fetch_assoc()){
+					$value = $row['valor'];
+					$p     = $row['parcelasApagar'];
+					$x = $value / $p;
+					$row['valorParcela'] = $x;
+					$divida[] = $row;
+				}
+				$sql = "SELECT id, marca, modelo, tamanho, quantidade, minimo from produto where quantidade <= minimo";
+				$result = $con->query($sql);
+				$estoque = array();
+				while ($row=$result->fetch_assoc()){
+					$row['estado'] = "Falta";
+					$estoque[] = $row;
+				}
+				$dados = array();
+				array_push($dados, $divida, $estoque);
+				
 				echo json_encode($dados);
 			}
 		}

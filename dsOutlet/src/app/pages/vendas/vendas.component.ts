@@ -31,7 +31,6 @@ export class VendasComponent implements OnInit {
     valorTotalConta: number = 0;
     private search: string = "";
     private itemSelecionado: Produto = new Produto();
-    private: string[] = [];
     private compra: LinhaDeItem[] = [];
     private quantidade: number = 0;
     private permitirCompra: boolean = false;
@@ -123,104 +122,131 @@ export class VendasComponent implements OnInit {
     }
 
     detectar_mobile() {
-    if (navigator.userAgent.match(/Android/i)
-        || navigator.userAgent.match(/webOS/i)
-        || navigator.userAgent.match(/iPhone/i)
-        || navigator.userAgent.match(/iPad/i)
-        || navigator.userAgent.match(/iPod/i)
-        || navigator.userAgent.match(/BlackBerry/i)
-        || navigator.userAgent.match(/Windows Phone/i)
-    ) {
-        return true;
+        if (navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i)
+        ) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
-    else {
-        return false;
-    }
-}
 
-removerProduto(item) {
-    console.log(item);
-    let index = this.compra.indexOf(item);
-    this.compra.splice(index, 1);
-    this.valorTotalConta = this.valorTotalConta - (+item.valor);
-    for (let i = 0; i < this.produtos.length; i++) {
-        if (this.produtos[i].id == item.idProduto)
-            this.produtos[i].quantidade = (+this.produtos[i].quantidade) + (+item.quantidade);
-    }
-    this.valorTotal = this.valorTotalConta.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+    removerProduto(item) {
+        console.log(item);
+        let index = this.compra.indexOf(item);
+        this.compra.splice(index, 1);
+        this.valorTotalConta = this.valorTotalConta - (+item.valor);
+        for (let i = 0; i < this.produtos.length; i++) {
+            if (this.produtos[i].id == item.idProduto)
+                this.produtos[i].quantidade = (+this.produtos[i].quantidade) + (+item.quantidade);
+        }
+        this.valorTotal = this.valorTotalConta.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
-}
-
-valorAPagar() {
-    this.divida.valor = this.valorTotalConta;
-    if (this.desconto == "R$") {
-        this.divida.valor = (+this.divida.valor) - (+this.quantidadeDesconto);
-    } else {
-        this.divida.valor = (+this.divida.valor) - (+this.divida.valor) * (+this.quantidadeDesconto) / 100;
     }
-    this.divida.atualizar();
-    this.getClientes();
-}
-tipoAPagar(valor) {
-    this.desconto = valor;
-    this.valorAPagar();
-}
+
+    valorAPagar() {
+        this.divida.valor = this.valorTotalConta;
+        if (this.desconto == "R$") {
+            this.divida.valor = (+this.divida.valor) - (+this.quantidadeDesconto);
+        } else {
+            this.divida.valor = (+this.divida.valor) - (+this.divida.valor) * (+this.quantidadeDesconto) / 100;
+        }
+        this.divida.atualizar();
+        this.getClientes();
+    }
+    tipoAPagar(valor) {
+        this.desconto = valor;
+        this.valorAPagar();
+    }
 
     private getClientes() {
-    this.loading = true;
-    this.clientesService.getClientes().then(res => {
-        this.clientes = res;
-        this.loading = false;
-    });
+        this.loading = true;
+        this.clientesService.getClientes().then(res => {
+            this.clientes = res;
+            this.loading = false;
+        });
 
-}
+    }
 
-selecionarCliente(cliente) {
-    this.clienteComprador = cliente;
-    console.log(this.clienteComprador.id);
-}
+    selecionarCliente(cliente) {
+        this.clienteComprador = cliente;
+        console.log(this.clienteComprador.id);
+    }
 
-adicionarCliente() {
-    if (this.cliente.nome == null || this.cliente.cpf == null || this.cliente.telefone == null || this.endereco.cidade == null || this.endereco.uf == null || this.endereco.logradouro == null) {
-        toast('Faltam Informações!', 4000, 'rounded');
-    } else {
-        this.cliente.endereco = this.endereco;
-        this.clientesService.addCliente(this.cliente).then(res => {
+    adicionarCliente() {
+        if (this.cliente.nome == null || this.cliente.cpf == null || this.cliente.telefone == null || this.endereco.cidade == null || this.endereco.uf == null || this.endereco.logradouro == null) {
+            toast('Faltam Informações!', 4000, 'rounded');
+        } else {
+            this.cliente.endereco = this.endereco;
+            this.clientesService.addCliente(this.cliente).then(res => {
+                if (res) {
+                    toast('Cliente foi cadastrado!', 4000, 'rounded');
+                    this.cliente = new Cliente();
+                    this.endereco = new Endereco();
+                    this.getClientes();
+                } else {
+                    toast('Cliente já cadastrado', 4000, 'rounded');
+                }
+            });
+        }
+        this.valorAPagar()
+    }
+
+    podeConcluir(): boolean {
+        let data = new Date();
+        if (this.divida.tipoVenda != "") {
+            if (this.divida.tipoVenda == "4") {
+                if (this.clienteComprador.nome == "" || this.divida.valorPorParcela < 1 || this.divida.vencimento == null) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    concluirCompra() {
+        this.vendaService.concluirCompra(this.clienteComprador.id, this.idUser, this.compra, this.divida).then(res => {
             if (res) {
-                toast('Cliente foi cadastrado!', 4000, 'rounded');
-                this.cliente = new Cliente();
-                this.endereco = new Endereco();
-                this.getClientes();
+                toast('Compra efetuada com sucesso', 4000, 'rounded');
+                this.router.navigate(['/gerenciador/venda']);
+
             } else {
-                toast('Cliente já cadastrado', 4000, 'rounded');
+                toast('Compra não Cadastrado', 4000, 'rounded');
             }
         });
+        this.inicializar();
     }
-    this.valorAPagar()
-}
 
-podeConcluir(): boolean {
-    let data = new Date();
-    if (this.divida.tipoVenda != "") {
-        if (this.divida.tipoVenda == "4") {
-            if (this.clienteComprador.nome == "" || this.divida.valorPorParcela < 1 || this.divida.vencimento == null) {
-                return false;
-            }
-        }
-        return true;
+    inicializar() {
+        this.isLogado = false;
+        this.loading = true;
+        this.isAdmin = false;
+        this.produtos = [];
+        this.itens = [];
+        this.valorTotal = "0";
+        this.valorDivida = "0";
+        this.valorTotalConta = 0;
+        this.search = "";
+        this.itemSelecionado = new Produto();
+        this.compra = [];
+        this.quantidade = 0;
+        this.permitirCompra = false;
+        this.desconto = "R$";
+        this.quantidadeDesconto = 0;
+        this.searchCliente = "";
+        this.clientes = [];
+        this.clienteComprador = new Cliente();
+        this.cliente = new Cliente();
+        this.endereco = new Endereco();
+        this.divida = new Divida();
+        this.idUser = 0;
+        this.getEstoque();
     }
-    return false;
-}
-
-concluirCompra() {
-    this.vendaService.concluirCompra(this.clienteComprador.id, this.idUser, this.compra, this.divida).then(res => {
-        if (res) {
-            toast('Compra efetuada com sucesso', 4000, 'rounded');
-            this.router.navigate(['/gerenciador/venda']);
-
-        } else {
-            toast('Compra não Cadastrado', 4000, 'rounded');
-        }
-    });;
-}
 }

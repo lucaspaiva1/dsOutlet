@@ -27,12 +27,13 @@ export class AdminCadProdutoComponent implements OnInit {
 
   ngOnInit() {
     /*se os dados indicarem que usuario não está logado, ele será redirecionado para a pagina principal*/
-    if (!this.isLogado) {
+    if (!this.isLogado || !this.isAdmin ) {
       this.router.navigate(['/home']);
     }
   }
 
   private cadastrarProduto() {
+    console.log("teste");
     if (this.produto.marca != null && this.produto.modelo != null && this.produto.tamanho != null && this.produto.quantidade < 0) {
       this.produto.usuarioId = this.usuarioId;
       this.produtosService.newProduto(this.produto).then(res => {

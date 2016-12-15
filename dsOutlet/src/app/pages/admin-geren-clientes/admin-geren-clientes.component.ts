@@ -51,7 +51,6 @@ export class AdminGerenClientesComponent implements OnInit {
   }
 
   editar(cliente: Cliente) {
-    console.log(cliente);
     this.router.navigate(['gerenciador/clientes/editar/', cliente.id]);
   }
 
