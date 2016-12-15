@@ -76,10 +76,6 @@
                   <label class="black-text" for="tam">Tamanho</label>
                 </div>
                 <div class="input-field col s12 m3 l3">
-                  <input placeholder="" *ngIf="isAdmin" id="ultimaCompra" type="number" class="validate" disabled>
-                  <label class="black-text" for="ultimaCompra">Preço Ultima Compra</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
                   <input placeholder="" id="precoVenda" type="number" min="0" step="0.01" required class="validate" name="precoSaidaPadrao" [(ngModel)]="produto.precoSaidaPadrao">
                   <label class="black-text" for="precoVenda">Preço Venda</label>
                 </div>
