@@ -13,6 +13,10 @@ export class Cliente {
 
   constructor() {
     this.id = 0;
-    this.nome="";
+    this.nome = "";
+    this.cpf = "";
+    this.email = "";
+    this.telefone = "";
+    this.dividaTotal = 0;
   }
 }

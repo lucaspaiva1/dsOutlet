@@ -50,6 +50,15 @@ export class AdminAddClientesComponent implements OnInit {
     if (this.cliente.nome == null || this.cliente.cpf == null || this.cliente.telefone == null || this.endereco.cidade == null || this.endereco.uf == null || this.endereco.logradouro == null) {
       toast('Faltam Informações!', 4000, 'rounded');
     } else {
+
+      if(this.cliente.email == null){
+        this.cliente.email == "";
+      }
+
+      if(this.endereco.cep == null){
+        this.endereco.cep = "";
+      }
+
       this.cliente.endereco = this.endereco;
       this.clientesService.addCliente(this.cliente).then(res => {
         if (res) {
