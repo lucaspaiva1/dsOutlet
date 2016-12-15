@@ -122,7 +122,9 @@
 			}
 		} else if (isset($_GET['notificacoes'])){
 			if ($_GET['notificacoes'] == ""){
-				$sql = "SELECT c.id, c.nome, d.vencimento, d.valor, d.parcelasApagar from divida d, cliente c where d.cliente_IDCliente = c.id and d.vencimento = curdate()";
+				$today = date('Y-m-d');
+				$day   = date('Y-m-d', strtotime('+ 2 day', strtotime($today)));
+				$sql = "SELECT c.id, c.nome, d.vencimento, d.valor, d.parcelasApagar from divida d, cliente c where d.cliente_IDCliente = c.id and d.vencimento >= '$today' and d.vencimento <= '$day'";
 				$result = $con->query($sql);
 				$divida = array();
 				while ($row=$result->fetch_assoc()){
