@@ -171,7 +171,7 @@
       <label class="black-text" for="valorFinal" (click)="valorAPagar()">Valor a pagar</label>
     </div>
     <div class=" col s6 m3 l3 black-text">
-      <a materialize="modal" class="waves-effect waves-light btn blue darken-4" (click)="concluirCompra()" *ngIf="podeConcluir()">Concluir
+      <a materialize="modal" class="waves-effect waves-light btn blue darken-4" (click)="concluirCompra()" *ngIf="podeConcluir()" href="#imprimirModal">Concluir
                     <i class="material-icons right">done</i>
                   </a>
       <a materialize="modal" disabled class="waves-effect waves-light btn blue darken-4" *ngIf="!podeConcluir()">Concluir
@@ -200,7 +200,7 @@
         <label class="black-text" for="valorFinal" (click)="valorAPagar()">Valor a pagar</label>
       </div>
       <div class=" col s6 m6 l6 black-text">
-        <a materialize="modal" class="waves-effect waves-light btn blue darken-4" (click)="concluirCompra()" *ngIf="podeConcluir()">Concluir
+        <a materialize="modal" class="waves-effect waves-light btn blue darken-4" (click)="concluirCompra()" *ngIf="podeConcluir()" href="#imprimirModal">Concluir
                     <i class="material-icons right">done</i>
                   </a>
         <a materialize="modal" disabled class="waves-effect waves-light btn blue darken-4" *ngIf="!podeConcluir()">Concluir
@@ -367,6 +367,39 @@
     </div>
   </div>
 </div>
+
+<!--Impressao de venda-->
+<div materialize="modal" id="imprimirModal" class="modal modal-fixed-footer " [materializeActions]="modalActions">
+  <div class="modal-content">
+
+    <div>
+      <div class="row">
+
+        <div class="row">
+
+          <h3>Compra Finalizada com sucesso</h3>
+          <p>Deseja imprimir comprovante?</p>
+
+
+          <div class="row">
+            <div class="left">
+              <button  class="btn modal-action modal-close waves-effect waves-light red darken-4">Cancelar
+                      <i class="material-icons right">clear</i>
+                  </button>
+            </div>
+
+            <div class="right">
+              <button type="submit" name="submit" class="btn modal-action modal-close waves-effect waves-light green darken-4" (click)="imprimir()">Imprimir
+                      <i class="material-icons right">send</i>
+                  </button>
+            </div>
+          </div>
+         
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 </div>

@@ -215,7 +215,6 @@ export class VendasComponent implements OnInit {
     this.vendaService.concluirCompra(this.clienteComprador.id, this.idUser, this.compra, this.divida, { subtotal: this.valorTotalConta, desconto: this.valorDesconto, total: this.divida.valor }).then(res => {
       if (res) {
         toast('Compra efetuada com sucesso', 4000, 'rounded');
-        window.open("/imprimir", "_blank");
         this.router.navigate(['/gerenciador/venda']);
 
       } else {
@@ -250,5 +249,9 @@ export class VendasComponent implements OnInit {
     this.endereco = new Endereco();
     this.divida = new Divida();
     this.getEstoque();
+  }
+
+  imprimir(){
+    window.open('http://localhost:4200/imprimir', '_blank');
   }
 }
