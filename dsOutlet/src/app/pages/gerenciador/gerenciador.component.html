@@ -42,8 +42,8 @@
                 <td>{{cliente.nome}}</td>
                 <td>{{cliente.vencimento}}</td>
                 <td>{{cliente.parcelasApagar}}</td>
-                <td>{{cliente.valorParcela}}</td>
-                <td>{{cliente.valor}}</td>
+                <td>{{cliente.valorParcela | currency:'BRL':true}}</td>
+                <td>{{cliente.valor | currency:'BRL':true}}</td>
               </tr>
             </tbody>
           </table>

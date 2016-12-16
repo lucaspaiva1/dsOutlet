@@ -102,9 +102,9 @@
             <!--tr *ngFor="let divida of dividas"-->
             <tr *ngFor="let divida of dividas" >
               <td>{{divida.dataCompra}}</td>
-              <td>{{divida.valor}}</td>
-              <td>{{divida.parcelasAPagar}}</td>
-              <td>{{divida.valorPorParcela}}</td>
+              <td>{{divida.valor | currency:'BRL':true}}</td>
+              <td>{{divida.parcelasAPagar }}</td>
+              <td>{{divida.valorPorParcela | currency:'BRL':true}}</td>
               <td>{{divida.vencimento}}</td>
               <td><input class="input-field col" placeholder="" type="number" value="" [(ngModel)]="divida.valorRecebido" ></td>
               <td><a *ngIf="divida.valorRecebido<=0 || divida.valorRecebido=='null' || divida.valorRecebido > divida.valor" disabled class="btn waves-effect waves-light green darken-4">Efetuar pagamento
