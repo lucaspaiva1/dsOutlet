@@ -9,7 +9,7 @@
 		$the_request = &$_GET;
 		if (isset($_GET["id"])){
 			if ($_GET["id"] == ""){
-				$sql = "SELECT * FROM usuario";
+				$sql = "SELECT * FROM usuario ORDER BY nome";
 				$result = $con->query($sql);
 				while($row=$result->fetch_assoc()){
 					$vetor[] = $row;
@@ -42,7 +42,7 @@
 			}
 		} else if (isset($_GET["cli"])){
 			if ($_GET["cli"] == ""){
-				$sql = "SELECT * FROM cliente";
+				$sql = "SELECT c.id, c.nome, c.cpf, c.Telefone, sum(d.valor) dividaTotal from cliente c left join divida d on (c.id = d.cliente_IDCliente) group by cpf ORDER BY c.nome";
 				$result = $con->query($sql);
 				while($row=$result->fetch_assoc()){
 					$vetor[] = $row;
