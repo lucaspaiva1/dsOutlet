@@ -43,6 +43,7 @@ export class VendasComponent implements OnInit {
   private endereco: Endereco = new Endereco();
   private divida: Divida = new Divida();
   private idUser: number = 0;
+  private comprando: boolean = true;
 
 
 
@@ -114,6 +115,11 @@ export class VendasComponent implements OnInit {
       this.permitirCompra = false;
     }
 
+  }
+
+  irPagamento(){
+    this.valorAPagar();
+    this.comprando=false;
   }
 
   detectar_mobile() {
@@ -217,6 +223,11 @@ export class VendasComponent implements OnInit {
       }
     });
     this.inicializar();
+    this.comprando=true;
+  }
+
+  voltar(){
+    this.comprando=true;
   }
 
   inicializar() {

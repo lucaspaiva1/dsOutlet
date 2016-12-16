@@ -32,7 +32,6 @@ export class AdminCadProdutoComponent implements OnInit {
   }
 
   private cadastrarProduto() {
-    console.log("teste");
     if (this.produto.marca != null && this.produto.modelo != null && this.produto.tamanho != null && this.produto.quantidade > 0) {
       this.produto.usuarioId = this.usuarioId;
       this.produtosService.newProduto(this.produto).then(res => {

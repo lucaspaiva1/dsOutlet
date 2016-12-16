@@ -143,14 +143,14 @@
               </div>
 
               <div class="right">
-                <a materialize="modal" class="waves-effect waves-light btn blue darken-4" href="#finalizarCompraModal" (click)="valorAPagar()"
+                <a materialize="modal" class="waves-effect waves-light btn blue darken-4" href="#finalizarCompraModal" (click)="irPagamento()"
                   *ngIf="compra.length!=0">Finalizar Compra
                     <i class="material-icons right">done</i>
                   </a>
               </div>
 
               <!--finalizar compra Modal-->
-              <div materialize="modal" id="finalizarCompraModal" class="modal modal-fixed-footer " style="width:100%" [materializeActions]="modalActions">
+              <div materialize="modal" id="finalizarCompraModal" class="modal modal-fixed-footer " style="width:100%" [materializeActions]="modalActions" *ngIf="!comprando">
                 <div class="modal-content">
                   <h4 class="center black-text" style="padding-right: 10px">Finalizar Compra</h4>
                   <form>
@@ -174,7 +174,7 @@
                         <a materialize="modal" class="waves-effect waves-light btn blue darken-4" (click)="concluirCompra()" *ngIf="podeConcluir()">Concluir
                     <i class="material-icons right">done</i>
                   </a>
-                        <a materialize="modal" disabled class="waves-effect waves-light btn blue darken-4" (click)="concluirCompra()" *ngIf="!podeConcluir()">Concluir
+                        <a materialize="modal" disabled class="waves-effect waves-light btn blue darken-4"  *ngIf="!podeConcluir()">Concluir
                     <i class="material-icons right">done</i>
                   </a>
                       </div>
