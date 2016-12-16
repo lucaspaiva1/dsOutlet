@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -22,15 +21,14 @@ import { ImprimirComponent } from './pages/imprimir/imprimir.component';
 
 const routes: Routes = [
   {
+    path: '',
+    component: HomePageComponent
+  }, {
     path: 'home',
     component: HomePageComponent
   }, {
     path: 'fale-conosco',
     component: FaleConoscoComponent
-  }, {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
   }, {
     path: 'gerenciador',
     component: GerenciadorComponent
@@ -83,12 +81,12 @@ const routes: Routes = [
     component: RelatorioComponent
   },
   {
-   path: 'imprimir',
-   component: ImprimirComponent
- }
+    path: 'imprimir',
+    component: ImprimirComponent
+  }, {
+    path: '**', redirectTo: ''
+
+  }
 ];
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+
+export const routing = RouterModule.forRoot(routes);

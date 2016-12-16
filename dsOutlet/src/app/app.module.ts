@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule }   from '@angular/router';
+import { RouterModule, Routes }   from '@angular/router';
 import {PathLocationStrategy, LocationStrategy, HashLocationStrategy} from '@angular/common';
 /*bibliotecas externas*/
 import { MaterializeModule } from 'angular2-materialize';
@@ -28,7 +28,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FaleConoscoComponent } from './pages/fale-conosco/fale-conosco.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AppRoutingModule } from './app-routing.module';
+import { routing } from './app-routing.module';
 import { GerenciadorComponent } from './pages/gerenciador/gerenciador.component';
 import { EstoqueComponent } from './pages/estoque/estoque.component';
 import { AdminCadProdutoComponent } from './pages/admin-cad-produto/admin-cad-produto.component';
@@ -85,7 +85,7 @@ import { ImprimirComponent } from './pages/imprimir/imprimir.component';
     HttpModule,
     MaterializeModule,
     TextMaskModule,
-    AppRoutingModule,
+    routing,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB64Q-NvEJqxFf9PmJZHevjQdxzL9a3jZw' //chave do google para usar googlemaps
     })
