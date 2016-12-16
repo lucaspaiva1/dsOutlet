@@ -18,21 +18,33 @@ export class VendaService {
 
   }
 
-  concluirCompra(idCliente:number, idUser:number, linhaDeItem:LinhaDeItem[], divida:Divida, valor: any): Promise<any> {
-
+  concluirCompra(idCliente: number, idUser: number, linhaDeItem: LinhaDeItem[], divida: Divida, valor: any): Promise<any> {
+    
     this.impressao = new Impressao();
-    this.impressao.tipoPagamento = divida.tipoVenda;
+
+    if (divida.tipoVenda == "5") {
+      this.impressao.tipoPagamento = "Cheque";
+    } else if (divida.tipoVenda == "4") {
+      this.impressao.tipoPagamento = "Pendência";
+    } else if (divida.tipoVenda == "3") {
+      this.impressao.tipoPagamento = "Cartão/Crédito";
+    } else if (divida.tipoVenda == "2") {
+      this.impressao.tipoPagamento = "Cartão/Débito";
+    } else {
+      this.impressao.tipoPagamento = "Dinheiro";
+    }
     this.impressao.idUsuario = idUser;
     this.impressao.desconto = valor.desconto;
     this.impressao.total = valor.total;
     this.impressao.subtotal = valor.subtotal;
     this.impressao.linhaDeItem = linhaDeItem;
+    this.impressao.parcelas = divida.parcelasAPagar;
 
     console.log(valor.total);
 
 
     return this.http
-      .post('http://localhost/dsoutlet/venda.php', JSON.stringify({idCliente, idUser, linhaDeItem, divida}), { headers: this.headers })
+      .post('http://localhost/dsoutlet/venda.php', JSON.stringify({ idCliente, idUser, linhaDeItem, divida }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);
@@ -40,11 +52,11 @@ export class VendaService {
 
   private extractAddData(res: Response) {
     let data = res.json();
-    if(typeof data == "string"){
+    if (typeof data == "string") {
       this.impressao.idVenda = data;
-      try{
+      try {
         this.storage.set('venda', this.impressao);
-      }catch(e){
+      } catch (e) {
 
       }
     }
@@ -56,15 +68,15 @@ export class VendaService {
     return Promise.reject(error.message || error);
   }
 
-  getVenda(): Impressao{
+  getVenda(): Impressao {
 
     let venda = <Impressao>this.storage.get('venda');
     console.log(venda);
-    if(venda != null){
+    if (venda != null) {
       return venda;
-    }else if(this.impressao != null){
+    } else if (this.impressao != null) {
       return this.impressao;
-    }else{
+    } else {
       return new Impressao();
     }
   }

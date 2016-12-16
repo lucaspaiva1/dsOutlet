@@ -11,6 +11,7 @@ export class Impressao{
   idVenda: string;
   subtotal: number;
   linhaDeItem: LinhaDeItem[];
+  parcelas: number;
 
   constructor(){
 

@@ -222,7 +222,6 @@ export class VendasComponent implements OnInit {
       }
     });
     this.inicializar();
-    this.getEstoque();
     this.comprando=true;
   }
 

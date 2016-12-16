@@ -210,6 +210,11 @@
     </div>
   </div>
 
+  <div class="input-field col s12 m12 l12  black-text" *ngIf="divida.tipoVenda=='3'">
+      <input placeholder="" id="parcelasAPagar" type="number" class="black-text" [(ngModel)]="divida.parcelasAPagar" [ngModelOptions]="{standalone: true}">
+      <label class="black-text" for="parcelasAPagar">Parcelas</label>
+    </div>
+
   <div class="input-field col s12 m12 l12 black-text">
     <select id="pagamento" materialize="material_select" [(ngModel)]="divida.tipoVenda" [ngModelOptions]="{standalone: true}">
                         <!--Organiza a seleçao do modo de pagamento-->
@@ -231,7 +236,7 @@
       <input placeholder="" id="vencimento" type="date" class="black-text" [(ngModel)]="divida.vencimento">
     </div><br>
     <div class="input-field col s12 m6 l6  black-text ">
-      <input placeholder="" id="parcelasAPagar" type="number" class="black-text" [(ngModel)]="divida.parcelasAPagar">
+      <input placeholder="" id="parcelasAPagar" type="number" class="black-text" [(ngModel)]="divida.parcelasAPagar" [ngModelOptions]="{standalone: true}">
       <label class="black-text" for="parcelasAPagar">Parcelas</label>
     </div>
     <div>

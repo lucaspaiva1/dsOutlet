@@ -78,14 +78,14 @@
       <div>
         <b>Tipo de Pagamento:</b>
         <div class="right">
-          cartão credito/débito
+          {{ impressao.tipoPagamento }}
         </div>
       </div>
 
-      <div>
+      <div *ngIf="impressao.tipoPagamento=='Cartão/Crédito' || impressao.tipoPagamento=='Pendência'">
         <b>Quantidade de Parcelas:</b>
         <div class="right">
-          5 vezes
+          {{ impressao.parcelas }}
         </div>
       </div>
 
