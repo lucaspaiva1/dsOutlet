@@ -16,4 +16,8 @@
   position: relative;
   height: 105px;
 }
-
+.listaClientes{
+  overflow: auto;
+  position: relative;
+  height: 150px;
+}
