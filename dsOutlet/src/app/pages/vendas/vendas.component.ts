@@ -251,6 +251,6 @@ export class VendasComponent implements OnInit {
   }
 
   imprimir(){
-    window.open('http://localhost:4200/imprimir', '_blank');
+    window.open('/#/imprimir', '_blank');
   }
 }
