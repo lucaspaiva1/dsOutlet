@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
+import {PathLocationStrategy, LocationStrategy, HashLocationStrategy} from '@angular/common';
 /*bibliotecas externas*/
 import { MaterializeModule } from 'angular2-materialize';
 import { AgmCoreModule } from 'angular2-google-maps/core';
@@ -90,6 +91,9 @@ import { ImprimirComponent } from './pages/imprimir/imprimir.component';
     })
   ],
   providers: [UserService, RelatorioService,VendaService, EsqueciSenhaService, ProdutosService, ClientesService, LocalStorageService,NotificacoesService,
+
+{provide: LocationStrategy, useClass: HashLocationStrategy},
+
     {
       provide: LOCAL_STORAGE_SERVICE_CONFIG, useValue: {
         prefix: 'my-app',
