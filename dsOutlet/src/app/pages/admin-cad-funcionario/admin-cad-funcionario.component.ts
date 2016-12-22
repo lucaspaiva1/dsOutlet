@@ -30,12 +30,10 @@ export class AdminCadFuncionarioComponent implements OnInit {
   }
 
   change(event) {
-    console.log(event);
     this.usuario.telefone = event;
   }
 
   cadastrarUsuario() {
-    console.log(this.usuario);
     if (this.usuario.nome == null || this.usuario.nome == "" || this.usuario.login == null || this.usuario.senha == null || this.usuario.senha == "" || this.usuario.acesso == "" || this.usuario.email == null || this.usuario.telefone == null || this.usuario.acesso == null) {
       toast('Estão faltando dados!', 4000, 'rounded');
     } else if (this.usuario.senha != this.confirmacaoSenha) {

@@ -24,7 +24,6 @@ export class MinhaContaComponent {
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
     this.id = stats[2];
-    console.log(this.id);
   }
 
   ngOnInit() {
@@ -36,7 +35,6 @@ export class MinhaContaComponent {
   }
 
   change(event) {
-    console.log(event);
     this.usuario.telefone = event;
   }
 
@@ -75,7 +73,7 @@ export class MinhaContaComponent {
     //console.error('Ocorreu um erro!', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-
+  /**
   excluir() {
     this.userService.deleteUser(this.usuario.id).then(res => {
       if (res) {
@@ -86,5 +84,6 @@ export class MinhaContaComponent {
       }
     });
   }
+  */
 
 }

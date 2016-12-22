@@ -17,8 +17,6 @@ export class UserService {
         this.user = localUser;
       }
     }catch(e){
-      console.log("entrou no catch");
-      console.log(e);
     }
   }
 
@@ -27,10 +25,10 @@ export class UserService {
 
     /*dados sao enviados para api*/
     return this.http
-      .post('http://localhost/dsoutlet/logar.php', JSON.stringify({ login: login, senha: senha }), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/logar.php', JSON.stringify({ login: login, senha: senha }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractLoginData(res))
-      .catch(this.handleError);
+      .catch(this.handleErrorMessage);
   }
 
   /*Método que converte o arquivo json recebido da api php*/
@@ -53,8 +51,6 @@ export class UserService {
       try{
         this.storage.set('user', this.user);
       }catch(e){
-        console.log("entrou no catch");
-        console.log(e);
       }
 
       resposta.type = true;
@@ -67,10 +63,10 @@ export class UserService {
   addUser(user: User): Promise<any> {
 
     return this.http
-      .post('http://localhost/dsoutlet/cadastro.php', JSON.stringify(user), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/cadastro.php', JSON.stringify(user), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
-      .catch(this.handleError);
+      .catch(this.handleErrorMessage);
   }
 
   /*método que extrai os dados do json recebido do backend*/
@@ -93,8 +89,8 @@ export class UserService {
   }
 
   /*Método que retorna todos usuarios do banco de dados para o admin gerenciar*/
-  getUsers(): Promise<User[]> {
-    return this.http.get('http://localhost/dsoutlet/busca.php?id')
+  getUsers(): Promise<any> {
+    return this.http.get('http://dsoutlets.com/apiDsoutlet/busca.php?id')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleError);
@@ -110,9 +106,10 @@ export class UserService {
     }
   }
 
+  /**
   deleteUser(id: number): Promise<boolean> {
     return this.http
-      .post('http://localhost/dsoutlet/delete.php', JSON.stringify({ id: id }), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/delete.php', JSON.stringify({ id: id }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractDelData(res))
       .catch(this.handleError);
@@ -122,13 +119,19 @@ export class UserService {
     let data = res.json();
     return data;
   }
+  */
 
   editUser(user: User): Promise<any> {
     return this.http
-      .post('http://localhost/dsoutlet/edit.php', JSON.stringify(user), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/edit.php', JSON.stringify(user), { headers: this.headers })
       .toPromise()
       .then(res => this.extractEditData(res))
-      .catch(this.handleError);
+      .catch(this.handleErrorMessage);
+  }
+
+  private handleErrorMessage(error: any){
+    let retorno = { type: false, message: 'Ocorreu um erro!' };
+    return retorno;
   }
 
   private extractEditData(res: Response) {
@@ -159,9 +162,8 @@ export class UserService {
   }
 
   /*método chamado quando ocorre um erro no acesso a api php*/
-  private handleError(error: any): Promise<any> {
-    //console.error('Ocorreu um erro!', error); // for demo purposes only
-    return Promise.reject(error.message || error);
+  private handleError(error: any) {
+    return false;
   }
 
   /*método que remove do cache os dados do usuario depois do logout*/
@@ -169,8 +171,7 @@ export class UserService {
     try{
       this.storage.remove('user');
     }catch(e){
-      console.log("entrou no catch");
-      console.log(e);
+
     }
     this.user = null;
   }
@@ -186,8 +187,6 @@ export class UserService {
         return [localUser.logado, localUser.admin, localUser.id];
       }
     }catch(e){
-      console.log("entrou no catch");
-      console.log(e);
       if (this.user == null) {
         return [false, false, 0];
       }else{

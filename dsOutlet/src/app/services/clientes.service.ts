@@ -12,8 +12,8 @@ export class ClientesService {
   constructor(private http: Http) {
   }
 
-  getClientes(): Promise<Cliente[]> {
-    return this.http.get('http://localhost/dsoutlet/busca.php?cli')
+  getClientes(): Promise<any> {
+    return this.http.get('http://dsoutlets.com/apiDsoutlet/busca.php?cli')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleError);
@@ -31,7 +31,7 @@ export class ClientesService {
 
   addCliente(cliente: Cliente): Promise<boolean> {
     return this.http
-      .post('http://localhost/dsoutlet/cadCli.php', JSON.stringify(cliente), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/cadCli.php', JSON.stringify(cliente), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);
@@ -43,8 +43,8 @@ export class ClientesService {
     return data;
   }
 
-  getCliente(id: number): Promise<Cliente> {
-    return this.http.get('http://localhost/dsoutlet/busca.php?cli=' + id)
+  getCliente(id: number): Promise<any> {
+    return this.http.get('http://dsoutlets.com/apiDsoutlet/busca.php?cli=' + id)
       .toPromise()
       .then(response => this.extractData(response))
       .catch(this.handleError);
@@ -52,14 +52,13 @@ export class ClientesService {
 
   /*Método que converte o arquivo json recebido da api php*/
   private extractData(res: Response) {
-    console.log(res);
     let data = res.json();
     return data;
   }
 
   deleteCliente(id: number) {
     return this.http
-      .post('http://localhost/dsoutlet/deleteCli.php', JSON.stringify({ id: id }), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/deleteCli.php', JSON.stringify({ id: id }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractData(res))
       .catch(this.handleError);
@@ -67,7 +66,7 @@ export class ClientesService {
 
   editCliente(cliente: Cliente) {
     return this.http
-      .post('http://localhost/dsoutlet/editCli.php', JSON.stringify(cliente), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/editCli.php', JSON.stringify(cliente), { headers: this.headers })
       .toPromise()
       .then(res => this.extractData(res))
       .catch(this.handleError);
@@ -75,7 +74,7 @@ export class ClientesService {
 
   pagamentoPendencia(divida: Divida): Promise<any> {
     return this.http
-      .post('http://localhost/dsoutlet/pagar.php', JSON.stringify({divida}), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/pagar.php', JSON.stringify({divida}), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);
@@ -83,9 +82,8 @@ export class ClientesService {
 
 
   /*método chamado quando ocorre um erro no acesso a api php*/
-  private handleError(error: any): Promise<any> {
-    console.error('Ocorreu um erro!', error);
-    return Promise.reject(error.message || error);
+  private handleError(error: any) {
+    return false;
   }
 
 }

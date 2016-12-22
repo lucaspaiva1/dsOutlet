@@ -69,10 +69,10 @@
 
 				<body style='width: 500px'>
 				    <header class='header'>
-				        <img src='../imagens/logoH.png' width='250px'>
+				        <img src='logoH.png' width='250px'>
 				    </header>
 				    <div class='body'>
-				        <h3>Olá $Cliente,</h3>
+				        <h3>Olá $nome,</h3>
 				        <p>Foi solicitado recentemente a recuperação dos dados de acesso ao gerenciador <b> <a class='link' href='http://www.codebro.pe.hu'>DsOutlet</a></b>.</p>
 				        <br> Seguem os dados:
 				        <br><br>

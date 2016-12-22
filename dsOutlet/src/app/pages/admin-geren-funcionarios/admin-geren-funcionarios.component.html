@@ -62,6 +62,8 @@
                 </tr>
               </thead>
 
+              <h5 *ngIf="erro">Ocorreu um erro!</h5>
+
               <tbody>
                 <tr *ngFor="let usuario of usuarios | filtroDeFuncionarios: search" (click)="editar(usuario)">
                   <td>{{usuario.nome}}</td>

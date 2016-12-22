@@ -19,6 +19,7 @@ export class AdminGerenClientesComponent implements OnInit {
   private loading: boolean;
   private search: string = "";
   private dividas:Divida[] = [];
+  private erro = false;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -40,7 +41,11 @@ export class AdminGerenClientesComponent implements OnInit {
   private getClientes() {
     this.loading = true;
     this.clientesService.getClientes().then(res => {
-      this.clientes = res;
+      if(res === false){
+        this.erro = true;
+      }else{
+        this.clientes = res;
+      }
       this.loading = false;
     });
 

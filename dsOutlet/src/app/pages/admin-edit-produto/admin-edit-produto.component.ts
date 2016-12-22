@@ -31,7 +31,6 @@ export class AdminEditProdutoComponent implements OnInit {
       this.route.params.forEach((params: Params) => {
         let id = params['id'];
         this.getProduto(id);
-        console.log(this.produto);
       })
     }
   }
@@ -39,7 +38,6 @@ export class AdminEditProdutoComponent implements OnInit {
 
   private getProduto(id: number): void {
     this.produtoService.getProduto(id).then(res => {
-      console.log(res);
       if (res == null) {
         this.router.navigate(['/gerenciador']);
       } else {
@@ -51,9 +49,7 @@ export class AdminEditProdutoComponent implements OnInit {
   }
 
   private excluir() {
-    console.log("exclut");
     this.produtoService.delProduto(this.produto.id).then(res=>{
-    console.log(res);      
       if(res){
         toast('Produto foi Deletado!', 4000, 'rounded');
         this.router.navigate(['/gerenciador/estoque']);

@@ -15,7 +15,6 @@ export class OptionsComponent {
 
   constructor(private router: Router, private userService: UserService) {
     this.url = this.router.url;
-    console.log(this.url);
   }
 
 }

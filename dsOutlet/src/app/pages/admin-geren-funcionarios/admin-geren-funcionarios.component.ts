@@ -17,6 +17,7 @@ export class AdminGerenFuncionariosComponent implements OnInit {
   private loading: boolean;
   private usuarios: User[];
   private search:string = "";
+  private erro = false;
 
   constructor(private router: Router, private userService: UserService) {
     let stats = this.userService.userStats();
@@ -29,8 +30,13 @@ export class AdminGerenFuncionariosComponent implements OnInit {
     this.loading = true;
     this.userService.getUsers()
       .then(users => {
-        this.usuarios = users;
+        if(users === false){
+          this.erro=true;
+        }else{
+          this.usuarios = users;
+        }
         this.loading = false;
+
       });
   }
 

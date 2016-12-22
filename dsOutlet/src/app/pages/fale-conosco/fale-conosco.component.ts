@@ -28,7 +28,6 @@ export class FaleConoscoComponent {
   }
 
   change() {
-    console.log(this.mensagem.telefone);
   }
 
   enviarMensagem(){

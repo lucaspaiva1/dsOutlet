@@ -28,7 +28,6 @@ export class AdminAddProdutoComponent implements OnInit {
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
     this.usuarioId = stats[2];
-    console.log(this.usuarioId);
   }
 
   ngOnInit() {
@@ -70,7 +69,6 @@ export class AdminAddProdutoComponent implements OnInit {
         });
 
       } else {
-        console.log(this.produto);
         this.produtoService.addProduto(this.produto).then(res => {
           if (res) {
             toast('Produto foi modificado!', 4000, 'rounded');

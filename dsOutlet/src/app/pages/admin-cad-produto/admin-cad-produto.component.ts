@@ -26,7 +26,7 @@ export class AdminCadProdutoComponent implements OnInit {
 
   ngOnInit() {
     /*se os dados indicarem que usuario não está logado, ele será redirecionado para a pagina principal*/
-    if (!this.isLogado || !this.isAdmin ) {
+    if (!this.isLogado || !this.isAdmin) {
       this.router.navigate(['/home']);
     }
   }
@@ -35,13 +35,12 @@ export class AdminCadProdutoComponent implements OnInit {
     if (this.produto.marca != null && this.produto.modelo != null && this.produto.tamanho != null && this.produto.quantidade > 0) {
       this.produto.usuarioId = this.usuarioId;
       this.produtosService.newProduto(this.produto).then(res => {
-        if (res) {
-          console.log(res);
+        if (res.type === true) {
           toast('Produto foi cadastrado!', 4000, 'rounded');
           this.produto = new Produto();
           this.router.navigate(['/gerenciador/estoque']);
         } else {
-          toast('Produto já existe no estoque', 4000, 'rounded');
+          toast(res.message, 4000, 'rounded');
         }
       });
     }

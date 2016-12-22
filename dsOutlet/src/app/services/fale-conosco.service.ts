@@ -12,18 +12,16 @@ export class FaleConoscoService {
   }
 
   enviarMensagem(mensagem: Mensagem) {
-    console.log(mensagem);
     this.http
-      .post('http://localhost/dsoutlet/cadProd.php', JSON.stringify(mensagem), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/cadProd.php', JSON.stringify(mensagem), { headers: this.headers })
       .toPromise()
       .then(res => res.json())
       .catch(this.handleError);
   }
 
   /*método chamado quando ocorre um erro no acesso a api php*/
-  private handleError(error: any): Promise<any> {
-    console.error('Ocorreu um erro!', error); // for demo purposes only
-    return Promise.reject(error.message || error);
+  private handleError(error: any) {
+    return false;
   }
 
 }

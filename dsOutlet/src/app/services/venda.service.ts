@@ -19,7 +19,7 @@ export class VendaService {
   }
 
   concluirCompra(idCliente: number, idUser: number, linhaDeItem: LinhaDeItem[], divida: Divida, valor: any): Promise<any> {
-    
+
     this.impressao = new Impressao();
 
     if (divida.tipoVenda == "5") {
@@ -40,11 +40,8 @@ export class VendaService {
     this.impressao.linhaDeItem = linhaDeItem;
     this.impressao.parcelas = divida.parcelasAPagar;
 
-    console.log(valor.total);
-
-
     return this.http
-      .post('http://localhost/dsoutlet/venda.php', JSON.stringify({ idCliente, idUser, linhaDeItem, divida }), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/venda.php', JSON.stringify({ idCliente, idUser, linhaDeItem, divida }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);
@@ -63,15 +60,13 @@ export class VendaService {
     return data;
   }
 
-  private handleError(error: any): Promise<any> {
-    console.error('Ocorreu um erro!', error);
-    return Promise.reject(error.message || error);
+  private handleError(error: any) {
+    return false;
   }
 
   getVenda(): Impressao {
 
     let venda = <Impressao>this.storage.get('venda');
-    console.log(venda);
     if (venda != null) {
       return venda;
     } else if (this.impressao != null) {

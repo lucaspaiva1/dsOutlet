@@ -11,13 +11,12 @@ export class NotificacoesService {
     constructor(private http: Http) { }
 
 
-    private handleError(error: any): Promise<any> {
-        console.error('Ocorreu um erro!', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+    private handleError(error: any){
+        return false
     }
 
     getNotificacoes(): Promise<any> {
-        return this.http.get('http://localhost/dsoutlet/busca.php?notificacoes')
+        return this.http.get('http://dsoutlets.com/apiDsoutlet/busca.php?notificacoes')
             .toPromise()
             .then(response => this.extractNotificacaoData(response))
             .catch(this.handleError);;
@@ -30,6 +29,3 @@ export class NotificacoesService {
     }
 
 }
-
-
-

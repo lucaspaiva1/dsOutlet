@@ -40,7 +40,6 @@ export class RelatorioComponent implements OnInit {
   filtrar() {
     let inicio = this.inicio;
     let fim = this.fim;
-    console.log(this.fim);
     if (this.inicio== "") {
       inicio = "null";
     }

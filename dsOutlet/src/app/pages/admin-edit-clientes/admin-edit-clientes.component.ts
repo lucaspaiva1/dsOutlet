@@ -40,6 +40,7 @@ export class AdminEditClientesComponent implements OnInit {
             this.dividas = res[2];
             this.initValorRecebido();
           } else {
+            toast('Ocorreu um erro!', 4000, 'rounded');
             this.router.navigate(['/gerenciador']);
           }
         });
@@ -93,9 +94,13 @@ export class AdminEditClientesComponent implements OnInit {
 
   private pagamento(divida) {
     this.clientesService.pagamentoPendencia(divida).then(res => {
-      let index = this.dividas.indexOf(divida);
-      this.dividas[index] = res;
-      this.dividas[index].valorRecebido = 0;
+      if(res===false){
+        toast('Ocorreu um erro', 4000, 'rounded');
+      }else{
+        let index = this.dividas.indexOf(divida);
+        this.dividas[index] = res;
+        this.dividas[index].valorRecebido = 0;
+      }
     });
   }
 

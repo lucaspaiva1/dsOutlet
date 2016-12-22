@@ -64,6 +64,8 @@
               </tr>
             </thead>
 
+            <h5 *ngIf="erro">Ocorreu um erro!</h5>
+
             <tbody>
               <tr *ngFor="let produto of produtos | filtroDeMercadoria: search" (click)="teste(produto)">
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.marca}}</td>

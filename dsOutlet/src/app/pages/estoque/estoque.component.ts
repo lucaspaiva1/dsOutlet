@@ -17,6 +17,7 @@ export class EstoqueComponent implements OnInit {
   private loading: boolean;
   private search: string;
   private selecionado: Produto;
+  private erro = false;
 
   produtos: Produto[];
 
@@ -39,7 +40,11 @@ export class EstoqueComponent implements OnInit {
   getEstoque() {
     this.loading = true;
     this.produtosService.getProdutos().then(res => {
-      this.produtos = res;
+      if (res === false) {
+        this.erro = true;
+      } else {
+        this.produtos = res;
+      }
       this.loading = false;
     });
   }
@@ -62,9 +67,9 @@ export class EstoqueComponent implements OnInit {
   }
 
   cadastrarProduto() {
-    if(this.isAdmin){
-    this.router.navigate(['/gerenciador/cadastrar-produto']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
-    }else{
+    if (this.isAdmin) {
+      this.router.navigate(['/gerenciador/cadastrar-produto']); //se os dados indicarem que usuario nao está logado, ele será redirecionado
+    } else {
       toast('Funcionalidade permitida somente para administrador!', 4000, 'rounded');
     }
 

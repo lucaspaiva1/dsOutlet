@@ -59,6 +59,8 @@
                 </tr>
               </thead>
 
+              <h5 *ngIf="erro">Ocorreu um erro!</h5>
+
               <tbody>
                 <tr *ngFor="let cliente of clientes | filtroDeCliente:search" (click)="editar(cliente)">
                   <td>{{cliente.nome}}</td>

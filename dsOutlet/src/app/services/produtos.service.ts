@@ -14,25 +14,35 @@ export class ProdutosService {
   }
 
   /*Usuario envia dados para cadastrar produto atraves de um POST*/
-  newProduto(produto: Produto): Promise<boolean> {
-    console.log("chegou aqui");
+  newProduto(produto: Produto): Promise<any> {
     return this.http
-      .post('http://localhost/dsoutlet/cadProd.php', JSON.stringify(produto), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/cadProd.php', JSON.stringify(produto), { headers: this.headers })
       .toPromise()
       .then(res => this.extractNewData(res))
-      .catch(this.handleError);
+      .catch(this.handleErrorMessage);
+  }
+
+  private handleErrorMessage(error: any) {
+    let retorno = { type: false, message: 'Ocorreu um erro!' };
+    return retorno;
   }
 
   /*Método que converte o arquivo json recebido da api php*/
   private extractNewData(res: Response) {
-    console.log(res);
+    let retorno = { type: false, message: '' };
     let data = res.json();
-    return data;
+    if (data === true) {
+      retorno.type = true;
+      retorno.message = 'Produto foi cadastrado!';
+    } else {
+      retorno.message = 'Produto já existe!';
+    }
+    return retorno;
   }
 
   addProduto(produto: Produto): Promise<boolean> {
     return this.http
-      .post('http://localhost/dsoutlet/add.php', JSON.stringify(produto), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/add.php', JSON.stringify(produto), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);
@@ -40,27 +50,12 @@ export class ProdutosService {
 
   /*Método que converte o arquivo json recebido da api php*/
   private extractAddData(res: Response) {
-    console.log(res);
     let data = res.json();
     return data;
   }
 
-  sellProduto(produto: Produto): Promise<boolean> {
-    return this.http
-      .post('http://localhost/dsoutlet/logar.php', JSON.stringify(produto), { headers: this.headers })
-      .toPromise()
-      .then(res => this.extractSellData(res))
-      .catch(this.handleError);
-  }
-
-  /*Método que converte o arquivo json recebido da api php*/
-  private extractSellData(res: Response) {
-    let data = res.json();
-    return data;
-  }
-
-  getProdutos(): Promise<Produto[]> {
-    return this.http.get('http://localhost/dsoutlet/busca.php?prod')
+  getProdutos(): Promise<any> {
+    return this.http.get('http://dsoutlets.com/apiDsoutlet/busca.php?prod')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleError);
@@ -82,11 +77,9 @@ export class ProdutosService {
   }
 
   delProduto(id: number): Promise<boolean> {
-    console.log("excluteses");
-    console.log(id);
 
     return this.http
-      .post('http://localhost/dsoutlet/deleteProd.php', JSON.stringify({ id: id }), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/deleteProd.php', JSON.stringify({ id: id }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractDelData(res))
       .catch(this.handleError);
@@ -99,7 +92,7 @@ export class ProdutosService {
 
   editProduto(produto: Produto): Promise<boolean> {
     return this.http
-      .post('http://localhost/dsoutlet/editProd.php', JSON.stringify(produto), { headers: this.headers })
+      .post('http://dsoutlets.com/apiDsoutlet/editProd.php', JSON.stringify(produto), { headers: this.headers })
       .toPromise()
       .then(res => this.extractEditData(res))
       .catch(this.handleError);
@@ -111,9 +104,8 @@ export class ProdutosService {
   }
 
   /*método chamado quando ocorre um erro no acesso a api php*/
-  private handleError(error: any): Promise<any> {
-    console.error('Ocorreu um erro!', error); // for demo purposes only
-    return Promise.reject(error.message || error);
+  private handleError(error: any) {
+    return false;
   }
 
 }
