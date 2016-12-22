@@ -19,7 +19,7 @@
 		$texto     = $request->texto;
 		$telefone  = $request->telefone;
 		
-		$emailDS   = "dsoutlet@hotmail.com";
+		$emailDS   = "danielsuzart1@hotmail.com";
 		
 		$mensagem = "$nome , <br>
 					Numero de Contato: $telefone . <br><br>

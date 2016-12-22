@@ -35,6 +35,16 @@
 				
 				$sql = "SELECT * FROM produto WHERE marca = '$marca' AND modelo = '$modelo' AND tamanho = '$tamanho' AND quantidade = '$quantidade' AND precoEntrada = '$precoE' AND precoSaidaPadrao = '$precoS' AND maximo = '$max' AND minimo = '$min' AND dataUltimaCompra = '$today' AND ativo = '0'";
 				$result = $con->query($sql);
+				
+				$numrow2 = $result->num_rows;
+				
+				$cadastrou = false;
+				
+				if ($numrow2 > 0)
+					$cadastrou = true;
+				else
+					$cadastrou = false;
+				
 				$dados  = $result->fetch_assoc();
 				$prodID = $dados['id'];
 				
@@ -42,7 +52,7 @@
 				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '1', '$usuarioID', 'e', '$quantidade', '$prodID')";
 				$con->query($sql);;
 				
-				echo json_encode(true);
+				echo json_encode($cadastrou);
 			}else{
 				$dados = $result->fetch_assoc();
 				$id = $dados['id'];
