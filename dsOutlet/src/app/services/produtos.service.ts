@@ -76,10 +76,10 @@ export class ProdutosService {
       .then(produtos => produtos.find(produto => produto.id === id));
   }
 
-  delProduto(id: number): Promise<boolean> {
+  delProduto(id: number, user: number): Promise<boolean> {
 
     return this.http
-      .post('http://dsoutlet.com.br/apiDsoutlet/deleteProd.php', JSON.stringify({ id: id }), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/deleteProd.php', JSON.stringify({ id: id, user: user }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractDelData(res))
       .catch(this.handleError);

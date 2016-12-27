@@ -17,11 +17,13 @@ export class AdminEditProdutoComponent implements OnInit {
   private produto: Produto = new Produto();
   private marca: string = "";
   private modelo: string = "";
+  private userId: number;
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private produtoService: ProdutosService) {
     let stats = this.userService.userStats();
     this.isLogado = stats[0];
     this.isAdmin = stats[1];
+    this.userId = stats[2];
   }
 
   ngOnInit() {
@@ -49,7 +51,7 @@ export class AdminEditProdutoComponent implements OnInit {
   }
 
   private excluir() {
-    this.produtoService.delProduto(this.produto.id).then(res=>{
+    this.produtoService.delProduto(this.produto.id, this.userId).then(res=>{
       if(res){
         toast('Produto foi Deletado!', 4000, 'rounded');
         this.router.navigate(['/gerenciador/estoque']);
