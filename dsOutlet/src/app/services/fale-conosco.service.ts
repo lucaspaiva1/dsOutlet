@@ -13,7 +13,7 @@ export class FaleConoscoService {
 
   enviarMensagem(mensagem: Mensagem) {
     this.http
-      .post('http://dsoutlets.com/apiDsoutlet/cadProd.php', JSON.stringify(mensagem), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/cadProd.php', JSON.stringify(mensagem), { headers: this.headers })
       .toPromise()
       .then(res => res.json())
       .catch(this.handleError);

@@ -13,7 +13,7 @@ export class ClientesService {
   }
 
   getClientes(): Promise<any> {
-    return this.http.get('http://dsoutlets.com/apiDsoutlet/busca.php?cli')
+    return this.http.get('http://dsoutlet.com.br/apiDsoutlet/busca.php?cli')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleError);
@@ -31,7 +31,7 @@ export class ClientesService {
 
   addCliente(cliente: Cliente): Promise<boolean> {
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/cadCli.php', JSON.stringify(cliente), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/cadCli.php', JSON.stringify(cliente), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);
@@ -44,7 +44,7 @@ export class ClientesService {
   }
 
   getCliente(id: number): Promise<any> {
-    return this.http.get('http://dsoutlets.com/apiDsoutlet/busca.php?cli=' + id)
+    return this.http.get('http://dsoutlet.com.br/apiDsoutlet/busca.php?cli=' + id)
       .toPromise()
       .then(response => this.extractData(response))
       .catch(this.handleError);
@@ -58,7 +58,7 @@ export class ClientesService {
 
   deleteCliente(id: number) {
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/deleteCli.php', JSON.stringify({ id: id }), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/deleteCli.php', JSON.stringify({ id: id }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractData(res))
       .catch(this.handleError);
@@ -66,7 +66,7 @@ export class ClientesService {
 
   editCliente(cliente: Cliente) {
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/editCli.php', JSON.stringify(cliente), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/editCli.php', JSON.stringify(cliente), { headers: this.headers })
       .toPromise()
       .then(res => this.extractData(res))
       .catch(this.handleError);
@@ -74,7 +74,7 @@ export class ClientesService {
 
   pagamentoPendencia(divida: Divida): Promise<any> {
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/pagar.php', JSON.stringify({divida}), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/pagar.php', JSON.stringify({divida}), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);

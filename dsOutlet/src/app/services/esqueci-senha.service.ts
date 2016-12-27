@@ -8,7 +8,7 @@ export class EsqueciSenhaService {
   constructor(private http: Http) { }
 
   enviaEmail(email: string): Promise<boolean> {
-    return this.http.get('http://dsoutlets.com/apiDsoutlet/email.php?email='+email)
+    return this.http.get('http://dsoutlet.com.br/apiDsoutlet/email.php?email='+email)
       .toPromise()
       .then(response => this.extractData(response))
       .catch(this.handleError);

@@ -25,7 +25,7 @@ export class UserService {
 
     /*dados sao enviados para api*/
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/logar.php', JSON.stringify({ login: login, senha: senha }), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/logar.php', JSON.stringify({ login: login, senha: senha }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractLoginData(res))
       .catch(this.handleErrorMessage);
@@ -63,7 +63,7 @@ export class UserService {
   addUser(user: User): Promise<any> {
 
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/cadastro.php', JSON.stringify(user), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/cadastro.php', JSON.stringify(user), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleErrorMessage);
@@ -90,7 +90,7 @@ export class UserService {
 
   /*Método que retorna todos usuarios do banco de dados para o admin gerenciar*/
   getUsers(): Promise<any> {
-    return this.http.get('http://dsoutlets.com/apiDsoutlet/busca.php?id')
+    return this.http.get('http://dsoutlet.com.br/apiDsoutlet/busca.php?id')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleError);
@@ -109,7 +109,7 @@ export class UserService {
   /**
   deleteUser(id: number): Promise<boolean> {
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/delete.php', JSON.stringify({ id: id }), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/delete.php', JSON.stringify({ id: id }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractDelData(res))
       .catch(this.handleError);
@@ -123,7 +123,7 @@ export class UserService {
 
   editUser(user: User): Promise<any> {
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/edit.php', JSON.stringify(user), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/edit.php', JSON.stringify(user), { headers: this.headers })
       .toPromise()
       .then(res => this.extractEditData(res))
       .catch(this.handleErrorMessage);

@@ -18,7 +18,7 @@ export class RelatorioService {
 
   getRelatorioFiltro(tipo: string, inicio: string, fim: string): Promise<any> {
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/relatorio.php', JSON.stringify({ tipo, inicio, fim }), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/relatorio.php', JSON.stringify({ tipo, inicio, fim }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractRelarioData(res))
       .catch(this.handleError);

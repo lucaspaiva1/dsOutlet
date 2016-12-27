@@ -41,7 +41,7 @@ export class VendaService {
     this.impressao.parcelas = divida.parcelasAPagar;
 
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/venda.php', JSON.stringify({ idCliente, idUser, linhaDeItem, divida }), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/venda.php', JSON.stringify({ idCliente, idUser, linhaDeItem, divida }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);

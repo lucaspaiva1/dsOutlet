@@ -45,7 +45,6 @@
 					$dados  = $result->fetch_assoc();
 					$prodID = $dados['id'];
 				
-					$today = date('Y-m-d');
 					$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '1', '$usuarioID', 'e', '$quantidade', '$prodID')";
 					$con->query($sql);
 				}
@@ -59,7 +58,14 @@
 			}else{
 				$dados = $result->fetch_assoc();
 				$id = $dados['id'];
-				$sql = "UPDATE produto SET ativo = '0', quantidade = '$quantidade', maximo = '$max', minimo = '$min', precoSaidaPadrao = '$precoS' WHERE id = '$id'";
+				
+				$amount = $dados['quantidade'];
+				$amount = $amount + $quantidade;
+				
+				$sql = "UPDATE produto SET ativo = '0', quantidade = '$amount', maximo = '$max', minimo = '$min', precoSaidaPadrao = '$precoS' WHERE id = '$id'";
+				$con->query($sql);
+				
+				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '1', '$usuarioID', 'e', '$quantidade', '$id')";
 				$con->query($sql);
 				echo json_encode(true);
 			}

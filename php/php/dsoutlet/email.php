@@ -69,9 +69,7 @@
 
 				<body style='width: 500px'>
 				    <header class='header'>
-						<div class='header'>
-							<img src='http://dsoutlet.com.br/imagens/logoH.png' width='250px'>
-						</div>
+				        <img src='logoH.png' width='250px'>
 				    </header>
 				    <div class='body'>
 				        <h3>Olá $nome,</h3>

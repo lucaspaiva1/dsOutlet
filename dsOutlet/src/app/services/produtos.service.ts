@@ -16,7 +16,7 @@ export class ProdutosService {
   /*Usuario envia dados para cadastrar produto atraves de um POST*/
   newProduto(produto: Produto): Promise<any> {
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/cadProd.php', JSON.stringify(produto), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/cadProd.php', JSON.stringify(produto), { headers: this.headers })
       .toPromise()
       .then(res => this.extractNewData(res))
       .catch(this.handleErrorMessage);
@@ -42,7 +42,7 @@ export class ProdutosService {
 
   addProduto(produto: Produto): Promise<boolean> {
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/add.php', JSON.stringify(produto), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/add.php', JSON.stringify(produto), { headers: this.headers })
       .toPromise()
       .then(res => this.extractAddData(res))
       .catch(this.handleError);
@@ -55,7 +55,7 @@ export class ProdutosService {
   }
 
   getProdutos(): Promise<any> {
-    return this.http.get('http://dsoutlets.com/apiDsoutlet/busca.php?prod')
+    return this.http.get('http://dsoutlet.com.br/apiDsoutlet/busca.php?prod')
       .toPromise()
       .then(response => this.extractGetData(response))
       .catch(this.handleError);
@@ -79,7 +79,7 @@ export class ProdutosService {
   delProduto(id: number): Promise<boolean> {
 
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/deleteProd.php', JSON.stringify({ id: id }), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/deleteProd.php', JSON.stringify({ id: id }), { headers: this.headers })
       .toPromise()
       .then(res => this.extractDelData(res))
       .catch(this.handleError);
@@ -92,7 +92,7 @@ export class ProdutosService {
 
   editProduto(produto: Produto): Promise<boolean> {
     return this.http
-      .post('http://dsoutlets.com/apiDsoutlet/editProd.php', JSON.stringify(produto), { headers: this.headers })
+      .post('http://dsoutlet.com.br/apiDsoutlet/editProd.php', JSON.stringify(produto), { headers: this.headers })
       .toPromise()
       .then(res => this.extractEditData(res))
       .catch(this.handleError);
