@@ -37,11 +37,19 @@
 		$numrow = $result->num_rows;
 		
 		if ($numrow !== 1 && $nome != ""){
-			$sql = "INSERT INTO cliente (cpf, nome, nascimento, email, enderecoIDEndereco, telefone) VALUES ('$cpf', '$nome', '$nascimento', '$email', '$id', '$telefone')";
+			$sql = "INSERT INTO cliente (cpf, nome, nascimento, email, enderecoIDEndereco, telefone, ativo) VALUES ('$cpf', '$nome', '$nascimento', '$email', '$id', '$telefone', '0')";
 			$con->query($sql);
 			echo json_encode(true);
 		} else {
-			echo json_encode(false);
+			$dados = $result->fetch_assoc();
+			$ativo = $dados['ativo'];
+			if ($ativo == '0')
+				echo json_encode(false);
+			else if ($ativo == '1'){
+				$sql = "UPDATE cliente SET ativo = '0' WHERE cpf = '$cpf'";
+				$con->query($sql);
+				echo json_encode(true);
+			}
 		}
 	}
 ?>
