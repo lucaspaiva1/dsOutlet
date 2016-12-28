@@ -77,6 +77,8 @@
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.maximo}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.minimo}}</td>
                 <td materialize="dropdown" data-activates="dropdown1">{{produto.estado}}</td>
+                <td> <a class="waves-effect waves-light btn blue darken-4 btn" [routerLink]="['/gerenciador/editar-produto', produto.id]">Editar</a></td>
+                <td> <a class="waves-effect waves-light btn blue darken-4 btn" [routerLink]="['/gerenciador/adicionar-produto', produto.id]">adicionar</a></td>
               </tr>
             </tbody>
           </table>
