@@ -47,7 +47,7 @@ export class AdminAddClientesComponent implements OnInit {
   }
 
   adicionar() {
-    if (this.cliente.nome == null || this.cliente.cpf == null || this.cliente.telefone == null || this.endereco.cidade == null || this.endereco.uf == null || this.endereco.logradouro == null) {
+    if (this.cliente.nome == null || this.cliente.cpf == null || this.cliente.cpf == "" || this.cliente.telefone == null || this.endereco.cidade == null || this.endereco.uf == null || this.endereco.logradouro == null) {
       toast('Faltam Informações!', 4000, 'rounded');
     } else {
 
