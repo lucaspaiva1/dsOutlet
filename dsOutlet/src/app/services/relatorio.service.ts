@@ -29,5 +29,13 @@ export class RelatorioService {
     return date;
   }
 
+  getLinhaItem(id: number):Promise<any> {
+    return this.http
+      .get('http://dsoutlet.com.br/apiDsoutlet/busca.php?detalhar=' + id)
+      .toPromise()
+      .then(response => this.extractRelarioData(response))
+      .catch(this.handleError);
+  }
+
 
 }

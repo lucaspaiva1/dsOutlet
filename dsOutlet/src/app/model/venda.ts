@@ -4,6 +4,7 @@ export class Venda{
     private valor:number;
     private usuario:string;
     private cliente:string;
+    private id: number;
 
     constructor(){
         

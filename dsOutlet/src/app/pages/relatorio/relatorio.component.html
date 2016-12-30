@@ -30,89 +30,137 @@
                 <input id="Fim" type="date" class="validate" [(ngModel)]="fim" name="fim" [ngModelOptions]="{standalone: true}">
               </div>
               <div class="input-field col s12 m4 l4" style="padding-top: 21px">
-                <select id="tipo" materialize="material_select" [(ngModel)]="tipo" [ngModelOptions]="{standalone: true}">
+<select id="tipo" materialize="material_select" [(ngModel)]="tipo" [ngModelOptions]="{standalone: true}">
                         <!--Organiza a seleçao do modo de pagamento-->
                         <option value="1">entrada</option>
                         <option value="2">saída</option>
                         <option value="3" selected>entrada/saída</option>
                       </select>
-                <label class="black-text" style="padding-top: 20px">Tipo de relatório</label>
-              </div>
-              <div class="input-field col s12 m2 l2 right">
-                <a class="waves-effect waves-light blue btn btn-large right" (click)="filtrar()">Filtrar</a>
-              </div>
-            </div>
+<label class="black-text" style="padding-top: 20px">Tipo de relatório</label>
+</div>
+<div class="input-field col s12 m2 l2 right">
+  <a class="waves-effect waves-light blue btn btn-large right" (click)="filtrar()">Filtrar</a>
+</div>
+</div>
 
-          </form>
-        </div>
-        <div class="row">
-          <div class="col s12 ">
-            <ul class="tabs " materialize="tabs">
-              <li class="tab col s6 m6 l6 "><a class="active blue-text" href="#test1">Estoque</a></li>
-              <li class="tab col s6 m6 l6 "><a class="blue-text" href="#test2">Venda</a></li>
-            </ul>
-          </div>
-          <div id="test1" class="col s12">
+</form>
+</div>
+<div class="row">
+  <div class="col s12 ">
+    <ul class="tabs " materialize="tabs">
+      <li class="tab col s6 m6 l6 "><a class="active blue-text" href="#test1">Estoque</a></li>
+      <li class="tab col s6 m6 l6 "><a class="blue-text" href="#test2">Venda</a></li>
+    </ul>
+  </div>
+  <div id="test1" class="col s12">
 
-            <table class="bordered alter responsive-table selectable">
-              <thead>
-                <tr>
-                  <th data-field="Data">Data</th>
-                  <th data-field="Tipo">Tipo</th>
-                  <th data-field="Quantidade">Quantidade</th>
-                  <th data-field="Marca">Marca</th>
-                  <th data-field="Modelo">Modelo</th>
-                  <th data-field="Tamanho">Tamanho</th>
-                  <th data-field="Preço">Preço de entrada</th>
-                  <th data-field="Usuario">Usuario</th>
-                </tr>
-              </thead>
+    <table class="bordered alter responsive-table selectable">
+      <thead>
+        <tr>
+          <th data-field="Data">Data</th>
+          <th data-field="Tipo">Tipo</th>
+          <th data-field="Quantidade">Quantidade</th>
+          <th data-field="Marca">Marca</th>
+          <th data-field="Modelo">Modelo</th>
+          <th data-field="Tamanho">Tamanho</th>
+          <th data-field="Preço">Preço de entrada</th>
+          <th data-field="Usuario">Usuario</th>
+        </tr>
+      </thead>
 
-              <tbody>
-                <tr *ngFor="let produto of estoque">
-                  <td>{{produto.tempo}}</td>
-                  <td>{{produto.tipo}}</td>
-                  <td>{{produto.quantidade}}</td>
-                  <td>{{produto.marca}}</td>
-                  <td>{{produto.modelo}}</td>
-                  <td>{{produto.tamanho}}</td>
-                  <td>{{produto.precoEntrada}}</td>
-                  <td>{{produto.usuario}}</td>
-                </tr>
-              </tbody>
-            </table>
+      <tbody>
+        <tr *ngFor="let produto of estoque">
+          <td>{{produto.tempo}}</td>
+          <td>{{produto.tipo}}</td>
+          <td>{{produto.quantidade}}</td>
+          <td>{{produto.marca}}</td>
+          <td>{{produto.modelo}}</td>
+          <td>{{produto.tamanho}}</td>
+          <td>{{produto.precoEntrada}}</td>
+          <td>{{produto.usuario}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div id="test2" class="col s12">
+
+    <table class="bordered alter responsive-table selectable">
+      <thead>
+        <tr>
+          <th data-field="Data">Data de Venda</th>
+          <th data-field="Pagamento">Pagamento</th>
+          <th data-field="Valor">Valor</th>
+          <th data-field="Usuario">Usuario</th>
+          <th data-field="Cliente">Cliente</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let produto of venda">
+          <td>{{produto.dataVenda}}</td>
+          <td>{{produto.tipoDePagamento}}</td>
+          <td>{{produto.valor}}</td>
+          <td>{{produto.usuario}}</td>
+          <td>{{produto.cliente}}</td>
+          <td><a materialize="modal" class="waves-effect waves-light btn blue darken-4 " href="#DetalharCompra" (click)="detalhar(produto)">Detalhar</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 
 
-          </div>
-          <div id="test2" class="col s12">
-
-            <table class="bordered alter responsive-table selectable">
-              <thead>
-                <tr>
-                  <th data-field="Data">Data de Venda</th>
-                  <th data-field="Pagamento">Pagamento</th>
-                  <th data-field="Valor">Valor</th>
-                  <th data-field="Usuario">Usuario</th>
-                  <th data-field="Cliente">Cliente</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr *ngFor="let produto of venda" >
-                  <td>{{produto.dataVenda}}</td>
-                  <td>{{produto.tipoDePagamento}}</td>
-                  <td>{{produto.valor}}</td>
-                  <td>{{produto.usuario}}</td>
-                  <td>{{produto.cliente}}</td>
-                </tr>
-              </tbody>
-            </table>
-
-          </div>
-        </div>
+</div>
 
 
+</div>
+</div>
+
+<!--Detalhar compra-->
+<div materialize="modal" id="DetalharCompra" class="modal modal-fixed-footer " [materializeActions]="modalActions">
+  <div class="modal-content">
+    <div class="row">
+      <h5>Vendedora: {{produtoDetalhado.usuario}}</h5>
+      <h5>Cliente: {{produtoDetalhado.cliente}}</h5>
+      <div class="col s12 m4 l4">
+        <p>Data: {{produtoDetalhado.dataVenda}}</p>
       </div>
+      <div class="col s12 m4 l4">
+        <p>Pagamento: {{produtoDetalhado.tipoDePagamento}}</p>
+      </div>
+      <div class="col s12 m4 l4">
+        <p>Valor: {{produtoDetalhado.valor}}</p>
+      </div>
+
+          <table class="bordered alter responsive-table selectable">
+      <thead>
+        <tr>
+          <th data-field="Quantidade">Quantidade Item</th>
+          <th data-field="Modelo">Modelo</th>
+          <th data-field="Marca">Marca</th>
+          <th data-field="Tamanho">Tamanho</th>
+          <th data-field="Unitario">Preço Unitário</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let produto of linhaDeItem">
+          <td>{{produto.quantidade}}</td>
+          <td>{{produto.modelo}}</td>
+          <td>{{produto.marca}}</td>
+          <td>{{produto.tamanho}}</td>
+          <td>{{produto.valorUnidade}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
     </div>
-  </main>
+  </div>
+</div>
+
+</main>
 </body>

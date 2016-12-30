@@ -77,8 +77,8 @@
                 <td>{{produto.maximo}}</td>
                 <td>{{produto.minimo}}</td>
                 <td>{{produto.estado}}</td>
-                <td> <a class="waves-effect waves-light btn blue darken-4 btn" [routerLink]="['/gerenciador/editar-produto', produto.id]">Editar</a></td>
-                <td> <a class="waves-effect waves-light btn blue darken-4 btn" [routerLink]="['/gerenciador/adicionar-produto', produto.id]">adicionar</a></td>
+                <td *ngIf="isAdmin"> <a class="waves-effect waves-light btn blue darken-4" [routerLink]="['/gerenciador/editar-produto', produto.id]">Editar</a></td>
+                <td *ngIf="isAdmin"> <a class="waves-effect waves-light btn blue darken-4 btn" [routerLink]="['/gerenciador/adicionar-produto', produto.id]">adicionar</a></td>
               </tr>
             </tbody>
           </table>

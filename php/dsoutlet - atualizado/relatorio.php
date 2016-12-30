@@ -21,7 +21,7 @@
 		$estoque = array();
 		
 		if ($tipo == "1" && $inicio == "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -36,7 +36,7 @@
 			}
 		}
 		else if ($tipo == "2" && $inicio == "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -51,7 +51,7 @@
 			}
 		}
 		else if ($tipo == "3" && $inicio == "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -66,7 +66,7 @@
 			}
 		}
 		else if ($tipo == "1" && $inicio != "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -81,7 +81,7 @@
 			}
 		}
 		else if ($tipo == "1" && $inicio != "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -96,7 +96,7 @@
 			}
 		}
 		else if ($tipo == "2" && $inicio != "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -111,7 +111,7 @@
 			}
 		}
 		else if ($tipo == "3" && $inicio != "null" && $fim == "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -126,7 +126,7 @@
 			}
 		}
 		else if ($tipo == "1" && $inicio == "null" && $fim != "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -141,7 +141,7 @@
 			}
 		}
 		else if ($tipo == "2" && $inicio == "null" && $fim != "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -156,7 +156,7 @@
 			}
 		}
 		else if ($tipo == "3" && $inicio == "null" && $fim != "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -171,7 +171,7 @@
 			}
 		}
 		else if ($tipo == "1" && $inicio != "null" && $fim != "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') and v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') and v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -186,7 +186,7 @@
 			}
 		}
 		else if ($tipo == "2" && $inicio != "null" && $fim != "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') and v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') and v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
@@ -201,7 +201,7 @@
 			}
 		}
 		else if ($tipo == "3" && $inicio != "null" && $fim != "null"){
-			$sql = "SELECT v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') and v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.id DESC";
+			$sql = "SELECT v.id, v.dataVenda, v.tipoDePagamento, v.valor, u.nome usuario, c.nome cliente FROM venda v join usuario u on (u.id = v.usuario_IDUsuario) left join cliente c on (c.id = v.cliente_IDCliente) where v.dataVenda >= timestamp('$inicio','YYYY-MM-DD') and v.dataVenda <= timestamp('$fim','YYYY-MM-DD') ORDER BY v.id DESC";
 			$result = $con->query($sql);
 			
 			while ($row=$result->fetch_assoc()){
