@@ -98,8 +98,31 @@
 				$sql = "INSERT INTO registro (tempo, loja_id, usuario_id, tipo, quantidade, produto_id) VALUES ('$today', '1', '$idU', 's', '$qnt', '$idP')";
 				$con->query($sql);
 			}
+			$vetor   = array();
+			$sql = "SELECT * FROM produto WHERE ativo = '0' ORDER BY marca ASC";
+			$result = $con->query($sql);
+			while($row=$result->fetch_assoc()){
+				$maxx   = $row['maximo'];
+				$minn   = $row['minimo'];
+				$qnt    = $row['quantidade'];
+				$estado = "";
+				
+				if ($qnt <= $minn){
+					$estado = "Falta";
+				} else if ($qnt > $maxx){
+					$estado = "excesso";
+				} else {
+					$estado = "certo";
+				}
+				
+				$row['estado'] = $estado;
+				$vetor[] = $row;
+				}
+				$resposta = array();
+				$resposta[] = $idV;
+				$resposta[] = $vetor;
 			
-			echo json_encode($idV);
+			echo json_encode($resposta);
 		}
 	}
 ?>

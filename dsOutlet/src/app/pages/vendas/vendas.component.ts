@@ -23,6 +23,7 @@ export class VendasComponent implements OnInit {
 
   private isLogado: boolean = false;
   private loading: boolean = true;
+  private loadingMercadoria: boolean = true;
   private isAdmin: boolean = false;
   private produtos: Produto[] = [];
   private itens: Produto[] = [];
@@ -70,6 +71,7 @@ export class VendasComponent implements OnInit {
     this.produtosService.getProdutos().then(res => {
       this.produtos = res;
     });
+    this.loadingMercadoria = false;
   }
 
   private adicionarItem() {
@@ -212,8 +214,10 @@ export class VendasComponent implements OnInit {
   }
 
   concluirCompra() {
+    this.loadingMercadoria = true;
     this.vendaService.concluirCompra(this.clienteComprador.id, this.idUser, this.compra, this.divida, { subtotal: this.valorTotalConta, desconto: this.valorDesconto, total: this.divida.valor }).then(res => {
-      if (res) {
+      if (res[0]) {
+        this.produtos = res[1];
         toast('Compra efetuada com sucesso', 4000, 'rounded');
         this.router.navigate(['/gerenciador/venda']);
 
@@ -223,6 +227,7 @@ export class VendasComponent implements OnInit {
     });
     this.inicializar();
     this.comprando=true;
+    this.loadingMercadoria = false;    
   }
 
   voltar(){

@@ -49,8 +49,8 @@ export class VendaService {
 
   private extractAddData(res: Response) {
     let data = res.json();
-    if (typeof data == "string") {
-      this.impressao.idVenda = data;
+    if (typeof data[0] == "string") {
+      this.impressao.idVenda = data[0];
       try {
         this.storage.set('venda', this.impressao);
       } catch (e) {

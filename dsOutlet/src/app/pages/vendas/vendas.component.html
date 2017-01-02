@@ -72,7 +72,7 @@
   <!--Tabela de produtos de venda-->
   <div class="produtos">
 
-    <table class="bordered alter responsive-table selectable">
+    <table *ngIf="!loadingMercadoria" class="bordered alter selectable responsive-table">
       <thead>
         <tr>
           <th data-field="marca">Marca</th>
