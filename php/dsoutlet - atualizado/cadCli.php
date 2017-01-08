@@ -37,7 +37,7 @@
 		$numrow = $result->num_rows;
 		
 		if ($numrow !== 1 && $nome != ""){
-			$sql = "INSERT INTO cliente (cpf, nome, nascimento, email, enderecoIDEndereco, telefone, ativo) VALUES ('$cpf', '$nome', '$nascimento', '$email', '$id', '$telefone', '0')";
+			$sql = "INSERT INTO cliente (cpf, nome, nascimento, email, enderecoIDEndereco, telefone, ativo) VALUES ('$cpf', '$nome', '$nascimento', '$email', '$id', '$telefone', 0)";
 			$con->query($sql);
 			echo json_encode(true);
 		} else {

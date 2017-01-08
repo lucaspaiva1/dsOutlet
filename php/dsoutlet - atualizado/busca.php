@@ -42,7 +42,7 @@
 			}
 		} else if (isset($_GET["cli"])){
 			if ($_GET["cli"] == ""){
-				$sql = "SELECT c.id, c.nome, c.cpf, c.telefone, sum(d.valor) dividaTotal from cliente c left join divida d on (c.id = d.cliente_IDCliente) group by cpf ORDER BY c.nome";
+				$sql = "SELECT c.id, c.nome, c.cpf, c.telefone, sum(d.valor) dividaTotal from cliente c left join divida d on (c.id = d.cliente_IDCliente) where ativo = 0 group by cpf ORDER BY c.nome";
 				$result = $con->query($sql);
 				while($row=$result->fetch_assoc()){
 					if ($row['dividaTotal'] == null)

@@ -119,10 +119,23 @@ export class VendasComponent implements OnInit {
 
   }
 
-  irPagamento(){
+  irPagamento() {
     this.valorAPagar();
-    this.comprando=false;
+    this.comprando = false;
   }
+
+  change(event) {
+    this.cliente.telefone = event;
+  }
+
+  changeCPF(event) {
+    this.cliente.cpf = event;
+  }
+
+  changeCEP(event) {
+    this.endereco.cep = event;
+  }
+
 
   detectar_mobile() {
     if (navigator.userAgent.match(/Android/i)
@@ -226,12 +239,12 @@ export class VendasComponent implements OnInit {
       }
     });
     this.inicializar();
-    this.comprando=true;
-    this.loadingMercadoria = false;    
+    this.comprando = true;
+    this.loadingMercadoria = false;
   }
 
-  voltar(){
-    this.comprando=true;
+  voltar() {
+    this.comprando = true;
   }
 
   inicializar() {
@@ -255,7 +268,7 @@ export class VendasComponent implements OnInit {
     this.getEstoque();
   }
 
-  imprimir(){
+  imprimir() {
     window.open('/#/imprimir', '_blank');
   }
 }
