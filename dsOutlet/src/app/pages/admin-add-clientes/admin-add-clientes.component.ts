@@ -67,7 +67,7 @@ export class AdminAddClientesComponent implements OnInit {
           this.endereco = new Endereco();
           this.router.navigate(['/gerenciador/clientes']);
         } else {
-          toast('Cliente já cadastrado', 4000, 'rounded');
+          toast('Este CPF já está cadastrado no sistema', 4000, 'rounded');
         }
       });
     }
