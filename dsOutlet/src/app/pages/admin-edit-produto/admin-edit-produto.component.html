@@ -90,7 +90,7 @@
                   <label class="black-text" for="precoVenda">Preço Venda</label>
                 </div>
                 <div class="input-field col s12 m3 l3">
-                  <input placeholder="" id="quantidade" type="number" class="validate" [value]="produto.quantidade">
+                  <input placeholder="" id="quantidade" type="number" class="validate" name="quantidade" [(ngModel)]="produto.quantidade">
                   <label class="black-text" for="quantidade">Quantidade</label>
                 </div>
               </div>
