@@ -1,0 +1,5 @@
+//instalar versão antiga do angular
+npm install -g angular-cli@1.0.0-beta.19-3 
+
+//instalar jasmine
+npm install --save @types/jasmine@2.2.30

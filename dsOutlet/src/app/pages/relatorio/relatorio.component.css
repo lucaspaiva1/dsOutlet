@@ -1,3 +1,9 @@
 .tabs .indicator{
 color: blue;
 }
+
+.modalAlert{
+    width: 300px;
+    height: 190px;
+    
+}

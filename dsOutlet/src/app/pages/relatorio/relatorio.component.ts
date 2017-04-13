@@ -18,6 +18,7 @@ export class RelatorioComponent implements OnInit {
   private isAdmin: boolean = false;
   private inicio: string = "";
   private fim: string = "";
+  private deletProduto;
   modalActions = new EventEmitter<string | MaterializeAction>();
   private linhaDeItem: LinhaDeItem[] = [];
   private tipo: string = "3";//inicializando com entrada e saída entrada/saida
@@ -57,10 +58,23 @@ export class RelatorioComponent implements OnInit {
     });
 
   }
+
+  excluirEste(produto){
+    this.deletProduto = produto;
+  }
+
+  excluir() {
+    this.relatorioService.excluirVenda(this.deletProduto.id).then(res => {
+      if(res==true){
+        this.filtrar();
+      }
+    });
+  }
+
   detalhar(produto) {
     this.relatorioService.getLinhaItem(produto.id).then(res => {
-        this.linhaDeItem = res;
-      }
+      this.linhaDeItem = res;
+    }
     );
     this.produtoDetalhado = produto;
   }

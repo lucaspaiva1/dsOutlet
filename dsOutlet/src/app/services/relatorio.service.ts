@@ -16,6 +16,14 @@ export class RelatorioService {
     return false;
   }
 
+  excluirVenda(id) {
+    return this.http
+      .post('http://dsoutlet.com.br/apiDsoutlet/excluir.php', JSON.stringify(id), { headers: this.headers })
+      .toPromise()
+      .then(res => this.extractRelarioData(res))
+      .catch(this.handleError);
+  }
+
   getRelatorioFiltro(tipo: string, inicio: string, fim: string): Promise<any> {
     return this.http
       .post('http://dsoutlet.com.br/apiDsoutlet/relatorio.php', JSON.stringify({ tipo, inicio, fim }), { headers: this.headers })
@@ -29,7 +37,7 @@ export class RelatorioService {
     return date;
   }
 
-  getLinhaItem(id: number):Promise<any> {
+  getLinhaItem(id: number): Promise<any> {
     return this.http
       .get('http://dsoutlet.com.br/apiDsoutlet/busca.php?detalhar=' + id)
       .toPromise()
