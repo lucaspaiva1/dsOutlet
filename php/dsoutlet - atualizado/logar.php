@@ -16,6 +16,9 @@
 		$login = $request->login;
 		$senha = $request->senha;
 		
+		$login = addslashes($login);
+		$senha = addslashes($senha);
+
 		$sql = "SELECT * FROM usuario WHERE login = '$login' AND senha = '$senha'";
 		$result = $con->query($sql);
 		
